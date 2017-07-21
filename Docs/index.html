@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RpgMap / Docs</title>
+  <meta name="description" content="RpgMap / Docs">
+  <meta name="author" content="John Erps">
+  <meta name="keywords" content="john erps ibm i as/400 rpg map rpgmap api docs">
+  <link rel="stylesheet" href="./css/normalize.min.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono|Ubuntu+Mono" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+  <div id="rpgmap">
+    RpgMap
+  </div>
+  <div id="docs">
+    /&nbsp;Docs
+  </div>
+  <div id="version">
+    <br>
+    V 2017.1
+  </div>
+  <div id="container">
+    <div id="navigation">
+      <div class="navlink1"><a id="_introduction" href="#introduction">Introduction</a></div>
+      <div class="navlink2"><a id="_examples" href="#examples">Examples</a></div>
+      <div class="navlink2"><a id="_example_1" href="#example_1">Example 1</a></div>
+      <div class="navlink2"><a id="_example_2" href="#example_2">Example 2</a></div>
+      <div class="navlink2"><a id="_example_3" href="#example_3">Example 3</a></div>
+      <div class="navlink1"><a id="_usage" href="#usage">Usage</a></div>
+      <div class="navlink2"><a id="_valmap" href="#valmap">Values and Maps</a></div>
+      <div class="navlink2"><a id="_memmgt" href="#memmgt">Memory Management</a></div>
+      <div class="navlink2"><a id="_cursors" href="#cursors">Cursors</a></div>
+      <div class="navlink2"><a id="_vectors" href="#vectors">Vectors</a></div>
+      <div class="navlink2"><a id="_sortord" href="#sortord">Sort Order</a></div>
+      <div class="navlink2"><a id="_cycles" href="#cycles">Cycles</a></div>
+      <div class="navlink2"><a id="_escmsgs" href="#escmsgs">Escape Msgs</a></div>
+      <div class="navlink1"><a id="_installation" href="#installation">Installation</a></div>
+      <div class="navlink1"><a id="_api" href="#api">API</a></div>
+      <div class="navlink2"><a id="_rm_m" href="#rm_m"><pre class="navprocnm">rm_m     </pre>Create a new map, automatically disposed</a></div>
+      <div class="navlink2"><a id="_rm_mm" href="#rm_mm"><pre class="navprocnm">rm_mm    </pre>Create a new map, manually disposed</a></div>
+      <div class="navlink2"><a id="_rm_v" href="#rm_v"><pre class="navprocnm">rm_v     </pre>Create a new vector, automatically disposed</a></div>
+      <div class="navlink2"><a id="_rm_ism" href="#rm_ism"><pre class="navprocnm">rm_ism   </pre>Is map?</a></div>
+      <div class="navlink2"><a id="_rm_isv" href="#rm_isv"><pre class="navprocnm">rm_isv   </pre>Is vector?</a></div>
+      <div class="navlink2"><a id="_rm_dis" href="#rm_dis"><pre class="navprocnm">rm_dis   </pre>Dispose maps, cursors and values</a></div>
+      <div class="navlink2"><a id="_rm_ins" href="#rm_ins"><pre class="navprocnm">rm_ins   </pre>Insert key/item pairs</a></div>
+      <div class="navlink2"><a id="_rm_ins1" href="#rm_ins1"><pre class="navprocnm">rm_ins1  </pre>Insert 1 key/item pair</a></div>
+      <div class="navlink2"><a id="_rm_insm" href="#rm_insm"><pre class="navprocnm">rm_insm  </pre>Insert key/item pairs, from map</a></div>
+      <div class="navlink2"><a id="_rm_insc" href="#rm_insc"><pre class="navprocnm">rm_insc  </pre>Insert key/item pairs, conditionally</a></div>
+      <div class="navlink2"><a id="_rm_insc1" href="#rm_insc1"><pre class="navprocnm">rm_insc1 </pre>Insert 1 key/item pair, conditionally</a></div>
+      <div class="navlink2"><a id="_rm_inscm" href="#rm_inscm"><pre class="navprocnm">rm_inscm </pre>Insert key/item pairs, conditionally, from map</a></div>
+      <div class="navlink2"><a id="_rm_insx" href="#rm_insx"><pre class="navprocnm">rm_insx  </pre>Insert key/item pairs, exclusive</a></div>
+      <div class="navlink2"><a id="_rm_insx1" href="#rm_insx1"><pre class="navprocnm">rm_insx1 </pre>Insert 1 key/item pair, exclusive</a></div>
+      <div class="navlink2"><a id="_rm_insxm" href="#rm_insxm"><pre class="navprocnm">rm_insxm </pre>Insert key/item pairs, exclusive, from map</a></div>
+      <div class="navlink2"><a id="_rm_rmv" href="#rm_rmv"><pre class="navprocnm">rm_rmv   </pre>Remove key/item pair</a></div>
+      <div class="navlink2"><a id="_rm_rmva" href="#rm_rmva"><pre class="navprocnm">rm_rmva  </pre>Remove all key/item pairs</a></div>
+      <div class="navlink2"><a id="_rm_cmp" href="#rm_cmp"><pre class="navprocnm">rm_cmp   </pre>Compare two objects</a></div>
+      <div class="navlink2"><a id="_rm_ceq" href="#rm_ceq"><pre class="navprocnm">rm_ceq   </pre>obj1 = obj2 ?</a></div>
+      <div class="navlink2"><a id="_rm_clt" href="#rm_clt"><pre class="navprocnm">rm_clt   </pre>obj1 < obj2 ?</a></div>
+      <div class="navlink2"><a id="_rm_cle" href="#rm_cle"><pre class="navprocnm">rm_cle   </pre>obj1 <= obj2 ?</a></div>
+      <div class="navlink2"><a id="_rm_cgt" href="#rm_cgt"><pre class="navprocnm">rm_cgt   </pre>obj1 > obj2 ?</a></div>
+      <div class="navlink2"><a id="_rm_cge" href="#rm_cge"><pre class="navprocnm">rm_cge   </pre>obj1 >= obj2 ?</a></div>
+      <div class="navlink2"><a id="_rm_" href="#rm_"><pre class="navprocnm">rm_      </pre>Set special property</a></div>
+      <div class="navlink2"><a id="_rm_get" href="#rm_get"><pre class="navprocnm">rm_get   </pre>Retrieve item with a key</a></div>
+      <div class="navlink2"><a id="_rm__" href="#rm__"><pre class="navprocnm">rm__     </pre>Retrieve item with one or more keys</a></div>
+      <div class="navlink2"><a id="_rm__i" href="#rm__i"><pre class="navprocnm">rm__i    </pre>Retrieve item with one or more integer keys</a></div>
+      <div class="navlink2"><a id="_rm__p" href="#rm__p"><pre class="navprocnm">rm__p    </pre>Retrieve item with one or more p. decimal keys</a></div>
+      <div class="navlink2"><a id="_rm__d" href="#rm__d"><pre class="navprocnm">rm__d    </pre>Retrieve item with one or more date keys</a></div>
+      <div class="navlink2"><a id="_rm__t" href="#rm__t"><pre class="navprocnm">rm__t    </pre>Retrieve item with one or more time keys</a></div>
+      <div class="navlink2"><a id="_rm__z" href="#rm__z"><pre class="navprocnm">rm__z    </pre>Retrieve item with one or more timestamp keys</a></div>
+      <div class="navlink2"><a id="_rm__n" href="#rm__n"><pre class="navprocnm">rm__n    </pre>Retrieve item with one or more indicator keys</a></div>
+      <div class="navlink2"><a id="_rm__x" href="#rm__x"><pre class="navprocnm">rm__x    </pre>Retrieve item with one or more pointer keys</a></div>
+      <div class="navlink2"><a id="_rm__xp" href="#rm__xp"><pre class="navprocnm">rm__xp   </pre>Retrieve item with one or more proc. pointer keys</a></div>
+      <div class="navlink2"><a id="_rm__a" href="#rm__a"><pre class="navprocnm">rm__a    </pre>Retrieve item with one or more char. data keys</a></div>
+      <div class="navlink2"><a id="_rm__aa" href="#rm__aa"><pre class="navprocnm">rm__aa   </pre>Rtv item with one or more c. data (altseq) keys</a></div>
+      <div class="navlink2"><a id="_rm__s" href="#rm__s"><pre class="navprocnm">rm__s    </pre>Retrieve item with one or more string keys</a></div>
+      <div class="navlink2"><a id="_rm__sa" href="#rm__sa"><pre class="navprocnm">rm__sa   </pre>Retrieve item with one or more string (altseq) keys</a></div>
+      <div class="navlink2"><a id="_rm_hky" href="#rm_hky"><pre class="navprocnm">rm_hky   </pre>Has key?</a></div>
+      <div class="navlink2"><a id="_rm_hks" href="#rm_hks"><pre class="navprocnm">rm_hks   </pre>Has keys?</a></div>
+      <div class="navlink2"><a id="_rm_num" href="#rm_num"><pre class="navprocnm">rm_num   </pre>Number of key/item pairs</a></div>
+      <div class="navlink2"><a id="_rm_cpy" href="#rm_cpy"><pre class="navprocnm">rm_cpy   </pre>Copy map or value</a></div>
+      <div class="navlink2"><a id="_rm_cpyd" href="#rm_cpyd"><pre class="navprocnm">rm_cpyd  </pre>Deep copy map or value</a></div>
+      <div class="navlink2"><a id="_rm_cur" href="#rm_cur"><pre class="navprocnm">rm_cur   </pre>Create a new cursor</a></div>
+      <div class="navlink2"><a id="_rm_sll" href="#rm_sll"><pre class="navprocnm">rm_sll   </pre>Set lower limit</a></div>
+      <div class="navlink2"><a id="_rm_sgt" href="#rm_sgt"><pre class="navprocnm">rm_sgt   </pre>Set greater than</a></div>
+      <div class="navlink2"><a id="_rm_rdn" href="#rm_rdn"><pre class="navprocnm">rm_rdn   </pre>Read next key/item pair</a></div>
+      <div class="navlink2"><a id="_rm_rdp" href="#rm_rdp"><pre class="navprocnm">rm_rdp   </pre>Read previous key/item pair</a></div>
+      <div class="navlink2"><a id="_rm_key" href="#rm_key"><pre class="navprocnm">rm_key   </pre>Return current key</a></div>
+      <div class="navlink2"><a id="_rm_itm" href="#rm_itm"><pre class="navprocnm">rm_itm   </pre>Return current item</a></div>
+      <div class="navlink2"><a id="_rm_slln" href="#rm_slln"><pre class="navprocnm">rm_slln  </pre>Set lower limit, read next</a></div>
+      <div class="navlink2"><a id="_rm_sgtp" href="#rm_sgtp"><pre class="navprocnm">rm_sgtp  </pre>Set greater than, read previous</a></div>
+      <div class="navlink2"><a id="_rm_hsn" href="#rm_hsn"><pre class="navprocnm">rm_hsn   </pre>Has next?</a></div>
+      <div class="navlink2"><a id="_rm_hsp" href="#rm_hsp"><pre class="navprocnm">rm_hsp   </pre>Has previous?</a></div>
+      <div class="navlink2"><a id="_rm_fed" href="#rm_fed"><pre class="navprocnm">rm_fed   </pre>For each do</a></div>
+      <div class="navlink2"><a id="_rm_fedr" href="#rm_fedr"><pre class="navprocnm">rm_fedr  </pre>For each do, reversed</a></div>
+      <div class="navlink2"><a id="_rm_scf" href="#rm_scf"><pre class="navprocnm">rm_scf   </pre>Set compare function</a></div>
+      <div class="navlink2"><a id="_rm_gcf" href="#rm_gcf"><pre class="navprocnm">rm_gcf   </pre>Get compare function</a></div>
+      <div class="navlink2"><a id="_rm_sav" href="#rm_sav"><pre class="navprocnm">rm_sav   </pre>Set attribute value</a></div>
+      <div class="navlink2"><a id="_rm_gav" href="#rm_gav"><pre class="navprocnm">rm_gav   </pre>Get attribute value</a></div>
+      <div class="navlink2"><a id="_rm_i" href="#rm_i"><pre class="navprocnm">rm_i     </pre>Create a new integer value, 10 digits</a></div>
+      <div class="navlink2"><a id="_rm_i1" href="#rm_i1"><pre class="navprocnm">rm_i1    </pre>Create a new integer value, 10 digits</a></div>
+      <div class="navlink2"><a id="_rm_i2" href="#rm_i2"><pre class="navprocnm">rm_i2    </pre>Create a new integer value, 20 digits</a></div>
+      <div class="navlink2"><a id="_rm_isi" href="#rm_isi"><pre class="navprocnm">rm_isi   </pre>Is any integer?</a></div>
+      <div class="navlink2"><a id="_rm_isi1" href="#rm_isi1"><pre class="navprocnm">rm_isi1  </pre>Is integer with 10 digits?</a></div>
+      <div class="navlink2"><a id="_rm_isi2" href="#rm_isi2"><pre class="navprocnm">rm_isi2  </pre>Is integer with 20 digits?</a></div>
+      <div class="navlink2"><a id="_rm_i_" href="#rm_i_"><pre class="navprocnm">rm_i_    </pre>Cvt a number to an RPG integer value, 10 digits</a></div>
+      <div class="navlink2"><a id="_rm_i1_" href="#rm_i1_"><pre class="navprocnm">rm_i1_   </pre>Cvt a number to an RPG integer value, 10 digits</a></div>
+      <div class="navlink2"><a id="_rm_i2_" href="#rm_i2_"><pre class="navprocnm">rm_i2_   </pre>Cvt a number to an RPG integer value, 20 digits</a></div>
+      <div class="navlink2"><a id="_rm_p" href="#rm_p"><pre class="navprocnm">rm_p     </pre>Create a new packed decimal value, 10.4 digits</a></div>
+      <div class="navlink2"><a id="_rm_p1" href="#rm_p1"><pre class="navprocnm">rm_p1    </pre>Create a new packed decimal value, 10.4 digits</a></div>
+      <div class="navlink2"><a id="_rm_p2" href="#rm_p2"><pre class="navprocnm">rm_p2    </pre>Create a new packed decimal value, 20.8 digits</a></div>
+      <div class="navlink2"><a id="_rm_p3" href="#rm_p3"><pre class="navprocnm">rm_p3    </pre>Create a new packed decimal value, 30.16 digits</a></div>
+      <div class="navlink2"><a id="_rm_isp" href="#rm_isp"><pre class="navprocnm">rm_isp   </pre>Is any packed decimal?</a></div>
+      <div class="navlink2"><a id="_rm_isp1" href="#rm_isp1"><pre class="navprocnm">rm_isp1  </pre>Is packed decimal with 10.4 digits?</a></div>
+      <div class="navlink2"><a id="_rm_isp2" href="#rm_isp2"><pre class="navprocnm">rm_isp2  </pre>Is packed decimal with 20.8 digits?</a></div>
+      <div class="navlink2"><a id="_rm_isp3" href="#rm_isp3"><pre class="navprocnm">rm_isp3  </pre>Is packed decimal with 30.16 digits?</a></div>
+      <div class="navlink2"><a id="_rm_p_" href="#rm_p_"><pre class="navprocnm">rm_p_    </pre>Cvt a number to an RPG p. dec. value, 10.4 digits</a></div>
+      <div class="navlink2"><a id="_rm_p1_" href="#rm_p1_"><pre class="navprocnm">rm_p1_   </pre>Cvt a number to an RPG p. dec. value, 10.4 digits</a></div>
+      <div class="navlink2"><a id="_rm_p2_" href="#rm_p2_"><pre class="navprocnm">rm_p2_   </pre>Cvt a number to an RPG p. dec. value, 20.8 digits</a></div>
+      <div class="navlink2"><a id="_rm_p3_" href="#rm_p3_"><pre class="navprocnm">rm_p3_   </pre>Cvt a number to an RPG p. dec. value, 30.16 dig</a></div>
+      <div class="navlink2"><a id="_rm_d" href="#rm_d"><pre class="navprocnm">rm_d     </pre>Create a new date value</a></div>
+      <div class="navlink2"><a id="_rm_t" href="#rm_t"><pre class="navprocnm">rm_t     </pre>Create a new time value</a></div>
+      <div class="navlink2"><a id="_rm_z" href="#rm_z"><pre class="navprocnm">rm_z     </pre>Create a new timestamp value</a></div>
+      <div class="navlink2"><a id="_rm_isd" href="#rm_isd"><pre class="navprocnm">rm_isd   </pre>Is date?</a></div>
+      <div class="navlink2"><a id="_rm_ist" href="#rm_isd"><pre class="navprocnm">rm_ist   </pre>Is time?</a></div>
+      <div class="navlink2"><a id="_rm_isz" href="#rm_isd"><pre class="navprocnm">rm_isz   </pre>Is timestamp?</a></div>
+      <div class="navlink2"><a id="_rm_d_" href="#rm_d_"><pre class="navprocnm">rm_d_    </pre>Convert a date/timestamp to an RPG date value</a></div>
+      <div class="navlink2"><a id="_rm_t_" href="#rm_t_"><pre class="navprocnm">rm_t_    </pre>Convert a time/timestamp to an RPG time value</a></div>
+      <div class="navlink2"><a id="_rm_z_" href="#rm_z_"><pre class="navprocnm">rm_z_    </pre>Convert a date/timestamp to an RPG timest. value</a></div>
+      <div class="navlink2"><a id="_rm_n" href="#rm_n"><pre class="navprocnm">rm_n     </pre>Create a new indicator value</a></div>
+      <div class="navlink2"><a id="_rm_isn" href="#rm_isn"><pre class="navprocnm">rm_isn   </pre>Is indicator?</a></div>
+      <div class="navlink2"><a id="_rm_n_" href="#rm_n_"><pre class="navprocnm">rm_n_    </pre>Convert an indicator to an RPG indicator value</a></div>
+      <div class="navlink2"><a id="_rm_x" href="#rm_x"><pre class="navprocnm">rm_x     </pre>Create a new pointer value</a></div>
+      <div class="navlink2"><a id="_rm_isx" href="#rm_isx"><pre class="navprocnm">rm_isx   </pre>Is pointer?</a></div>
+      <div class="navlink2"><a id="_rm_x_" href="#rm_x_"><pre class="navprocnm">rm_x_    </pre>Convert a pointer to an RPG pointer value</a></div>
+      <div class="navlink2"><a id="_rm_xp" href="#rm_xp"><pre class="navprocnm">rm_xp    </pre>Create a new procedure pointer value</a></div>
+      <div class="navlink2"><a id="_rm_isxp" href="#rm_isxp"><pre class="navprocnm">rm_isxp  </pre>Is procedure pointer?</a></div>
+      <div class="navlink2"><a id="_rm_xp_" href="#rm_xp_"><pre class="navprocnm">rm_xp_   </pre>Convert a proc. pointer to an RPG proc. ptr value</a></div>
+      <div class="navlink2"><a id="_rm_a" href="#rm_a"><pre class="navprocnm">rm_a     </pre>Create a new character data value</a></div>
+      <div class="navlink2"><a id="_rm_ap" href="#rm_ap"><pre class="navprocnm">rm_ap    </pre>Create a new character data value, pointer to data</a></div>
+      <div class="navlink2"><a id="_rm_aa" href="#rm_aa"><pre class="navprocnm">rm_aa    </pre>Create a new character data value, alt. sort seq.</a></div>
+      <div class="navlink2"><a id="_rm_aap" href="#rm_aap"><pre class="navprocnm">rm_aap   </pre>Create a new char. data value, alt.s.seq., ptr to data</a></div>
+      <div class="navlink2"><a id="_rm_isa" href="#rm_isa"><pre class="navprocnm">rm_isa   </pre>Is character data?</a></div>
+      <div class="navlink2"><a id="_rm_isaa" href="#rm_isaa"><pre class="navprocnm">rm_isaa  </pre>Is character data with alt. sort seq.?</a></div>
+      <div class="navlink2"><a id="_rm_a_" href="#rm_a_"><pre class="navprocnm">rm_a_    </pre>Convert character data to RPG character data</a></div>
+      <div class="navlink2"><a id="_rm_a1_" href="#rm_a1_"><pre class="navprocnm">rm_a1_   </pre>Convert char. data to RPG char. data (100)</a></div>
+      <div class="navlink2"><a id="_rm_a2_" href="#rm_a2_"><pre class="navprocnm">rm_a2_   </pre>Convert char. data to RPG char. data (1000)</a></div>
+      <div class="navlink2"><a id="_rm_a3_" href="#rm_a3_"><pre class="navprocnm">rm_a3_   </pre>Convert char. data to RPG char. data (10000)</a></div>
+      <div class="navlink2"><a id="_rm_s" href="#rm_s"><pre class="navprocnm">rm_s     </pre>Create a new string value</a></div>
+      <div class="navlink2"><a id="_rm_sb" href="#rm_sb"><pre class="navprocnm">rm_sb    </pre>Create a new string value, from binary</a></div>
+      <div class="navlink2"><a id="_rm_sa" href="#rm_sa"><pre class="navprocnm">rm_sa    </pre>Create a new string value, alt. sort sequence</a></div>
+      <div class="navlink2"><a id="_rm_sab" href="#rm_sab"><pre class="navprocnm">rm_sab   </pre>Create a new string value, alt. sort seq., from binary</a></div>
+      <div class="navlink2"><a id="_rm_iss" href="#rm_iss"><pre class="navprocnm">rm_iss   </pre>Is string?</a></div>
+      <div class="navlink2"><a id="_rm_issa" href="#rm_issa"><pre class="navprocnm">rm_issa  </pre>Is string with alt. sort seq.?</a></div>
+      <div class="navlink2"><a id="_rm_s_" href="#rm_s_"><pre class="navprocnm">rm_s_    </pre>Convert string to RPG utf8 character data</a></div>
+      <div class="navlink2"><a id="_rm_s1_" href="#rm_s1_"><pre class="navprocnm">rm_s1_   </pre>Convert string to RPG utf8 character data (100)</a></div>
+      <div class="navlink2"><a id="_rm_s2_" href="#rm_s2_"><pre class="navprocnm">rm_s2_   </pre>Convert string to RPG utf8 character data (1000)</a></div>
+      <div class="navlink2"><a id="_rm_s3_" href="#rm_s3_"><pre class="navprocnm">rm_s3_   </pre>Convert string to RPG utf8 character data (10000)</a></div>
+      <br>
+      <hr>
+      <div style="height:100vh;"></div>
+    </div>
+    <div id="content">
+      <script src="content/introduction.js"></script><br>
+      <script src="content/examples.js"></script><br>
+      <script src="content/example_1.js"></script><br>
+      <script src="content/example_2.js"></script><br>
+      <script src="content/example_3.js"></script><br>
+      <br>
+      <script src="content/usage.js"></script><br>
+      <script src="content/valmap.js"></script><br>
+      <script src="content/memmgt.js"></script><br>
+      <script src="content/cursors.js"></script><br>
+      <script src="content/vectors.js"></script><br>
+      <script src="content/sortord.js"></script><br>
+      <script src="content/cycles.js"></script><br>
+      <script src="content/escmsgs.js"></script><br>
+      <br>
+      <script src="content/installation.js"></script><br>
+      <br>
+      <script src="content/api.js"></script><br>
+      <script src="content/rm_m.js"></script><br>
+      <script src="content/rm_mm.js"></script><br>
+      <script src="content/rm_v.js"></script><br>
+      <script src="content/rm_ism.js"></script><br>
+      <script src="content/rm_isv.js"></script><br>
+      <script src="content/rm_dis.js"></script><br>
+      <script src="content/rm_ins.js"></script><br>
+      <script src="content/rm_ins1.js"></script><br>
+      <script src="content/rm_insm.js"></script><br>
+      <script src="content/rm_insc.js"></script><br>
+      <script src="content/rm_insc1.js"></script><br>
+      <script src="content/rm_inscm.js"></script><br>
+      <script src="content/rm_insx.js"></script><br>
+      <script src="content/rm_insx1.js"></script><br>
+      <script src="content/rm_insxm.js"></script><br>
+      <script src="content/rm_rmv.js"></script><br>
+      <script src="content/rm_rmva.js"></script><br>
+      <script src="content/rm_cmp.js"></script><br>
+      <script src="content/rm_ceq.js"></script><br>
+      <script src="content/rm_clt.js"></script><br>
+      <script src="content/rm_cle.js"></script><br>
+      <script src="content/rm_cgt.js"></script><br>
+      <script src="content/rm_cge.js"></script><br>
+      <script src="content/rm_.js"></script><br>
+      <script src="content/rm_get.js"></script><br>
+      <script src="content/rm__.js"></script><br>
+      <script src="content/rm__i.js"></script><br>
+      <script src="content/rm__p.js"></script><br>
+      <script src="content/rm__d.js"></script><br>
+      <script src="content/rm__t.js"></script><br>
+      <script src="content/rm__z.js"></script><br>
+      <script src="content/rm__n.js"></script><br>
+      <script src="content/rm__x.js"></script><br>
+      <script src="content/rm__xp.js"></script><br>
+      <script src="content/rm__a.js"></script><br>
+      <script src="content/rm__aa.js"></script><br>
+      <script src="content/rm__s.js"></script><br>
+      <script src="content/rm__sa.js"></script><br>
+      <script src="content/rm_hky.js"></script><br>
+      <script src="content/rm_hks.js"></script><br>
+      <script src="content/rm_num.js"></script><br>
+      <script src="content/rm_cpy.js"></script><br>
+      <script src="content/rm_cpyd.js"></script><br>
+      <script src="content/rm_cur.js"></script><br>
+      <script src="content/rm_sll.js"></script><br>
+      <script src="content/rm_sgt.js"></script><br>
+      <script src="content/rm_rdn.js"></script><br>
+      <script src="content/rm_rdp.js"></script><br>
+      <script src="content/rm_key.js"></script><br>
+      <script src="content/rm_itm.js"></script><br>
+      <script src="content/rm_slln.js"></script><br>
+      <script src="content/rm_sgtp.js"></script><br>
+      <script src="content/rm_hsn.js"></script><br>
+      <script src="content/rm_hsp.js"></script><br>
+      <script src="content/rm_fed.js"></script><br>
+      <script src="content/rm_fedr.js"></script><br>
+      <script src="content/rm_scf.js"></script><br>
+      <script src="content/rm_gcf.js"></script><br>
+      <script src="content/rm_sav.js"></script><br>
+      <script src="content/rm_gav.js"></script><br>
+      <script src="content/rm_i.js"></script><br>
+      <script src="content/rm_i1.js"></script><br>
+      <script src="content/rm_i2.js"></script><br>
+      <script src="content/rm_isi.js"></script><br>
+      <script src="content/rm_isi1.js"></script><br>
+      <script src="content/rm_isi2.js"></script><br>
+      <script src="content/rm_i_.js"></script><br>
+      <script src="content/rm_i1_.js"></script><br>
+      <script src="content/rm_i2_.js"></script><br>
+      <script src="content/rm_p.js"></script><br>
+      <script src="content/rm_p1.js"></script><br>
+      <script src="content/rm_p2.js"></script><br>
+      <script src="content/rm_p3.js"></script><br>
+      <script src="content/rm_isp.js"></script><br>
+      <script src="content/rm_isp1.js"></script><br>
+      <script src="content/rm_isp2.js"></script><br>
+      <script src="content/rm_isp3.js"></script><br>
+      <script src="content/rm_p_.js"></script><br>
+      <script src="content/rm_p1_.js"></script><br>
+      <script src="content/rm_p2_.js"></script><br>
+      <script src="content/rm_p3_.js"></script><br>
+      <script src="content/rm_d.js"></script><br>
+      <script src="content/rm_t.js"></script><br>
+      <script src="content/rm_z.js"></script><br>
+      <script src="content/rm_isd.js"></script><br>
+      <script src="content/rm_ist.js"></script><br>
+      <script src="content/rm_isz.js"></script><br>
+      <script src="content/rm_d_.js"></script><br>
+      <script src="content/rm_t_.js"></script><br>
+      <script src="content/rm_z_.js"></script><br>
+      <script src="content/rm_n.js"></script><br>
+      <script src="content/rm_isn.js"></script><br>
+      <script src="content/rm_n_.js"></script><br>
+      <script src="content/rm_x.js"></script><br>
+      <script src="content/rm_isx.js"></script><br>
+      <script src="content/rm_x_.js"></script><br>
+      <script src="content/rm_xp.js"></script><br>
+      <script src="content/rm_isxp.js"></script><br>
+      <script src="content/rm_xp_.js"></script><br>
+      <script src="content/rm_a.js"></script><br>
+      <script src="content/rm_ap.js"></script><br>
+      <script src="content/rm_aa.js"></script><br>
+      <script src="content/rm_aap.js"></script><br>
+      <script src="content/rm_isa.js"></script><br>
+      <script src="content/rm_isaa.js"></script><br>
+      <script src="content/rm_a_.js"></script><br>
+      <script src="content/rm_a1_.js"></script><br>
+      <script src="content/rm_a2_.js"></script><br>
+      <script src="content/rm_a3_.js"></script><br>
+      <script src="content/rm_s.js"></script><br>
+      <script src="content/rm_sb.js"></script><br>
+      <script src="content/rm_sa.js"></script><br>
+      <script src="content/rm_sab.js"></script><br>
+      <script src="content/rm_iss.js"></script><br>
+      <script src="content/rm_issa.js"></script><br>
+      <script src="content/rm_s_.js"></script><br>
+      <script src="content/rm_s1_.js"></script><br>
+      <script src="content/rm_s2_.js"></script><br>
+      <script src="content/rm_s3_.js"></script><br>
+      <br>
+      <hr>
+      <div id="-" style="height:100vh;"></div>
+    </div>
+  </div>
+  <div id="footer">
+    <a href="http://jerps.nl">Copyright (c) 2017 John Erps</a>
+  </div>
+<script>
+  var scrolled = false;
+  var animatedScroll = false;
+  var lastAnimatedScroll = false;  
+  $(document).ready(function() {
+    $(window).bind("popstate", function(e) {
+      if (window.location.hash.length > 1)
+        gototag(window.location.hash.substring(1), true, true);
+    });
+    if (window.location.hash.length > 1)
+      gototag(window.location.hash.substring(1), true, true);
+    else {
+      window.location.hash = "0";
+      gototag(null, true, true);
+    }
+    $("a").on("click", function(e) {
+      var h, i;
+      if (this.href) {
+        i = this.href.lastIndexOf("#");
+        if (i > 0) {
+          h = this.href.substring(i);
+          if (h.length > 1) {
+            e.preventDefault();
+            h = h.substring(1);
+            if (scrolled)
+              history.pushState(null, null, "index.html"+stqp()+window.location.hash);
+            history.pushState(null, null, "index.html"+"#"+h);
+            gototag(h, this.id.substring(0,1) !== "_", false);
+          }
+        }
+      }
+    });
+    $("#rpgmap").on("click", function(e) {
+      if (window.location.hash.length > 1) {
+        if (scrolled)
+          history.pushState(null, null, "index.html"+stqp()+window.location.hash);
+        history.pushState(null, null, "index.html"+window.location.hash);
+        gototag(window.location.hash.substring(1), true, false);
+      }
+    });
+    $("#docs").on("click", function(e) {
+      var el = $("#api");
+      if (scrolled)
+        history.pushState(null, null, "index.html"+stqp()+window.location.hash);
+      if (el.length > 0 && isElementInViewport(el)) {
+        history.pushState(null, null, "index.html#0");
+        gototag(null, true, false);
+      } else {
+        history.pushState(null, null, "index.html#api");
+        gototag('api', true, false);
+      }
+    });
+    $("#navigation, #content").on("scroll", function(){
+      lastAnimatedScroll = animatedScroll;
+      animatedScroll = $(this).is(':animated');
+      scrolled = !lastAnimatedScroll;
+    });
+  });
+  function stqp() {
+    var qp = "", cel = $("#navigation");
+    if (cel.length > 0) {
+      qp = "?scrollTopLeft=" + cel.scrollTop(); 
+    }
+    cel = $("#content");
+    if (cel.length > 0) {
+      if (qp == "")
+        qp = "?";
+      else
+        qp += "&";
+      qp += "scrollTopRight=" + cel.scrollTop();
+    }
+    return qp;
+  }
+  var sel = null;
+  function gototag(t, both, st) {
+    var cel = $("#content");
+    var el, el2;
+    var x, y, z, qp;
+    if (t == "0") {
+      t = null;
+    }
+    x= -1;
+    y = -1;
+    if (t)
+      el = $("#" + t).first();
+    else {
+      x = 0;
+      y = 0;
+    }
+    if (st) {
+      x = window.location.href.lastIndexOf("?scroll");
+      if (x >= 0) {
+        y = window.location.href.lastIndexOf("#");
+        if (y == -1 || y < x)
+          qp = window.location.href.substring(x);
+        else
+          qp = window.location.href.substring(x, y);
+        x = qp.indexOf("scrollTopLeft=");
+        if (x >= 0)
+          x = parseInt(qp.substring(x+14));
+        y = qp.indexOf("scrollTopRight=");
+        if (y >= 0)
+          y = parseInt(qp.substring(y+15));
+      }
+    }
+    if (!t) {
+      if (x == -1)
+        x = 0;
+      if (y == -1)
+        y = 0;
+    }
+    if (cel.length > 0 && (!t || el.length > 0)) {
+      if (x >= 0 && y >= 0) {
+        cel.animate({scrollTop: y});
+      } else {
+        z = 0;
+        if (el.attr("id").length > 2 && el.attr("id").substring(0,3) == "rm_") {
+          el2 = el.next();
+          while (el2.length > 0) {
+            if (el2.prop("tagName") == "P")
+              z = el2.position().top - el.position().top + el2.height();
+            if (el2.prop("tagName") == "DIV" && el2.attr("id").length > 0)
+              break;
+            el2 = el2.next();
+          } 
+          if (z > 0 && z < cel.height())
+            z = (cel.height() - z) / 2;
+          else
+            z = 0;
+        } else
+          z += 20;
+        cel.animate({scrollTop: cel.scrollTop() + Math.floor(el.position().top-z)});
+      }
+    }
+    if (both) {
+      cel = $("#navigation");
+      if (t)
+        el = $("#" + "_" + t).first();
+      if (cel.length > 0 && (!t || el.length > 0)) {
+        if (x >= 0 && y >= 0)
+          cel.animate({scrollTop: x});
+        else
+          cel.animate({scrollTop: cel.scrollTop() + Math.floor(el.position().top-cel.height()/2)});
+      }
+    }
+    if (sel) {
+      sel.style = "color: black; font-weight: normal;";
+      sel = null;
+    }
+    if (t) {
+      el = $("#" + "_" + t)[0];
+      if (el) {
+        el.style = "color: rgba(150, 50, 150, 1); font-weight: bold;";
+        sel = el;
+      }
+    }
+    scrolled = false;
+  }
+  function isElementInViewport (el) {
+    //special bonus for those using jQuery
+    if (typeof jQuery === "function" && el instanceof jQuery) {
+        el = el[0];
+    }
+    var rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+    );
+  }
+</script>
+</body>
+</html>

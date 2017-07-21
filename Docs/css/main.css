@@ -1,0 +1,224 @@
+
+html {
+}
+
+body {
+  margin: 1% 0% 0% 0%;
+  padding: 0;
+}
+
+p {
+  margin: 2% 1% 1% 1.5%;
+}
+
+#rpgmap {
+  font-family: 'Ubuntu Mono', monospace;
+  font-weight: bold;
+  font-size: 2.0em;
+  font-style: italic;
+  color: rgba(150, 50, 150, 1);
+  display: inline;
+  margin: 0% 0% 0% 10%;
+  cursor:pointer;
+}
+
+#docs {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.4em;
+  display: inline;
+  cursor:pointer;
+}
+
+@media screen and (max-width: 750px) {
+  #docs {
+    visibility: hidden;
+  }
+}
+@media all and (min-width: 751px) {
+  #docs {
+    visibility: visible;
+  }
+}
+
+#version {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  float: right;
+  display: inline;
+  padding: 0% 3% 1% 3%;
+}
+
+#container {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+}
+
+#navigation {
+  position: fixed;
+  height: 88vh;
+  width: 30vw;
+  overflow-y: scroll;
+  padding: 1.5% 1% 0% 1%;
+  margin: 1% 0% 0% 1.8%;
+  top: 7%;
+  border-top: 4px solid rgba(255, 220, 200, 0.5);  
+}
+
+#content {
+  position: fixed;
+  height: 90vh;
+  overflow-y: scroll;
+  border-left: 4px solid rgba(255, 220, 200, 0.5);
+  width: 60%;
+  top: 3%;
+  padding: 5% 3% 1.5% 3%;
+  right: 0px;
+  line-height: 130%;
+}
+
+#footer {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.7em;
+  position: absolute;
+  bottom: 0px;
+  text-align: right;
+  width: 100%;"
+}
+
+.navlink1 {
+  display: block;
+  font-size: 1em;
+  margin-top: 2.5%;
+  margin-bottom: 0%;
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+.navlink2 {
+  display: block;
+  font-size: 0.8em;
+  margin-top: 0.7%;
+  margin-bottom: 0%;
+  margin-left: 2.5%;
+  margin-right: 0;
+}
+
+.navprocnm {
+  display: inline;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: bold;
+}
+
+.prochdr1 {
+  font-size: 1.4em;
+  display: inline;
+}
+
+.prochdr2 {
+  font-size: 1.1em;
+  display: inline;
+}
+
+.procsig {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.8em;
+  margin: 1% 0% 0% 4%;
+  line-height: 110%;
+  overflow: hidden;
+}
+
+code {
+  font-family: 'Ubuntu Mono', monospace;
+  font_weight: bold;
+}
+
+.pcode {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.8em;
+  margin: 0% 0% 0% 4%;
+}
+
+.console {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.8em;
+  color: green;
+  margin: 0% 0% 0% 10%;
+  line-height: 120%;
+}
+
+.escmsg1 {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.9em;
+  display: inline;
+  margin: 0% 0% 0% 3%;
+}
+
+.escmsg2 {
+  font-size: 0.9em;
+  display: inline;
+  margin: 0% 0% 0% 3%;
+}
+
+::-moz-selection {
+  background-color: rgba(255, 220, 200, 0.5);
+  text-shadow: none;
+}
+
+::selection {
+  background-color: rgba(255, 220, 200, 0.5);
+  text-shadow: none;
+}
+
+#navigation a, #footer a {
+  text-decoration: none;
+  color: black;
+}
+#content a {
+  text-decoration: underline;
+  color: black;
+}
+a:hover {
+  color: black;
+}
+a:active {
+  color: black;
+}
+a:visited {
+  color: black;
+}
+h1 {
+  display: block;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0;
+}
+h2 {
+  display: block;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: 1em 0 0 0;
+}
+h3 {
+  display: block;
+  font-size: 0.9em;
+  font-weight: bold;
+  margin: 0.8em 0 0 0;
+}
+h4 {
+  display: block;
+  font-size: 0.6em;
+  font-weight: bold;
+  margin: 0;
+}
+h5 {
+  display: block;
+  font-size: 0.6em;
+  font-weight: bold;
+  margin: 0;
+}
+h6 {
+  display: block;
+  font-size: 0.6em;
+  font-weight: bold;
+  margin: 0;
+}

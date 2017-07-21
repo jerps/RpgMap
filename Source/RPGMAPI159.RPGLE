@@ -1,0 +1,32 @@
+**FREE
+	
+if %parms >  1;
+  k( 1) = rm_s(k01);
+endif;
+if %parms >  2;
+  k( 2) = rm_s(k02);
+endif;
+if %parms >  3;
+  k( 3) = rm_s(k03);
+endif;
+if %parms >  4;
+  k( 4) = rm_s(k04);
+endif;
+if %parms >  5;
+  k( 5) = rm_s(k05);
+endif;
+if %parms >  6;
+  k( 6) = rm_s(k06);
+endif;
+if %parms >  7;
+  k( 7) = rm_s(k07);
+endif;
+if %parms >  8;
+  k( 8) = rm_s(k08);
+endif;
+if %parms >  9;
+  k( 9) = rm_s(k09);
+endif;
+if %parms > 10;
+  k(10) = rm_s(k10);
+endif;

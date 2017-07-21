@@ -1,0 +1,14 @@
+document.write('\
+\
+<div id="rm_gav"><div class="prochdr1">rm_gav</div><div class="prochdr2"> - Get attribute value</div></div>\
+<pre class="procsig">\
+&lt;&lt;varchar(100) ccsid(*utf8)<br>\
+map  pointer                   value<br>\
+attr varchar(100) ccsid(*utf8) value<br>\
+</pre>\
+<p>\
+Return the value of attribute <code>attr</code> of <code>map</code>, or \'\' if the \
+attribute is not set.\
+</p>\
+\
+');
