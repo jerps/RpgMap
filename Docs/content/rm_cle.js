@@ -1,6 +1,7 @@
 document.write('\
 \
 <div id="rm_cle"><div class="prochdr1">rm_cle</div><div class="prochdr2"> - obj1 <= obj2 ?</div></div>\
+<pre class="proclongnm">rm_compare_le</pre>\
 <pre class="procsig">\
 &lt;&lt;ind<br>\
 obj1 pointer value<br>\

@@ -1,6 +1,7 @@
 document.write('\
 \
 <div id="rm_dis"><div class="prochdr1">rm_dis</div><div class="prochdr2"> - Dispose maps, cursors and values</div></div>\
+<pre class="proclongnm">rm_dispose</pre>\
 <pre class="procsig">\
 &lt;&lt;-<br>\
 o001 pointer value options(*nopass)<br>\

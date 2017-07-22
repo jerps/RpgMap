@@ -1,6 +1,7 @@
 document.write('\
 \
 <div id="rm_cur"><div class="prochdr1">rm_cur</div><div class="prochdr2"> - Create a new cursor</div></div>\
+<pre class="proclongnm">rm_cursor</pre>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 map pointer  value<br>\

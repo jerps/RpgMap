@@ -1,6 +1,7 @@
 document.write('\
 \
 <div id="rm_insm"><div class="prochdr1">rm_insm</div><div class="prochdr2"> - Insert key/item pairs, from map</div></div>\
+<pre class="proclongnm">rm_insert_map</pre>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 map  pointer value<br>\

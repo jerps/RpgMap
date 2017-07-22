@@ -1,6 +1,7 @@
 document.write('\
 \
 <div id="rm_itm"><div class="prochdr1">rm_itm</div><div class="prochdr2"> - Return current item</div></div>\
+<pre class="proclongnm">rm_item</pre>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 cur pointer value<br>\

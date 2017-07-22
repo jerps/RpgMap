@@ -1,6 +1,7 @@
 document.write('\
 \
 <div id="rm_cpy"><div class="prochdr1">rm_cpy</div><div class="prochdr2"> - Copy map or value</div></div>\
+<pre class="proclongnm">rm_copy</pre>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 obj  pointer value<br>\

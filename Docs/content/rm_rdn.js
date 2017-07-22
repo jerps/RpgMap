@@ -1,6 +1,7 @@
 document.write('\
 \
 <div id="rm_rdn"><div class="prochdr1">rm_rdn</div><div class="prochdr2"> - Read next key/item pair</div></div>\
+<pre class="proclongnm">rm_read_next</pre>\
 <pre class="procsig">\
 &lt;&lt;ind<br>\
 cur  pointer value<br>\

@@ -1,6 +1,7 @@
 document.write('\
 \
 <div id="rm_rmva"><div class="prochdr1">rm_rmva</div><div class="prochdr2"> - Remove all key/item pairs</div></div>\
+<pre class="proclongnm">rm_remove_all</pre>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 map  pointer value<br>\

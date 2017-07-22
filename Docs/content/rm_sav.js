@@ -1,6 +1,7 @@
 document.write('\
 \
 <div id="rm_sav"><div class="prochdr1">rm_sav</div><div class="prochdr2"> - Set attribute value</div></div>\
+<pre class="proclongnm">rm_set_attr_val</pre>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 map   pointer                   value<br>\

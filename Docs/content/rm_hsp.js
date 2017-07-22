@@ -1,6 +1,7 @@
 document.write('\
 \
 <div id="rm_hsp"><div class="prochdr1">rm_hsp</div><div class="prochdr2"> - Has previous?</div></div>\
+<pre class="proclongnm">rm_has_prev</pre>\
 <pre class="procsig">\
 &lt;&lt;ind<br>\
 cur  pointer value<br>\

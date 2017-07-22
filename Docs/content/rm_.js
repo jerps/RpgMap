@@ -1,6 +1,7 @@
 document.write('\
 \
 <div id="rm_"><div class="prochdr1">rm_</div><div class="prochdr2"> - Set special property</div></div>\
+<pre class="proclongnm">rm_set_prop</pre>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 obj pointer value<br>\

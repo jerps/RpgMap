@@ -1,6 +1,7 @@
 document.write('\
 \
 <div id="rm_num"><div class="prochdr1">rm_num</div><div class="prochdr2"> - Number of key/item pairs</div></div>\
+<pre class="proclongnm">rm_num_keys</pre>\
 <pre class="procsig">\
 &lt;&lt;uns(20)<br>\
 map  pointer value<br>\

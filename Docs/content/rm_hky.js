@@ -1,6 +1,7 @@
 document.write('\
 \
 <div id="rm_hky"><div class="prochdr1">rm_hky</div><div class="prochdr2"> - Has key?</div></div>\
+<pre class="proclongnm">rm_has_key</pre>\
 <pre class="procsig">\
 &lt;&lt;ind<br>\
 map pointer value<br>\

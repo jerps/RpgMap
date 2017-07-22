@@ -1,6 +1,7 @@
 document.write('\
 \
 <div id="rm_cmp"><div class="prochdr1">rm_cmp</div><div class="prochdr2"> - Compare two objects</div></div>\
+<pre class="proclongnm">rm_compare</pre>\
 <pre class="procsig">\
 &lt;&lt;int(10)<br>\
 obj1 pointer value<br>\

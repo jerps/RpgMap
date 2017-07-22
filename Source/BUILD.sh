@@ -64,7 +64,7 @@ export QIBM_CCSID=819
 echo ">>>>> Build RpgMap: target $TARGET, lib $TLIB <<<<<"
 
 
-#Define functions
+# Define functions
 # $1=command
 function xcmd {
   system -sv $1
@@ -154,6 +154,12 @@ xcmd "CPYF FROMFILE($TLIB/TEMP) TOFILE($TLIB/INCLUDERPG)\
  FROMMBR(X) TOMBR(RPGMAP) MBROPT(*REPLACE) FMTOPT(*CVTSRC)"
 xcmd "CHGPFM FILE($TLIB/INCLUDERPG) MBR(RPGMAP) SRCTYPE(RPGLE)\
  TEXT('RpgMap header file')"
+sed "s/_TLIB_/$TLIB/g" $SRC/RPGMAPLPNH.RPGLE > \
+                       /QSYS.LIB/$TLIB.LIB/TEMP.FILE/X.MBR
+xcmd "CPYF FROMFILE($TLIB/TEMP) TOFILE($TLIB/INCLUDERPG)\
+ FROMMBR(X) TOMBR(RPGMAPLPNH) MBROPT(*REPLACE) FMTOPT(*CVTSRC)"
+xcmd "CHGPFM FILE($TLIB/INCLUDERPG) MBR(RPGMAPLPNH) SRCTYPE(RPGLE)\
+ TEXT('RpgMap long procedure name header file')"
 cpy2inclrpgmbr LICENSE          LICENSE    TXT   "License file"
 cpy2inclrpgmbr RPGMAPI001.RPGLE RPGMAPI001 RPGLE "rm_m/mm/ins/insc/insx key/item parameters"
 cpy2inclrpgmbr RPGMAPI002.RPGLE RPGMAPI002 RPGLE "rm_v item parameters"
@@ -175,7 +181,7 @@ xcmd "DLTF FILE($TLIB/TEMP)"
 
 echo ">>>>> (Re)create message file RPGMAP"
 xcmd "DLTMSGF MSGF($TLIB/RPGMAP)"
-xcmd "CRTMSGF MSGF($TLIB/RPGMAP)"
+xcmd "CRTMSGF MSGF($TLIB/RPGMAP) TEXT('RpgMap Msgfile')"
 addmsgd RM00001 "Key is *null." ""
 addmsgd RM00002 "Key is not an integer." ""
 addmsgd RM00010 "Automatically disposed map is already contained in a map." ""
@@ -202,21 +208,24 @@ if [[ $TARGET == DEFAULT || $TARGET == SRVPGM ]]; then
 echo ">>>>> Substitute _SRTSEQ_ with $SRTSEQ in RPGMAPCVA.RPGLE"
 sed "s/_SRTSEQ_/$SRTSEQ/g" $SRC/RPGMAPCVA.t.RPGLE > $SRC/RPGMAPCVA.RPGLE
                       
-echo ">>>>> Substitute _TLIB_ with $TLIB in RPGMAPGDEF.RPGLE, RPGMAPMAIN.RPGLE and RPGMAPVAL.RPGLE"
-substtlib RPGMAPGDEF RPGMAPMAIN RPGMAPVAL
+echo ">>>>> Substitute _TLIB_ with $TLIB in RPGMAPGDEF/RPGMAPMAIN/RPGMAPVAL/RPGMAPGMF/RPGMAPLPN.RPGLE"
+substtlib RPGMAPGDEF RPGMAPMAIN RPGMAPVAL RPGMAPGMF RPGMAPLPN
 
 echo ">>>>> (Re)create *SRVPGM RPGMAP, alt. sort seq. $SRTSEQ"
 dltsrvpgms RPGMAP
-dltmods RPGMAPMAIN RPGMAPVAL RPGMAPSER RPGMAPSYS RPGMAPCVA RPGMAPRBTC
+dltmods RPGMAPMAIN RPGMAPVAL RPGMAPSER RPGMAPSYS RPGMAPCVA RPGMAPRBTC RPGMAPGMF RPGMAPLPN
 crtrpgmod RPGMAPMAIN "RpgMap Main"
 crtrpgmod RPGMAPVAL  "RpgMap Values"
 crtrpgmod RPGMAPSER  "RpgMap Serialization"
 crtrpgmod RPGMAPSYS  "RpgMap System"
 crtrpgmod RPGMAPCVA  "RpgMap Compare Values Alt seq"
 crtcmod   RPGMAPRBTC "RpgMap RedBlackTree And Cursors Impl."
+crtrpgmod RPGMAPGMF  "RpgMap Gen Main Fun"
+crtrpgmod RPGMAPLPN  "RpgMap Long Procedure Names"
 crtsrvpgm RPGMAP     "RpgMap" \
-"$TLIB/RPGMAPMAIN $TLIB/RPGMAPVAL $TLIB/RPGMAPSER $TLIB/RPGMAPSYS $TLIB/RPGMAPCVA $TLIB/RPGMAPRBTC"
-dltmods RPGMAPMAIN RPGMAPVAL RPGMAPSER RPGMAPSYS RPGMAPCVA RPGMAPRBTC
+"$TLIB/RPGMAPMAIN $TLIB/RPGMAPVAL $TLIB/RPGMAPSER $TLIB/RPGMAPSYS $TLIB/RPGMAPCVA \
+$TLIB/RPGMAPRBTC $TLIB/RPGMAPGMF $TLIB/RPGMAPLPN"
+dltmods RPGMAPMAIN RPGMAPVAL RPGMAPSER RPGMAPSYS RPGMAPCVA RPGMAPRBTC RPGMAPGMF RPGMAPLPN
 
 fi
 

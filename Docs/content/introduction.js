@@ -52,6 +52,10 @@ Maps can have one or more attributes. These can be used to store settings and ot
 related to a map.\
 </p>\
 <p>\
+Most procedures have short names to facilitate compact code. However, many procedures also have \
+a long name that is more descriptive.\
+</p>\
+<p>\
 There are some restrictions. Floating point values and zoned decimals are not supported. \
 Character data and strings can not be longer than 30.000 bytes. Integer values can be int(10) \
 or int(20). Packed decimal values can be packed(14:4), packed(28:8) or packed(46:16).\

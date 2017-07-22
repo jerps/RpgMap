@@ -1,6 +1,7 @@
 document.write('\
 \
 <div id="rm_fed"><div class="prochdr1">rm_fed</div><div class="prochdr2"> - For each do</div></div>\
+<pre class="proclongnm">rm_for_each_do</pre>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 map  pointer        value<br>\
