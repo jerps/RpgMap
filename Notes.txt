@@ -1,0 +1,4 @@
+28-8-2017:
+Fixed:
+Iconv output buffer with length 30000 can be too short when converting CCSID.
+Changed to 120000.

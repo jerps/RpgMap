@@ -15,7 +15,7 @@ efficient red-black tree implementation.\
 </p>\
 <p>\
 An RpgMap may contain duplicate keys.\
-<p>\
+</p>\
 <p>\
 An RpgMap is simply called a "map" from here on.\
 </p>\
@@ -52,7 +52,7 @@ Maps can have one or more attributes. These can be used to store settings and ot
 related to a map.\
 </p>\
 <p>\
-Most procedures have short names to facilitate compact code. However, many procedures also have \
+Most procedures have short names to facilitate compact code. Many procedures also have \
 a long name that is more descriptive.\
 </p>\
 <p>\

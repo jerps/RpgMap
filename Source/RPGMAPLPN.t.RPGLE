@@ -25,12 +25,15 @@ dcl-pi *n;
 /include _TLIB_/INCLUDERPG,RPGMAPI003
 end-pi;
 
+  dcl-s na int(10);
   dcl-s o pointer dim(100) inz(*null);
   dcl-s i int(10);
 
 /include RPGMAPI103.RPGLE
 
-  for i = 1 to %elem(o);
+  na = %parms;
+
+  for i = 1 to na;
     if o(i) <> *null;
       if %bitand(RMValObjFlags(o(i)):x'80') = x'80';
         RMSysSndEscapeMsg('RM00030');
@@ -51,13 +54,16 @@ dcl-pi *n pointer;
 /include _TLIB_/INCLUDERPG,RPGMAPI001
 end-pi;
 
+  dcl-s na int(10);
   dcl-s k pointer dim(100) inz(*null);
   dcl-s i pointer dim(100) inz(*null);
   dcl-s x int(10);
 
 /include RPGMAPI104.RPGLE
 
-  for x = 1 to %elem(k);
+  na = %div(%parms:2);
+
+  for x = 1 to na;
     if     k(x) <> *null
        and RMMInsert(map:0:k(x):i(x));
       k(x) = *null;
@@ -69,7 +75,7 @@ end-pi;
   
   on-exit;
   
-  for x = 1 to %elem(k);
+  for x = 1 to na;
     if k(x) <> *null;
       RMMDisposeArg(k(x));
     endif;
@@ -125,13 +131,16 @@ dcl-pi *n pointer;
 /include _TLIB_/INCLUDERPG,RPGMAPI001
 end-pi;
 
+  dcl-s na int(10);
   dcl-s k pointer dim(100) inz(*null);
   dcl-s i pointer dim(100) inz(*null);
   dcl-s x int(10);
 
 /include RPGMAPI104.RPGLE
 
-  for x = 1 to %elem(k);
+  na = %div(%parms:2);
+
+  for x = 1 to na;
     if     k(x) <> *null
        and RMMInsert(map:2:k(x):i(x));
       k(x) = *null;
@@ -143,7 +152,7 @@ end-pi;
   
   on-exit;
   
-  for x = 1 to %elem(k);
+  for x = 1 to na;
     if k(x) <> *null;
       RMMDisposeArg(k(x));
     endif;
@@ -199,13 +208,16 @@ dcl-pi *n pointer;
 /include _TLIB_/INCLUDERPG,RPGMAPI001
 end-pi;
 
+  dcl-s na int(10);
   dcl-s k pointer dim(100) inz(*null);
   dcl-s i pointer dim(100) inz(*null);
   dcl-s x int(10);
 
 /include RPGMAPI104.RPGLE
 
-  for x = 1 to %elem(k);
+  na = %div(%parms:2);
+
+  for x = 1 to na;
     if     k(x) <> *null
        and RMMInsert(map:1:k(x):i(x));
       k(x) = *null;
@@ -217,7 +229,7 @@ end-pi;
   
   on-exit;
   
-  for x = 1 to %elem(k);
+  for x = 1 to na;
     if k(x) <> *null;
       RMMDisposeArg(k(x));
     endif;

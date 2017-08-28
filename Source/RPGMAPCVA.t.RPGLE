@@ -19,10 +19,9 @@ dcl-pi *n int(10);
   s2 pointer value;
 end-pi;
 
-
   dcl-s u varchar(30000) based(up);
-  dcl-s v1 varchar(30000) static;
-  dcl-s v2 varchar(30000) static;
+  dcl-s v1 varchar(120000) static;
+  dcl-s v2 varchar(120000) static;
   dcl-s inbuf pointer;
   dcl-s inbufl uns(10);
   dcl-s outbuf pointer;
@@ -32,19 +31,19 @@ end-pi;
   inbuf = %addr(u:*data);
   inbufl = %len(u);
   outbuf = %addr(v1:*data);
-  outbufl = %size(v1) - 2;
-  %len(v1) = 30000;
+  outbufl = %size(v1) - 4;
+  %len(v1) = 120000;
   RMSysCvtCCSID(1208:0:inbuf:inbufl:outbuf:outbufl);
-  %len(v1) = %size(v1) - 2 - outbufl;
+  %len(v1) = %size(v1) - 4 - outbufl;
   
   up = s2;
   inbuf = %addr(u:*data);
   inbufl = %len(u);
   outbuf = %addr(v2:*data);
-  outbufl = %size(v2) - 2;
-  %len(v2) = 30000;
+  outbufl = %size(v2) - 4;
+  %len(v2) = 120000;
   RMSysCvtCCSID(1208:0:inbuf:inbufl:outbuf:outbufl);
-  %len(v2) = %size(v2) - 2 - outbufl;
+  %len(v2) = %size(v2) - 4 - outbufl;
   
   if v1 < v2;
     return -1;

@@ -21,6 +21,10 @@ and <a href="#rm_t_"><code>rm_t_</code></a> may convert a timestamp to a time. I
 escape message RM00011 (value is not compatible) is sent.\
 </p>\
 <p>\
+For most <code>rm_??</code> procedures there is also a <code>rm_is??</code> procedure to test whether an object is \
+of that certain type.\
+</p>\
+<p>\
 This wrapping/unwrapping of RPG values using <code>rm_??</code> and <code>rm_??_</code> is necessary to make RpgMap \
 polymorphic, i.e. to let it handle different types uniformly.\
 </p>\
@@ -30,8 +34,8 @@ or <a href="#rm_insc"><code>rm_insc</code></a>. When creating a map, the keys an
 immediately specified (see <a href="#example_1">example 1</a>).\
 </p>\
 <p>\
-For most <code>rm_??</code> procedures there is also a <code>rm_is??</code> procedure to test whether an object is \
-of that certain type.\
+Duplicate keys are allowed. An RpgMap is not a MultiMap. Duplicate keys are really duplicates. An RpgMap simply stores mutiple \
+key/item pairs having equal keys, retaining insertion order.\
 </p>\
 <p>\
 Key/item pairs are removed from a map with <a href="#rm_rmv"><code>rm_rmv</code></a> and <a href="#rm_rmva"><code>rm_rmva</code></a>.\
@@ -39,7 +43,7 @@ Key/item pairs are removed from a map with <a href="#rm_rmv"><code>rm_rmv</code>
 <p>\
 Items are retrieved using keys with the following procedures: <a href="#rm_get"><code>rm_get</code></a>, \
 <a href="#rm__"><code>rm__</code></a> and e.g. <a href="#rm__i"><code>rm__i</code></a> and all variants. Every \
-value type has a corresponding <code>rm__*</code> procedure.\
+value type has a corresponding <code>rm__??</code> procedure.\
 </p>\
 \
 ');
