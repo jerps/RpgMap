@@ -60,5 +60,8 @@ There are some restrictions. Floating point values and zoned decimals are not su
 Character data and strings can not be longer than 30.000 bytes. Integer values can be int(10) \
 or int(20). Packed decimal values can be packed(14:4), packed(28:8) or packed(46:16).\
 </p>\
+<p>\
+Send mail to rpgmap0@gmail.com.\
+</p>\
 \
 ');

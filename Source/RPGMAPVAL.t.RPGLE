@@ -167,7 +167,7 @@ end-pi;
 end-proc;
 
 
-// Compare obj1 with obj2, in the context of map (which can be *null).
+// Compare obj1 with obj2, with the compare function of map (if not *null).
 dcl-proc RMValObjCompare export;
 dcl-pi *n int(10);
   map pointer value;
