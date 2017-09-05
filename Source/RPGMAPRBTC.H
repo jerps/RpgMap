@@ -37,6 +37,6 @@ int RMBCursorReadNxtPrv(rmb_cursor* cursor, int nxtprv);
 int RMBCursorReadNxtPrv2(rmb_cursor* cursor, int nxtprv, void* key1, void* key2, int opt);
 void RMBAddEventh(rmb_red_blk_tree* tree, rmb_event_handler proc, void* usrd);
 void RMBRmvEventh(rmb_red_blk_tree* tree, rmb_event_handler proc);
-
+void RMBFireEvent(rmb_red_blk_tree* tree, int event, void* key, void* item);
 
 #endif

@@ -129,3 +129,10 @@ dcl-pr RMBRmvEventh extproc(*dclcase);
   tree pointer value;
   proc pointer(*proc) value;
 end-pr;
+
+dcl-pr RMBFireEvent extproc(*dclcase); 
+  tree pointer value;
+  event int(10) value;
+  key pointer value;
+  item pointer value;
+end-pr;

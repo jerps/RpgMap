@@ -172,7 +172,7 @@ void* RMBTreeNodeItem(rmb_red_blk_node* n) {
 /*    Modifies Input: none */
 /**/
 /***********************************************************************/
-static void RMBFireEvent(rmb_red_blk_tree* tree, int event, void* key, void* item) {
+void RMBFireEvent(rmb_red_blk_tree* tree, int event, void* key, void* item) {
   rmb_eventh* eh = tree->eventh;
   while (NULL != eh) {
     eh->proc(event, tree->valstruct, key, item, eh->usrd);
@@ -399,7 +399,6 @@ rmb_red_blk_node * RMBTreeInsert(rmb_red_blk_tree* tree, void* key, void* item) 
   }
   tree->root->left->red=0;
   tree->num++;
-  RMBFireEvent(tree, 1, key, item);
   return(newNode);
 
 #ifdef DEBUG_ASSERT

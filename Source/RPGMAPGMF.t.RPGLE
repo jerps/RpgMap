@@ -68,6 +68,8 @@ end-pi;
       RMValObjSetFlags(i:%bitor(flags:x'80'));
     endif;
   endif;
+  
+  RMBFireEvent(mapi:1:k:i);
 
   return *on;
   
