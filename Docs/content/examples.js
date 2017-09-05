@@ -1,6 +1,7 @@
 document.write('\
 \
 <h2 id="examples">Examples</h2>\
+<br>\
 <p>\
 Many procedures have <a href="#longprnms">both a short name and a long(er) name</a>. Examples 1 and 2 use the long names. \
 Example 3 uses the short names.\

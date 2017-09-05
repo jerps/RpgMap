@@ -15,6 +15,7 @@ and contains the same key/item pairs as <code>obj</code>. The keys/items in the 
 copy that are values or automatically disposed maps are copies of the \
 originals in <code>obj</code>. Manually disposed maps are not copied; the copy \
 will contain the same instances.<br>\
+Event handlers are NOT copied; the copy has no event handlers.<br>\
 Return <code>*null</code> if <code>obj</code> is <code>*null</code>.<br>\
 Use <a href="#rm_cpyd"><code>rm_cpyd</code></a> to make a deep copy of a map, \
 in which case manually disposed maps are also (deep) copied.<br>\

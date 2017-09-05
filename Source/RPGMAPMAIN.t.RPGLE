@@ -43,15 +43,20 @@ dcl-pi *n pointer;
 end-pi;
 
   dcl-s na int(10);
-  dcl-s k pointer dim(100) inz(*null);
-  dcl-s i pointer dim(100) inz(*null);
+  dcl-s k pointer dim(100) static;
+  dcl-s i pointer dim(100) static;
   dcl-s m pointer;
   dcl-s x int(10);
   
-/include RPGMAPI101.RPGLE
-  
   na = %div(%parms+1:2);
 
+  if na > 0;
+    %subarr(k:1:na) = *null;
+    %subarr(i:1:na) = *null;
+  endif;
+  
+/include RPGMAPI101.RPGLE
+  
   m = RMValMapCrt(x'00');
   
   for x = 1 to na;
@@ -85,14 +90,19 @@ dcl-pi *n pointer;
 end-pi;
 
   dcl-s na int(10);
-  dcl-s k pointer dim(100) inz(*null);
-  dcl-s i pointer dim(100) inz(*null);
+  dcl-s k pointer dim(100) static;
+  dcl-s i pointer dim(100) static;
   dcl-s m pointer;
   dcl-s x int(10);
-
-/include RPGMAPI101.RPGLE
   
   na = %div(%parms+1:2);
+  
+  if na > 0;
+    %subarr(k:1:na) = *null;
+    %subarr(i:1:na) = *null;
+  endif;
+
+/include RPGMAPI101.RPGLE
 
   m = RMValMapCrt(x'01');
   
@@ -127,15 +137,19 @@ dcl-pi *n pointer;
 end-pi;
 
   dcl-s na int(10);
-  dcl-s i pointer dim(100) inz(*null);
+  dcl-s i pointer dim(100) static;
   dcl-s m pointer;
   dcl-s k int(10);
   dcl-s kv pointer inz(*null);
   dcl-s x int(10);
-
-/include RPGMAPI102.RPGLE
   
   na = %parms;
+  
+  if na > 0;
+    %subarr(i:1:na) = *null;
+  endif;
+
+/include RPGMAPI102.RPGLE
 
   m = RMValMapCrt(x'02');
   
@@ -178,6 +192,17 @@ end-pi;
 end-proc;
 
 
+// ----- RM_ISMM <<<<<<<<<<
+dcl-proc rm_ismm export;
+dcl-pi *n ind;
+  obj pointer value;
+end-pi;
+
+  return RMValIsMap(obj:*off:*on);
+    
+end-proc;
+
+
 // ----- RM_ISV <<<<<<<<<<
 dcl-proc rm_isv export;
 dcl-pi *n ind;
@@ -196,12 +221,16 @@ dcl-pi *n;
 end-pi;
 
   dcl-s na int(10);
-  dcl-s o pointer dim(100) inz(*null);
+  dcl-s o pointer dim(100) static;
   dcl-s i int(10);
 
-/include RPGMAPI103.RPGLE
-
   na = %parms;
+  
+  if na > 0;
+    %subarr(o:1:na) = *null;
+  endif;
+
+/include RPGMAPI103.RPGLE
 
   for i = 1 to na;
     if o(i) <> *null;
@@ -225,13 +254,18 @@ dcl-pi *n pointer;
 end-pi;
 
   dcl-s na int(10);
-  dcl-s k pointer dim(100) inz(*null);
-  dcl-s i pointer dim(100) inz(*null);
+  dcl-s k pointer dim(100) static;
+  dcl-s i pointer dim(100) static;
   dcl-s x int(10);
+  
+  na = %div(%parms:2);
+
+  if na > 0;
+    %subarr(k:1:na) = *null;
+    %subarr(i:1:na) = *null;
+  endif;
 
 /include RPGMAPI104.RPGLE
-
-  na = %div(%parms:2);
 
   for x = 1 to na;
     if     k(x) <> *null
@@ -334,14 +368,19 @@ dcl-pi *n pointer;
 end-pi;
 
   dcl-s na int(10);
-  dcl-s k pointer dim(100) inz(*null);
-  dcl-s i pointer dim(100) inz(*null);
+  dcl-s k pointer dim(100) static;
+  dcl-s i pointer dim(100) static;
   dcl-s x int(10);
-
-/include RPGMAPI104.RPGLE
 
   na = %div(%parms:2);
   
+  if na > 0;
+    %subarr(k:1:na) = *null;
+    %subarr(i:1:na) = *null;
+  endif;
+
+/include RPGMAPI104.RPGLE
+
   for x = 1 to na;
     if     k(x) <> *null
        and RMMInsert(map:2:k(x):i(x));
@@ -443,13 +482,18 @@ dcl-pi *n pointer;
 end-pi;
 
   dcl-s na int(10);
-  dcl-s k pointer dim(100) inz(*null);
-  dcl-s i pointer dim(100) inz(*null);
+  dcl-s k pointer dim(100) static;
+  dcl-s i pointer dim(100) static;
   dcl-s x int(10);
 
-/include RPGMAPI104.RPGLE
-
   na = %div(%parms:2);
+  
+  if na > 0;
+    %subarr(k:1:na) = *null;
+    %subarr(i:1:na) = *null;
+  endif;
+
+/include RPGMAPI104.RPGLE
   
   for x = 1 to na;
     if     k(x) <> *null
@@ -776,15 +820,19 @@ dcl-pi *n pointer;
 end-pi;
 
   dcl-s na int(10);
-  dcl-s k pointer dim(10) inz(*null);
+  dcl-s k pointer dim(10) static;
   dcl-s mapi pointer;
   dcl-s item pointer;
   dcl-s node pointer;
   dcl-s i int(10);
 
-/include RPGMAPI151.RPGLE
-
   na = %parms-1;
+  
+  if na > 0;
+    %subarr(k:1:na) = *null;
+  endif;
+  
+/include RPGMAPI151.RPGLE
   
   mapi = RMValMapImpl(map);
   item = *null;
@@ -1556,13 +1604,20 @@ end-proc;
 dcl-proc rm_slln export;
 dcl-pi *n ind;
   cur pointer value;
-  pos ind;
+  pos ind options(*nopass:*omit);
   key1 pointer value options(*nopass);
   key2 pointer value options(*nopass);
 end-pi;
 
-  if pos;
-    pos = *off;
+  dcl-s pg ind;
+  
+  pg =     %parms >= 2
+       and %addr(pos) <> *null;
+        
+  if not pg or pos;
+    if pg;
+      pos = *off;
+    endif;
     if %parms >= %parmnum(key1);
       RMBCursorSetLlGt(RMValCursorImpl(cur):key1:0);
     else;
@@ -1598,13 +1653,20 @@ end-proc;
 dcl-proc rm_sgtp export;
 dcl-pi *n ind;
   cur pointer value;
-  pos ind;
+  pos ind options(*nopass:*omit);
   key1 pointer value options(*nopass);
   key2 pointer value options(*nopass);
 end-pi;
 
-  if pos;
-    pos = *off;
+  dcl-s pg ind;
+  
+  pg =     %parms >= 2
+       and %addr(pos) <> *null;
+        
+  if not pg or pos;
+    if pg;
+      pos = *off;
+    endif;
     if %parms >= %parmnum(key1);
       RMBCursorSetLlGt(RMValCursorImpl(cur):key1:1);
     else;
@@ -1792,16 +1854,34 @@ end-proc;
 dcl-proc rm_sav export;
 dcl-pi *n pointer;
   map pointer value;
-  attr varchar(100) ccsid(*utf8) value options(*nopass);
-  value varchar(100) ccsid(*utf8) value options(*nopass);
+/include _TLIB_/INCLUDERPG,RPGMAPI064
 end-pi;
 
-  if %parms < 2;
-    RMValMapSetAttr(map);
-  elseif %parms < 3;
-    RMValMapSetAttr(map:attr);
+  dcl-s na int(10);
+  dcl-s a varchar(100) ccsid(*utf8) dim(100) static;
+  dcl-s v varchar(100) ccsid(*utf8) dim(100) static;
+  dcl-s x int(10);
+
+  na = %div(%parms:2);
+
+  if na > 0;
+    %subarr(a:1:na) = '';
+    %subarr(v:1:na) = '';
   endif;
-  RMValMapSetAttr(map:attr:value);
+    
+/include RPGMAPI164.RPGLE
+  
+  if na = 0;
+    RMValMapSetAttr(map);
+  else;
+    for x = 1 to na;
+      if v(x) = '';
+        RMValMapSetAttr(map:a(x));
+      else;
+        RMValMapSetAttr(map:a(x):v(x));
+      endif;
+    endfor;
+  endif;
   
   return map;
       
@@ -1820,6 +1900,17 @@ end-pi;
 end-proc;
 
 
+// ----- RM_USRD <<<<<<<<<<
+dcl-proc rm_usrd export;
+dcl-pi *n int(10);
+  obj pointer value;
+end-pi;
+
+  return RMValRtnUsrDta(obj);
+      
+end-proc;
+
+
 // ----- RM_I <<<<<<<<<<
 dcl-proc rm_i export;
 dcl-pi *n pointer;
@@ -1829,6 +1920,8 @@ end-pi;
 
   if %parms > 1 and opt = 0;
     return RMValIntCrt(value:10:x'10');
+  elseif %parms > 1 and opt < 0 and opt >= -65000;
+    return RMValIntCrt(value:10:x'00':0-opt);
   elseif %parms > 1;    
     RMSysSndEscapeMsg('RM00111':%char(opt));
   endif;
@@ -1846,6 +1939,8 @@ end-pi;
 
   if %parms > 1 and opt = 0;
     return RMValIntCrt(value:10:x'10');
+  elseif %parms > 1 and opt < 0 and opt >= -65000;
+    return RMValIntCrt(value:10:x'00':0-opt);
   elseif %parms > 1;    
     RMSysSndEscapeMsg('RM00111':%char(opt));
   endif;
@@ -1863,6 +1958,8 @@ end-pi;
 
   if %parms > 1 and opt = 0;
     return RMValIntCrt(value:20:x'10');
+  elseif %parms > 1 and opt < 0 and opt >= -65000;
+    return RMValIntCrt(value:20:x'00':0-opt);
   elseif %parms > 1;    
     RMSysSndEscapeMsg('RM00111':%char(opt));
   endif;
@@ -1958,6 +2055,8 @@ end-pi;
 
   if %parms > 1 and opt = 0;
     return RMValPDecCrt(value:10:x'10');
+  elseif %parms > 1 and opt < 0 and opt >= -65000;
+    return RMValPDecCrt(value:10:x'00':0-opt);
   elseif %parms > 1;    
     RMSysSndEscapeMsg('RM00111':%char(opt));
   endif;
@@ -1975,6 +2074,8 @@ end-pi;
 
   if %parms > 1 and opt = 0;
     return RMValPDecCrt(value:10:x'10');
+  elseif %parms > 1 and opt < 0 and opt >= -65000;
+    return RMValPDecCrt(value:10:x'00':0-opt);
   elseif %parms > 1;    
     RMSysSndEscapeMsg('RM00111':%char(opt));
   endif;
@@ -1992,6 +2093,8 @@ end-pi;
 
   if %parms > 1 and opt = 0;
     return RMValPDecCrt(value:20:x'10');
+  elseif %parms > 1 and opt < 0 and opt >= -65000;
+    return RMValPDecCrt(value:20:x'00':0-opt);
   elseif %parms > 1;    
     RMSysSndEscapeMsg('RM00111':%char(opt));
   endif;
@@ -2009,6 +2112,8 @@ end-pi;
 
   if %parms > 1 and opt = 0;
     return RMValPDecCrt(value:30:x'10');
+  elseif %parms > 1 and opt < 0 and opt >= -65000;
+    return RMValPDecCrt(value:30:x'00':0-opt);
   elseif %parms > 1;    
     RMSysSndEscapeMsg('RM00111':%char(opt));
   endif;
@@ -2130,6 +2235,8 @@ end-pi;
 
   if %parms > 1 and opt = 0;
     return RMValDateCrt(value:x'10');
+  elseif %parms > 1 and opt < 0 and opt >= -65000;
+    return RMValDateCrt(value:x'00':0-opt);
   elseif %parms > 1;    
     RMSysSndEscapeMsg('RM00111':%char(opt));
   endif;
@@ -2147,6 +2254,8 @@ end-pi;
 
   if %parms > 1 and opt = 0;
     return RMValTimeCrt(value:x'10');
+  elseif %parms > 1 and opt < 0 and opt >= -65000;
+    return RMValTimeCrt(value:x'00':0-opt);
   elseif %parms > 1;    
     RMSysSndEscapeMsg('RM00111':%char(opt));
   endif;
@@ -2164,6 +2273,8 @@ end-pi;
 
   if %parms > 1 and opt = 0;
     return RMValTsCrt(value:x'10');
+  elseif %parms > 1 and opt < 0 and opt >= -65000;
+    return RMValTsCrt(value:x'00':0-opt);
   elseif %parms > 1;    
     RMSysSndEscapeMsg('RM00111':%char(opt));
   endif;
@@ -2259,6 +2370,8 @@ end-pi;
 
   if %parms > 1 and opt = 0;
     return RMValIndCrt(value:x'10');
+  elseif %parms > 1 and opt < 0 and opt >= -65000;
+    return RMValIndCrt(value:x'00':0-opt);
   elseif %parms > 1;    
     RMSysSndEscapeMsg('RM00111':%char(opt));
   endif;
@@ -2302,6 +2415,8 @@ end-pi;
 
   if %parms > 1 and opt = 0;
     return RMValPtrCrt(value:x'10');
+  elseif %parms > 1 and opt < 0 and opt >= -65000;
+    return RMValPtrCrt(value:x'00':0-opt);
   elseif %parms > 1;    
     RMSysSndEscapeMsg('RM00111':%char(opt));
   endif;
@@ -2345,6 +2460,8 @@ end-pi;
 
   if %parms > 1 and opt = 0;
     return RMValPPtrCrt(value:x'10');
+  elseif %parms > 1 and opt < 0 and opt >= -65000;
+    return RMValPPtrCrt(value:x'00':0-opt);
   elseif %parms > 1;    
     RMSysSndEscapeMsg('RM00111':%char(opt));
   endif;
@@ -2394,6 +2511,8 @@ end-pi;
       return RMValCharCrt(value:x'08');
     when opt = 2;
       return RMValCharCrt(value:x'18');
+    when opt < 0 and opt >= -65000;
+      return RMValCharCrt(value:x'00':0-opt);
     endsl;
     RMSysSndEscapeMsg('RM00111':%char(opt));
   endif;
@@ -2418,6 +2537,8 @@ end-pi;
       return RMValCharCrtPtr(addr:size:x'08');
     when opt = 2;
       return RMValCharCrtPtr(addr:size:x'18');
+    when opt < 0 and opt >= -65000;
+      return RMValCharCrtPtr(addr:size:x'00':0-opt);
     endsl;
     RMSysSndEscapeMsg('RM00111':%char(opt));
   endif;
@@ -2435,6 +2556,8 @@ end-pi;
 
   if %parms > 1 and opt = 0;
     return RMValCharCrt(value:x'30');
+  elseif %parms > 1 and opt < 0 and opt >= -65000;
+    return RMValCharCrt(value:x'20':0-opt);
   elseif %parms > 1;
     RMSysSndEscapeMsg('RM00111':%char(opt));
   endif;
@@ -2453,6 +2576,8 @@ end-pi;
 
   if %parms > 2 and opt = 0;
     return RMValCharCrtPtr(addr:size:x'30');
+  elseif %parms > 2 and opt < 0 and opt >= -65000;
+    return RMValCharCrtPtr(addr:size:x'20':0-opt);
   elseif %parms > 2;
     RMSysSndEscapeMsg('RM00111':%char(opt));
   endif;
@@ -2558,6 +2683,8 @@ end-pi;
       return RMValStrCrt(value:x'08');
     when opt = 2;
       return RMValStrCrt(value:x'18');
+    when opt < 0 and opt >= -65000;
+      return RMValStrCrt(value:x'00':0-opt);
     endsl;
     RMSysSndEscapeMsg('RM00111':%char(opt));
   endif;
@@ -2581,6 +2708,8 @@ end-pi;
       return RMValStrCrtBytes(value:x'08');
     when opt = 2;
       return RMValStrCrtBytes(value:x'18');
+    when opt < 0 and opt >= -65000;
+      return RMValStrCrtBytes(value:x'00':0-opt);
     endsl;
     RMSysSndEscapeMsg('RM00111':%char(opt));
   endif;
@@ -2598,6 +2727,8 @@ end-pi;
 
   if %parms > 1 and opt = 0;
     return RMValStrCrt(value:x'30');
+  elseif %parms > 1 and opt < 0 and opt >= -65000;
+    return RMValStrCrt(value:x'20':0-opt);
   elseif %parms > 1;
     RMSysSndEscapeMsg('RM00111':%char(opt));
   endif;
@@ -2615,6 +2746,8 @@ end-pi;
 
   if %parms > 1 and opt = 0;
     return RMValStrCrtBytes(value:x'30');
+  elseif %parms > 1 and opt < 0 and opt >= -65000;
+    return RMValStrCrtBytes(value:x'20':0-opt);
   elseif %parms > 1;
     RMSysSndEscapeMsg('RM00111':%char(opt));
   endif;
@@ -2701,6 +2834,37 @@ end-pi;
     return RMValConv2Str3(value:default);
   endif;
   return RMValConv2Str3(value);
+    
+end-proc;
+
+
+// ----- RM_ADD_EVENT_HANDLER <<<<<<<<<<
+dcl-proc rm_add_event_handler export;
+dcl-pi *n pointer;
+  map pointer value;
+  hproc pointer(*proc) value;
+  usrd pointer value options(*nopass);
+end-pi;
+
+  if %parms > 2;
+    RMBAddEventh(RMValMapImpl(map):hproc:usrd);
+  else;
+    RMBAddEventh(RMValMapImpl(map):hproc:*null);
+  endif;
+  return map;
+    
+end-proc;
+
+
+// ----- RM_REMOVE_EVENT_HANDLER <<<<<<<<<<
+dcl-proc rm_remove_event_handler export;
+dcl-pi *n pointer;
+  map pointer value;
+  hproc pointer(*proc) value;
+end-pi;
+
+  RMBRmvEventh(RMValMapImpl(map):hproc);
+  return map;
     
 end-proc;
 

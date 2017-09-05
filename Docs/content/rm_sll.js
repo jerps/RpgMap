@@ -17,8 +17,9 @@ Call <a href="#rm_rdn"><code>rm_rdn</code></a> or <a href="#rm_rdp"><code>rm_rdp
 If <a href="#rm_sll"><code>rm_sll</code></a> is called and the next key/item pair is removed from the map the \
 cursor is positioned just after the previous pair. If <a href="#rm_sgt"><code>rm_sgt</code></a> is called and \
 the previous key/item pair is removed from the map the cursor is positioned \
-just before the next pair. The cursor is positioned at the end or beginning, \
-resp., when there is no next or previous pair anymore.<br>\
+just before the next pair.<br>\
+If <a href="#rm_sll"><code>rm_sll</code></a> is called and there is no key equal to or greater, or if <a href="#rm_sgt"><code>rm_sgt</code></a> \
+is called and there is no key equal to or less, the cursor is positioned at the end or beginning resp.<br>\
 These procedures dispose <code>key</code> automatically, unless <code>key</code> is a manually \
 disposed map, or a value/map contained in a map.\
 </p>\

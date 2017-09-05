@@ -12,6 +12,11 @@ ctl-opt nomain ccsid(*exact);
 /include RPGMAPSYSH.RPGLE
 
 
+// ----- OS400 API Constants
+
+dcl-c OS4Iconv_ERR 4294967295;
+
+
 // ----- OS400 API Data Defs
 
 dcl-ds OS4Error qualified;
@@ -81,6 +86,21 @@ dcl-ds OS4Iconvh likeds(OS4Iconv_t) inz(*likeds);
 // ----- Exported procedures
 
 
+// Return errno
+dcl-proc RMSysErrno export;
+dcl-pi *n int(10);
+end-pi;
+
+  dcl-pr OS4Errno_ pointer extproc('__errno');
+  end-pr;
+  dcl-s errno int(10) based(errno_);
+  
+  errno_ = OS4Errno_();
+  return errno;
+  
+end-proc;
+
+
 // Send Escape Message
 dcl-proc RMSysSndEscapeMsg export;
 dcl-pi *n;
@@ -106,28 +126,44 @@ end-proc;
 // Convert data to different CCSID.
 // This procedure is a wrapper for Iconv().
 dcl-proc RMSysCvtCCSID export;
-dcl-pi *n uns(10);
+dcl-pi *n ind;
   fromccsid int(10) value;
   toccsid int(10) value;
   frombuf pointer;
   frombufl uns(10);
   tobuf pointer;
   tobufl uns(10);
+  noinitshst ind value options(*nopass);
 end-pi;
-
+  
+  dcl-s shiftalt int(10);
+  
+  if     %parmnum(noinitshst) >= %parms
+     and noinitshst;
+    shiftalt = 0;
+  else;
+    shiftalt = 1;
+  endif;
+  
   if    not OS4IconvInit
      or fromccsid <> OS4IconvFromCCSID.CCSID
-     or toccsid <> OS4IconvToCCSID.CCSID;
+     or toccsid <> OS4IconvToCCSID.CCSID
+     or shiftalt <> OS4IconvFromCCSID.ShiftAlt;
     if OS4IconvInit;
       OS4IconvClose(OS4Iconvh);
     endif;
     OS4IconvFromCCSID.CCSID = fromccsid;
     OS4IconvToCCSID.CCSID = toccsid;
+    OS4IconvFromCCSID.ShiftAlt = shiftalt;
     OS4Iconvh = *allx'00';
     OS4Iconvh = OS4IconvQtqOpen(OS4IconvToCCSID:OS4IconvFromCCSID);
+    if OS4Iconvh.return_value = -1;
+      RMSysSndEscapeMsg('RM01001'
+          :%editc(%dec(fromccsid:5:0):'X')+%editc(%dec(toccsid:5:0):'X'));
+    endif;
     OS4IconvInit = *on;
   endif;
-  return OS4IConv(OS4Iconvh:frombuf:frombufl:tobuf:tobufl);
+  return OS4IConv(OS4Iconvh:frombuf:frombufl:tobuf:tobufl) <> OS4Iconv_ERR;
 
 end-proc;
   

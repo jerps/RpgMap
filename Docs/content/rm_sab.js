@@ -8,7 +8,7 @@ opt   int(10)        value options(*nopass)<br>\
 </pre>\
 <p>\
 Like <a href="#rm_sa"><code>rm_sa</code></a>, but <code>value</code> takes the raw bytes, already in utf8 format.<br>\
-Pass <code>opt</code> to set special property (see <a href="#rm_"><code>rm_</code></a>).\
+Pass <code>opt</code> to set special property or user data (see <a href="#rm_"><code>rm_</code></a>).\
 </p>\
 \
 ');

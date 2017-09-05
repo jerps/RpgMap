@@ -49,12 +49,14 @@ dcl-pr RMValMapCrt pointer;
   mapi pointer value options(*nopass);
   compf pointer(*proc) value options(*nopass);
   attrs pointer value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pr;
 
 // Is map?
 dcl-pr RMValIsMap ind;
   obj pointer value;
   vector ind value options(*nopass);
+  mandisp ind value options(*nopass);
 end-pr;
 
 // Map impl.
@@ -86,6 +88,11 @@ dcl-pr RMValMapGetAttr varchar(100) ccsid(*utf8);
   attr varchar(100) ccsid(*utf8) value;
 end-pr;
 
+// Return user data of map/value.
+dcl-pr RMValRtnUsrDta int(10);
+  obj pointer value;
+end-pr;
+
 // Dispose map, cursor or value.
 dcl-pr RMValDispose;
   obj pointer value;
@@ -112,6 +119,7 @@ dcl-pr RMValIntCrt pointer;
   value int(20) value;
   digits uns(5) value;
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pr;
 
 // Is integer?
@@ -131,6 +139,7 @@ dcl-pr RMValPDecCrt pointer;
   value packed(46:16) value;
   digits uns(5) value;
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pr;
 
 // Is packed decimal?
@@ -149,18 +158,21 @@ end-pr;
 dcl-pr RMValDateCrt pointer;
   value date value;
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pr;
 
 // Create a new time value.
 dcl-pr RMValTimeCrt pointer;
   value time value;
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pr;
 
 // Create a new timestamp value.
 dcl-pr RMValTsCrt pointer;
   value timestamp value;
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pr;
 
 // Is date?
@@ -200,6 +212,7 @@ end-pr;
 dcl-pr RMValIndCrt pointer;
   value ind value;
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pr;
 
 // Is indicator?
@@ -217,6 +230,7 @@ end-pr;
 dcl-pr RMValPtrCrt pointer;
   value pointer value;
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pr;
 
 // Is pointer?
@@ -234,6 +248,7 @@ end-pr;
 dcl-pr RMValPPtrCrt pointer;
   value pointer(*proc) value;
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pr;
 
 // Is procedure pointer?
@@ -251,6 +266,7 @@ end-pr;
 dcl-pr RMValCharCrt pointer;
   value varchar(30000) const;
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pr;
 
 // Create a new character data value, using pointer to data.
@@ -258,6 +274,7 @@ dcl-pr RMValCharCrtPtr pointer;
   addr pointer value;
   size int(10) value;
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pr;
 
 // Is character data?
@@ -294,12 +311,14 @@ end-pr;
 dcl-pr RMValStrCrt pointer;
   value varchar(30000) const ccsid(*utf8);
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pr;
 
 // Create a new string value from bytes.
 dcl-pr RMValStrCrtBytes pointer;
   value varchar(30000) const;
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pr;
 
 // Is string?

@@ -9,7 +9,7 @@ opt   int(10)                     value options(*nopass)<br>\
 <p>\
 Create a new string value, up to 30.000 bytes long.<br>\
 A string is character data in utf8 format.<br>\
-Pass <code>opt</code> to set special property (see <a href="#rm_"><code>rm_</code></a>).\
+Pass <code>opt</code> to set special property or user data (see <a href="#rm_"><code>rm_</code></a>).\
 </p>\
 \
 ');

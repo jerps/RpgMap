@@ -26,12 +26,16 @@ dcl-pi *n;
 end-pi;
 
   dcl-s na int(10);
-  dcl-s o pointer dim(100) inz(*null);
+  dcl-s o pointer dim(100) static;
   dcl-s i int(10);
 
-/include RPGMAPI103.RPGLE
-
   na = %parms;
+  
+  if na > 0;
+    %subarr(o:1:na) = *null;
+  endif;
+
+/include RPGMAPI103.RPGLE
 
   for i = 1 to na;
     if o(i) <> *null;
@@ -55,13 +59,18 @@ dcl-pi *n pointer;
 end-pi;
 
   dcl-s na int(10);
-  dcl-s k pointer dim(100) inz(*null);
-  dcl-s i pointer dim(100) inz(*null);
+  dcl-s k pointer dim(100) static;
+  dcl-s i pointer dim(100) static;
   dcl-s x int(10);
+  
+  na = %div(%parms:2);
+
+  if na > 0;
+    %subarr(k:1:na) = *null;
+    %subarr(i:1:na) = *null;
+  endif;
 
 /include RPGMAPI104.RPGLE
-
-  na = %div(%parms:2);
 
   for x = 1 to na;
     if     k(x) <> *null
@@ -132,13 +141,18 @@ dcl-pi *n pointer;
 end-pi;
 
   dcl-s na int(10);
-  dcl-s k pointer dim(100) inz(*null);
-  dcl-s i pointer dim(100) inz(*null);
+  dcl-s k pointer dim(100) static;
+  dcl-s i pointer dim(100) static;
   dcl-s x int(10);
 
-/include RPGMAPI104.RPGLE
-
   na = %div(%parms:2);
+  
+  if na > 0;
+    %subarr(k:1:na) = *null;
+    %subarr(i:1:na) = *null;
+  endif;
+
+/include RPGMAPI104.RPGLE
 
   for x = 1 to na;
     if     k(x) <> *null
@@ -209,13 +223,18 @@ dcl-pi *n pointer;
 end-pi;
 
   dcl-s na int(10);
-  dcl-s k pointer dim(100) inz(*null);
-  dcl-s i pointer dim(100) inz(*null);
+  dcl-s k pointer dim(100) static;
+  dcl-s i pointer dim(100) static;
   dcl-s x int(10);
+  
+  na = %div(%parms:2);
+  
+  if na > 0;
+    %subarr(k:1:na) = *null;
+    %subarr(i:1:na) = *null;
+  endif;
 
 /include RPGMAPI104.RPGLE
-
-  na = %div(%parms:2);
 
   for x = 1 to na;
     if     k(x) <> *null
@@ -637,17 +656,28 @@ end-proc;
 dcl-proc rm_setll_read_next export;
 dcl-pi *n ind;
   cur pointer value;
-  pos ind;
+  pos ind options(*nopass:*omit);
   key1 pointer value options(*nopass);
   key2 pointer value options(*nopass);
 end-pi;
 
-  if %parms > 3;
-    return rm_slln(cur:pos:key1:key2);
-  elseif %parms > 2;
-    return rm_slln(cur:pos:key1);
+  if     %parms > 1
+     and %addr(pos) <> *null;
+    if %parms > 3;
+      return rm_slln(cur:pos:key1:key2);
+    elseif %parms > 2;
+      return rm_slln(cur:pos:key1);
+    elseif %parms > 1;
+      return rm_slln(cur:pos);
+    endif;
+  elseif %parms > 1;
+    if %parms > 3;
+      return rm_slln(cur:*omit:key1:key2);
+    elseif %parms > 2;
+      return rm_slln(cur:*omit:key1);
+    endif;
   endif;
-  return rm_slln(cur:pos);
+  return rm_slln(cur);
 
 end-proc;
 
@@ -656,17 +686,28 @@ end-proc;
 dcl-proc rm_setgt_read_prev export;
 dcl-pi *n ind;
   cur pointer value;
-  pos ind;
+  pos ind options(*nopass:*omit);
   key1 pointer value options(*nopass);
   key2 pointer value options(*nopass);
 end-pi;
 
-  if %parms > 3;
-    return rm_sgtp(cur:pos:key1:key2);
-  elseif %parms > 2;
-    return rm_sgtp(cur:pos:key1);
+  if     %parms > 1
+     and %addr(pos) <> *null;
+    if %parms > 3;
+      return rm_sgtp(cur:pos:key1:key2);
+    elseif %parms > 2;
+      return rm_sgtp(cur:pos:key1);
+    elseif %parms > 1;
+      return rm_sgtp(cur:pos);
+    endif;
+  elseif %parms > 1;
+    if %parms > 3;
+      return rm_sgtp(cur:*omit:key1:key2);
+    elseif %parms > 2;
+      return rm_sgtp(cur:*omit:key1);
+    endif;
   endif;
-  return rm_sgtp(cur:pos);
+  return rm_sgtp(cur);
 
 end-proc;
 
@@ -778,17 +819,37 @@ end-proc;
 dcl-proc rm_set_attr_val export;
 dcl-pi *n pointer;
   map pointer value;
-  attr varchar(100) ccsid(*utf8) value options(*nopass);
-  value varchar(100) ccsid(*utf8) value options(*nopass);
+/include _TLIB_/INCLUDERPG,RPGMAPI064
 end-pi;
 
-  if %parms > 2;
-    return rm_sav(map:attr:value);
-  elseif %parms > 1;
-    return rm_sav(map:attr);
-  endif;
-  return rm_sav(map);
+  dcl-s na int(10);
+  dcl-s a varchar(100) ccsid(*utf8) dim(100) static;
+  dcl-s v varchar(100) ccsid(*utf8) dim(100) static;
+  dcl-s x int(10);
 
+  na = %div(%parms:2);
+
+  if na > 0;
+    %subarr(a:1:na) = '';
+    %subarr(v:1:na) = '';
+  endif;
+    
+/include RPGMAPI164.RPGLE
+  
+  if na = 0;
+    RMValMapSetAttr(map);
+  else;
+    for x = 1 to na;
+      if v(x) = '';
+        RMValMapSetAttr(map:a(x));
+      else;
+        RMValMapSetAttr(map:a(x):v(x));
+      endif;
+    endfor;
+  endif;
+  
+  return map;
+      
 end-proc;
 
 
@@ -802,3 +863,17 @@ end-pi;
   return rm_gav(map:attr);
   
 end-proc;
+
+
+// ----- RM_USER_DATA <<<<<<<<<<
+dcl-proc rm_user_data export;
+dcl-pi *n int(10);
+  obj pointer value;
+end-pi;
+
+  return RMValRtnUsrDta(obj);
+      
+end-proc;
+
+
+// ----- Internal procedures

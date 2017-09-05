@@ -1,6 +1,19 @@
+2017/09/06
+
+V2017.3
+Fixed:
+Bug which caused procedure <code>rm_isv</code> to return *on for a normal map.
+
+
+---------
+
+
 2017/09/02
 
 V2017.2.1
+
+
+---------
 
 
 2017/08/28

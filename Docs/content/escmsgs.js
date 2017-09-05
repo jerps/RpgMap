@@ -1,6 +1,7 @@
 document.write('\
 \
 <h2 id="escmsgs">Escape Messages</h2>\
+<br>\
 <p>\
 The following is a list of all escape messages that can be sent.\
 </p>\
@@ -48,11 +49,21 @@ The following is a list of all escape messages that can be sent.\
 <div class="escmsg1">RM00101: Unknown keyword: &amp;1</div>\
 </p>\
 <p>\
+<div class="escmsg1">RM00102: A map\'s attribute name can not be blank or empty.</div>\
+</p>\
+<p>\
+<div class="escmsg1">RM00201: A cursor can not be inserted into a map.</div>\
+</p>\
+<p>\
 <div class="escmsg1">RM00111: Option not supported: &amp;1</div><br>\
 <div class="escmsg2">> Unsupported "opt" argument given with <a href="#rm_"><code>rm_</code></a> or when creating a value.</div>\
 </p>\
 <p>\
-<div class="escmsg1">RM00201: A cursor can not be inserted into a map.</div>\
+<div class="escmsg1">RM01001: Error initializing iconv struct from CCSID &amp;1 to CCSID &amp;2.</div><br>\
+<div class="escmsg2">> An error occurred while trying to initialize character conversion from CCSID &amp;1 to CCSID &amp;2.</div>\
+</p>\
+<p>\
+<div class="escmsg1">RM09001: Object is not a map.</div>\
 </p>\
 <p>\
 <div class="escmsg1">RM09001: Object is not a map.</div>\
@@ -62,6 +73,9 @@ The following is a list of all escape messages that can be sent.\
 </p>\
 <p>\
 <div class="escmsg1">RM09003: Object is not a cursor.</div>\
+</p>\
+<p>\
+<div class="escmsg1">RM09004: Object is not a map or a value.</div>\
 </p>\
 <p>\
 <div class="escmsg1">RM09011: Unknown object.</div>\

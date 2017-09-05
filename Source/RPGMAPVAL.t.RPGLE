@@ -43,9 +43,10 @@ dcl-ds RMValueTypeInfo_t qualified inz template;
   // xxxxxx1x = map is a vector
   // 1xxxxxxx = automatically disposed map or value is contained in a map
   // xx1xxxxx = use alternate sort sequence
-  // xxx1xxxx = reversed order
-  // xxxx1xxx = case insensitive order
+  // xxx1xxxx = special property "reversed order"
+  // xxxx1xxx = special property "case insensitive order"
   flags char(1);
+  usrd uns(5); // special property "user data": 1-65000
 end-ds;
 
 // Generic value
@@ -351,7 +352,8 @@ end-pi;
      and (RMValueObj.type.id < 100 or RMValueObj.type.id > 199);
     RMSysSndEscapeMsg('RM00033');
   endif;
-  if opt <> 0 and opt <> 1 and opt <> 2;
+  if     opt <> 0 and opt <> 1 and opt <> 2 and opt <> 90 and opt <> 91
+     and (opt > 0 or opt < -65000);
     RMSysSndEscapeMsg('RM00111':%char(opt));
   endif;
   if opt = 1 or opt = 2;
@@ -365,7 +367,16 @@ end-pi;
   if opt = 0 or opt = 2;
     RMValueObj.type.flags = %bitor(RMValueObj.type.flags:x'10');
   endif;
-      
+  if opt < 0;
+    RMValueObj.type.usrd = 0 - opt;
+  endif;
+  if opt = 90;
+    RMValueObj.type.flags = %bitand(RMValueObj.type.flags:x'E7');
+  endif;
+  if opt = 91;
+    RMValueObj.type.usrd = 0;
+  endif;
+  
 end-proc;
 
 
@@ -379,6 +390,7 @@ dcl-pi *n pointer;
   mapi pointer value options(*nopass);
   compf pointer(*proc) value options(*nopass);
   attrs pointer value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pi;
 
   RMValueMapP = %alloc(%size(RMValueMap));
@@ -401,6 +413,11 @@ end-pi;
   else;
     RMValueMap.attrs = *null;
   endif;
+  if %parms >= %parmnum(usrd);
+    RMValueMap.type.usrd = usrd;
+  else;
+    RMValueMap.type.usrd = 0;
+  endif;
   return RMValueMapP;
   
 end-proc;
@@ -411,17 +428,23 @@ dcl-proc RMValIsMap export;
 dcl-pi *n ind;
   obj pointer value;
   vector ind value options(*nopass);
+  mandisp ind value options(*nopass);
 end-pi;
 
   RMValueObjP = obj;
-  return RMValueObj.type.id = RMTYPE_MAP;
   return     RMValueObj.type.id = RMTYPE_MAP
          and (   %parms < 2
-              or    %parms >= 2
-                and (       not vector
-                        and %bitand(RMValueObj.type.flags:x'02') <> x'02'
-                     or     vector
-                        and %bitand(RMValueObj.type.flags:x'02') = x'02'));
+              or     %parms >= 2
+                 and (       not vector
+                         and %bitand(RMValueObj.type.flags:x'02') <> x'02'
+                      or     vector
+                         and %bitand(RMValueObj.type.flags:x'02') = x'02')
+                 and (   %parms < 3
+                      or     %parms >= 3
+                         and (       not mandisp
+                                 and %bitand(RMValueObj.type.flags:x'01') <> x'01'
+                              or     mandisp
+                                 and %bitand(RMValueObj.type.flags:x'01') = x'01')));
 
 end-proc;
 
@@ -483,7 +506,11 @@ end-pi;
     endif;
     return;
   endif;
-  
+
+  if attr = '';
+    RMSysSndEscapeMsg('RM00102');
+  endif;
+
   if %parms < 3;
     if a <> *null;
       rm_rmv(a:rm_s(attr));
@@ -525,6 +552,22 @@ end-pi;
   
   a = RMValueMap.attrs;
   return rm_s_(rm_get(a:rm_s(attr)));
+
+end-proc;
+
+
+// Return user data of a map/value.
+dcl-proc RMValRtnUsrDta export;
+dcl-pi *n int(10);
+  obj pointer value;
+end-pi;
+
+  RMValueObjP = obj;
+  if     RMValueObj.type.id <> RMTYPE_MAP
+     and (RMValueObj.type.id < 100 or RMValueObj.type.id > 199);
+    RMSysSndEscapeMsg('RM09004');
+  endif;
+  return RMValueObj.type.usrd;
 
 end-proc;
 
@@ -577,6 +620,7 @@ end-pi;
   RMValueCursorP = %alloc(%size(RMValueCursor));
   RMValueCursor.type.id = RMTYPE_CURSOR;
   RMValueCursor.type.flags = x'00';
+  RMValueCursor.type.usrd = 0;
   // create the cursor impl, taking a pointer to the cursor data structure here
   // in "value space". When the map impl. destroys the cursor, this data structure
   // is also destroyed.
@@ -619,6 +663,7 @@ dcl-pi *n pointer;
   value int(20) value;
   digits uns(5) value;
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pi;
   
   select;
@@ -630,6 +675,11 @@ end-pi;
     else;
       RMValueInt10.type.flags = x'00';
     endif;
+    if %parms >= %parmnum(usrd);
+      RMValueInt10.type.usrd = usrd;
+    else;
+      RMValueInt10.type.usrd = 0;
+    endif;
     RMValueInt10.value = value;
     return RMValueInt10P;
   when digits = 20;
@@ -639,6 +689,11 @@ end-pi;
       RMValueInt20.type.flags = flags;
     else;
       RMValueInt20.type.flags = x'00';
+    endif;
+    if %parms >= %parmnum(usrd);
+      RMValueInt20.type.usrd = usrd;
+    else;
+      RMValueInt20.type.usrd = 0;
     endif;
     RMValueInt20.value = value;
     return RMValueInt20P;
@@ -716,6 +771,7 @@ dcl-pi *n pointer;
   value packed(46:16) value;
   digits uns(5) value;
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pi;
   
   select;
@@ -727,6 +783,11 @@ end-pi;
     else;
       RMValuePDec10.type.flags = x'00';
     endif;
+    if %parms >= %parmnum(usrd);
+      RMValuePDec10.type.usrd = usrd;
+    else;
+      RMValuePDec10.type.usrd = 0;
+    endif;
     RMValuePDec10.value = value;
     return RMValuePDec10P;
   when digits = 20;
@@ -737,6 +798,11 @@ end-pi;
     else;
       RMValuePDec20.type.flags = x'00';
     endif;
+    if %parms >= %parmnum(usrd);
+      RMValuePDec20.type.usrd = usrd;
+    else;
+      RMValuePDec20.type.usrd = 0;
+    endif;
     RMValuePDec20.value = value;
     return RMValuePDec20P;
   when digits = 30;
@@ -746,6 +812,11 @@ end-pi;
       RMValuePDec30.type.flags = flags;
     else;
       RMValuePDec30.type.flags = x'00';
+    endif;
+    if %parms >= %parmnum(usrd);
+      RMValuePDec30.type.usrd = usrd;
+    else;
+      RMValuePDec30.type.usrd = 0;
     endif;
     RMValuePDec30.value = value;
     return RMValuePDec30P;
@@ -825,6 +896,7 @@ dcl-proc RMValDateCrt export;
 dcl-pi *n pointer;
   value date value;
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pi;
 
   RMValueDateP = %alloc(%size(RMValueDate));
@@ -833,6 +905,11 @@ end-pi;
     RMValueDate.type.flags = flags;
   else;
     RMValueDate.type.flags = x'00';
+  endif;
+  if %parms >= %parmnum(usrd);
+    RMValueDate.type.usrd = usrd;
+  else;
+    RMValueDate.type.usrd = 0;
   endif;
   RMValueDate.value = value;
   return RMValueDateP;
@@ -845,6 +922,7 @@ dcl-proc RMValTimeCrt export;
 dcl-pi *n pointer;
   value time value;
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pi;
 
   RMValueTimeP = %alloc(%size(RMValueTime));
@@ -853,6 +931,11 @@ end-pi;
     RMValueTime.type.flags = flags;
   else;
     RMValueTime.type.flags = x'00';
+  endif;
+  if %parms >= %parmnum(usrd);
+    RMValueTime.type.usrd = usrd;
+  else;
+    RMValueTime.type.usrd = 0;
   endif;
   RMValueTime.value = value;
   return RMValueTimeP;
@@ -865,6 +948,7 @@ dcl-proc RMValTsCrt export;
 dcl-pi *n pointer;
   value timestamp value;
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pi;
 
   RMValueTsP = %alloc(%size(RMValueTs));
@@ -873,6 +957,11 @@ end-pi;
     RMValueTs.type.flags = flags;
   else;
     RMValueTs.type.flags = x'00';
+  endif;
+  if %parms >= %parmnum(usrd);
+    RMValueTs.type.usrd = usrd;
+  else;
+    RMValueTs.type.usrd = 0;
   endif;
   RMValueTs.value = value;
   return RMValueTsP;
@@ -1017,6 +1106,7 @@ dcl-proc RMValIndCrt export;
 dcl-pi *n pointer;
   value ind value;
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pi;
 
   RMValueIndP = %alloc(%size(RMValueInd));
@@ -1025,6 +1115,11 @@ end-pi;
     RMValueInd.type.flags = flags;
   else;
     RMValueInd.type.flags = x'00';
+  endif;
+  if %parms >= %parmnum(usrd);
+    RMValueInd.type.usrd = usrd;
+  else;
+    RMValueInd.type.usrd = 0;
   endif;
   RMValueInd.value = value;
   return RMValueIndP;
@@ -1080,6 +1175,7 @@ dcl-proc RMValPtrCrt export;
 dcl-pi *n pointer;
   value pointer value;
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pi;
 
   RMValuePtrP = %alloc(%size(RMValuePtr));
@@ -1088,6 +1184,11 @@ end-pi;
     RMValuePtr.type.flags = flags;
   else;
     RMValuePtr.type.flags = x'00';
+  endif;
+  if %parms >= %parmnum(usrd);
+    RMValuePtr.type.usrd = usrd;
+  else;
+    RMValuePtr.type.usrd = 0;
   endif;
   RMValuePtr.value = value;
   return RMValuePtrP;
@@ -1143,6 +1244,7 @@ dcl-proc RMValPPtrCrt export;
 dcl-pi *n pointer;
   value pointer(*proc) value;
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pi;
 
   RMValuePPtrP = %alloc(%size(RMValuePPtr));
@@ -1151,6 +1253,11 @@ end-pi;
     RMValuePPtr.type.flags = flags;
   else;
     RMValuePPtr.type.flags = x'00';
+  endif;
+  if %parms >= %parmnum(usrd);
+    RMValuePPtr.type.usrd = usrd;
+  else;
+    RMValuePPtr.type.usrd = 0;
   endif;
   RMValuePPtr.value = value;
   return RMValuePPtrP;
@@ -1206,6 +1313,7 @@ dcl-proc RMValCharCrt export;
 dcl-pi *n pointer;
   value varchar(30000) const;
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pi;
 
   dcl-s v varchar(30000) based(vp);
@@ -1219,6 +1327,11 @@ end-pi;
   else;
     RMValueChar.type.flags = x'00';
   endif;
+  if %parms >= %parmnum(usrd);
+    RMValueChar.type.usrd = usrd;
+  else;
+    RMValueChar.type.usrd = 0;
+  endif;
   RMValueChar.value = vp;
   return RMValueCharP;
   
@@ -1231,6 +1344,7 @@ dcl-pi *n pointer;
   addr pointer value;
   size int(10) value;
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pi;
 
   dcl-s d char(30000) based(dp);
@@ -1251,6 +1365,11 @@ end-pi;
     RMValueChar.type.flags = flags;
   else;
     RMValueChar.type.flags = x'00';
+  endif;
+  if %parms >= %parmnum(usrd);
+    RMValueChar.type.usrd = usrd;
+  else;
+    RMValueChar.type.usrd = 0;
   endif;
   RMValueChar.value = vp;
   return RMValueCharP;
@@ -1425,6 +1544,7 @@ dcl-proc RMValStrCrt export;
 dcl-pi *n pointer;
   value varchar(30000) const ccsid(*utf8);
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pi;
 
   dcl-s v varchar(30000) ccsid(*utf8) based(vp);
@@ -1438,6 +1558,11 @@ end-pi;
   else;
     RMValueStr.type.flags = x'00';
   endif;
+  if %parms >= %parmnum(usrd);
+    RMValueStr.type.usrd = usrd;
+  else;
+    RMValueStr.type.usrd = 0;
+  endif;
   RMValueStr.value = vp;
   return RMValueStrP;
   
@@ -1449,6 +1574,7 @@ dcl-proc RMValStrCrtBytes export;
 dcl-pi *n pointer;
   value varchar(30000) const;
   flags char(1) value options(*nopass);
+  usrd uns(5) value options(*nopass);
 end-pi;
 
   dcl-s v varchar(30000) based(vp);
@@ -1461,6 +1587,11 @@ end-pi;
     RMValueStr.type.flags = flags;
   else;
     RMValueStr.type.flags = x'00';
+  endif;
+  if %parms >= %parmnum(usrd);
+    RMValueStr.type.usrd = usrd;
+  else;
+    RMValueStr.type.usrd = 0;
   endif;
   RMValueStr.value = vp;
   return RMValueStrP;
@@ -1972,14 +2103,14 @@ end-pi;
       inbufl = %len(v1);
       outbuf = %addr(c1:*data);
       outbufl = %size(c1) - 4;
-      %len(c1) = 120000;
+      %len(c1) = outbufl;
       RMSysCvtCCSID(1208:0:inbuf:inbufl:outbuf:outbufl);
       %len(c1) = %size(c1) - 4 - outbufl;
       inbuf = %addr(v2:*data);
       inbufl = %len(v2);
       outbuf = %addr(c2:*data);
       outbufl = %size(c2) - 4;
-      %len(c2) = 120000;
+      %len(c2) = outbufl;
       RMSysCvtCCSID(1208:0:inbuf:inbufl:outbuf:outbufl);
       %len(c2) = %size(c2) - 4 - outbufl;
       return RMValCaseInsCharComp2(c1:c2);
@@ -2002,6 +2133,7 @@ end-proc;
 
 
 // Compare character data case insensitive.
+// PROC RMValCaseInsCharComp IS A COPY OF THIS PROC, but with varchar(120000).
 dcl-proc RMValCaseInsCharComp;
 dcl-pi *n int(10);
   c1 varchar(30000);
@@ -2138,7 +2270,8 @@ end-pi;
     attrs = rm_cpy(RMValueMap.attrs);
   endif;
   RMValueMapP = map;
-  newmap = RMValMapCrt(RMValueMap.type.flags:mapi2:RMValueMap.compf:attrs);
+  newmap = RMValMapCrt(RMValueMap.type.flags:mapi2:RMValueMap.compf:attrs
+                      :RMValueMap.type.usrd);
   RMBTreeSetValstruct(mapi2:newmap);
   c = RMBCursorCrt(mapi1:0:*null);
   if %parms = 3 and key1 = *null;
@@ -2192,10 +2325,12 @@ end-pi;
   select;
   when digits = 10;
     RMValueInt10P = value;
-    return RMValIntCrt(RMValueInt10.value:digits:RMValueInt10.type.flags);
+    return RMValIntCrt(RMValueInt10.value:digits:RMValueInt10.type.flags
+                      :RMValueInt10.type.usrd);
   when digits = 20;
     RMValueInt20P = value;
-    return RMValIntCrt(RMValueInt20.value:digits:RMValueInt20.type.flags);
+    return RMValIntCrt(RMValueInt20.value:digits:RMValueInt20.type.flags
+                      :RMValueInt20.type.usrd);
   endsl;
 
   return *null;
@@ -2213,13 +2348,16 @@ end-pi;
   select;
   when digits = 10;
     RMValuePDec10P = value;
-    return RMValPDecCrt(RMValuePDec10.value:digits:RMValuePDec10.type.flags);
+    return RMValPDecCrt(RMValuePDec10.value:digits:RMValuePDec10.type.flags
+                       :RMValuePDec10.type.usrd);
   when digits = 20;
     RMValuePDec20P = value;
-    return RMValPDecCrt(RMValuePDec20.value:digits:RMValuePDec20.type.flags);
+    return RMValPDecCrt(RMValuePDec20.value:digits:RMValuePDec20.type.flags
+                       :RMValuePDec20.type.usrd);
   when digits = 30;
     RMValuePDec30P = value;
-    return RMValPDecCrt(RMValuePDec30.value:digits:RMValuePDec30.type.flags);
+    return RMValPDecCrt(RMValuePDec30.value:digits:RMValuePDec30.type.flags
+                       :RMValuePDec30.type.usrd);
   endsl;
 
   return *null;
@@ -2234,7 +2372,7 @@ dcl-pi *n pointer;
 end-pi;
 
   RMValueDateP = value;
-  return RMValDateCrt(RMValueDate.value:RMValueDate.type.flags);
+  return RMValDateCrt(RMValueDate.value:RMValueDate.type.flags:RMValueDate.type.usrd);
   
 end-proc;
 
@@ -2246,7 +2384,7 @@ dcl-pi *n pointer;
 end-pi;
 
   RMValueTimeP = value;
-  return RMValTimeCrt(RMValueTime.value:RMValueTime.type.flags);
+  return RMValTimeCrt(RMValueTime.value:RMValueTime.type.flags:RMValueTime.type.usrd);
   
 end-proc;
 
@@ -2258,7 +2396,7 @@ dcl-pi *n pointer;
 end-pi;
 
   RMValueTsP = value;
-  return RMValTsCrt(RMValueTs.value:RMValueTs.type.flags);
+  return RMValTsCrt(RMValueTs.value:RMValueTs.type.flags:RMValueTs.type.usrd);
   
 end-proc;
 
@@ -2270,7 +2408,7 @@ dcl-pi *n pointer;
 end-pi;
 
   RMValueIndP = value;
-  return RMValIndCrt(RMValueInd.value:RMValueInd.type.flags);
+  return RMValIndCrt(RMValueInd.value:RMValueInd.type.flags:RMValueInd.type.usrd);
   
 end-proc;
 
@@ -2282,7 +2420,7 @@ dcl-pi *n pointer;
 end-pi;
 
   RMValuePtrP = value;
-  return RMValPtrCrt(RMValuePtr.value:RMValuePtr.type.flags);
+  return RMValPtrCrt(RMValuePtr.value:RMValuePtr.type.flags:RMValuePtr.type.usrd);
   
 end-proc;
 
@@ -2294,7 +2432,7 @@ dcl-pi *n pointer;
 end-pi;
 
   RMValuePPtrP = value;
-  return RMValPPtrCrt(RMValuePPtr.value:RMValuePPtr.type.flags);
+  return RMValPPtrCrt(RMValuePPtr.value:RMValuePPtr.type.flags:RMValuePPtr.type.usrd);
   
 end-proc;
 
@@ -2309,7 +2447,7 @@ end-pi;
   
   RMValueCharP = value;
   vp = RMValueChar.value;
-  return RMValCharCrt(v:RMValueChar.type.flags);
+  return RMValCharCrt(v:RMValueChar.type.flags:RMValueChar.type.usrd);
   
 end-proc;
 
@@ -2324,7 +2462,7 @@ end-pi;
   
   RMValueStrP = value;
   vp = RMValueStr.value;
-  return RMValStrCrt(v:RMValueStr.type.flags);
+  return RMValStrCrt(v:RMValueStr.type.flags:RMValueStr.type.usrd);
   
 end-proc;
 

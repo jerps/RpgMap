@@ -1,4 +1,4 @@
-STRPGMEXP PGMLVL(*CURRENT) LVLCHK(*YES) SIGNATURE('2017.2          ')
+STRPGMEXP PGMLVL(*CURRENT) LVLCHK(*YES) SIGNATURE('V2017.3         ')
 EXPORT SYMBOL('rm_m')
 EXPORT SYMBOL('rm_mm')
 EXPORT SYMBOL('rm_v')
@@ -164,6 +164,13 @@ EXPORT SYMBOL('rm_set_comp_fun')
 EXPORT SYMBOL('rm_get_comp_fun')
 EXPORT SYMBOL('rm_set_attr_val')
 EXPORT SYMBOL('rm_get_attr_val')
+EXPORT SYMBOL('rm_usrd')
+EXPORT SYMBOL('rm_user_data')
+EXPORT SYMBOL('rm_ismm')
+EXPORT SYMBOL('rm_add_event_handler')
+EXPORT SYMBOL('rm_remove_event_handler')
+ENDPGMEXP
+STRPGMEXP PGMLVL(*PRV) LVLCHK(*YES) SIGNATURE('2017.2          ')
 ENDPGMEXP
 STRPGMEXP PGMLVL(*PRV) LVLCHK(*YES) SIGNATURE('2017.1          ')
 ENDPGMEXP

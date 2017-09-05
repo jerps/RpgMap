@@ -118,3 +118,14 @@ dcl-pr RMBCursorReadNxtPrv2 int(10) extproc(*dclcase);
   key2 pointer value;
   opt int(10) value;
 end-pr;
+
+dcl-pr RMBAddEventh extproc(*dclcase); 
+  tree pointer value;
+  proc pointer(*proc) value;
+  usrd pointer value;
+end-pr;
+
+dcl-pr RMBRmvEventh extproc(*dclcase); 
+  tree pointer value;
+  proc pointer(*proc) value;
+end-pr;

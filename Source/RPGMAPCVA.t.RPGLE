@@ -32,7 +32,7 @@ end-pi;
   inbufl = %len(u);
   outbuf = %addr(v1:*data);
   outbufl = %size(v1) - 4;
-  %len(v1) = 120000;
+  %len(v1) = outbufl;
   RMSysCvtCCSID(1208:0:inbuf:inbufl:outbuf:outbufl);
   %len(v1) = %size(v1) - 4 - outbufl;
   
@@ -41,7 +41,7 @@ end-pi;
   inbufl = %len(u);
   outbuf = %addr(v2:*data);
   outbufl = %size(v2) - 4;
-  %len(v2) = 120000;
+  %len(v2) = outbufl;
   RMSysCvtCCSID(1208:0:inbuf:inbufl:outbuf:outbufl);
   %len(v2) = %size(v2) - 4 - outbufl;
   

@@ -1,6 +1,7 @@
 document.write('\
 \
 <h2 id="example_2">Example 2</h2>\
+<br>\
 <p>\
 The following map has composite keys, consisting of an integer and a date. The dates with \
 key 5 have the "reversed order" property set (with <code>:0</code>).\

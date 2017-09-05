@@ -1,9 +1,11 @@
 document.write('\
 \
 <h2 id="longprnms">Short And Long Procedure Names</h2>\
+<br>\
 <p>\
-Many procedures have a long name besides their short name. The short name can be used for compact code \
-and the long(er) name can be used when a more descriptive name is needed.\
+Many procedures have a short name and a long name. The short name can be used for compact code \
+and the long(er) name can be used when a more descriptive name is desired.\
+</p>\
 <p>\
 Below is a list of all procedures that have both a short and long name.\
 </p>\
@@ -51,6 +53,7 @@ rm_scf   : rm_set_comp_fun<br>\
 rm_gcf   : rm_get_comp_fun<br>\
 rm_sav   : rm_set_attr_val<br>\
 rm_gav   : rm_get_attr_val<br>\
+rm_usrd  : rm_user_data<br>\
 </pre>\
 \
 ');

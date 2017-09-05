@@ -1,6 +1,7 @@
 document.write('\
 \
 <h2 id="example_3">Example 3</h2>\
+<br>\
 <p>\
 The following map represents three loans. Each loan has several attributes such as client \
 name, amount, total payed. A loan can have registered payments, and a call log.\

@@ -9,8 +9,9 @@
 typedef unsigned long long numkeys_t;
 typedef struct rmb_red_blk_node rmb_red_blk_node;
 typedef struct rmb_cursor rmb_cursor;
+typedef struct rmb_eventh rmb_eventh;
 typedef struct rmb_red_blk_tree rmb_red_blk_tree;
-
+typedef int (*rmb_event_handler)(int event, void* map, void* key, void* item, void* usrd);
 
 rmb_red_blk_tree* RMBTreeCreate(int (*CompFunc)(const void*, const void*, const void*),
                               void (*DestFunc)(void*), void* valstruct);
@@ -34,6 +35,8 @@ int RMBCursorHasNxtPrv(rmb_cursor* cursor, int nxtprv);
 int RMBCursorHasNxtPrv2(rmb_cursor* cursor, int nxtprv, void* key1, void* key2, int opt);
 int RMBCursorReadNxtPrv(rmb_cursor* cursor, int nxtprv);
 int RMBCursorReadNxtPrv2(rmb_cursor* cursor, int nxtprv, void* key1, void* key2, int opt);
+void RMBAddEventh(rmb_red_blk_tree* tree, rmb_event_handler proc, void* usrd);
+void RMBRmvEventh(rmb_red_blk_tree* tree, rmb_event_handler proc);
 
 
 #endif

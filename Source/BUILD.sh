@@ -4,15 +4,22 @@
 # $1=Build target, $2=Target lib (default is RPGMAP, will be created first)
 
 
+# Sources RPGMAP.RPGLE, RPGMAPLPNH.RPGLE and the ones with names ending with .t.RPGLE
+# are templates. They're copied with substitutions to a new source with the same name
+# without ".t". The new source is either copied to sourcefile INCLUDERPG or compiled.
+
+
 # The alternate sort sequence that may be used for char data and strings.
 # This variable is used when building srvpgm RPGMAP, build target D or S,
 # to fill in control spec keyword srtseq in module RPGMAPCVA.
 SRTSEQ="*LANGIDSHR"  
 
+# Target OS release
+TGTRLS="*CURRENT"  
 
-# Sources with names ending with .t.RPGLE are templates. A template is
-# copied with substitutions to a source with the same name but without ".t".
-# The latter is compiled. Not all templates necessarily end with .t.RPGLE.
+# Storage model
+STGMDL="*INHERIT"  
+
 
 
 typeset -u TARGET
@@ -98,16 +105,18 @@ function dltmods {
 # $1=obj/src name, $2=description
 function crtrpgmod {
   xcmdks "CRTRPGMOD MODULE($TLIB/$1) SRCSTMF('$SRC/$1.RPGLE') TEXT('$2')\
- OUTPUT(*PRINT) OPTIMIZE($RPGOPTMZ) OPTION(*NOSHOWCPY) DBGVIEW($DBGVW) REPLACE(*YES)"
+ OUTPUT(*PRINT) OPTIMIZE($RPGOPTMZ) OPTION(*NOSHOWCPY) DBGVIEW($DBGVW)\
+ REPLACE(*YES) TGTRLS($TGTRLS) STGMDL($STGMDL)"
 }
 function crtcmod {
   xcmdks "CRTCMOD MODULE($TLIB/$1) SRCSTMF('$SRC/$1.C') TEXT('$2')\
- TGTCCSID(37) SYSIFCOPT(*IFSIO) OUTPUT(*PRINT) OPTIMIZE($COPTMZ) DBGVIEW($DBGVW) REPLACE(*YES)"
+ TGTCCSID(37) SYSIFCOPT(*IFSIO) OUTPUT(*PRINT) OPTIMIZE($COPTMZ) DBGVIEW($DBGVW)\
+ REPLACE(*YES) TGTRLS($TGTRLS) TERASPACE(*YES *NOTSIFC) STGMDL($STGMDL)"
 }
 # $3=modules
 function crtsrvpgm {
   xcmdks "CRTSRVPGM SRVPGM($TLIB/$1) MODULE($3) SRCSTMF('$SRC/$1.BND') TEXT('$2')\
- REPLACE(*YES)"
+ REPLACE(*YES) ACTGRP(*CALLER) STGMDL($STGMDL)"
 }
 # $4=actgrp
 function crtpgm {
@@ -177,6 +186,7 @@ cpy2inclrpgmbr RPGMAPI060.RPGLE RPGMAPI060 RPGLE "rm__aa key parameters"
 cpy2inclrpgmbr RPGMAPI061.RPGLE RPGMAPI061 RPGLE "rm__sa key parameters"
 cpy2inclrpgmbr RPGMAPI062.RPGLE RPGMAPI062 RPGLE "rm__x key parameters"
 cpy2inclrpgmbr RPGMAPI063.RPGLE RPGMAPI063 RPGLE "rm__xp key parameters"
+cpy2inclrpgmbr RPGMAPI064.RPGLE RPGMAPI064 RPGLE "rm_sav attr/value parameters"
 xcmd "DLTF FILE($TLIB/TEMP)"
 
 echo ">>>>> (Re)create message file RPGMAP"
@@ -194,11 +204,14 @@ addmsgd RM00032 "Object to copy is not a value or a map." ""
 addmsgd RM00033 "Special properties can only be set for values and maps." ""
 addmsgd RM00041 "Map is not empty." ""
 addmsgd RM00101 "Unknown keyword: &1" "(*CHAR 10)"
+addmsgd RM00102 "A map's attribute name can not be blank or empty." ""
 addmsgd RM00111 "Option not supported: &1" "(*CHAR 30)"
 addmsgd RM00201 "A cursor can not be inserted into a map." ""
+addmsgd RM01001 "Error initializing iconv struct from CCSID &1 to CCSID &2." "(*CHAR 5) (*CHAR 5)"
 addmsgd RM09001 "Object is not a map." ""
 addmsgd RM09002 "Object is not a value." ""
 addmsgd RM09003 "Object is not a cursor." ""
+addmsgd RM09004 "Object is not a map or a value." ""
 addmsgd RM09011 "Unknown object." ""
 
 fi
@@ -234,6 +247,7 @@ if [[ $TARGET == DEFAULT || $TARGET == TEST ]]; then
 crttestpgm "000"
 crttestpgm "001"
 crttestpgm "002"
+crttestpgm "003"
 
 fi
 

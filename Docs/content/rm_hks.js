@@ -4,8 +4,8 @@ document.write('\
 <pre class="proclongnm">rm_has_keys</pre>\
 <pre class="procsig">\
 &lt;&lt;ind<br>\
-map pointer value<br>\
-key pointer value<br>\
+map pointer  value<br>\
+key pointer  value<br>\
 opt char(10) value options(*nopass)<br>\
 </pre>\
 <p>\

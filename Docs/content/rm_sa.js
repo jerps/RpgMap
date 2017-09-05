@@ -16,7 +16,7 @@ Comparing strings using the alternate sort sequence takes considerably \
 more resources than normal comparisons. Strings must be converted \
 to the job CCSID first before they can be compared using the alternate \
 sort sequence.<br>\
-Pass <code>opt</code> to set special property (see <a href="#rm_"><code>rm_</code></a>).\
+Pass <code>opt</code> to set special property or user data (see <a href="#rm_"><code>rm_</code></a>).\
 </p>\
 \
 ');

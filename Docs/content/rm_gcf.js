@@ -7,7 +7,7 @@ document.write('\
 map pointer value<br>\
 </pre>\
 <p>\
-Return the current compare function for <code>map</code>. If <code>*null</code> the default \
+Return the current compare function for <code>map</code>. Return <code>*null</code> if the default \
 function, <a href="#rm_cmp"><code>rm_cmp</code></a>, is in effect.\
 </p>\
 \

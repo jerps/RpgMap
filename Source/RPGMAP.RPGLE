@@ -4,7 +4,7 @@
 // Copyright (c) 2017 John Erps      
 
 
-// V2017.2.1
+// V2017.3
 
 
 // RpgMap is not thread safe.
@@ -86,6 +86,13 @@ end-pr;
 ////////// rm_ism - Is map?
 // Return *on if 'obj' is a map/vector, else return *off.
 dcl-pr rm_ism ind extproc(*dclcase);
+  obj pointer value;
+end-pr;
+
+
+////////// rm_ismm - Is manually disposed map?
+// Return *on if 'obj' is a manually disposed map, else return *off.
+dcl-pr rm_ismm ind extproc(*dclcase);
   obj pointer value;
 end-pr;
 
@@ -409,33 +416,50 @@ end-pr;
 
 
 ////////// rm_ (rm_set_prop) - Set special property
-// Set the special property identified with 'opt' which is 0 for
-// "reversed order", 1 for "case insensitive order", or 2 for both,
-// for 'obj', which is a map or value, and return 'obj'.
+// Set the special property specified with 'opt' for 'obj', which is a map or
+// a value, and return 'obj'.
+// opt:
+//   0: reversed order,
+//   1: case insensitive order,
+//   2: both,
+//  -1 .. -65000: user data (an integer between 1 and 65.000),
+//  90: clear reversed order & case insensitive order,
+//  91: clear user data.
 // If 'opt' is not passed then 0 is assumed.
 // Some properties are not supported for some types.
 // Send escape message RM00111 if 'opt' is not supported.
-// A special property should be set once, when needed, immediately after
-// creating the map or value.
-// For values, it's better to use parameter 'opt' when creating the value,
-// such as 'rm_i(1:0)', which creates integer value 1 with reversed order.
-// When creating maps there is no 'opt' parameter so 'rm_' must be used
-// instead.
-// - Reversed Order
+// When creating values (e.g. with 'rm_i' or 'rm_a') use parameter 'opt'
+// instead of 'rm_', if possible. For example 'rm_i(1:0)' creates an integer
+// value, 1, with reversed order, and 'rm_a('abc':-100)' creates a character
+// value with user data 100. When creating maps there is no 'opt' parameter
+// so 'rm_' must always be used instead.
+// Specify 90 or 91 for 'opt' to clear (remove) special properties or user
+// data.
+// > Reversed Order
 // If a map or value has the "reversed order" property, then when it's
 // compared to other maps or values the sort order is reversed. Value
 // *hival is then the lowest in order, and vice versa. When comparing
 // two objects, reversed order is in effect when at least one has the
 // reversed order property set, otherwise normal order is in effect.
-// - Case Insensitive Order
+// > Case Insensitive Order
 // If 'obj' is character data or a string, with normal sort sequence,
 // then the "case insensitive order" can be set. If set, then when 'obj'
 // is compared with other character data or strings this is done without
-// difference between uppercase and lowercase characters.
-// Some extra processing is required when a case insensitive comparison
-// is done. Especially when setting this property for strings, as they
-// also need to be converted to the job CCSID first, before being compared
-// case insensitive.
+// difference between uppercase and lowercase characters. Like reversed
+// order, case insensitive order is in effect when two objects are compared
+// and at least one of them has the case insensitive order property.
+// Some extra processing is required when a case insensitive comparison is
+// done. Especially when setting this property for strings, as they need to
+// be converted to the job CCSID first, before being compared case insensitive.
+// > User Data
+// A map or value can be associated with user data, which is a positive integer
+// value between 1 and 65.000 that is application specific. Like attributes
+// ('rm_sav'), user data is used to store meta data.
+// Associating user data does not increase memory usage.
+// Procedure 'rm_usrd' returns the user data for a map or value.
+// The user data is specified as a negative integer; specifying -1 means that
+// 'rm_usrd' returns 1.
+// If 'opt' is 91 then the user data is cleared, i.e. 'rm_usrd' returns 0.
 dcl-pr rm_ pointer extproc(*dclcase);
   obj pointer value;
   opt int(10) value options(*nopass);
@@ -664,6 +688,7 @@ end-pr;
 // copy that are values or automatically disposed maps are copies of the
 // originals in 'obj'. Manually disposed maps are not copied; the copy
 // will contain the same instances.
+// Event handlers are NOT copied; the copy has no event handlers.
 // Return *null if 'obj' is *null.
 // Use 'rm_cpyd' to make a deep copy of a map, in which case manually
 // disposed maps are also (deep) copied.
@@ -726,8 +751,10 @@ end-pr;
 // If 'rm_sll' is called and the next key/item pair is removed from the map the
 // cursor is positioned just after the previous pair. If 'rm_sgt' is called and
 // the previous key/item pair is removed from the map the cursor is positioned
-// just before the next pair. The cursor is positioned at the end or beginning,
-// resp., when there is no next or previous pair anymore.
+// just before the next pair.
+// If 'rm_sll' is called and there is no key equal to or greater, or if 'rm_sgt'
+// is called and there is no key equal to or less, the cursor is positioned at the
+// end or beginning resp.
 // These procedures dispose 'key' automatically, unless 'key' is a manually
 // disposed map, or a value/map contained in a map.
 dcl-pr rm_sll pointer extproc(*dclcase);
@@ -821,12 +848,16 @@ end-pr;
 //     dow rm_slln(cur:pos:rm_d(d'2017-01-01')); // 'pos' is set to *off
 //       ... // set 'pos' to *on to trigger 'rm_sll' again while looping
 //     enddo;
+// If 'pos' is not passed or is *OMITted then the procedure behaves as if
+// 'pos' would be passed with value *on which can be used to only position
+// the cursor and read the next key/item pair in one call without having
+// to provide an indicator field.
 // This procedure disposes 'key1' and 'key2' automatically, unless
 // 'key1'/'key2' is a manually disposed map, or a value/map contained
 // in a map.
 dcl-pr rm_slln ind extproc(*dclcase);
   cur pointer value;
-  pos ind;
+  pos ind options(*nopass:*omit);
   key1 pointer value options(*nopass);
   key2 pointer value options(*nopass);
 end-pr;
@@ -848,12 +879,16 @@ end-pr;
 //     dow rm_sgtp(cur:pos:rm_d(d'2017-01-01')); // 'pos' is set to *off
 //       ... // set 'pos' to *on to trigger 'rm_sgt' again while looping
 //     enddo;
+// If 'pos' is not passed or is *OMITted then the procedure behaves as if
+// 'pos' would be passed with value *on which can be used to only position
+// the cursor and read the previous key/item pair in one call without having
+// to provide an indicator field.
 // This procedure disposes 'key1' and 'key2' automatically, unless
 // 'key1'/'key2' is a manually disposed map, or a value/map contained
 // in a map.
 dcl-pr rm_sgtp ind extproc(*dclcase);
   cur pointer value;
-  pos ind;
+  pos ind options(*nopass:*omit);
   key1 pointer value options(*nopass);
   key2 pointer value options(*nopass);
 end-pr;
@@ -966,32 +1001,41 @@ end-pr;
 
 
 ////////// rm_gcf (rm_get_comp_fun) - Get compare function
-// Return the current compare function for 'map'. If *null the default
+// Return the current compare function for 'map'. Return *null if the default
 // function, 'rm_cmp', is in effect.
 dcl-pr rm_gcf pointer(*proc) extproc(*dclcase);
   map pointer value;
 end-pr;
 
 
-////////// rm_sav (rm_set_attr_val) - Set attribute value
-// Set attribute named 'attr' of 'map' to 'value' and return 'map'.
-// If parameter 'value' is not passed the attribute is "unset".
-// Parameters 'attr' and 'value' can be both not passed to "unset"
-// all attributes at once (clear).
+////////// rm_sav (rm_set_attr_val) - Set attribute values
+// Set up to 100 attributes of 'map' to a value and return 'map'.
 // Each map can have one or more attributes set to a value, where
 // each attribute has an utf8 name, and an utf8 value, both max.
 // 100 bytes. There is no restriction on attribute names and values.
+// The first attribute name and value is passed with parameters 2 and 3,
+// 'a001' and 'v001', the second with 'a002' and 'v002', etc.
+// Send escape message RM00102 if an attribute name is blank or empty. 
+// If a value is not passed or it is blank or empty then the attribute
+// is "unset".
+// If no attribute names or values are passed at all (i.e. only 'map'
+// is passed) then every attribute of 'map' is unset (all are cleared).
+// Attributes are used to store settings and meta data that is used
+// by different software modules/applications, either built-in or external.
+// Attributes should be named "module-name" where module is the name of the
+// module or function and name is the attribute name. The module's docs
+// should specify the attributes that are used and their meaning.
 // Attribute names starting with "_" (underscore) should not be used
 // as these are reserved for RpgMap.
-// Attributes are used to store settings and meta data that is used
-// by different software modules, either built-in or external. Attributes
-// should be named "module-name" where module is the name of the
-// module or function and name is the attribute name. See the module's
-// docs to see which attributes are used and their meaning.
 dcl-pr rm_sav pointer extproc(*dclcase);
   map pointer value;
-  attr varchar(100) ccsid(*utf8) value options(*nopass);
-  value varchar(100) ccsid(*utf8) value options(*nopass);
+// Parameters a001/v001 .. a100/v100
+// a001 varchar(100) ccsid(*utf8) value options(*nopass);
+// v001 varchar(100) ccsid(*utf8) value options(*nopass);
+// a002 varchar(100) ccsid(*utf8) value options(*nopass);
+// v002 varchar(100) ccsid(*utf8) value options(*nopass);
+// ...
+/include _TLIB_/INCLUDERPG,RPGMAPI064
 end-pr;
 
 
@@ -1004,9 +1048,18 @@ dcl-pr rm_gav varchar(100) ccsid(*utf8) extproc(*dclcase);
 end-pr;
 
 
+////////// rm_usrd (rm_user_data) - Return user data
+// Return the user data of 'obj', which must be a map or a value.
+// Return 0 if there is no user data.
+// See 'rm_'.
+dcl-pr rm_usrd int(10) extproc(*dclcase);
+  obj pointer value;
+end-pr;
+
+
 ////////// rm_i* - Create a new integer value, 10/20 digits
 // Create a new integer value, with 10 or 20 digits.
-// Pass 'opt' to set special property (see 'rm_').
+// Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_i pointer extproc(*dclcase);
   value int(10) value;
   opt int(10) value options(*nopass);
@@ -1060,7 +1113,7 @@ end-pr;
 
 ////////// rm_p* - Create a new packed decimal value, 10.4/20.8/30.16 digits
 // Create a new packed decimal value, with 10.4, 20.8 or 30.16 digits.
-// Pass 'opt' to set special property (see 'rm_').
+// Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_p pointer extproc(*dclcase);
   value packed(14:4) value;
   opt int(10) value options(*nopass);
@@ -1126,7 +1179,7 @@ end-pr;
 
 ////////// rm_d, rm_t, rm_z - Create a new date/time/timestamp value
 // Create a new date, time or timestamp value.
-// Pass 'opt' to set special property (see 'rm_').
+// Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_d pointer extproc(*dclcase);
   value date value;
   opt int(10) value options(*nopass);
@@ -1179,7 +1232,7 @@ end-pr;
 
 ////////// rm_n - Create a new indicator value
 // Create a new indicator value.
-// Pass 'opt' to set special property (see 'rm_').
+// Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_n pointer extproc(*dclcase);
   value ind value;
   opt int(10) value options(*nopass);
@@ -1206,7 +1259,7 @@ end-pr;
 
 ////////// rm_x - Create a new pointer value
 // Create a new pointer value.
-// Pass 'opt' to set special property (see 'rm_').
+// Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_x pointer extproc(*dclcase);
   value pointer value;
   opt int(10) value options(*nopass);
@@ -1233,7 +1286,7 @@ end-pr;
 
 ////////// rm_xp - Create a new procedure pointer value
 // Create a new pointer value.
-// Pass 'opt' to set special property (see 'rm_').
+// Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_xp pointer extproc(*dclcase);
   value pointer(*proc) value;
   opt int(10) value options(*nopass);
@@ -1260,7 +1313,7 @@ end-pr;
 
 ////////// rm_a - Create a new character data value
 // Create a new character data value, up to 30.000 bytes long.
-// Pass 'opt' to set special property (see 'rm_').
+// Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_a pointer extproc(*dclcase);
   value varchar(30000) const;
   opt int(10) value options(*nopass);
@@ -1272,7 +1325,7 @@ end-pr;
 // The size must be between 1 and 30.000.
 // The passed number of bytes ('size') are copied from the address to which
 // the pointer ('addr') points. 
-// Pass 'opt' to set special property (see 'rm_').
+// Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_ap pointer extproc(*dclcase);
   addr pointer value;
   size int(10) value;
@@ -1288,7 +1341,7 @@ end-pr;
 // the build options that were used, but usually it is *langidshr.
 // Comparing data using an alternate sort sequence may take more resources than
 // when the default sort sequence is used.
-// Pass 'opt' to set special property (see 'rm_').
+// Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_aa pointer extproc(*dclcase);
   value varchar(30000) const;
   opt int(10) value options(*nopass);
@@ -1300,7 +1353,7 @@ end-pr;
 // The size must be between 0 and 30.000.
 // The passed number of bytes ('size') are copied from the address to which
 // the pointer ('addr') points. 
-// Pass 'opt' to set special property (see 'rm_').
+// Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_aap pointer extproc(*dclcase);
   addr pointer value;
   size int(10) value;
@@ -1351,7 +1404,7 @@ end-pr;
 ////////// rm_s - Create a new string value
 // Create a new string value, up to 30.000 bytes long.
 // A string is character data in utf8 format.
-// Pass 'opt' to set special property (see 'rm_').
+// Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_s pointer extproc(*dclcase);
   value varchar(30000) ccsid(*utf8) const;
   opt int(10) value options(*nopass);
@@ -1360,7 +1413,7 @@ end-pr;
 
 ////////// rm_sb - Create a new string value, from binary
 // Like 'rm_s', but 'value' takes the raw bytes, already in utf8 format.
-// Pass 'opt' to set special property (see 'rm_').
+// Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_sb pointer extproc(*dclcase);
   value varchar(30000) const;
   opt int(10) value options(*nopass);
@@ -1377,7 +1430,7 @@ end-pr;
 // more resources than normal comparisons. Strings must be converted
 // to the job CCSID first before they can be compared using the alternate
 // sort sequence.
-// Pass 'opt' to set special property (see 'rm_').
+// Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_sa pointer extproc(*dclcase);
   value varchar(30000) ccsid(*utf8) const;
   opt int(10) value options(*nopass);
@@ -1385,7 +1438,7 @@ end-pr;
 
 
 ////////// rm_sab - Create a new string value, alt. sort sequence, from binary
-// Pass 'opt' to set special property (see 'rm_').
+// Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_sab pointer extproc(*dclcase);
   value varchar(30000) const;
   opt int(10) value options(*nopass);
@@ -1428,6 +1481,56 @@ end-pr;
 dcl-pr rm_s3_ varchar(10000) ccsid(*utf8) rtnparm extproc(*dclcase);
   value pointer value;
   default varchar(10000) ccsid(*utf8) const options(*nopass);
+end-pr;
+
+
+////////// rm_add_event_handler - Add event handler
+// Add event handler 'hproc' to the list of event handlers registered
+// for 'map', and return 'map'.
+// Events are fired when key/item pairs are inserted into and removed
+// from 'map'. When an event is fired then all event handlers added to
+// the map are called in the reversed order they were added (last one
+// first).
+// Procedure 'hproc' must have the following signature:
+//   rtn type: int(10)
+//   par. 1  : event int(10) value
+//        2  : map   pointer value
+//        3  : key   pointer value
+//        4  : item  pointer value
+//        5  : usrd  pointer value
+// Parameter 'event' is 1 when the "inserted" event has been triggered
+// just after a key/item pair has been inserted, or 2 when the "removed"
+// event has been triggered just before a key/item pair is removed.
+// Parameters 'key' and 'item' is the key/item pair that has been inserted,
+// or is about to be removed. In the latter case the key and value will be
+// removed immediately after all the event handlers have been called. When
+// the key and value are removed they're disposed (unless they're manually
+// disposed maps).
+// Parameter 'map' is the map where the event was fired, 'usrd' is the
+// user data that was optionally passed with parameter 'usrd' when adding
+// the event handler with 'rm_add_event_handler' (or *null if not passed).
+// The handler's return value is ignored.
+// If the same handler is added multiple times it will be called as many 
+// times as it was added.
+// Event handlers are removed with procedure 'rm_remove_event_handler'.
+// If a map is disposed then no event handlers will be called. Use 'rm_rmva'
+// first to remove all key/value pairs and fire events, then dispose the map.
+dcl-pr rm_add_event_handler pointer extproc(*dclcase);
+  map pointer value;
+  hproc pointer(*proc) value;
+  usrd pointer value options(*nopass);
+end-pr;
+
+
+////////// rm_remove_event_handler - Remove event handler
+// Remove event handler 'hproc' from the list of event handlers registered
+// for 'map', and return 'map'.
+// If the handler was added mutiple times then only the last one added
+// is removed. 
+// Do nothing if the handler isn't found.
+dcl-pr rm_remove_event_handler pointer extproc(*dclcase);
+  map pointer value;
+  hproc pointer(*proc) value;
 end-pr;
 
 

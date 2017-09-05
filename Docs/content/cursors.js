@@ -1,6 +1,7 @@
 document.write('\
 \
 <h2 id="cursors">Cursors</h2>\
+<br>\
 <p>\
 Cursors are used to iterate through the key/item pairs of a map. A cursor maintains a current position \
 within the key/item pairs of a map. A cursor must first be created with <a href="#rm_cur"><code>rm_cur</code></a>.\

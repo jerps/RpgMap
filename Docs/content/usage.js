@@ -1,6 +1,7 @@
 document.write('\
 \
 <h1 id="usage">Usage</h1>\
+<br>\
 <p>\
 Using RpgMap is simple. It has no dependencies.<br>\
 Just <a href="#installation">install</a> library RPGMAP.<br>\

@@ -1,6 +1,7 @@
 document.write('\
 \
 <h2 id="cycles">Cycles</h2>\
+<br>\
 <p>\
 When inserting maps into other maps cycles may be created. For example when map1 contains map2 which \
 contains map1 again.\

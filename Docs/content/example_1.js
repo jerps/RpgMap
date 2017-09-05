@@ -1,6 +1,7 @@
 document.write('\
 \
 <h2 id="example_1">Example 1</h2>\
+<br>\
 <p>\
 The following code creates a new map with 3 key/item pairs, where the keys are dates \
 and the items are packed decimals.\
@@ -46,7 +47,7 @@ To retrieve the item with key 2017-05-01 one of the following statements can be 
 <pre class="pcode">\
 x = rm_get(map: rm_d(d\'2017-05-01\') ); // uses only one key, \'*f\'/\'*l\'<br>\
 x = rm__(  map: rm_d(d\'2017-05-01\') ); // may use mutiple keys<br>\
-x = rm__d( map:      d\'2017-05-01\'  ); // "" without wrapping<br>\
+x = rm__d( map:      d\'2017-05-01\'  ); //  "    "    "      " without wrapping<br>\
 </pre>\
 <p>\
 The date value arguments for procedures <a href="#rm_get"><code>rm_get</code></a> and \

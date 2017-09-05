@@ -3,12 +3,12 @@ html {
 }
 
 body {
-  margin: 1% 0% 0% 0%;
+  margin: 1em 0 0 0;
   padding: 0;
 }
 
 p {
-  margin: 2% 1% 1% 1.5%;
+  margin: 1em 0.5em 0.5em 1.7em;
 }
 
 #rpgmap {
@@ -78,7 +78,7 @@ p {
 
 #footer {
   font-family: 'Roboto Mono', monospace;
-  font-size: 0.7em;
+  font-size: 0.8em;
   position: absolute;
   bottom: 0px;
   text-align: right;
@@ -88,18 +88,36 @@ p {
 .navlink1 {
   display: block;
   font-size: 1em;
-  margin-top: 2.5%;
-  margin-bottom: 0%;
-  margin-left: 0%;
-  margin-right: 0%;
+  margin-top: 0.8em;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .navlink2 {
   display: block;
   font-size: 0.8em;
-  margin-top: 0.7%;
-  margin-bottom: 0%;
-  margin-left: 2.5%;
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  margin-left: 1em;
+  margin-right: 0;
+}
+
+.navlink3 {
+  display: block;
+  font-size: 1em;
+  margin-top: 0.8em;
+  margin-bottom: 0;
+  margin-left: 1em;
+  margin-right: 0;
+}
+
+.navlink4 {
+  display: block;
+  font-size: 0.8em;
+  margin-top: 0.6em;
+  margin-bottom: 0;
+  margin-left: 1em;
   margin-right: 0;
 }
 
@@ -109,10 +127,17 @@ p {
   font-weight: bold;
 }
 
+.navprocnm2 {
+  display: inline;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 1em;
+}
+
 .prochdr1 {
   font-family: 'Ubuntu Mono', monospace;
   font-size: 1.3em;
   display: inline;
+  margin: 1em 0em 0em 0.8em;
 }
 
 .prochdr2 {
@@ -122,14 +147,14 @@ p {
 
 .proclongnm {
   font-family: 'Ubuntu Mono', monospace;
-  font-size: 1.1em;
-  margin: 0.3em 0em 0em 1em;
+  font-size: 1em;
+  margin: 0.4em 0em 0em 2.5em;
 }
 
 .procsig {
   font-family: 'Roboto Mono', monospace;
   font-size: 0.8em;
-  margin: 1% 0% 0% 4%;
+  margin: 1em 0em 0em 4em;
   line-height: 110%;
   overflow: hidden;
 }
@@ -142,7 +167,7 @@ code {
 .pcode {
   font-family: 'Roboto Mono', monospace;
   font-size: 0.8em;
-  margin: 0% 0% 0% 4%;
+  margin: 0em 0em 0em 4em;
 }
 
 .console {
@@ -150,20 +175,20 @@ code {
   font-size: 0.8em;
   color: green;
   margin: 0% 0% 0% 10%;
-  line-height: 120%;
+  margin: 0em 0em 0em 6em;
 }
 
 .escmsg1 {
   font-family: 'Roboto Mono', monospace;
   font-size: 0.9em;
   display: inline;
-  margin: 0% 0% 0% 3%;
+  margin: 0em 0em 0em 2em;
 }
 
 .escmsg2 {
   font-size: 0.9em;
   display: inline;
-  margin: 0% 0% 0% 3%;
+  margin: 0em 0em 0em 2em;
 }
 
 ::-moz-selection {
@@ -197,35 +222,17 @@ h1 {
   display: block;
   font-size: 1.5em;
   font-weight: bold;
-  margin: 0;
+  margin: 0
 }
 h2 {
   display: block;
   font-size: 1.1em;
   font-weight: bold;
-  margin: 1em 0 0 0;
+  margin: 2em 0em 0em 0.5em;
 }
 h3 {
   display: block;
-  font-size: 0.9em;
+  font-size: 1em;
   font-weight: bold;
-  margin: 0.8em 0 0 0;
-}
-h4 {
-  display: block;
-  font-size: 0.6em;
-  font-weight: bold;
-  margin: 0;
-}
-h5 {
-  display: block;
-  font-size: 0.6em;
-  font-weight: bold;
-  margin: 0;
-}
-h6 {
-  display: block;
-  font-size: 0.6em;
-  font-weight: bold;
-  margin: 0;
+  margin: 1em 0em 0em 1.3em;
 }

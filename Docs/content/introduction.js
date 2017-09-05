@@ -1,8 +1,9 @@
 document.write('\
 \
 <h1 id="introduction">Introduction</h1>\
+<br>\
 <p>\
-In dynamic languages, for example Java or Python, collection types such as maps/dictionaries, \
+In many languages, such as Java or Python, collection types such as maps/dictionaries, \
 lists, etc, are commonly used. They are the workhorses for in-memory data processing.\
 </p>\
 <p>\
@@ -59,9 +60,6 @@ a long name that is more descriptive.\
 There are some restrictions. Floating point values and zoned decimals are not supported. \
 Character data and strings can not be longer than 30.000 bytes. Integer values can be int(10) \
 or int(20). Packed decimal values can be packed(14:4), packed(28:8) or packed(46:16).\
-</p>\
-<p>\
-Send mail to rpgmap0@gmail.com.\
 </p>\
 \
 ');

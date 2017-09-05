@@ -64,6 +64,12 @@ struct rmb_cursor {
     void* valstruct;
 };
 
+struct rmb_eventh {
+    rmb_event_handler proc;
+    void* usrd;
+    struct rmb_eventh* prev;
+};
+
 /* Compare(a,b) should return 1 if *a > *b, -1 if *a < *b, and 0 otherwise */
 /* DestroyObj(a) takes a pointer to key or item and frees it. The pointer can also */
 /* point to a data structure in "value space" representing a cursor. When a cursor */
@@ -83,6 +89,7 @@ struct rmb_red_blk_tree {
     rmb_red_blk_node* root;
     rmb_red_blk_node* nil;
     rmb_cursor* cursors;
+    rmb_eventh* eventh;
     void* valstruct;
     numkeys_t num;
 };
@@ -112,6 +119,7 @@ rmb_red_blk_tree* RMBTreeCreate( int (*CompFunc) (const void*, const void*,const
   newTree->Compare=CompFunc;
   newTree->DestroyObj=DestObjFunc;
   newTree->cursors=NULL;
+  newTree->eventh=NULL;
   newTree->valstruct=valstruct;
   newTree->num=0;
   
@@ -151,6 +159,25 @@ void* RMBTreeNodeKey(rmb_red_blk_node* n) {
 }
 void* RMBTreeNodeItem(rmb_red_blk_node* n) {
   return n->item;
+}
+
+
+/***********************************************************************/
+/*  FUNCTION:  RMBFireEvent*/
+/**/
+/*    INPUTS:  tree is the tree for which to fire event */
+/**/
+/*    OUTPUT:  none */
+/**/
+/*    Modifies Input: none */
+/**/
+/***********************************************************************/
+static void RMBFireEvent(rmb_red_blk_tree* tree, int event, void* key, void* item) {
+  rmb_eventh* eh = tree->eventh;
+  while (NULL != eh) {
+    eh->proc(event, tree->valstruct, key, item, eh->usrd);
+    eh = eh->prev;
+  }
 }
 
 
@@ -327,7 +354,7 @@ rmb_red_blk_node * RMBTreeInsert(rmb_red_blk_tree* tree, void* key, void* item) 
   rmb_red_blk_node * y;
   rmb_red_blk_node * x;
   rmb_red_blk_node * newNode;
-
+  
   x=(rmb_red_blk_node*) malloc(sizeof(rmb_red_blk_node));
   x->key=key;
   x->item=item;
@@ -372,6 +399,7 @@ rmb_red_blk_node * RMBTreeInsert(rmb_red_blk_tree* tree, void* key, void* item) 
   }
   tree->root->left->red=0;
   tree->num++;
+  RMBFireEvent(tree, 1, key, item);
   return(newNode);
 
 #ifdef DEBUG_ASSERT
@@ -500,6 +528,12 @@ void RMBTreeDispose(rmb_red_blk_tree* tree) {
     c = c->next;
     free(x);
   }
+  rmb_eventh* eh = tree->eventh;
+  while (NULL != eh) {
+    rmb_eventh* x = eh;
+    eh = eh->prev;
+    free(x);
+  }
   free(tree);
 }
 
@@ -614,6 +648,8 @@ void RMBTreeRmv(rmb_red_blk_tree* tree, rmb_red_blk_node* z){
   rmb_red_blk_node* root=tree->root;
   rmb_red_blk_node* zp = NULL;
   rmb_red_blk_node* zs = NULL;
+
+  RMBFireEvent(tree, 2, z->key, z->item);
 
   rmb_cursor* c = tree->cursors;
   while (NULL != c) {
@@ -1097,4 +1133,50 @@ int RMBCursorReadNxtPrv2(rmb_cursor* cursor, int nxtprv, void* key1, void* key2,
   cursor->node = n;
   cursor->pos = 0 == nxtprv ? 1 : 0;
   return 1;
+}
+
+
+/***********************************************************************/
+/*  FUNCTION:  RMBAddEventh */
+/**/
+/*    INPUTS:  tree is the tree to which to add eh */
+/**/
+/*    OUTPUT:  none */
+/**/
+/*    Modifies Input: tree */
+/**/
+/***********************************************************************/
+void RMBAddEventh(rmb_red_blk_tree* tree, rmb_event_handler proc, void* usrd) {
+  rmb_eventh* eh = (rmb_eventh*) malloc(sizeof(rmb_eventh));
+  eh->proc = proc;
+  eh->usrd = usrd;
+  eh->prev = tree->eventh;
+  tree->eventh = eh;
+}
+
+
+/***********************************************************************/
+/*  FUNCTION:  RMBRmvEventh */
+/**/
+/*    INPUTS:  tree is the tree from which to remove eh */
+/**/
+/*    OUTPUT:  none */
+/**/
+/*    Modifies Input: tree */
+/**/
+/***********************************************************************/
+void RMBRmvEventh(rmb_red_blk_tree* tree, rmb_event_handler proc) {
+  rmb_eventh* eh = tree->eventh;
+  rmb_eventh* p = NULL;
+  while (NULL != eh && eh->proc != proc) {
+    p = eh;
+    eh = eh->prev;
+  }
+  if (NULL == eh)
+    return;
+  if (NULL == p)
+    tree->eventh = eh->prev;
+  else
+    p->prev = eh->prev;
+  free(eh);
 }

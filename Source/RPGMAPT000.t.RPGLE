@@ -9,21 +9,7 @@ ctl-opt main(Main) ccsid(*exact) bnddir('_TLIB_/RPGMAP');
 dcl-proc Main;
 
   dcl-s m pointer;
-  dcl-s m2 pointer;
   dcl-s c pointer;
-  dcl-s c2 pointer;
-  dcl-s pos ind;
-  dcl-s k pointer;
-  dcl-s i pointer;
-  dcl-s x int(10);
-  dcl-s y int(10);
-  dcl-s z int(10);
-  dcl-s t varchar(500);
-  dcl-s fd int(10);
-  dcl-s path char(100);
-  dcl-s buf char(1000);
-  dcl-s word varchar(100);
-  dcl-s ch char(1);
   dcl-s sum packed(30:4);
   
   m = rm_m(

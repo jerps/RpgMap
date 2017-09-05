@@ -8,7 +8,7 @@ opt   int(10) value options(*nopass)<br>\
 </pre>\
 <p>\
 Create a new integer value, with 10 digits.<br>\
-Pass <code>opt</code> to set special property (see <a href="#rm_"><code>rm_</code></a>).\
+Pass <code>opt</code> to set special property or user data (see <a href="#rm_"><code>rm_</code></a>).\
 </p>\
 \
 ');

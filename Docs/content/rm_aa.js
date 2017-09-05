@@ -14,7 +14,7 @@ sort sequence, instead of the default. Which sort sequence that is depends on \
 the build options that were used, but usually it is <code>*langidshr</code>.<br>\
 Comparing data using an alternate sort sequence may take more resources than \
 when the default sort sequence is used.<br>\
-Pass <code>opt</code> to set special property (see <a href="#rm_"><code>rm_</code></a>).\
+Pass <code>opt</code> to set special property or user data (see <a href="#rm_"><code>rm_</code></a>).\
 </p>\
 \
 ');

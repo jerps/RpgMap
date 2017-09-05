@@ -22,15 +22,18 @@
   </div>
   <div id="version">
     <br>
-    V 2017.2.1
+    V2017.3
   </div>
   <div id="container">
     <div id="navigation">
+      <div class="navlink1"><a id="_notice" href="#notice">Notice</a></div>
+      <div class="navlink2"><br></div>
       <div class="navlink1"><a id="_introduction" href="#introduction">Introduction</a></div>
       <div class="navlink2"><a id="_examples" href="#examples">Examples</a></div>
       <div class="navlink2"><a id="_example_1" href="#example_1">Example 1</a></div>
       <div class="navlink2"><a id="_example_2" href="#example_2">Example 2</a></div>
       <div class="navlink2"><a id="_example_3" href="#example_3">Example 3</a></div>
+      <div class="navlink2"><br></div>
       <div class="navlink1"><a id="_usage" href="#usage">Usage</a></div>
       <div class="navlink2"><a id="_valmap" href="#valmap">Values and Maps</a></div>
       <div class="navlink2"><a id="_memmgt" href="#memmgt">Memory Management</a></div>
@@ -40,12 +43,16 @@
       <div class="navlink2"><a id="_cycles" href="#cycles">Cycles</a></div>
       <div class="navlink2"><a id="_escmsgs" href="#escmsgs">Escape Msgs</a></div>
       <div class="navlink2"><a id="_longprnms" href="#longprnms">Short And Long Procedure Names</a></div>
+      <div class="navlink2"><br></div>
       <div class="navlink1"><a id="_installation" href="#installation">Installation</a></div>
+      <div class="navlink2"><br></div>
       <div class="navlink1"><a id="_api" href="#api">API</a></div>
+      <div class="navlink2"><br></div>
       <div class="navlink2"><a id="_rm_m" href="#rm_m"><pre class="navprocnm">rm_m     </pre>Create a new map, automatically disposed</a></div>
       <div class="navlink2"><a id="_rm_mm" href="#rm_mm"><pre class="navprocnm">rm_mm    </pre>Create a new map, manually disposed</a></div>
       <div class="navlink2"><a id="_rm_v" href="#rm_v"><pre class="navprocnm">rm_v     </pre>Create a new vector, automatically disposed</a></div>
       <div class="navlink2"><a id="_rm_ism" href="#rm_ism"><pre class="navprocnm">rm_ism   </pre>Is map?</a></div>
+      <div class="navlink2"><a id="_rm_ismm" href="#rm_ismm"><pre class="navprocnm">rm_ismm  </pre>Is manually disposed map?</a></div>
       <div class="navlink2"><a id="_rm_isv" href="#rm_isv"><pre class="navprocnm">rm_isv   </pre>Is vector?</a></div>
       <div class="navlink2"><a id="_rm_dis" href="#rm_dis"><pre class="navprocnm">rm_dis   </pre>Dispose maps, cursors and values</a></div>
       <div class="navlink2"><a id="_rm_ins" href="#rm_ins"><pre class="navprocnm">rm_ins   </pre>Insert key/item pairs</a></div>
@@ -103,8 +110,10 @@
       <div class="navlink2"><a id="_rm_fedr" href="#rm_fedr"><pre class="navprocnm">rm_fedr  </pre>For each do, reversed</a></div>
       <div class="navlink2"><a id="_rm_scf" href="#rm_scf"><pre class="navprocnm">rm_scf   </pre>Set compare function</a></div>
       <div class="navlink2"><a id="_rm_gcf" href="#rm_gcf"><pre class="navprocnm">rm_gcf   </pre>Get compare function</a></div>
-      <div class="navlink2"><a id="_rm_sav" href="#rm_sav"><pre class="navprocnm">rm_sav   </pre>Set attribute value</a></div>
+      <div class="navlink2"><a id="_rm_sav" href="#rm_sav"><pre class="navprocnm">rm_sav   </pre>Set attribute values</a></div>
       <div class="navlink2"><a id="_rm_gav" href="#rm_gav"><pre class="navprocnm">rm_gav   </pre>Get attribute value</a></div>
+      <div class="navlink2"><a id="_rm_usrd" href="#rm_usrd"><pre class="navprocnm">rm_usrd  </pre>Return user data</a></div>
+      <div class="navlink2"><br></div>
       <div class="navlink2"><a id="_rm_i" href="#rm_i"><pre class="navprocnm">rm_i     </pre>Create a new integer value, 10 digits</a></div>
       <div class="navlink2"><a id="_rm_i1" href="#rm_i1"><pre class="navprocnm">rm_i1    </pre>Create a new integer value, 10 digits</a></div>
       <div class="navlink2"><a id="_rm_i2" href="#rm_i2"><pre class="navprocnm">rm_i2    </pre>Create a new integer value, 20 digits</a></div>
@@ -164,17 +173,24 @@
       <div class="navlink2"><a id="_rm_s1_" href="#rm_s1_"><pre class="navprocnm">rm_s1_   </pre>Convert string to RPG utf8 character data (100)</a></div>
       <div class="navlink2"><a id="_rm_s2_" href="#rm_s2_"><pre class="navprocnm">rm_s2_   </pre>Convert string to RPG utf8 character data (1000)</a></div>
       <div class="navlink2"><a id="_rm_s3_" href="#rm_s3_"><pre class="navprocnm">rm_s3_   </pre>Convert string to RPG utf8 character data (10000)</a></div>
-      <br>
+      <div class="navlink2"><br></div>
+      <div class="navlink3"><a id="_rm_add_event_handler" href="#rm_add_event_handler"><div class="navprocnm2">rm_add_event_handler</div></a><br>
+      <div class="navlink4">Add an event handler to a map</div></div>
+      <div class="navlink3"><a id="_rm_remove_event_handler" href="#rm_remove_event_handler"><div class="navprocnm2">rm_remove_event_handler</div></a><br>
+      <div class="navlink4">Remove an event handler from a map</div></div>
+      <br><br>
       <hr>
       <div style="height:100vh;"></div>
     </div>
     <div id="content">
+      <script src="content/notice.js"></script><br>
+      <br><br><br><br>
       <script src="content/introduction.js"></script><br>
       <script src="content/examples.js"></script><br>
       <script src="content/example_1.js"></script><br>
       <script src="content/example_2.js"></script><br>
       <script src="content/example_3.js"></script><br>
-      <br><br>
+      <br><br><br><br>
       <script src="content/usage.js"></script><br>
       <script src="content/valmap.js"></script><br>
       <script src="content/memmgt.js"></script><br>
@@ -184,14 +200,16 @@
       <script src="content/cycles.js"></script><br>
       <script src="content/escmsgs.js"></script><br>
       <script src="content/longprnms.js"></script><br>
-      <br><br>
+      <br><br><br><br>
       <script src="content/installation.js"></script><br>
-      <br><br>
+      <br><br><br><br>
       <script src="content/api.js"></script><br>
+      <br><br>
       <script src="content/rm_m.js"></script><br>
       <script src="content/rm_mm.js"></script><br>
       <script src="content/rm_v.js"></script><br>
       <script src="content/rm_ism.js"></script><br>
+      <script src="content/rm_ismm.js"></script><br>
       <script src="content/rm_isv.js"></script><br>
       <script src="content/rm_dis.js"></script><br>
       <script src="content/rm_ins.js"></script><br>
@@ -251,6 +269,8 @@
       <script src="content/rm_gcf.js"></script><br>
       <script src="content/rm_sav.js"></script><br>
       <script src="content/rm_gav.js"></script><br>
+      <script src="content/rm_usrd.js"></script><br>
+      <br><br>
       <script src="content/rm_i.js"></script><br>
       <script src="content/rm_i1.js"></script><br>
       <script src="content/rm_i2.js"></script><br>
@@ -310,6 +330,9 @@
       <script src="content/rm_s1_.js"></script><br>
       <script src="content/rm_s2_.js"></script><br>
       <script src="content/rm_s3_.js"></script><br>
+      <br><br>
+      <script src="content/rm_add_event_handler.js"></script><br>
+      <script src="content/rm_remove_event_handler.js"></script><br>
       <br><br>
       <hr>
       <div id="-" style="height:100vh;"></div>

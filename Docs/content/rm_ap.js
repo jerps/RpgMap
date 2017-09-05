@@ -12,7 +12,7 @@ Like <a href="#rm_a"><code>rm_a</code></a>, but the data is taken from a pointer
 The size must be between 1 and 30.000.<br>\
 The passed number of bytes (<code>size</code>) are copied from the address to which \
 the pointer (<code>addr</code>) points.<br>\
-Pass <code>opt</code> to set special property (see <a href="#rm_"><code>rm_</code></a>).\
+Pass <code>opt</code> to set special property or user data (see <a href="#rm_"><code>rm_</code></a>).\
 </p>\
 \
 ');

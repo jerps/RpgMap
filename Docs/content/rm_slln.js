@@ -5,7 +5,7 @@ document.write('\
 <pre class="procsig">\
 &lt;&lt;ind<br>\
 cur  pointer value<br>\
-pos  ind<br>\
+pos  ind           options(*nopass:*omit)<br>\
 key1 pointer value options(*nopass)<br>\
 key2 pointer value options(*nopass)<br>\
 </pre>\
@@ -36,6 +36,10 @@ dow rm_slln(cur:pos:rm_d(d\'2017-01-01\')); // \'pos\' is set to *off<br>\
 enddo;<br>\
 </pre>\
 <p>\
+If <code>pos</code> is not passed or is *OMITted then the procedure behaves as if \
+<code>pos</code> would be passed with value <code>*on</code> which can be used to only position \
+the cursor and read the next key/item pair in one call without having \
+to provide an indicator field.<br>\
 This procedure disposes <code>key1</code> and <code>key2</code> automatically, unless \
 <code>key1</code>/<code>key2</code> is a manually disposed map, or a value/map contained \
 in a map.\

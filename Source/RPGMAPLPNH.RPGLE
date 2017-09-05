@@ -200,14 +200,14 @@ end-pr;
 
 dcl-pr rm_setll_read_next ind extproc(*dclcase);
   cur pointer value;
-  pos ind;
+  pos ind options(*nopass:*omit);
   key1 pointer value options(*nopass);
   key2 pointer value options(*nopass);
 end-pr;
 
 dcl-pr rm_setgt_read_prev ind extproc(*dclcase);
   cur pointer value;
-  pos ind;
+  pos ind options(*nopass:*omit);
   key1 pointer value options(*nopass);
   key2 pointer value options(*nopass);
 end-pr;
@@ -251,11 +251,14 @@ end-pr;
 
 dcl-pr rm_set_attr_val pointer extproc(*dclcase);
   map pointer value;
-  attr varchar(100) ccsid(*utf8) value options(*nopass);
-  value varchar(100) ccsid(*utf8) value options(*nopass);
+/include _TLIB_/INCLUDERPG,RPGMAPI064
 end-pr;
 
 dcl-pr rm_get_attr_val varchar(100) ccsid(*utf8) extproc(*dclcase);
   map pointer value;
   attr varchar(100) ccsid(*utf8) value;
+end-pr;
+
+dcl-pr rm_user_data int(10) extproc(*dclcase);
+  obj pointer value;
 end-pr;
