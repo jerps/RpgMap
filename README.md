@@ -3,11 +3,17 @@
 RpgMap implements a versatile in-memory ordered key/value store, like a Java TreeMap or
 an associative array, for use with the RPG programming language.
 
->## [Docs](http://jerps.nl/RpgMap/Docs/index.html)
+>## [Docs](http://erps.me/RpgMap/Docs/index.html)
 
 <br>
 
 ## Changes
+
+<br>
+
+* 1.1.0 (dec 2017)
+  
+  * Start with semver versioning scheme.
 
 <br>
 
