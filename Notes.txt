@@ -1,8 +1,19 @@
+
+2017/12/05
+
+1.1.0
+Minor changes.
+Adopted semver versioning scheme, starting with 1.1.0.
+
+
+---------
+
+
 2017/09/06
 
 V2017.3
 Fixed:
-Bug which caused procedure <code>rm_isv</code> to return *on for a normal map.
+Bug which caused procedure rm_isv to return *on for a normal map.
 
 
 ---------
