@@ -11,7 +11,7 @@ an associative array, for use with the RPG programming language.
 
 <br>
 
-* 1.1.0 (dec 2017)
+* v1.1.0 (dec 2017)
   
   * Start with semver versioning scheme.
 
