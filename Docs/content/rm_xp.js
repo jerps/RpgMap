@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_xp"><div class="prochdr1">rm_xp</div><div class="prochdr2"> - Create a new procedure pointer value</div></div>\
+<div id="rm_xp"><div class="prochdr1">rm_xp</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Create a new procedure pointer value</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 value pointer(*proc) value<br>\

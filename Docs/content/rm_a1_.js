@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_a1_"><div class="prochdr1">rm_a1_</div><div class="prochdr2"> - Convert character data to RPG character data (100)</div></div>\
+<div id="rm_a1_"><div class="prochdr1">rm_a1_</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Convert character data to RPG character data (100)</div></div>\
 <pre class="procsig">\
 &lt;&lt;varchar(100)<br>\
 value   pointer      value<br>\

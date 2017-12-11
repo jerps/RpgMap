@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_sgtp"><div class="prochdr1">rm_sgtp</div><div class="prochdr2"> - Set greater than, read previous</div></div>\
+<div id="rm_sgtp"><div class="prochdr1">rm_sgtp</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Set greater than, read previous</div></div>\
 <pre class="proclongnm">rm_setgt_read_prev</pre>\
 <pre class="procsig">\
 &lt;&lt;ind<br>\

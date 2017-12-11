@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_isp"><div class="prochdr1">rm_isp</div><div class="prochdr2"> - Is any packed decimal?</div></div>\
+<div id="rm_isp"><div class="prochdr1">rm_isp</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Is any packed decimal?</div></div>\
 <pre class="procsig">\
 &lt;&lt;ind<br>\
 obj pointer value<br>\

@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_sb"><div class="prochdr1">rm_sb</div><div class="prochdr2"> - Create a new string value, from binary</div></div>\
+<div id="rm_sb"><div class="prochdr1">rm_sb</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Create a new string value, from binary</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 value varchar(30000) const<br>\

@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_rdp"><div class="prochdr1">rm_rdp</div><div class="prochdr2"> - Read previous key/item pair</div></div>\
+<div id="rm_rdp"><div class="prochdr1">rm_rdp</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Read previous key/item pair</div></div>\
 <pre class="proclongnm">rm_read_prev</pre>\
 <pre class="procsig">\
 &lt;&lt;ind<br>\

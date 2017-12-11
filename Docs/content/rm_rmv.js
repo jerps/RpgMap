@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_rmv"><div class="prochdr1">rm_rmv</div><div class="prochdr2"> - Remove key/item pair</div></div>\
+<div id="rm_rmv"><div class="prochdr1">rm_rmv</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Remove key/item pair</div></div>\
 <pre class="proclongnm">rm_remove</pre>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\

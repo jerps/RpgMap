@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_hky"><div class="prochdr1">rm_hky</div><div class="prochdr2"> - Has key?</div></div>\
+<div id="rm_hky"><div class="prochdr1">rm_hky</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Has key?</div></div>\
 <pre class="proclongnm">rm_has_key</pre>\
 <pre class="procsig">\
 &lt;&lt;ind<br>\

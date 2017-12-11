@@ -342,6 +342,7 @@
     <a href="http://erps.me">Copyright (c) 2017 John Erps</a>
   </div>
 <script>
+  var apipfx = "rm_"; /* <<<<<<<!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
   var scrolled = false;
   var animatedScroll = false;
   var lastAnimatedScroll = false;  
@@ -457,7 +458,7 @@
         cel.animate({scrollTop: y});
       } else {
         z = 0;
-        if (el.attr("id").length > 2 && el.attr("id").substring(0,3) == "rm_") {
+        if (el.attr("id").length > 2 && el.attr("id").substring(0,3) == apipfx) {
           el2 = el.next();
           while (el2.length > 0) {
             if (el2.prop("tagName") == "P")

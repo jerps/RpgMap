@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_usrd"><div class="prochdr1">rm_usrd</div><div class="prochdr2"> - Return user data</div></div>\
+<div id="rm_usrd"><div class="prochdr1">rm_usrd</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Return user data</div></div>\
 <pre class="proclongnm">rm_user_data</pre>\
 <pre class="procsig">\
 &lt;&lt;int(10)<br>\

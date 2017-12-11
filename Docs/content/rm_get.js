@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_get"><div class="prochdr1">rm_get</div><div class="prochdr2"> - Retrieve item with a key</div></div>\
+<div id="rm_get"><div class="prochdr1">rm_get</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Retrieve item with a key</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 map pointer  value<br>\

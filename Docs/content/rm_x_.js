@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_x_"><div class="prochdr1">rm_x_</div><div class="prochdr2"> - Convert a pointer to an RPG pointer value</div></div>\
+<div id="rm_x_"><div class="prochdr1">rm_x_</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Convert a pointer to an RPG pointer value</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 value   pointer value<br>\

@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_z_"><div class="prochdr1">rm_z_</div><div class="prochdr2"> - Convert a date/timestamp to an RPG timestamp value</div></div>\
+<div id="rm_z_"><div class="prochdr1">rm_z_</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Convert a date/timestamp to an RPG timestamp value</div></div>\
 <pre class="procsig">\
 &lt;&lt;timestamp<br>\
 value   pointer   value<br>\

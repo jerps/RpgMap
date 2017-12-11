@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_scf"><div class="prochdr1">rm_scf</div><div class="prochdr2"> - Set compare function</div></div>\
+<div id="rm_scf"><div class="prochdr1">rm_scf</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Set compare function</div></div>\
 <pre class="proclongnm">rm_set_comp_fun</pre>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\

@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_nit"><div class="prochdr1">rm_nit</div><div class="prochdr2"> - Number of items</div></div>\
+<div id="rm_nit"><div class="prochdr1">rm_nit</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Number of items</div></div>\
 <pre class="proclongnm">rm_num_items</pre>\
 <pre class="procsig">\
 &lt;&lt;uns(20)<br>\

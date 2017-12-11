@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_remove_event_handler"><div class="prochdr1">rm_remove_event_handler</div><div class="prochdr2"> - Remove event handler</div></div>\
+<div id="rm_remove_event_handler"><div class="prochdr1">rm_remove_event_handler</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Remove event handler</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 map   pointer        value<br>\

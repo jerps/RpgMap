@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_"><div class="prochdr1">rm_</div><div class="prochdr2"> - Set special property</div></div>\
+<div id="rm_"><div class="prochdr1">rm_</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Set special property</div></div>\
 <pre class="proclongnm">rm_set_prop</pre>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
@@ -11,13 +11,13 @@ opt int(10) value options(*nopass)<br>\
 Set the special property specified with <code>opt</code> for <code>obj</code>, which is a map or \
 a value, and return <code>obj</code>.<br>\
 <br>\
-&nbsp;opt:<br>\
-&nbsp;&nbsp;&nbsp; 0: reversed order,<br>\
-&nbsp;&nbsp;&nbsp; 1: case insensitive order,<br>\
-&nbsp;&nbsp;&nbsp; 2: both,<br>\
-&nbsp;&nbsp;&nbsp;-1 .. -65000: user data (an integer between 1 and 65.000),<br>\
-&nbsp;&nbsp;90: clear reversed order &amp; case insensitive order,<br>\
-&nbsp;&nbsp;91: clear user data.<br>\
+&nbsp;<code>opt</code>:<br>\
+&nbsp;&nbsp;&nbsp; <code>0</code>: reversed order,<br>\
+&nbsp;&nbsp;&nbsp; <code>1</code>: case insensitive order,<br>\
+&nbsp;&nbsp;&nbsp; <code>2</code>: both,<br>\
+&nbsp;&nbsp;&nbsp;<code>-1</code> .. <code>-65000</code>: user data (a positive integer between 1 and 65.000),<br>\
+&nbsp;&nbsp;<code>90</code>: clear reversed order &amp; case insensitive order,<br>\
+&nbsp;&nbsp;<code>91</code>: clear user data.<br>\
 <br>\
 If <code>opt</code> is not passed then 0 is assumed.<br>\
 Some properties are not supported for some types.<br>\

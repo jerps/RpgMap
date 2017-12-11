@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_xp_"><div class="prochdr1">rm_xp_</div><div class="prochdr2"> - Convert a procedure pointer to an RPG procedure pointer value</div></div>\
+<div id="rm_xp_"><div class="prochdr1">rm_xp_</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Convert a procedure pointer to an RPG procedure pointer value</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer(*proc)<br>\
 value   pointer        value<br>\

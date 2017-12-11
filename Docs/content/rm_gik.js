@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_gik"><div class="prochdr1">rm_gik</div><div class="prochdr2"> - Get item key</div></div>\
+<div id="rm_gik"><div class="prochdr1">rm_gik</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Get item key</div></div>\
 <pre class="proclongnm">rm_get_item_key</pre>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\

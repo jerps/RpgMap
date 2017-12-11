@@ -3,10 +3,10 @@ document.write('\
 <h2 id="memmgt">Memory Management</h2>\
 <br>\
 <p>\
-Values are created, and inserted into maps as keys and items, and/or used as arguments \
+Values are created and inserted into maps as keys and items, and/or used as arguments \
 such as keys. They must be disposed (to free the memory used) when they\'re not used \
-anymore. Procedure <a href="#rm_dis"><code>rm_dis</code></a> must be used to dispose \
-values, maps and cursors.\
+anymore. Procedure <a href="#rm_dis"><code>rm_dis</code></a> must be used to explicitly \
+dispose values, maps and cursors.\
 </p>\
 <p>\
 Values are almost always automatically disposed. That means that when they\'re inserted in \

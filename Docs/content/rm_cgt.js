@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_cgt"><div class="prochdr1">rm_cgt</div><div class="prochdr2"> - obj1 > obj2 ?</div></div>\
+<div id="rm_cgt"><div class="prochdr1">rm_cgt</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;obj1 > obj2 ?</div></div>\
 <pre class="proclongnm">rm_compare_gt</pre>\
 <pre class="procsig">\
 &lt;&lt;ind<br>\

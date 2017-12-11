@@ -3,18 +3,18 @@ html {
 }
 
 body {
-  margin: 1em 0 0 0;
+  margin: 0.2rem 0 0 0;
   padding: 0;
 }
 
 p {
-  margin: 1em 0.5em 0.5em 1.7em;
+  margin: 1rem 0.5rem 0.5rem 1.7rem;
 }
 
 #rpgmap {
   font-family: 'Ubuntu Mono', monospace;
   font-weight: bold;
-  font-size: 2.0em;
+  font-size: 2rem;
   font-style: italic;
   color: rgba(150, 50, 150, 1);
   display: inline;
@@ -24,7 +24,7 @@ p {
 
 #docs {
   font-family: 'Roboto Mono', monospace;
-  font-size: 1.4em;
+  font-size: 1.4rem;
   display: inline;
   cursor:pointer;
 }
@@ -33,16 +33,22 @@ p {
   #docs {
     visibility: hidden;
   }
+  #rpgmap {
+    font-size: 1.5rem;
+  }
 }
 @media all and (min-width: 751px) {
   #docs {
     visibility: visible;
   }
+  #rpgmap {
+    font-size: 2rem;
+  }
 }
 
 #version {
   font-family: 'Roboto', sans-serif;
-  font-size: 1em;
+  font-size: 1rem;
   float: right;
   display: inline;
   padding: 0% 3% 1% 3%;
@@ -50,7 +56,7 @@ p {
 
 #container {
   font-family: 'Roboto', sans-serif;
-  font-size: 1em;
+  font-size: 1rem;
 }
 
 #navigation {
@@ -60,17 +66,17 @@ p {
   overflow-y: scroll;
   padding: 1.5% 1% 0% 1%;
   margin: 1% 0% 0% 1.8%;
-  top: 7%;
-  border-top: 4px solid rgba(255, 220, 200, 0.5);  
+  top: 5%;
+  border-top: 4px solid rgba(200, 150, 200, 0.3);  
 }
 
 #content {
   position: fixed;
   height: 90vh;
   overflow-y: scroll;
-  border-left: 4px solid rgba(255, 220, 200, 0.5);
+  border-left: 4px solid rgba(200, 150, 200, 0.3);
   width: 60%;
-  top: 3%;
+  top: 1%;
   padding: 5% 3% 1.5% 3%;
   right: 0px;
   line-height: 130%;
@@ -78,7 +84,7 @@ p {
 
 #footer {
   font-family: 'Roboto Mono', monospace;
-  font-size: 0.6em;
+  font-size: 0.6rem;
   position: absolute;
   bottom: 0px;
   text-align: right;
@@ -87,8 +93,8 @@ p {
 
 .navlink1 {
   display: block;
-  font-size: 1em;
-  margin-top: 0.8em;
+  font-size: 1rem;
+  margin-top: 0.8rem;
   margin-bottom: 0;
   margin-left: 0;
   margin-right: 0;
@@ -96,28 +102,28 @@ p {
 
 .navlink2 {
   display: block;
-  font-size: 0.8em;
-  margin-top: 0.5em;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
   margin-bottom: 0;
-  margin-left: 1em;
+  margin-left: 1rem;
   margin-right: 0;
 }
 
 .navlink3 {
   display: block;
-  font-size: 1em;
-  margin-top: 0.8em;
+  font-size: 1rem;
+  margin-top: 0.8rem;
   margin-bottom: 0;
-  margin-left: 1em;
+  margin-left: 1rem;
   margin-right: 0;
 }
 
 .navlink4 {
   display: block;
-  font-size: 0.8em;
-  margin-top: 0.6em;
+  font-size: 0.8rem;
+  margin-top: 0.6rem;
   margin-bottom: 0;
-  margin-left: 1em;
+  margin-left: 1rem;
   margin-right: 0;
 }
 
@@ -130,31 +136,37 @@ p {
 .navprocnm2 {
   display: inline;
   font-family: 'Ubuntu Mono', monospace;
-  font-size: 1em;
+  font-size: 1rem;
 }
 
 .prochdr1 {
   font-family: 'Ubuntu Mono', monospace;
-  font-size: 1.3em;
+  font-size: 1.3rem;
   display: inline;
-  margin: 1em 0em 0em 0.8em;
+  margin: 1rem 0rem 0rem 0.8rem;
 }
 
 .prochdr2 {
-  font-size: 1.1em;
+  font-size: 1.1rem;
+  display: inline;
+}
+
+.prochsep {
+  font-size: 1rem;
+  color: red;
   display: inline;
 }
 
 .proclongnm {
   font-family: 'Ubuntu Mono', monospace;
-  font-size: 1em;
-  margin: 0.4em 0em 0em 2.5em;
+  font-size: 1rem;
+  margin: 0.4rem 0rem 0rem 2.5rem;
 }
 
 .procsig {
   font-family: 'Roboto Mono', monospace;
-  font-size: 0.8em;
-  margin: 1em 0em 0em 4em;
+  font-size: 0.8rem;
+  margin: 1rem 0rem 0rem 4rem;
   line-height: 110%;
   overflow: hidden;
 }
@@ -167,38 +179,33 @@ code {
 
 .pcode {
   font-family: 'Roboto Mono', monospace;
-  font-size: 0.8em;
-  margin: 0em 0em 0em 4em;
+  font-size: 0.8rem;
+  margin: 0rem 0rem 0rem 4rem;
 }
 
 .console {
   font-family: 'Roboto Mono', monospace;
-  font-size: 0.8em;
+  font-size: 0.8rem;
   color: green;
   margin: 0% 0% 0% 10%;
-  margin: 0em 0em 0em 6em;
+  margin: 0rem 0rem 0rem 6rem;
 }
 
 .escmsg1 {
   font-family: 'Roboto Mono', monospace;
-  font-size: 0.9em;
+  font-size: 0.9rem;
   display: inline;
-  margin: 0em 0em 0em 2em;
+  margin: 0rem 0rem 0rem 2rem;
 }
 
 .escmsg2 {
-  font-size: 0.9em;
+  font-size: 0.9rem;
   display: inline;
-  margin: 0em 0em 0em 2em;
-}
-
-::-moz-selection {
-  background-color: rgba(255, 220, 200, 0.5);
-  text-shadow: none;
+  margin: 0rem 0rem 0rem 2rem;
 }
 
 ::selection {
-  background-color: rgba(255, 220, 200, 0.5);
+  background-color: rgba(200, 150, 200, 0.3);
   text-shadow: none;
 }
 
@@ -221,19 +228,19 @@ a:visited {
 }
 h1 {
   display: block;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   font-weight: bold;
   margin: 0
 }
 h2 {
   display: block;
-  font-size: 1.1em;
+  font-size: 1.1rem;
   font-weight: bold;
-  margin: 2em 0em 0em 0.5em;
+  margin: 2rem 0rem 0rem 0.5rem;
 }
 h3 {
   display: block;
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: bold;
-  margin: 1em 0em 0em 1.3em;
+  margin: 1rem 0rem 0rem 1.3rem;
 }

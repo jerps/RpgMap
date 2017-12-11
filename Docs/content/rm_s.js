@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_s"><div class="prochdr1">rm_s</div><div class="prochdr2"> - Create a new string value</div></div>\
+<div id="rm_s"><div class="prochdr1">rm_s</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Create a new string value</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 value varchar(30000) ccsid(*utf8) const<br>\

@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_sll"><div class="prochdr1">rm_sll</div><div class="prochdr2"> - Set lower limit</div></div>\
+<div id="rm_sll"><div class="prochdr1">rm_sll</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Set lower limit</div></div>\
 <pre class="proclongnm">rm_setll</pre>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\

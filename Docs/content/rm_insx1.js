@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_insx1"><div class="prochdr1">rm_insx1</div><div class="prochdr2"> - Insert 1 key/item pair, exclusive</div></div>\
+<div id="rm_insx1"><div class="prochdr1">rm_insx1</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Insert 1 key/item pair, exclusive</div></div>\
 <pre class="proclongnm">rm_insert_excl_1</pre>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\

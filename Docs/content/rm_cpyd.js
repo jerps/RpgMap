@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_cpyd"><div class="prochdr1">rm_cpyd</div><div class="prochdr2"> - Deep copy map or value</div></div>\
+<div id="rm_cpyd"><div class="prochdr1">rm_cpyd</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Deep copy map or value</div></div>\
 <pre class="proclongnm">rm_copy_deep</pre>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\

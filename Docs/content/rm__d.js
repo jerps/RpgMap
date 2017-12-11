@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm__d"><div class="prochdr1">rm__d</div><div class="prochdr2"> - Retrieve item with one or more date keys</div></div>\
+<div id="rm__d"><div class="prochdr1">rm__d</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Retrieve item with one or more date keys</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 map pointer value<br>\

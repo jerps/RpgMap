@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_isd"><div class="prochdr1">rm_isd</div><div class="prochdr2"> - Is date?</div></div>\
+<div id="rm_isd"><div class="prochdr1">rm_isd</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Is date?</div></div>\
 <pre class="procsig">\
 &lt;&lt;ind<br>\
 obj pointer value<br>\

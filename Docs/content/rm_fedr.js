@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_fedr"><div class="prochdr1">rm_fedr</div><div class="prochdr2"> - For each do, reversed</div></div>\
+<div id="rm_fedr"><div class="prochdr1">rm_fedr</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;For each do, reversed</div></div>\
 <pre class="proclongnm">rm_for_each_do_rev</pre>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\

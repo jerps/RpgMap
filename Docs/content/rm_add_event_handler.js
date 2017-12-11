@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_add_event_handler"><div class="prochdr1">rm_add_event_handler</div><div class="prochdr2"> - Add event handler</div></div>\
+<div id="rm_add_event_handler"><div class="prochdr1">rm_add_event_handler</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Add event handler</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 map   pointer        value<br>\

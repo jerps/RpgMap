@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_slln"><div class="prochdr1">rm_slln</div><div class="prochdr2"> - Set lower limit, read next</div></div>\
+<div id="rm_slln"><div class="prochdr1">rm_slln</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Set lower limit, read next</div></div>\
 <pre class="proclongnm">rm_setll_read_next</pre>\
 <pre class="procsig">\
 &lt;&lt;ind<br>\

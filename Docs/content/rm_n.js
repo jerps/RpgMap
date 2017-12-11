@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_n"><div class="prochdr1">rm_n</div><div class="prochdr2"> - Create a new indicator value</div></div>\
+<div id="rm_n"><div class="prochdr1">rm_n</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Create a new indicator value</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 value ind     value<br>\

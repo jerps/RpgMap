@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_p1"><div class="prochdr1">rm_p1</div><div class="prochdr2"> - Create a new packed decimal value, 10.4 digits</div></div>\
+<div id="rm_p1"><div class="prochdr1">rm_p1</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Create a new packed decimal value, 10.4 digits</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 value packed(14:4) value<br>\

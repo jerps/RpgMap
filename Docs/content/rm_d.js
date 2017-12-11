@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_d"><div class="prochdr1">rm_d</div><div class="prochdr2"> - Create a new date value</div></div>\
+<div id="rm_d"><div class="prochdr1">rm_d</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Create a new date value</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 value date    value<br>\

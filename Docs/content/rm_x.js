@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_x"><div class="prochdr1">rm_x</div><div class="prochdr2"> - Create a new pointer value</div></div>\
+<div id="rm_x"><div class="prochdr1">rm_x</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Create a new pointer value</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 value pointer value<br>\

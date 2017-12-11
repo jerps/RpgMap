@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_aap"><div class="prochdr1">rm_aap</div><div class="prochdr2"> - Create a new character data value, alt. sort seq., pointer to data</div></div>\
+<div id="rm_aap"><div class="prochdr1">rm_aap</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Create a new character data value, alt. sort seq., pointer to data</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 addr pointer value<br>\

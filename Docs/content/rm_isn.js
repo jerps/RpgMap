@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_isn"><div class="prochdr1">rm_isn</div><div class="prochdr2"> - Is indicator?</div></div>\
+<div id="rm_isn"><div class="prochdr1">rm_isn</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Is indicator?</div></div>\
 <pre class="procsig">\
 &lt;&lt;ind<br>\
 obj pointer value<br>\

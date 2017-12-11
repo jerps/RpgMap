@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_hit"><div class="prochdr1">rm_hit</div><div class="prochdr2"> - Has item?</div></div>\
+<div id="rm_hit"><div class="prochdr1">rm_hit</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Has item?</div></div>\
 <pre class="proclongnm">rm_has_item</pre>\
 <pre class="procsig">\
 &lt;&lt;ind<br>\
