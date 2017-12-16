@@ -25,7 +25,7 @@ recursively, producing a deep copy. Avoid excessive memory use. \
 When only manually disposed maps are used instead of automatically \
 disposed maps then <a href="#rm_cpy"><code>rm_cpy</code></a> will produce a real shallow copy.<br>\
 If <code>key1</code> and/or <code>key2</code> are passed and not <code>*null</code> the copy will only \
-contain the key/item pairs in <code>obj</code> with key equal to or greater than \
+contain the key/item pairs from <code>obj</code> with key equal to or greater than \
 <code>key1</code>, and equal to or less than <code>key2</code>. Both keys are optional. If \
 <code>key1</code> is not passed or <code>*null</code> it\'s assumed to be the lowest key. If \
 <code>key2</code> is not passed it\'s assumed to be the same as <code>key1</code> (if <code>key1</code> \

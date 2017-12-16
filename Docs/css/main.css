@@ -9,6 +9,7 @@ body {
 
 p {
   margin: 1rem 0.5rem 0.5rem 1.7rem;
+  line-height: 1.5;
 }
 
 #rpgmap {

@@ -698,7 +698,7 @@ end-pr;
 // When only manually disposed maps are used instead of automatically
 // disposed maps then 'rm_cpy' will produce a real shallow copy.
 // If 'key1' and/or 'key2' are passed and not *null the copy will only
-// contain the key/item pairs in 'obj' with key equal to or greater than
+// contain the key/item pairs from 'obj' with key equal to or greater than
 // 'key1', and equal to or less than 'key2'. Both keys are optional. If
 // 'key1' is not passed or *null it's assumed to be the lowest key. If
 // 'key2' is not passed it's assumed to be the same as 'key1' (if 'key1'
@@ -1404,6 +1404,7 @@ end-pr;
 ////////// rm_s - Create a new string value
 // Create a new string value, up to 30.000 bytes long.
 // A string is character data in utf8 format.
+// The raw bytes can be accessed with 'rm_a*_'.
 // Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_s pointer extproc(*dclcase);
   value varchar(30000) ccsid(*utf8) const;
