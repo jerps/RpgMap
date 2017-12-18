@@ -362,16 +362,16 @@ end-pr;
 // are considered equal. An empty vector, rm_v(), is equal to every other
 // vector. The way two vectors are compared makes them suitable as (partial)
 // composite keys.
-// When either one of 'obj1' or 'obj2' has the "reversed order" property
-// (see 'rm_') then the ordering between 'obj1' and 'obj2' is reversed
-// wrt the normal ordering. What is normally greater than is now less
-// than and vice versa (*hival has the lowest order).
+// When either one of 'obj1' or 'obj2' has the "reversed order" special
+// property (see 'rm_') then the ordering between 'obj1' and 'obj2' is
+// reversed wrt the normal ordering. What is normally greater than is now
+// less than and vice versa (*hival has the lowest order).
 // When either one of 'obj1' or 'obj2' has the "case insensitive order"
-// property (see 'rm_') then both are compared such that there is no
-// difference between uppercase and lowercase characters.
+// special property (see 'rm_') then both are compared such that there
+// is no difference between uppercase and lowercase characters.
 // Character data and strings (char data in utf8 format) can have the
-// special property that an alternate sort (collating) sequence is used
-// to compare them. The specific sort sequence is fixed; it's set when
+// property that an alternate sort (collating) sequence is used to
+// compare them. The specific sort sequence is fixed; it's set when
 // RpgMap is built. When not explicitly changed it should be *langidshr.
 // When two character data fields or two strings are compared with each
 /// other and both have this property then the comparison is done using

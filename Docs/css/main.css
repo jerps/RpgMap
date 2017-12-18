@@ -12,12 +12,12 @@ p {
   line-height: 1.5;
 }
 
-#rpgmap {
+#pname {
   font-family: 'Ubuntu Mono', monospace;
   font-weight: bold;
   font-size: 2rem;
   font-style: italic;
-  color: rgba(150, 50, 150, 1);
+  color: red;
   display: inline;
   margin: 0% 0% 0% 10%;
   cursor:pointer;
@@ -34,7 +34,7 @@ p {
   #docs {
     visibility: hidden;
   }
-  #rpgmap {
+  #pname {
     font-size: 1.5rem;
   }
 }
@@ -42,7 +42,7 @@ p {
   #docs {
     visibility: visible;
   }
-  #rpgmap {
+  #pname {
     font-size: 2rem;
   }
 }

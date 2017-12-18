@@ -55,16 +55,16 @@ ignored. So <code>rm_v(rm_d(d\'2017-01-01\'):rm_i(10))</code> and <code>rm_v(rm_
 are considered equal. An empty vector, <code>rm_v()</code>, is equal to every other \
 vector. The way two vectors are compared makes them suitable as (partial) \
 composite keys.<br>\
-When either one of <code>obj1</code> or <code>obj2</code> has the reversed order property \
-(see <a href="#rm_"><code>rm_</code></a>) then the ordering between <code>obj1</code> and <code>obj2</code> is reversed \
-wrt the normal ordering. What is normally greater than is now less \
-than and vice versa (<code>*hival</code> has the lowest order).<br>\
+When either one of <code>obj1</code> or <code>obj2</code> has the reversed order special \
+property (see <a href="#rm_"><code>rm_</code></a>) then the ordering between <code>obj1</code> and <code>obj2</code> is \
+reversed wrt the normal ordering. What is normally greater than is now \
+less than and vice versa (<code>*hival</code> has the lowest order).<br>\
 When either one of <code>obj1</code> or <code>obj2</code> has the "case insensitive order" \
-property (see <a href="#rm_"><code>rm_</code></a>) then both are compared such that there is no \
-difference between uppercase and lowercase characters.<br>\
+special property (see <a href="#rm_"><code>rm_</code></a>) then both are compared such that there \
+is no difference between uppercase and lowercase characters.<br>\
 Character data and strings (char data in utf8 format) can have the \
-special property that an alternate sort (collating) sequence is used \
-to compare them. The specific sort sequence is fixed; it\'s set when \
+property that an alternate sort (collating) sequence is used to \
+compare them. The specific sort sequence is fixed; it\'s set when \
 RpgMap is built. When not explicitly changed it should be <code>*langidshr</code>. \
 When two character data fields or two strings are compared with each \
 other and both have this property then the comparison is done using \

@@ -14,7 +14,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-  <div id="rpgmap">
+  <div id="pname">
     RpgMap
   </div>
   <div id="docs">
@@ -374,7 +374,7 @@
         }
       }
     });
-    $("#rpgmap").on("click", function(e) {
+    $("#pname").on("click", function(e) {
       if (window.location.hash.length > 1) {
         if (scrolled)
           history.pushState(null, null, "index.html"+stqp()+window.location.hash);
@@ -494,7 +494,7 @@
     if (t) {
       el = $("#" + "_" + t)[0];
       if (el) {
-        el.style = "color: rgba(150, 50, 150, 1); font-weight: bold;";
+        el.style = "color: red; font-weight: bold;";
         sel = el;
       }
     }
