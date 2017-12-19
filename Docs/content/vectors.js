@@ -16,9 +16,11 @@ and <code>2</code> and items <code>\'a\'</code> and  <code>\'b\'</code>. Only th
 The keys are automatically generated; the first item gets key <code>rm_i(1)</code>, the second item gets key <code>rm_i(2)</code>, etc.\
 </p>\
 <p>\
-Two vectors are compared with each other differently than other maps. Only the first n items \
-of the two vectors are compared, in key-order. The keys are not compared, only the items. For example, vectors <code>rm_v(rm_i(1):rm_i(2))</code> \
-and <code>rm_v(rm_i(1))</code> are considered equal because only the first item of each vector are compared. See \
+When two vectors are compared the comparison is done differently than when two normal maps or a map and a vector \
+are compared. The keys are not compared, only the items (in key order). But unlike with maps, when the two vectors \
+have a different number of key/item pairs then only the first n key/item pairs from both vectors are relevant. \
+The extra key/item pairs from one of the two vectors are ignored. For example, vectors <code>rm_v(rm_i(1):rm_i(2))</code> \
+and <code>rm_v(rm_i(1))</code> are considered equal because only the first item of each vector are relevant. See \
 <a href="#rm_cmp"><code>rm_cmp</code></a> for details.\
 </p>\
 <p>\

@@ -1,8 +1,8 @@
 #pragma comment (copyright, "Copyright (c) 2017 John Erps")
 
 
-/* RPGMAPRBTC.C - RedBlackTree and Cursors */
-/* Copyright (c) 2017 John Erps                           */
+/* RPGMAPRBTC.C - RedBlackTree and Cursors                                */
+/* Copyright (c) 2017 John Erps                                           */
 
 /* Based on RBT implementation:                                           */
 /* http://web.mit.edu/~emin/www.old/source_code/red_black_tree/index.html */
@@ -12,25 +12,6 @@
 #include <stdlib.h>
 #include "RPGMAPRBTC.H"
 
-
-/*  CONVENTIONS:  All data structures for red-black trees have the prefix */
-/*                "rmb_" to prevent name conflicts. */
-/*                                                                      */
-/*                Function names: Each word in a function name begins with */
-/*                a capital letter.  An example funcntion name is  */
-/*                CreateRedTree(a,b,c). Furthermore, each function name */
-/*                should begin with a capital letter to easily distinguish */
-/*                them from variables. */
-/*                                                                     */
-/*                Variable names: Each word in a variable name begins with */
-/*                a capital letter EXCEPT the first letter of the variable */
-/*                name.  For example, int newLongInt.  Global variables have */
-/*                names beginning with "g".  An example of a global */
-/*                variable name is gNewtonsConstant. */
-
-
-/* comment out the line below to remove all the debugging assertion */
-/* checks from the compiled code.  */
 /* #define DEBUG_ASSERT 1 */
 
 

@@ -3,6 +3,7 @@
 
 # $1=Build target, $2=Target lib (default is RPGMAP, will be created first)
 
+# Existing objects in target lib are first deleted, then re-created.
 
 # Sources RPGMAP.RPGLE, RPGMAPLPNH.RPGLE and the ones with names ending with .t.RPGLE
 # are templates. They're copied with substitutions to a new source with the same name
