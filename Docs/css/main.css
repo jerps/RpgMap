@@ -9,7 +9,7 @@ body {
 }
 
 p {
-  margin: 1rem 0.5rem 0.5rem 1.7rem;
+  margin: 1rem 0.5rem 0.5rem 2.2rem;
   line-height: 1.5;
 }
 
@@ -155,6 +155,12 @@ p {
   display: inline;
 }
 
+.prochdr3 {
+  font-size: 1.1rem;
+  display: inline;
+  margin: 0rem 0rem 0rem 3rem;
+}
+
 .prochsep {
   font-size: 1rem;
   color: red;
@@ -164,21 +170,24 @@ p {
 .proclongnm {
   font-family: 'Ubuntu Mono', monospace;
   font-size: 1rem;
-  margin: 0.4rem 0rem 0rem 3.5rem;
+  margin: 0.4rem 0rem 0rem 2.5rem;
 }
 
 .procsig {
   font-family: 'Roboto Mono', monospace;
-  font-size: 0.9rem;
-  margin: 1rem 0rem 0rem 5rem;
-  line-height: 110%;
+  font-size: 0.8rem;
+  margin: 1rem 0rem 0rem 3.5rem;
   overflow: hidden;
 }
 
 code {
   font-family: 'Ubuntu Mono', monospace;
-  font-weight: bold;
-  color: #007;
+  color: #0000B0;
+}
+
+a code {
+  font-family: 'Ubuntu Mono', monospace;
+  color: #D03070;
 }
 
 .pcode {
@@ -203,6 +212,7 @@ code {
 }
 
 .escmsg2 {
+  line-height: 2rem;
   font-size: 0.9rem;
   display: inline;
   margin: 0rem 0rem 0rem 2rem;
@@ -222,7 +232,7 @@ code {
   color: black;
 }
 #content a {
-  text-decoration: underline;
+  text-decoration: none;
   color: black;
 }
 a:hover {
@@ -252,3 +262,4 @@ h3 {
   font-weight: bold;
   margin: 1rem 0rem 0rem 1.3rem;
 }
+

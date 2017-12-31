@@ -7,23 +7,23 @@ The following is a list of all escape messages that can be sent.\
 </p>\
 <p>\
 <div class="escmsg1">RM00001: Key is *null.</div><br>\
-&nbsp;<div class="escmsg2"><span class="bullet1">&#8226;</span>&nbsp;A *null key is inserted into a map.</div>\
+&nbsp;<div class="escmsg2"><span class="bullet1">&#8407;</span>&nbsp;A *null key is inserted into a map.</div>\
 </p>\
 <p>\
 <div class="escmsg1">RM00002: Key is not an integer.</div><br>\
-&nbsp;<div class="escmsg2"><span class="bullet1">&#8226;</span>&nbsp;A non-integer key is inserted into a vector.</div>\
+&nbsp;<div class="escmsg2"><span class="bullet1">&#8407;</span>&nbsp;A non-integer key is inserted into a vector.</div>\
 </p>\
 <p>\
 <div class="escmsg1">RM00010: Automatically disposed map is already contained in a map.</div><br>\
-&nbsp;<div class="escmsg2"><span class="bullet1">&#8226;</span>&nbsp;An automatically disposed map which is already inserted into a map is inserted into a map again.</div>\
+&nbsp;<div class="escmsg2"><span class="bullet1">&#8407;</span>&nbsp;An automatically disposed map which is already inserted into a map is inserted into a map again.</div>\
 </p>\
 <p>\
 <div class="escmsg1">RM00011: Value is not compatible.</div><br>\
-&nbsp;<div class="escmsg2"><span class="bullet1">&#8226;</span>&nbsp;Tried to unwrap/convert an incompatible value to an RPG value.</div>\
+&nbsp;<div class="escmsg2"><span class="bullet1">&#8407;</span>&nbsp;Tried to unwrap/convert an incompatible value to an RPG value.</div>\
 </p>\
 <p>\
 <div class="escmsg1">RM00012: Value is already contained in a map.</div><br>\
-&nbsp;<div class="escmsg2"><span class="bullet1">&#8226;</span>&nbsp;A value which is already inserted into a map is inserted into a map again.</div>\
+&nbsp;<div class="escmsg2"><span class="bullet1">&#8407;</span>&nbsp;A value which is already inserted into a map is inserted into a map again.</div>\
 </p>\
 <p>\
 <div class="escmsg1">RM00022: Character or string data can not exceed 30.000 bytes.</div>\
@@ -33,7 +33,7 @@ The following is a list of all escape messages that can be sent.\
 </p>\
 <p>\
 <div class="escmsg1">RM00030: Can not dispose automatically disposed map or value contained in a map.</div><br>\
-&nbsp;<div class="escmsg2"><span class="bullet1">&#8226;</span>&nbsp;A map or value that has been inserted into a map is being disposed with <a href="#rm_dis"><code>rm_dis</code></a>.</div>\
+&nbsp;<div class="escmsg2"><span class="bullet1">&#8407;</span>&nbsp;A map or value that has been inserted into a map is being disposed with <a href="#rm_dis"><code>rm_dis</code></a>.</div>\
 </p>\
 <p>\
 <div class="escmsg1">RM00032: Object to copy is not a value or a map.</div>\
@@ -43,7 +43,7 @@ The following is a list of all escape messages that can be sent.\
 </p>\
 <p>\
 <div class="escmsg1">RM00041: Map is not empty.</div><br>\
-&nbsp;<div class="escmsg2"><span class="bullet1">&#8226;</span>&nbsp;Tried to change the compare function of a non-empty map.</div>\
+&nbsp;<div class="escmsg2"><span class="bullet1">&#8407;</span>&nbsp;Tried to change the compare function of a non-empty map.</div>\
 </p>\
 <p>\
 <div class="escmsg1">RM00101: Unknown keyword: &amp;1</div>\
@@ -56,11 +56,11 @@ The following is a list of all escape messages that can be sent.\
 </p>\
 <p>\
 <div class="escmsg1">RM00111: Option not supported: &amp;1</div><br>\
-&nbsp;<div class="escmsg2"><span class="bullet1">&#8226;</span>&nbsp;Unsupported "opt" argument given with <a href="#rm_"><code>rm_</code></a> or when creating a value.</div>\
+&nbsp;<div class="escmsg2"><span class="bullet1">&#8407;</span>&nbsp;Unsupported "opt" argument given with <a href="#rm_"><code>rm_</code></a> or when creating a value.</div>\
 </p>\
 <p>\
 <div class="escmsg1">RM01001: Error initializing iconv struct from CCSID &amp;1 to CCSID &amp;2.</div><br>\
-&nbsp;<div class="escmsg2"><span class="bullet1">&#8226;</span>&nbsp;An error occurred while trying to initialize character conversion from CCSID &amp;1 to CCSID &amp;2.</div>\
+&nbsp;<div class="escmsg2"><span class="bullet1">&#8407;</span>&nbsp;An error occurred while trying to initialize character conversion from CCSID &amp;1 to CCSID &amp;2.</div>\
 </p>\
 <p>\
 <div class="escmsg1">RM09001: Object is not a map.</div>\

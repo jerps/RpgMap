@@ -7,7 +7,7 @@ value   pointer value<br>\
 default int(10) value options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&#8226;</span>&nbsp;Same as <a href="#rm_i_"><code>rm_i_</code></a>.\
+<span class="bullet1">&#8407;</span>&nbsp;Same as <a href="#rm_i_"><code>rm_i_</code></a>.\
 </p>\
 \
 ');

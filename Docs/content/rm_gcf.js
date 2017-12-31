@@ -7,7 +7,7 @@ document.write('\
 map pointer value<br>\
 </pre>\
 <p>\
-<span class="bullet1">&#8226;</span>&nbsp;Return the current compare function for <code>map</code>. Return <code>*null</code> if the default \
+<span class="bullet1">&#8407;</span>&nbsp;Return the current compare function for <code>map</code>. Return <code>*null</code> if the default \
 function, <a href="#rm_cmp"><code>rm_cmp</code></a>, is in effect.\
 </p>\
 \

@@ -7,7 +7,7 @@ value   pointer      value<br>\
 default packed(14:4) value options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&#8226;</span>&nbsp;Same as <a href="#rm_p_"><code>rm_p_</code></a>.\
+<span class="bullet1">&#8407;</span>&nbsp;Same as <a href="#rm_p_"><code>rm_p_</code></a>.\
 </p>\
 \
 ');

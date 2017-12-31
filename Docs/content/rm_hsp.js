@@ -9,7 +9,7 @@ key1 pointer value options(*nopass)<br>\
 key2 pointer value options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&#8226;</span>&nbsp;See <a href="#rm_hsn"><code>rm_hsn</code></a>.\
+<span class="bullet1">&#8407;</span>&nbsp;See <a href="#rm_hsn"><code>rm_hsn</code></a>.\
 </p>\
 \
 ');

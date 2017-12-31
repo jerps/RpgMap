@@ -1320,7 +1320,7 @@ end-pr;
 
 
 ////////// rm_ap - Create a new character data value, pointer to data
-// Like 'rm_a', but the data is taken from a pointer and a number of bytes (size).
+// Like 'rm_a', but the data is taken from a pointer and a number of bytes (i.e. size).
 // The size must be between 1 and 30.000.
 // The passed number of bytes ('size') are copied from the address to which
 // the pointer ('addr') points. 
@@ -1348,7 +1348,7 @@ end-pr;
 
 
 ////////// rm_aap - Create a new character data value, alt. sort seq., pointer to data
-// Like 'rm_aa', but the data is taken from a pointer and a number of bytes (size).
+// Like 'rm_aa', but the data is taken from a pointer and a number of bytes (i.e. size).
 // The size must be between 0 and 30.000.
 // The passed number of bytes ('size') are copied from the address to which
 // the pointer ('addr') points. 

@@ -10,12 +10,12 @@ key1 pointer value options(*nopass)<br>\
 key2 pointer value options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&#8226;</span>&nbsp;Like <a href="#rm_ins"><code>rm_ins</code></a>, but the key/item pairs to insert are contained in <code>map2</code>.<br>\
-<span class="bullet1">&#8226;</span>&nbsp;The values and automatically disposed maps in <code>map2</code> that are to be \
+<span class="bullet1">&#8407;</span>&nbsp;Like <a href="#rm_ins"><code>rm_ins</code></a>, but the key/item pairs to insert are contained in <code>map2</code>.<br>\
+<span class="bullet1">&#8407;</span>&nbsp;The values and automatically disposed maps in <code>map2</code> that are to be \
 inserted are not inserted directly, but instead a copy is made (<a href="#rm_cpy"><code>rm_cpy</code></a>) \
 that is actually inserted. Manually disposed maps are not copied; they\'re \
 inserted directly.<br>\
-<span class="bullet1">&#8226;</span>&nbsp;If <code>key1</code> and/or <code>key2</code> are passed and not <code>*null</code> then only the key/item \
+<span class="bullet1">&#8407;</span>&nbsp;If <code>key1</code> and/or <code>key2</code> are passed and not <code>*null</code> then only the key/item \
 pairs in <code>map2</code> with key equal to or greater than <code>key1</code>, and equal to \
 or less than <code>key2</code>, will be inserted. Both keys are optional. If <code>key1</code> \
 is not passed or <code>*null</code> it\'s assumed to be the lowest key. If <code>key2</code> is \
@@ -23,10 +23,10 @@ not passed it\'s assumed to be the same as <code>key1</code> (if <code>key1</cod
 If <code>key2</code> is <code>*null</code> it\'s assumed to be the highest key. Nothing is \
 inserted if <code>key1</code> is greater than <code>key2</code>, or if only <code>key1</code> is passed \
 with value <code>*null</code>.<br>\
-<span class="bullet1">&#8226;</span>&nbsp;This procedure disposes <code>key1</code> and <code>key2</code> automatically, unless \
+<span class="bullet1">&#8407;</span>&nbsp;This procedure disposes <code>key1</code> and <code>key2</code> automatically, unless \
 <code>key1</code>/<code>key2</code> is a manually disposed map, or a value/map contained \
 in a map.<br>\
-<span class="bullet1">&#8226;</span>&nbsp;This procedure does not dispose <code>map2</code> or it\'s keys/items.\
+<span class="bullet1">&#8407;</span>&nbsp;This procedure does not dispose <code>map2</code> or it\'s keys/items.\
 </p>\
 \
 ');

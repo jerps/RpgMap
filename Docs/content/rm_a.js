@@ -7,8 +7,8 @@ value varchar(30000) const<br>\
 opt   int(10)        value options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&#8226;</span>&nbsp;Create a new character data value, up to 30.000 bytes long.<br>\
-<span class="bullet1">&#8226;</span>&nbsp;Pass <code>opt</code> to set special property or user data (see <a href="#rm_"><code>rm_</code></a>).\
+<span class="bullet1">&#8407;</span>&nbsp;Create a new character data value, up to 30.000 bytes long.<br>\
+<span class="bullet1">&#8407;</span>&nbsp;Pass <code>opt</code> to set special property or user data (see <a href="#rm_"><code>rm_</code></a>).\
 </p>\
 \
 ');

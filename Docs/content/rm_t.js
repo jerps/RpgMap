@@ -7,8 +7,8 @@ value time    value<br>\
 opt   int(10) value options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&#8226;</span>&nbsp;Create a new time value.<br>\
-<span class="bullet1">&#8226;</span>&nbsp;Pass <code>opt</code> to set special property or user data (see <a href="#rm_"><code>rm_</code></a>).\
+<span class="bullet1">&#8407;</span>&nbsp;Create a new time value.<br>\
+<span class="bullet1">&#8407;</span>&nbsp;Pass <code>opt</code> to set special property or user data (see <a href="#rm_"><code>rm_</code></a>).\
 </p>\
 \
 ');

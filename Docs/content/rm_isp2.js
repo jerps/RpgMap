@@ -6,7 +6,7 @@ document.write('\
 obj pointer value<br>\
 </pre>\
 <p>\
-<span class="bullet1">&#8226;</span>&nbsp;Return <code>*on</code> if <code>obj</code> is a packed decimal with 20.8 digits, else return <code>*off</code>.\
+<span class="bullet1">&#8407;</span>&nbsp;Return <code>*on</code> if <code>obj</code> is a packed decimal with 20.8 digits, else return <code>*off</code>.\
 </p>\
 \
 ');
