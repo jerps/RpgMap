@@ -27,7 +27,7 @@ Use procedures <code>rm__??</code> as a shortcut to pass keys as normal RPG valu
 of a certain type. For character and string keys up to 200 bytes can be \
 passed.<br>\
 <span class="bullet1">&#8407;</span>&nbsp;If there are multiple keys equal to <code>key</code> then the first one is selected.<br>\
-<span class="bullet1">&#8407;</span>&nbsp;Procedure <code>rm__</code> disposes all passed keys automatically, unless a key is \
+<span class="bullet1">&#8407;</span>&nbsp;Procedure <a href="#rm__"><code>rm__</code></a> disposes all passed keys automatically, unless a key is \
 a manually disposed map, or a value/map contained in a map.\
 </p>\
 \

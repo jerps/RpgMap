@@ -21,7 +21,7 @@ disposed when it\'s associated map is disposed.\
 See <a href="#example_2">example 2</a> and <a href="#example_3">example 3</a>.\
 </p>\
 <p>\
-Procedure <a href="#rm_fed">rm_fed</a> can also be used to iterate through key/item pairs. It uses \
+Procedure <a href="#rm_fed"><code>rm_fed</code></a> can also be used to iterate through key/item pairs. It uses \
 a cursor under the covers.\
 </p>\
 \

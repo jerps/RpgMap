@@ -232,7 +232,7 @@ a {
   color: black;
 }
 #content a {
-  text-decoration: underline;
+  color: green;
 }
 a:hover {
   color: black;
