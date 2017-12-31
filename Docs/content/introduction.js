@@ -8,9 +8,9 @@ lists, etc, are commonly used. They are the workhorses for in-memory data proces
 </p>\
 <p>\
 RpgMap implements a versatile in-memory ordered key/value store, like a Java TreeMap or \
-an associative array, for use with the RPG programming language. An RpgMap stores key/item \
-pairs. It associates keys with items. The keys and items in an RpgMap can be values such \
-as integers and dates or other RpgMaps. An RpgMap can contain any mix of types. The key/item \
+a Python dict, for use with the RPG programming language. An RpgMap stores key/item pairs. \
+It associates keys with items. The keys and items in an RpgMap can be values such as \
+integers and dates or other RpgMaps. An RpgMap can contain any mix of types. The key/item \
 pairs are always sorted by key. Items can be retrieved by key very fast because of an \
 efficient red-black tree implementation.\
 </p>\

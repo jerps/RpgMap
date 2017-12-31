@@ -769,7 +769,7 @@ end-pr;
 ////////// rm_rdn, rm_rdp (rm_read_next, rm_read_prev) - Read next or previous key/item pair
 // Call 'rm_rdn' to read the next key/item pair for cursor 'cur', or
 // call 'rm_rdp' to read the previous key/item pair. The next/previous
-// key/item becomes the current key/item pair. Procedures 'rm_key' and
+// pair becomes the current key/item pair. Procedures 'rm_key' and
 // 'rm_itm' are used to read the current key or item, resp.
 // Return *on if there was a next or previous key/item. Return *off if
 // the cursor is at the end or the beginning, in which case there is no

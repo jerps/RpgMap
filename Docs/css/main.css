@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  margin: 0.2rem 0 0 0;
+  margin: 0.4rem 0 0 0;
   padding: 0;
   background-color: #F9F9F9;
 }
@@ -16,35 +16,39 @@ p {
 #pname {
   font-family: 'Ubuntu Mono', monospace;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-style: italic;
   color: red;
   display: inline;
-  margin: 0% 0% 0% 10%;
+  margin: 0% 0% 0% 5%;
   cursor:pointer;
 }
 
 #docs {
   font-family: 'Roboto Mono', monospace;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   display: inline;
   cursor:pointer;
 }
 
-@media screen and (max-width: 750px) {
-  #docs {
-    visibility: hidden;
-  }
+@media all and (max-height: 450px) {
   #pname {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 }
-@media all and (min-width: 751px) {
+@media all and (min-height: 451px) {
+  #pname {
+    font-size: 1.8rem;
+  }
+}
+@media all and (max-width: 500px) {
+  #docs {	
+    visibility: hidden;
+  }
+}
+@media all and (min-width: 501px) {
   #docs {
     visibility: visible;
-  }
-  #pname {
-    font-size: 2rem;
   }
 }
 
@@ -66,19 +70,18 @@ p {
   height: 88vh;
   width: 30vw;
   overflow-y: scroll;
-  padding: 1.5% 1% 0% 1%;
   margin: 1% 0% 0% 1.8%;
-  top: 5%;
+  top: 5.5%;
   border-top: 4px solid rgba(200, 150, 200, 0.3);  
 }
 
 #content {
   position: fixed;
-  height: 90vh;
+  height: 100vh;
   overflow-y: scroll;
   border-left: 4px solid rgba(200, 150, 200, 0.3);
   width: 60%;
-  top: 1%;
+  top: 0%;
   padding: 5% 3% 1.5% 3%;
   right: 0px;
   line-height: 130%;

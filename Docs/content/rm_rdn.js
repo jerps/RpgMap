@@ -11,7 +11,7 @@ key2 pointer value options(*nopass)<br>\
 <p>\
 <span class="bullet1">&#8226;</span>&nbsp;Call <a href="#rm_rdn"><code>rm_rdn</code></a> to read the next key/item pair for cursor <code>cur</code>, or \
 call <a href="#rm_rdp"><code>rm_rdp</code></a> to read the previous key/item pair. The next/previous \
-key/item becomes the current key/item pair. Procedures <a href="#rm_key"><code>rm_key</code></a> and \
+pair becomes the current key/item pair. Procedures <a href="#rm_key"><code>rm_key</code></a> and \
 <a href="#rm_itm"><code>rm_itm</code></a> are used to read the current key or item, resp.<br>\
 <span class="bullet1">&#8226;</span>&nbsp;Return <code>*on</code> if there was a next or previous key/item. Return <code>*off</code> if \
 the cursor is at the end or the beginning, in which case there is no current key/item anymore.<br>\
