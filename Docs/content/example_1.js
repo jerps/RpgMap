@@ -22,8 +22,8 @@ map = rm_insert(rm_m() :<br>\
   rm_d(d\'2017-07-02\') : rm_p(201.10) );<br>\
 </pre>\
 <p>\
-Procedure <a href="#rm_m"><code>rm_m</code></a> creates a new map, which in this case is \
-immediately populated. Procedure <a href="#rm_ins"><code>rm_insert</code></a> inserts the \
+Procedure <a href="#rm_m"><code>rm_m</code></a> creates a new map, which is immediately \
+populated. Procedure <a href="#rm_ins"><code>rm_insert</code></a> inserts the \
 key/item pairs into the new map, and returns the new map that was passed as the first \
 argument. Procedures that return their first argument, the map/value, can be used for \
 "chaining" procedure calls.\
