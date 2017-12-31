@@ -66,9 +66,6 @@ The following is a list of all escape messages that can be sent.\
 <div class="escmsg1">RM09001: Object is not a map.</div>\
 </p>\
 <p>\
-<div class="escmsg1">RM09001: Object is not a map.</div>\
-</p>\
-<p>\
 <div class="escmsg1">RM09002: Object is not a value.</div>\
 </p>\
 <p>\
