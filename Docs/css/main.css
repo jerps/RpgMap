@@ -227,13 +227,12 @@ a code {
   text-shadow: none;
 }
 
-#navigation a, #footer a {
+a {
   text-decoration: none;
   color: black;
 }
 #content a {
-  text-decoration: none;
-  color: black;
+  text-decoration: underline;
 }
 a:hover {
   color: black;

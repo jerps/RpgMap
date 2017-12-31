@@ -1618,7 +1618,7 @@ end-pi;
 end-proc;
 
 
-// Convert a value to RPG string (utf8 text)
+// Convert a value to RPG string (utf-8 text)
 dcl-proc RMValConv2Str export;
 dcl-pi *n varchar(30000) ccsid(*utf8) rtnparm;
   value pointer value;
@@ -1649,7 +1649,7 @@ end-pi;
 end-proc;
 
 
-// Convert a value to RPG string (utf8 text), max. 100 bytes
+// Convert a value to RPG string (utf-8 text), max. 100 bytes
 dcl-proc RMValConv2Str1 export;
 dcl-pi *n varchar(100) ccsid(*utf8) rtnparm;
   value pointer value;
@@ -1680,7 +1680,7 @@ end-pi;
 end-proc;
 
 
-// Convert a value to RPG string (utf8 text), max. 1000 bytes
+// Convert a value to RPG string (utf-8 text), max. 1000 bytes
 dcl-proc RMValConv2Str2 export;
 dcl-pi *n varchar(1000) ccsid(*utf8) rtnparm;
   value pointer value;
@@ -1711,7 +1711,7 @@ end-pi;
 end-proc;
 
 
-// Convert a value to RPG string (utf8 text), max. 10000 bytes
+// Convert a value to RPG string (utf-8 text), max. 10000 bytes
 dcl-proc RMValConv2Str3 export;
 dcl-pi *n varchar(10000) ccsid(*utf8) rtnparm;
   value pointer value;

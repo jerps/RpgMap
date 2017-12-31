@@ -37,7 +37,7 @@ supported value types are integer, packed decimal, date, time, timestamp, indica
 </p>\
 <p>\
 Besides normal character data, there is an extra "string" value type, which is character data \
-in utf8 format (text). There is also a special map type, "vector", which is used to represent \
+in utf-8 format (text). There is also a special map type, "vector", which is used to represent \
 simple lists or sequences. Because of the way vectors are compared with each other they are \
 especially useful as (partial) composite keys (e.g. a key which consists of a date and an integer).\
 </p>\

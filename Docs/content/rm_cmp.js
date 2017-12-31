@@ -62,7 +62,7 @@ less than and vice versa (<code>*hival</code> has the lowest order).<br>\
 <span class="bullet1">&#8407;</span>&nbsp;When either one of <code>obj1</code> or <code>obj2</code> has the "case insensitive order" \
 special property (see <a href="#rm_"><code>rm_</code></a>) then both are compared such that there \
 is no difference between uppercase and lowercase characters.<br>\
-<span class="bullet1">&#8407;</span>&nbsp;Character data and strings (char data in utf8 format) can have the \
+<span class="bullet1">&#8407;</span>&nbsp;Character data and strings (char data in utf-8 format) can have the \
 property that an alternate sort (collating) sequence is used to \
 compare them. The specific sort sequence is fixed; it\'s set when \
 RpgMap is built. When not explicitly changed it should be <code>*langidshr</code>. \

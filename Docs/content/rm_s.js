@@ -8,7 +8,7 @@ opt   int(10)                     value options(*nopass)<br>\
 </pre>\
 <p>\
 <span class="bullet1">&#8407;</span>&nbsp;Create a new string value, up to 30.000 bytes long.<br>\
-<span class="bullet1">&#8407;</span>&nbsp;A string is character data (text) in utf8 format.<br>\
+<span class="bullet1">&#8407;</span>&nbsp;A string is character data (text) in utf-8 format.<br>\
 <span class="bullet1">&#8407;</span>&nbsp;The raw bytes can be accessed with <a href="#rm_a_"><code>rm_a*_</code></a>.<br>\
 <span class="bullet1">&#8407;</span>&nbsp;Pass <code>opt</code> to set special property or user data (see <a href="#rm_"><code>rm_</code></a>).\
 </p>\

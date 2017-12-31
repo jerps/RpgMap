@@ -369,7 +369,7 @@ end-pr;
 // When either one of 'obj1' or 'obj2' has the "case insensitive order"
 // special property (see 'rm_') then both are compared such that there
 // is no difference between uppercase and lowercase characters.
-// Character data and strings (char data in utf8 format) can have the
+// Character data and strings (char data in utf-8 format) can have the
 // property that an alternate sort (collating) sequence is used to
 // compare them. The specific sort sequence is fixed; it's set when
 // RpgMap is built. When not explicitly changed it should be *langidshr.
@@ -1010,7 +1010,7 @@ end-pr;
 ////////// rm_sav (rm_set_attr_val) - Set attribute values
 // Set up to 100 attributes of 'map' to a value and return 'map'.
 // Each map can have one or more attributes set to a value, where
-// each attribute has an utf8 name, and an utf8 value, both max.
+// each attribute has an utf-8 name, and an utf-8 value, both max.
 // 100 bytes. There is no restriction on attribute names and values.
 // The first attribute name and value is passed with parameters 2 and 3,
 // 'a001' and 'v001', the second with 'a002' and 'v002', etc.
@@ -1402,7 +1402,7 @@ end-pr;
 
 ////////// rm_s - Create a new string value
 // Create a new string value, up to 30.000 bytes long.
-// A string is character data (text) in utf8 format.
+// A string is character data (text) in utf-8 format.
 // The raw bytes can be accessed with 'rm_a*_'.
 // Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_s pointer extproc(*dclcase);
@@ -1412,7 +1412,7 @@ end-pr;
 
 
 ////////// rm_sb - Create a new string value, from binary
-// Like 'rm_s', but 'value' passes the raw bytes that is already in utf8 format.
+// Like 'rm_s', but 'value' passes the raw bytes that is already in utf-8 format.
 // Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_sb pointer extproc(*dclcase);
   value varchar(30000) const;
@@ -1438,7 +1438,7 @@ end-pr;
 
 
 ////////// rm_sab - Create a new string value, alt. sort sequence, from binary
-// Like 'rm_sa', but 'value' passes the raw bytes that is already in utf8 format.
+// Like 'rm_sa', but 'value' passes the raw bytes that is already in utf-8 format.
 // Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_sab pointer extproc(*dclcase);
   value varchar(30000) const;
@@ -1460,8 +1460,8 @@ dcl-pr rm_issa ind extproc(*dclcase);
 end-pr;
 
 
-////////// rm_s*_ - Convert string to RPG utf8 character data
-// Return RPG character data in utf8 format from 'value', which must
+////////// rm_s*_ - Convert string to RPG utf-8 character data
+// Return RPG character data in utf-8 format from 'value', which must
 // be a string. If 'value' is *null then return '', or 'default' when
 // passed. If 'value' is not compatible escape message RM00011 (value
 // not compatible) is sent.

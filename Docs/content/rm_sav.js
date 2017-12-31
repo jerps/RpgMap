@@ -14,7 +14,7 @@ v100 varchar(100) ccsid(*utf8) value options(*nopass)<br>\
 <p>\
 <span class="bullet1">&#8407;</span>&nbsp;Set up to 100 attributes of <code>map</code> to a value and return <code>map</code>.<br>\
 <span class="bullet1">&#8407;</span>&nbsp;Each map can have one or more attributes set to a value, where \
-each attribute has an utf8 name, and an utf8 value, both max. \
+each attribute has an utf-8 name, and an utf-8 value, both max. \
 100 bytes. There is no restriction on attribute names and values.<br>\
 <span class="bullet1">&#8407;</span>&nbsp;The first attribute name and value is passed with parameters 2 and 3, \
 <code>a001</code> and <code>v001</code>, the second with <code>a002</code> and <code>v002</code>, etc.<br>\
