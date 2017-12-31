@@ -7,9 +7,9 @@ document.write('\
 obj pointer value<br>\
 </pre>\
 <p>\
-Return the user data of <code>obj</code>, which must be a map or a value.<br>\
-Return <code>0</code> if there is no user data.<br>\
-See <a href="#rm_"><code>rm_</code></a>.\
+<span class="bullet1">&#8226;</span>&nbsp;Return the user data of <code>obj</code>, which must be a map or a value.<br>\
+<span class="bullet1">&#8226;</span>&nbsp;Return <code>0</code> if there is no user data.<br>\
+<span class="bullet1">&#8226;</span>&nbsp;See <a href="#rm_"><code>rm_</code></a>.\
 </p>\
 \
 ');

@@ -6,8 +6,8 @@ document.write('\
 cur pointer value<br>\
 </pre>\
 <p>\
-Return the current key for cursor <code>cur</code>, after calling <a href="#rm_rdn"><code>rm_rdn</code></a> or <a href="#rm_rdp"><code>rm_rdp</code></a>.<br>\
-Return <code>*null</code> if there is no current key/item pair.\
+<span class="bullet1">&#8226;</span>&nbsp;Return the current key for cursor <code>cur</code>, after calling <a href="#rm_rdn"><code>rm_rdn</code></a> or <a href="#rm_rdp"><code>rm_rdp</code></a>.<br>\
+<span class="bullet1">&#8226;</span>&nbsp;Return <code>*null</code> if there is no current key/item pair.\
 </p>\
 \
 ');

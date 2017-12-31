@@ -3,7 +3,7 @@
 
 # $1=Build target, $2=Target lib (default is RPGMAP, will be created first)
 
-# Existing objects in target lib are first deleted, then re-created.
+# Objects in target lib are first deleted, then re-created.
 
 # Sources RPGMAP.RPGLE, RPGMAPLPNH.RPGLE and the ones with names ending with .t.RPGLE
 # are templates. They're copied with substitutions to a new source with the same name
@@ -227,19 +227,18 @@ substtlib RPGMAPGDEF RPGMAPMAIN RPGMAPVAL RPGMAPGMF RPGMAPLPN
 
 echo ">>>>> (Re)create *SRVPGM RPGMAP, alt. sort seq. $SRTSEQ"
 dltsrvpgms RPGMAP
-dltmods RPGMAPMAIN RPGMAPVAL RPGMAPSER RPGMAPSYS RPGMAPCVA RPGMAPRBTC RPGMAPGMF RPGMAPLPN
+dltmods RPGMAPMAIN RPGMAPVAL RPGMAPSYS RPGMAPCVA RPGMAPRBTC RPGMAPGMF RPGMAPLPN
 crtrpgmod RPGMAPMAIN "RpgMap Main"
 crtrpgmod RPGMAPVAL  "RpgMap Values"
-crtrpgmod RPGMAPSER  "RpgMap Serialization"
 crtrpgmod RPGMAPSYS  "RpgMap System"
 crtrpgmod RPGMAPCVA  "RpgMap Compare Values Alt seq"
 crtcmod   RPGMAPRBTC "RpgMap RedBlackTree And Cursors Impl."
 crtrpgmod RPGMAPGMF  "RpgMap Gen Main Fun"
 crtrpgmod RPGMAPLPN  "RpgMap Long Procedure Names"
 crtsrvpgm RPGMAP     "RpgMap" \
-"$TLIB/RPGMAPMAIN $TLIB/RPGMAPVAL $TLIB/RPGMAPSER $TLIB/RPGMAPSYS $TLIB/RPGMAPCVA \
-$TLIB/RPGMAPRBTC $TLIB/RPGMAPGMF $TLIB/RPGMAPLPN"
-dltmods RPGMAPMAIN RPGMAPVAL RPGMAPSER RPGMAPSYS RPGMAPCVA RPGMAPRBTC RPGMAPGMF RPGMAPLPN
+"$TLIB/RPGMAPMAIN $TLIB/RPGMAPVAL $TLIB/RPGMAPSYS $TLIB/RPGMAPCVA $TLIB/RPGMAPRBTC \
+$TLIB/RPGMAPGMF $TLIB/RPGMAPLPN"
+dltmods RPGMAPMAIN RPGMAPVAL RPGMAPSYS RPGMAPCVA RPGMAPRBTC RPGMAPGMF RPGMAPLPN
 
 fi
 

@@ -7,10 +7,10 @@ value   pointer        value<br>\
 default pointer(*proc) value options(*nopass)<br>\
 </pre>\
 <p>\
-Return an RPG procedure pointer from <code>value</code>, which must be a procedure pointer.<br>\
-If <code>value</code> is <code>*null</code> then return <code>*null</code>, or <code>default</code> \
+<span class="bullet1">&#8226;</span>&nbsp;Return an RPG procedure pointer from <code>value</code>, which must be a procedure pointer.<br>\
+<span class="bullet1">&#8226;</span>&nbsp;If <code>value</code> is <code>*null</code> then return <code>*null</code>, or <code>default</code> \
 when passed. If <code>value</code> is not compatible escape message RM00011 (value not \
-compatible) is sent.<br>\
+compatible) is sent.\
 </p>\
 \
 ');

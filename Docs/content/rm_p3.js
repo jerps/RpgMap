@@ -7,8 +7,8 @@ value packed(46:16) value<br>\
 opt   int(10)       value options(*nopass)<br>\
 </pre>\
 <p>\
-Create a new packed decimal value, with 30.16 digits.<br>\
-Pass <code>opt</code> to set special property or user data (see <a href="#rm_"><code>rm_</code></a>).\
+<span class="bullet1">&#8226;</span>&nbsp;Create a new packed decimal value, with 30.16 digits.<br>\
+<span class="bullet1">&#8226;</span>&nbsp;Pass <code>opt</code> to set special property or user data (see <a href="#rm_"><code>rm_</code></a>).\
 </p>\
 \
 ');

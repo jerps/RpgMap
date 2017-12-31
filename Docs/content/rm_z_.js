@@ -7,11 +7,11 @@ value   pointer   value<br>\
 default timestamp value options(*nopass)<br>\
 </pre>\
 <p>\
-Return an RPG timestamp from <code>value</code>, which must be a date or timestamp.<br>\
-If <code>value</code> is <code>*null</code> then return <code>*loval</code>, or <code>default</code> \
+<span class="bullet1">&#8226;</span>&nbsp;Return an RPG timestamp from <code>value</code>, which must be a date or timestamp.<br>\
+<span class="bullet1">&#8226;</span>&nbsp;If <code>value</code> is <code>*null</code> then return <code>*loval</code>, or <code>default</code> \
 when passed. If <code>value</code> is not compatible escape message RM00011 (value not \
 compatible) is sent.<br>\
-A date is converted to a timestamp using BIF %timestamp.\
+<span class="bullet1">&#8226;</span>&nbsp;A date is converted to a timestamp using BIF %timestamp.\
 </p>\
 \
 ');

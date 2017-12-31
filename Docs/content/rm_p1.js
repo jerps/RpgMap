@@ -7,7 +7,7 @@ value packed(14:4) value<br>\
 opt   int(10)      value options(*nopass)<br>\
 </pre>\
 <p>\
-Same as <a href="#rm_p"><code>rm_p</code></a>.\
+<span class="bullet1">&#8226;</span>&nbsp;Same as <a href="#rm_p"><code>rm_p</code></a>.\
 </p>\
 \
 ');

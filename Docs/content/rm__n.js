@@ -9,7 +9,7 @@ k01 ind     value options(*nopass)<br>\
 k10 ind     value options(*nopass)<br>\
 </pre>\
 <p>\
-See <a href="#rm__"><code>rm__</code></a>.\
+<span class="bullet1">&#8226;</span>&nbsp;See <a href="#rm__"><code>rm__</code></a>.\
 </p>\
 \
 ');

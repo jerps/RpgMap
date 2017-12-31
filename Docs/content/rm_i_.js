@@ -7,8 +7,8 @@ value   pointer value<br>\
 default int(10) value options(*nopass)<br>\
 </pre>\
 <p>\
-Return an RPG int(10) from <code>value</code>, which must be a number.<br>\
-If <code>value</code> is <code>*null</code> then return <code>0</code>, or <code>default</code> when passed. If <code>value</code> \
+<span class="bullet1">&#8226;</span>&nbsp;Return an RPG int(10) from <code>value</code>, which must be a number.<br>\
+<span class="bullet1">&#8226;</span>&nbsp;If <code>value</code> is <code>*null</code> then return <code>0</code>, or <code>default</code> when passed. If <code>value</code> \
 is not a number escape message RM00011 (value not compatible) is sent. \
 If the value is too big for the returned integer format then message \
 MCH1210 (receiver value too small) is sent.\

@@ -1,10 +1,10 @@
 **FREE
 
 // RPGMAPCVA.RPGLE - RpgMap Compare Values Alt seq
-// Copyright (c) 2017 John Erps        
+// Copyright (c) 2017 John Erps (john@erps.me)
 
 
-ctl-opt copyright('Copyright (c) 2017 John Erps');
+ctl-opt copyright('Copyright (c) 2017 John Erps (john@erps.me)');
 ctl-opt nomain ccsid(*exact) altseq(*ext) srtseq(_SRTSEQ_);
 
 

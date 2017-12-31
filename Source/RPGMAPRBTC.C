@@ -1,8 +1,8 @@
-#pragma comment (copyright, "Copyright (c) 2017 John Erps")
+#pragma comment (copyright, "Copyright (c) 2017 John Erps (john@erps.me)")
 
 
 /* RPGMAPRBTC.C - RedBlackTree and Cursors                                */
-/* Copyright (c) 2017 John Erps                                           */
+/* Copyright (c) 2017 John Erps (john@erps.me)                            */
 
 /* Based on RBT implementation:                                           */
 /* http://web.mit.edu/~emin/www.old/source_code/red_black_tree/index.html */
@@ -15,16 +15,16 @@
 /* #define DEBUG_ASSERT 1 */
 
 
-struct rmb_red_blk_node {
+_Packed struct rmb_red_blk_node {
     void* key;
     void* item;
-    int red; /* if red=0 then the node is black */
     struct rmb_red_blk_node* left;
     struct rmb_red_blk_node* right;
     struct rmb_red_blk_node* parent;
+    int red; /* if red=0 then the node is black */
 };
 
-struct rmb_cursor {
+_Packed struct rmb_cursor {
     /* node is the current node if pos=0 or 1. The current node is the one that */
     /* was last read. The cursor position is just after or just before node, */
     /* depending on whether the last read was a readn (next, pos=1) or a readp */
@@ -38,14 +38,14 @@ struct rmb_cursor {
     /* valstruct points to the value structure which represents the cursor in */
     /* "value space", of which this struct is a part of. This structure in "value */
     /* space" must be destroyed also when the cursor is destroyed. */
-    int pos;
     rmb_red_blk_node* node;
     rmb_red_blk_tree* tree;
     struct rmb_cursor* next;
     void* valstruct;
+    int pos;
 };
 
-struct rmb_eventh {
+_Packed struct rmb_eventh {
     rmb_event_handler proc;
     void* usrd;
     struct rmb_eventh* prev;
@@ -55,7 +55,7 @@ struct rmb_eventh {
 /* DestroyObj(a) takes a pointer to key or item and frees it. The pointer can also */
 /* point to a data structure in "value space" representing a cursor. When a cursor */
 /* is freed then this structure, associated with the cursor, must also be freed. */
-struct rmb_red_blk_tree {
+_Packed struct rmb_red_blk_tree {
     int (*Compare)(const void* s, const void* a, const void* b);
     void (*DestroyObj)(void* a);
     /* A sentinel is used for root and for nil. These sentinels are */

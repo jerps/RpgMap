@@ -36,10 +36,10 @@ supported value types are integer, packed decimal, date, time, timestamp, indica
 (procedure) pointer and character data.\
 </p>\
 <p>\
-Besides normal character data, there is an extra "string" value type, which is text in utf8 \
-format. There is also a special map type, "vector", which is used to represent simple lists \
-or sequences. Because of the way vectors are compared with each other they are especially \
-useful as (partial) composite keys (e.g. a key which consists of a date and an integer).\
+Besides normal character data, there is an extra "string" value type, which is character data \
+in utf8 format (text). There is also a special map type, "vector", which is used to represent \
+simple lists or sequences. Because of the way vectors are compared with each other they are \
+especially useful as (partial) composite keys (e.g. a key which consists of a date and an integer).\
 </p>\
 <p>\
 A special type of character data or string conforms to an alternate sort (collating) sequence, \

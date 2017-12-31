@@ -1,7 +1,7 @@
 **FREE
 
 // RPGMAPCVAH.RPGLE - RPGMAPCVA header file 
-// Copyright (c) 2017 John Erps      
+// Copyright (c) 2017 John Erps (john@erps.me)
 
 
 /if defined(RPGMAPCVA_H)

@@ -1,7 +1,7 @@
 **FREE
 
 // RPGMAP.RPGLE - RpgMap header file 
-// Copyright (c) 2017 John Erps      
+// Copyright (c) 2017 John Erps (john@erps.me)
 
 
 // v1.1.0
@@ -325,15 +325,15 @@ end-pr;
 // of a map determines the ordering of the keys in the map. This can
 // be overridden for a specific map with 'rm_scf'.
 // Two objects have a natural ordering when they are of the same kind:
-// - character data having the same sort sequence;
-// - strings having the same sort sequence;
-// - numbers;
-// - times;
-// - dates and timestamps;
-// - indicators (*off < *on);
-// - pointers;
-// - procedure pointers;
-// - maps.
+//   - character data having the same sort sequence;
+//   - strings having the same sort sequence;
+//   - numbers;
+//   - times;
+//   - dates and timestamps;
+//   - indicators (*off < *on);
+//   - pointers;
+//   - procedure pointers;
+//   - maps.
 // If the objects don't have a natural order then they are ordered
 // based on their type as follows:
 //     *null `< n < i < p < t < d < z < x < xp < a < aa < s < sa < m/v 
@@ -350,7 +350,7 @@ end-pr;
 // map has no more keys but the other still has keys to compare then the
 // latter is considered greater. If the keys of both maps are exactly the
 // same then the items are compared using the same method. The items are
-// one by one from each map, compared in key-order, starting with the two
+// compared one by one from each map, in key-order, starting with the two
 // items with the lowest key, until the two items are unequal or until there
 // are no items left.
 // When two vectors (maps created with 'rm_v') are compared the comparison
@@ -636,7 +636,6 @@ end-pr;
 
 ////////// rm_nit (rm_num_items) - Number of items
 // Return the number of items in 'map' that are equal to 'item'.
-// A slow linear search is performed.
 // Items are always compared using the default compare function 'rm_cmp'.
 // If 'key1' and/or 'key2' are passed and not *null then only the items with
 // keys equal to or greater than 'key1', and equal to or less than 'key2',
@@ -1403,7 +1402,7 @@ end-pr;
 
 ////////// rm_s - Create a new string value
 // Create a new string value, up to 30.000 bytes long.
-// A string is character data in utf8 format.
+// A string is character data (text) in utf8 format.
 // The raw bytes can be accessed with 'rm_a*_'.
 // Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_s pointer extproc(*dclcase);
@@ -1413,7 +1412,7 @@ end-pr;
 
 
 ////////// rm_sb - Create a new string value, from binary
-// Like 'rm_s', but 'value' takes the raw bytes, already in utf8 format.
+// Like 'rm_s', but 'value' passes the raw bytes that is already in utf8 format.
 // Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_sb pointer extproc(*dclcase);
   value varchar(30000) const;
@@ -1439,6 +1438,7 @@ end-pr;
 
 
 ////////// rm_sab - Create a new string value, alt. sort sequence, from binary
+// Like 'rm_sa', but 'value' passes the raw bytes that is already in utf8 format.
 // Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_sab pointer extproc(*dclcase);
   value varchar(30000) const;

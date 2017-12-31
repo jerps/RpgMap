@@ -10,7 +10,7 @@ key1 pointer value options(*nopass)<br>\
 key2 pointer value options(*nopass)<br>\
 </pre>\
 <p>\
-Like <a href="#rm_insm"><code>rm_insm</code></a>, but a key/item pair is only inserted if there is \
+<span class="bullet1">&#8226;</span>&nbsp;Like <a href="#rm_insm"><code>rm_insm</code></a>, but a key/item pair is only inserted if there is \
 no key in <code>map</code> that is equal to the key to be inserted.\
 </p>\
 \

@@ -10,7 +10,7 @@ is <a href="#rm_cmp"><code>rm_cmp</code></a>. This compare function can be repla
 <p>\
 The sort order, when values and maps are compared with each other, is influenced by whether the compared \
 maps and/or values have the "reversed order" and/or "case insensitive order" property (see <a href="#rm_"><code>rm_</code></a>) \
-and whether character data or strings are sorted using an alternate sort sequence (<a href="#rm_aa"><code>rm_aa</code></a>, <a href="#rm_sa"><code>rm_sa</code></a>).\
+and/or whether character data or strings are sorted using an alternate sort sequence (<a href="#rm_aa"><code>rm_aa</code></a>, <a href="#rm_sa"><code>rm_sa</code></a>).\
 </p>\
 <p>\
 Procedure <a href="#rm_cmp"><code>rm_cmp</code></a> compares values and maps and uses the alternate \
