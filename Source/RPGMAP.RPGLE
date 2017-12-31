@@ -70,8 +70,8 @@ end-pr;
 // E.g. rm_v(rm_d(d'2017-01-01'):rm_i(10)) and rm_v(rm_d(d'2017-01-01')) are 
 // considered equal.
 // The parameters of this procedure to immediately populate the vector only
-// accept items. The first item is inserted with key 'rm_i(1)', the second with
-// key 'rm_i(2)', etc.
+// accept items. The keys are automatically generated. The first item is inserted
+// with key 'rm_i(1)', the second with key 'rm_i(2)', etc.
 // A vector represents a simple sequence of items, and is specially useful as
 // a (partial) composite key.
 dcl-pr rm_v pointer extproc(*dclcase);
@@ -746,7 +746,9 @@ end-pr;
 // to or greater than 'key'. Call 'rm_sgt' to position the cursor just after the
 // highest key that is equal to or less than 'key'. If 'key' is *null or not passed
 // then the cursor is positioned at the beginning or the end, resp.
-// Call 'rm_rdn' or 'rm_rdp' to read the next or previous key/item pair, resp.
+// After calling this procedure cursor 'cur' has no current key/item pair.
+// Call 'rm_rdn' or 'rm_rdp' to read the next or previous key/item pair, resp.,
+// which then becomes the current key/value pair.
 // If 'rm_sll' is called and the next key/item pair is removed from the map the
 // cursor is positioned just after the previous pair. If 'rm_sgt' is called and
 // the previous key/item pair is removed from the map the cursor is positioned

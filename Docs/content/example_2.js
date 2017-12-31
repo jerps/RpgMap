@@ -19,7 +19,7 @@ map = rm_m(<br>\
   rm_v( rm_i(7) : rm_d(d\'2017-07-03\'  ) ) : rm_p(5)      );<br>\
 </pre>\
 <p>\
-A composite key is represented with a "vector" (see <a href="#vectors"><code>Vectors</code></a>), which \
+A composite key is represented with a "vector" (see <a href="#vectors">Vectors</a>), which \
 is a special kind of map, created with <a href="#rm_v"><code>rm_v</code></a>. The keys of a vector must \
 be all integers and two vectors are compared in a special way. For example, vectors <code>rm_v(rm_i(1):rm_i(2))</code> \
 and <code>rm_v(rm_i(1))</code> are considered to be equal. Only the items are specified for <a href="#rm_v"><code>rm_v</code></a>; \
