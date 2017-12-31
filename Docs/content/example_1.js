@@ -3,8 +3,8 @@ document.write('\
 <h2 id="example_1">Example 1</h2>\
 <br>\
 <p>\
-The following code creates a new map with 3 key/item pairs, where the keys are dates \
-and the items are packed decimals.\
+The following code creates a new map which is immediately populated with 3 key/item pairs, \
+where the keys are dates and the items are packed decimals.\
 </p>\
 <pre class="pcode">\
 map = rm_m(<br>\
