@@ -9,7 +9,7 @@ k01 date    value options(*nopass)<br>\
 k10 date    value options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&#8407;</span>&nbsp;See <a href="#rm__"><code>rm__</code></a>.\
+<span class="bullet1">&sstarf;</span>&nbsp;See <a href="#rm__"><code>rm__</code></a>.\
 </p>\
 \
 ');

@@ -7,11 +7,11 @@ map   pointer        value<br>\
 hproc pointer(*proc) value<br>\
 </pre>\
 <p>\
-<span class="bullet1">&#8407;</span>&nbsp;Remove event handler <code>hproc</code> from the list of event handlers registered \
+<span class="bullet1">&sstarf;</span>&nbsp;Remove event handler <code>hproc</code> from the list of event handlers registered \
 for <code>map</code>, and return <code>map</code>.<br>\
-<span class="bullet1">&#8407;</span>&nbsp;If the handler was added mutiple times then only the last one added \
+<span class="bullet1">&sstarf;</span>&nbsp;If the handler was added mutiple times then only the last one added \
 is removed.<br>\
-<span class="bullet1">&#8407;</span>&nbsp;Do nothing if the handler isn\'t found.\
+<span class="bullet1">&sstarf;</span>&nbsp;Do nothing if the handler isn\'t found.\
 </p>\
 \
 ');

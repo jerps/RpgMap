@@ -8,11 +8,11 @@ size int(10) value<br>\
 opt  int(10) value options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&#8407;</span>&nbsp;Like <a href="#rm_aa"><code>rm_aa</code></a>, but the data is taken from a pointer and a number of bytes (i.e. size).<br>\
-<span class="bullet1">&#8407;</span>&nbsp;The size must be between 1 and 30.000.<br>\
-<span class="bullet1">&#8407;</span>&nbsp;The passed number of bytes (<code>size</code>) are copied from the address to which \
+<span class="bullet1">&sstarf;</span>&nbsp;Like <a href="#rm_aa"><code>rm_aa</code></a>, but the data is taken from a pointer and a number of bytes (i.e. size).<br>\
+<span class="bullet1">&sstarf;</span>&nbsp;The size must be between 1 and 30.000.<br>\
+<span class="bullet1">&sstarf;</span>&nbsp;The passed number of bytes (<code>size</code>) are copied from the address to which \
 the pointer (<code>addr</code>) points.<br>\
-<span class="bullet1">&#8407;</span>&nbsp;Pass <code>opt</code> to set special property or user data (see <a href="#rm_"><code>rm_</code></a>).\
+<span class="bullet1">&sstarf;</span>&nbsp;Pass <code>opt</code> to set special property or user data (see <a href="#rm_"><code>rm_</code></a>).\
 </p>\
 \
 ');

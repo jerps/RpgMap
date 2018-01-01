@@ -7,8 +7,8 @@ value varchar(30000) const<br>\
 opt   int(10)        value options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&#8407;</span>&nbsp;Like <a href="#rm_sa"><code>rm_sa</code></a>, but <code>value</code> passes the raw bytes that is already in utf-8 format.<br>\
-<span class="bullet1">&#8407;</span>&nbsp;Pass <code>opt</code> to set special property or user data (see <a href="#rm_"><code>rm_</code></a>).\
+<span class="bullet1">&sstarf;</span>&nbsp;Like <a href="#rm_sa"><code>rm_sa</code></a>, but <code>value</code> passes the raw bytes that is already in utf-8 format.<br>\
+<span class="bullet1">&sstarf;</span>&nbsp;Pass <code>opt</code> to set special property or user data (see <a href="#rm_"><code>rm_</code></a>).\
 </p>\
 \
 ');

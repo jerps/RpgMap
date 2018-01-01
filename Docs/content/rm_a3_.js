@@ -7,7 +7,7 @@ value   pointer        value<br>\
 default varchar(10000) const options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&#8407;</span>&nbsp;See <a href="#rm_a_"><code>rm_a_</code></a>.\
+<span class="bullet1">&sstarf;</span>&nbsp;See <a href="#rm_a_"><code>rm_a_</code></a>.\
 </p>\
 \
 ');

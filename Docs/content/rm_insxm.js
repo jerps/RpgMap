@@ -10,7 +10,7 @@ key1 pointer value options(*nopass)<br>\
 key2 pointer value options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&#8407;</span>&nbsp;Like <a href="#rm_insm"><code>rm_insm</code></a>, but before a key/item pair is inserted all key/item \
+<span class="bullet1">&sstarf;</span>&nbsp;Like <a href="#rm_insm"><code>rm_insm</code></a>, but before a key/item pair is inserted all key/item \
 pairs with a key equal to the key to be inserted are removed first.\
 </p>\
 \
