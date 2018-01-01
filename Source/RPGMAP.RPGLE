@@ -1302,7 +1302,7 @@ end-pr;
 
 
 ////////// rm_xp_ - Convert a procedure pointer to an RPG procedure pointer value
-// Return an RPG procedure pointer from 'value', which must be a procedure pointer.
+// Return an RPG pointer(*proc) from 'value', which must be a procedure pointer.
 // If 'value' is *null then return *null, or 'default' when passed.
 // If 'value' is not compatible escape message RM00011 (value not
 // compatible) is sent.
@@ -1377,7 +1377,7 @@ end-pr;
 
 
 ////////// rm_a*_ - Convert character data to RPG character data
-// Return RPG character data from 'value', which must be character data
+// Return an RPG varchar from 'value', which must be character data
 // or a string. If 'value' is a string then the raw bytes are returned;
 // no text conversion. If 'value' is *null then return '', or 'default'
 // when passed. If 'value' is not compatible escape message RM00011 (value
@@ -1463,7 +1463,7 @@ end-pr;
 
 
 ////////// rm_s*_ - Convert string to RPG utf-8 character data
-// Return RPG character data in utf-8 format from 'value', which must
+// Return an RPG varchar in utf-8 format from 'value', which must
 // be a string. If 'value' is *null then return '', or 'default' when
 // passed. If 'value' is not compatible escape message RM00011 (value
 // not compatible) is sent.

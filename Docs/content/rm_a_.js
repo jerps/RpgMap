@@ -7,7 +7,7 @@ value   pointer        value<br>\
 default varchar(30000) const options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&#8407;</span>&nbsp;Return RPG character data from <code>value</code>, which must be character data \
+<span class="bullet1">&#8407;</span>&nbsp;Return an RPG <code>varchar(30000)</code> from <code>value</code>, which must be character data \
 or a string. If <code>value</code> is a string then the raw bytes are returned; \
 no text conversion. If <code>value</code> is <code>*null</code> then return <code>\'\'</code>, or <code>default</code> \
 when passed. If <code>value</code> is not compatible escape message RM00011 (value \

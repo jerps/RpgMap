@@ -7,7 +7,7 @@ value   pointer value<br>\
 default int(20) value options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&#8407;</span>&nbsp;Return an RPG int(20) from <code>value</code>, which must be a number.<br>\
+<span class="bullet1">&#8407;</span>&nbsp;Return an RPG <code>int(20)</code> from <code>value</code>, which must be a number.<br>\
 <span class="bullet1">&#8407;</span>&nbsp;See <a href="#rm_i_"><code>rm_i_</code></a>.\
 </p>\
 \

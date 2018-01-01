@@ -7,7 +7,7 @@ value   pointer      value<br>\
 default packed(28:8) value options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&#8407;</span>&nbsp;Return an RPG packed(28:8) from <code>value</code>, which must be a number.<br>\
+<span class="bullet1">&#8407;</span>&nbsp;Return an RPG <code>packed(28:8)</code> from <code>value</code>, which must be a number.<br>\
 <span class="bullet1">&#8407;</span>&nbsp;See <a href="#rm_p_"><code>rm_p_</code></a>.\
 </p>\
 \
