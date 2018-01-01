@@ -850,7 +850,7 @@ end-pr;
 //       ... // set 'pos' to *on to trigger 'rm_sll' again while looping
 //     enddo;
 // If 'pos' is not passed or is *OMITted then the procedure behaves as if
-// 'pos' would be passed with value *on which can be used to only position
+// 'pos' would have been passed with value *on. This can be used to position
 // the cursor and read the next key/item pair in one call without having
 // to provide an indicator field.
 // This procedure disposes 'key1' and 'key2' automatically, unless
@@ -881,7 +881,7 @@ end-pr;
 //       ... // set 'pos' to *on to trigger 'rm_sgt' again while looping
 //     enddo;
 // If 'pos' is not passed or is *OMITted then the procedure behaves as if
-// 'pos' would be passed with value *on which can be used to only position
+// 'pos' would have been passed with value *on. This can be used to position
 // the cursor and read the previous key/item pair in one call without having
 // to provide an indicator field.
 // This procedure disposes 'key1' and 'key2' automatically, unless

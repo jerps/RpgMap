@@ -37,7 +37,7 @@ enddo;<br>\
 </pre>\
 <p>\
 <span class="bullet1">&#8407;</span>&nbsp;If <code>pos</code> is not passed or is *OMITted then the procedure behaves as if \
-<code>pos</code> would be passed with value <code>*on</code> which can be used to only position \
+<code>pos</code> would have been passed with value <code>*on</code> This can be used to position \
 the cursor and read the next key/item pair in one call without having \
 to provide an indicator field.<br>\
 <span class="bullet1">&#8407;</span>&nbsp;This procedure disposes <code>key1</code> and <code>key2</code> automatically, unless \
