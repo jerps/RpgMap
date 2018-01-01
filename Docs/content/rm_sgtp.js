@@ -13,7 +13,7 @@ key2 pointer value options(*nopass)<br>\
 <span class="bullet1">&#8407;</span>&nbsp;Analogous to <a href="#rm_slln"><code>rm_slln</code></a>, this procedure combines <a href="#rm_sgt"><code>rm_sgt</code></a> and \
 <a href="#rm_rdp"><code>rm_rdp</code></a> into one.<br>\
 <span class="bullet1">&#8407;</span>&nbsp;Each time <a href="#rm_sgtp"><code>rm_sgtp</code></a> is called: 1. if <code>pos</code> is <code>*on</code> the cursor is \
-positioned with <a href="#rm_sgt"><code>rm_sgt</code></a> on <code>key1</code>; 2. <code>pos</code> is set to <code>*off</code>, 3. \
+positioned with <a href="#rm_sgt"><code>rm_sgt</code></a> on <code>key1</code>, 2. <code>pos</code> is set to <code>*off</code>, 3. \
 <a href="#rm_rdp"><code>rm_rdp</code></a> is called with <code>key1</code> and <code>key2</code> to read the previous \
 key/item pair, 4. return the result of calling <a href="#rm_rdp"><code>rm_rdp</code></a>.<br>\
 <span class="bullet1">&#8407;</span>&nbsp;Parameter <code>key1</code> is passed as argument <code>key</code> to <a href="#rm_sgt"><code>rm_sgt</code></a> and <code>key1</code> \

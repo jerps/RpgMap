@@ -834,7 +834,7 @@ end-pr;
 // when 'rm_slln' is called. This parameter should be *on the first time
 // 'rm_slln' is called to trigger the positioning.
 // Each time 'rm_slln' is called: 1. if 'pos' is *on the cursor is
-// positioned with 'rm_sll' on 'key1'; 2. 'pos' is set to *off, 3.
+// positioned with 'rm_sll' on 'key1', 2. 'pos' is set to *off, 3.
 // 'rm_rdn' is called with 'key1' and 'key2' to read the next key/item
 // pair, 4. return the result of calling 'rm_rdn'.
 // When doing a read-equal (i.e. when specifying only 'key1' for 'rm_rdn'
@@ -868,7 +868,7 @@ end-pr;
 // Analogous to 'rm_slln', this procedure combines 'rm_sgt' and 
 // 'rm_rdp' into one.
 // Each time 'rm_sgtp' is called: 1. if 'pos' is *on the cursor is
-// positioned with 'rm_sgt' on 'key1'; 2. 'pos' is set to *off, 3.
+// positioned with 'rm_sgt' on 'key1', 2. 'pos' is set to *off, 3.
 // 'rm_rdp' is called with 'key1' and 'key2' to read the previous
 // key/item pair, 4. return the result of calling 'rm_rdp'.
 // Parameter 'key1' is passed as argument 'key' to 'rm_sgt' and 'key1'

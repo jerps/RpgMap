@@ -5,7 +5,7 @@ html {
 body {
   margin: 0.4rem 0 0 0;
   padding: 0;
-  background-color: #F0F0F0;
+  background-color: #F9F9F9;
 }
 
 p {
@@ -178,7 +178,7 @@ p {
   font-size: 0.8rem;
   margin: 1rem 0rem 0rem 3.5rem;
   overflow: hidden;
-  color: #11AA88;
+  color: #009966;
 }
 
 code {
@@ -195,7 +195,7 @@ a code {
   font-family: 'Roboto Mono', monospace;
   font-size: 0.8rem;
   margin: 0rem 0rem 0rem 4rem;
-  color: #0033CC;
+  color: #0066BB;
 }
 
 .console {
