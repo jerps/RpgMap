@@ -22,20 +22,21 @@ a value, and return <code>obj</code>.<br>\
 <span class="bullet1">&sstarf;</span>&nbsp;If <code>opt</code> is not passed then 0 is assumed.<br>\
 <span class="bullet1">&sstarf;</span>&nbsp;Some properties are not supported for some types.<br>\
 <span class="bullet1">&sstarf;</span>&nbsp;Send escape message RM00111 if <code>opt</code> is not supported.<br>\
-<span class="bullet1">&sstarf;</span>&nbsp;When creating values (e.g. with <a href="#rm_i"><code>rm_i</code></a> or <a href="#rm_a"><code>rm_a</code></a>) use parameter <code>opt</code> \
-instead of <a href="#rm_"><code>rm_</code></a>, if possible. For example <code>rm_i(1:0)</code> creates an integer \
+<span class="bullet1">&sstarf;</span>&nbsp;When creating values (e.g. with <a href="#rm_i"><code>rm_i</code></a> or <a href="#rm_a"><code>rm_a</code></a>) use the creating \
+procedure\'s <code>opt</code> parameter to set a special property, instead of \
+using <a href="#rm_"><code>rm_</code></a>, if possible. For example <code>rm_i(1:0)</code> creates an integer \
 value, <code>1</code>, with reversed order, and <code>rm_a(\'abc\':-100)</code> creates a character \
 value with user data <code>100</code>. When creating maps there is no <code>opt</code> parameter \
 so <a href="#rm_"><code>rm_</code></a> must always be used instead.<br>\
 <span class="bullet1">&sstarf;</span>&nbsp;Specify <code>90</code> or <code>91</code> for <code>opt</code> to clear (remove) special properties or user \
 data.<br>\
-<b>--&nbsp;Reversed Order&nbsp;--</b><br>\
+<b>**&nbsp;<span style="color: blue;">Reversed Order</span>&nbsp;**</b><br>\
 <span class="bullet1">&sstarf;</span>&nbsp;If a map or value has the "reversed order" property, then when it\'s \
 compared to other maps or values the sort order is reversed. Value \
 <code>*hival</code> is then the lowest in order, and vice versa. When comparing \
 two objects, reversed order is in effect when at least one has the \
 reversed order property set, otherwise normal order is in effect.<br>\
-<b>--&nbsp;Case Insensitive Order&nbsp;--</b><br>\
+<b>**&nbsp;<span style="color: blue;">Case Insensitive Order</span>&nbsp;**</b><br>\
 <span class="bullet1">&sstarf;</span>&nbsp;If <code>obj</code> is character data or a string, with normal sort sequence, \
 then the "case insensitive order" can be set. If set, then when <code>obj</code> \
 is compared with other character data or strings this is done without \
@@ -45,7 +46,7 @@ and at least one of them has the case insensitive order property.<br>\
 <span class="bullet1">&sstarf;</span>&nbsp;Some extra processing is required when a case insensitive comparison is \
 done. Especially when setting this property for strings, as they need to \
 be converted to the job CCSID first, before being compared case insensitive.<br>\
-<b>--&nbsp;User Data&nbsp;--</b><br>\
+<b>**&nbsp;<span style="color: blue;">User Data</span>&nbsp;**</b><br>\
 <span class="bullet1">&sstarf;</span>&nbsp;A map or value can be associated with user data, which is a positive integer \
 value between <code>1</code> and <code>65.000</code> that is application specific. Like attributes \
 (<a href="#rm_sav"><code>rm_sav</code></a>), user data is used to store meta data.<br>\

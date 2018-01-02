@@ -428,20 +428,21 @@ end-pr;
 // If 'opt' is not passed then 0 is assumed.
 // Some properties are not supported for some types.
 // Send escape message RM00111 if 'opt' is not supported.
-// When creating values (e.g. with 'rm_i' or 'rm_a') use parameter 'opt'
-// instead of 'rm_', if possible. For example 'rm_i(1:0)' creates an integer
+// When creating values (e.g. with 'rm_i' or 'rm_a') use the creating
+// procedure's 'opt' parameter to set a special property, instead of 
+// using 'rm_', if possible. For example 'rm_i(1:0)' creates an integer
 // value, 1, with reversed order, and 'rm_a('abc':-100)' creates a character
 // value with user data 100. When creating maps there is no 'opt' parameter
 // so 'rm_' must always be used instead.
 // Specify 90 or 91 for 'opt' to clear (remove) special properties or user
 // data.
-// -- Reversed Order --
+// ** Reversed Order **
 // If a map or value has the "reversed order" property, then when it's
 // compared to other maps or values the sort order is reversed. Value
 // *hival is then the lowest in order, and vice versa. When comparing
 // two objects, reversed order is in effect when at least one has the
 // reversed order property set, otherwise normal order is in effect.
-// -- Case Insensitive Order --
+// ** Case Insensitive Order **
 // If 'obj' is character data or a string, with normal sort sequence,
 // then the "case insensitive order" can be set. If set, then when 'obj'
 // is compared with other character data or strings this is done without
@@ -451,7 +452,7 @@ end-pr;
 // Some extra processing is required when a case insensitive comparison is
 // done. Especially when setting this property for strings, as they need to
 // be converted to the job CCSID first, before being compared case insensitive.
-// -- User Data --
+// ** User Data **
 // A map or value can be associated with user data, which is a positive integer
 // value between 1 and 65.000 that is application specific. Like attributes
 // ('rm_sav'), user data is used to store meta data.
