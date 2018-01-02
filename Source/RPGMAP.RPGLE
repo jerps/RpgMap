@@ -765,7 +765,7 @@ end-pr;
 // to or greater than 'key'. Call 'rm_sgt' to position the cursor just after the
 // highest key that is equal to or less than 'key'. If 'key' is *null or not passed
 // then the cursor is positioned at the beginning or the end, resp.
-// After calling this procedure cursor 'cur' has no current key/item pair.
+// After calling one of these procedures cursor 'cur' has no current key/item pair.
 // Call 'rm_rdn' or 'rm_rdp' to read the next or previous key/item pair, resp.,
 // which then becomes the current key/value pair.
 // If 'rm_sll' is called and the next key/item pair is removed from the map the
