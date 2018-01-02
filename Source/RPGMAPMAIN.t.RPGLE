@@ -4,7 +4,7 @@
 // Copyright (c) 2017-2018 John Erps (john@erps.me)
 
 
-ctl-opt copyright('Copyright (c) 2017 John Erps (john@erps.me)');
+ctl-opt copyright('Copyright (c) 2017-2018 John Erps (john@erps.me)');
 ctl-opt nomain ccsid(*exact);
 
 
