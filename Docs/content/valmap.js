@@ -65,8 +65,8 @@ See <a href="#rm_"><code>rm_</code></a>.\
 </p>\
 <p>\
 When creating a value (not a map), e.g. with <a href="#rm_a_"><code>rm_a_</code></a>, optional parameter <code>opt</code> can be \
-passed to immediately set a special property of the new value (such as "reversed order"), or to provide user data. This can also \
-be done with <a href="#rm_"><code>rm_</code></a>.\
+passed to immediately set a special property of the new value (such as "reversed order"), or to provide user data. \
+See <a href="#rm_"><code>rm_</code></a>.\
 </p>\
 \
 ');
