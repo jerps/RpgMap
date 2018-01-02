@@ -19,7 +19,7 @@ when <a href="#rm_slln"><code>rm_slln</code></a> is called. This parameter shoul
 <span class="bullet1">&sstarf;</span>&nbsp;Each time <a href="#rm_slln"><code>rm_slln</code></a> is called: &#x2460; if <code>pos</code> is <code>*on</code> the cursor is \
 positioned with <a href="#rm_sll"><code>rm_sll</code></a> on <code>key1</code>, &#x2461; <code>pos</code> is set to <code>*off</code>, &#x2462; \
 <a href="#rm_rdn"><code>rm_rdn</code></a> is called with <code>key1</code> and <code>key2</code> to read the next key/item \
- pair, &#x2463; return the result of calling <a href="#rm_rdn"><code>rm_rdn</code></a>.<br>\
+ pair, &#x2463; the result of calling <a href="#rm_rdn"><code>rm_rdn</code></a> is returned.<br>\
 <span class="bullet1">&sstarf;</span>&nbsp;When doing a read-equal (i.e. when specifying only <code>key1</code> for <a href="#rm_rdn"><code>rm_rdn</code></a> \
 or <a href="#rm_rdp"><code>rm_rdp</code></a>), <code>key1</code> must be specified twice (<a href="#rm_sll"><code>rm_sll</code></a> and <a href="#rm_rdn"><code>rm_rdn</code></a>). \
 Using this method, <code>key1</code> needs to be specified only once, but at the \

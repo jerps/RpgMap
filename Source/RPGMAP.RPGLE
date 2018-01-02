@@ -17,6 +17,24 @@
 /endif
 
 
+// ----- Constants
+
+// Maximum length in bytes for character/string values
+dcl-c RPGMAP_MAXBYTES 30000;
+
+// Minimum/maximum numeric values 
+dcl-c RPGMAP_I1_MIN                       -2147483648;
+dcl-c RPGMAP_I1_MAX                        2147483647;
+dcl-c RPGMAP_I2_MIN              -9223372036854775808;
+dcl-c RPGMAP_I2_MAX               9223372036854775807;
+dcl-c RPGMAP_P1_MIN                       -9999999999.9999;
+dcl-c RPGMAP_P1_MAX                        9999999999.9999;
+dcl-c RPGMAP_P2_MIN             -99999999999999999999.99999999;
+dcl-c RPGMAP_P2_MAX              99999999999999999999.99999999;
+dcl-c RPGMAP_P3_MIN   -999999999999999999999999999999.9999999999999999;
+dcl-c RPGMAP_P3_MAX    999999999999999999999999999999.9999999999999999;
+
+
 ////////// rm_m - Create a new map, automatically disposed
 // Create a new map and return a pointer to it.
 // The map should be disposed - with 'rm_dis' - when it's not needed
@@ -837,7 +855,7 @@ end-pr;
 // Each time 'rm_slln' is called: 1. if 'pos' is *on the cursor is
 // positioned with 'rm_sll' on 'key1', 2. 'pos' is set to *off, 3.
 // 'rm_rdn' is called with 'key1' and 'key2' to read the next key/item
-// pair, 4. return the result of calling 'rm_rdn'.
+// pair, 4. the result of calling 'rm_rdn' is returned.
 // When doing a read-equal (i.e. when specifying only 'key1' for 'rm_rdn'
 // or 'rm_rdp'), 'key1' must be specified twice ('rm_sll' and 'rm_rdn').
 // Using this method, 'key1' needs to be specified only once, but at the
@@ -871,7 +889,7 @@ end-pr;
 // Each time 'rm_sgtp' is called: 1. if 'pos' is *on the cursor is
 // positioned with 'rm_sgt' on 'key1', 2. 'pos' is set to *off, 3.
 // 'rm_rdp' is called with 'key1' and 'key2' to read the previous
-// key/item pair, 4. return the result of calling 'rm_rdp'.
+// key/item pair, 4. the result of calling 'rm_rdp' is returned.
 // Parameter 'key1' is passed as argument 'key' to 'rm_sgt' and 'key1'
 // and 'key2' are passed to 'rm_rdp'. See the docs for 'rm_sgt' and
 // 'rm_rdp' on how optional parameters 'key1' and 'key2' are specified.
