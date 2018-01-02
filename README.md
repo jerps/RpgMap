@@ -11,6 +11,12 @@ a Python dict, for use with the RPG programming language.
 
 <br>
 
+* next
+  
+  * Added <code>rm_??__</code> procedures. 
+
+<br>
+
 * v1.1.0 (dec 2017)
   
   * Start with semver versioning scheme.
