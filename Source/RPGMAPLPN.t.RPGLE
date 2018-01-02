@@ -1,7 +1,7 @@
 **FREE
 
 // RPGMAPLPN.RPGLE - RpgMap Long Procedure Names
-// Copyright (c) 2017 John Erps (john@erps.me)
+// Copyright (c) 2017-2018 John Erps (john@erps.me)
 
 
 ctl-opt copyright('Copyright (c) 2017 John Erps (john@erps.me)');
@@ -39,10 +39,7 @@ end-pi;
 
   for i = 1 to na;
     if o(i) <> *null;
-      if %bitand(RMValObjFlags(o(i)):x'80') = x'80';
-        RMSysSndEscapeMsg('RM00030');
-      endif;
-      RMValDispose(o(i));
+      RMValDispose2(o(i));
     endif;
   endfor;
   

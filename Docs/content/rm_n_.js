@@ -7,7 +7,7 @@ value   pointer value<br>\
 default ind     value options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&sstarf;</span>&nbsp;Return an RPG <code>indicator</code> from <code>value</code>, which must be an indicator.<br>\
+<span class="bullet1">&sstarf;</span>&nbsp;Return an RPG <code>ind</code> from <code>value</code>, which must be an indicator.<br>\
 <span class="bullet1">&sstarf;</span>&nbsp;If <code>value</code> is <code>*null</code> then return <code>*off</code>, or <code>default</code> \
 when passed. If <code>value</code> is not compatible escape message RM00011 (value not \
 compatible) is sent.\

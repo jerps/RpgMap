@@ -1,7 +1,7 @@
 **FREE
 
 // RPGMAPVAL.RPGLE - RpgMap Values
-// Copyright (c) 2017 John Erps (john@erps.me)
+// Copyright (c) 2017-2018 John Erps (john@erps.me)
 
 
 ctl-opt copyright('Copyright (c) 2017 John Erps (john@erps.me)');
@@ -602,6 +602,23 @@ end-pi;
   endif;
   
   return;
+      
+end-proc;
+
+
+// Dispose map, cursor or value, if allowed.
+dcl-proc RMValDispose2 export;
+dcl-pi *n;
+  obj pointer value;
+end-pi;
+
+  if obj = *null;
+    return;
+  endif;
+  if %bitand(RMValObjFlags(obj):x'80') = x'80';
+    RMSysSndEscapeMsg('RM00030');
+  endif;
+  RMValDispose(value);
       
 end-proc;
 

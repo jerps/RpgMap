@@ -1,7 +1,7 @@
 **FREE
 
 // RPGMAPMAIN.RPGLE - RpgMap Main 
-// Copyright (c) 2017 John Erps (john@erps.me)
+// Copyright (c) 2017-2018 John Erps (john@erps.me)
 
 
 ctl-opt copyright('Copyright (c) 2017 John Erps (john@erps.me)');
@@ -234,10 +234,7 @@ end-pi;
 
   for i = 1 to na;
     if o(i) <> *null;
-      if %bitand(RMValObjFlags(o(i)):x'80') = x'80';
-        RMSysSndEscapeMsg('RM00030');
-      endif;
-      RMValDispose(o(i));
+      RMValDispose2(o(i));
     endif;
   endfor;
   
@@ -2016,6 +2013,26 @@ end-pi;
 end-proc;
 
 
+// ----- RM_I__ <<<<<<<<<<
+dcl-proc rm_i__ export;
+dcl-pi *n int(10);
+  value pointer value;
+  default int(10) value options(*nopass);
+end-pi;
+
+  dcl-s r int(10);
+  
+  if %parms > 1;
+    r = RMValConv2Int(value:default);
+  else;
+    r = RMValConv2Int(value);
+  endif;
+  RMValDispose2(value);
+  return r;
+    
+end-proc;
+
+
 // ----- RM_I1_ <<<<<<<<<<
 dcl-proc rm_i1_ export;
 dcl-pi *n int(10);
@@ -2031,6 +2048,26 @@ end-pi;
 end-proc;
 
 
+// ----- RM_I1__ <<<<<<<<<<
+dcl-proc rm_i1__ export;
+dcl-pi *n int(10);
+  value pointer value;
+  default int(10) value options(*nopass);
+end-pi;
+
+  dcl-s r int(10);
+  
+  if %parms > 1;
+    r = RMValConv2Int(value:default);
+  else;
+    r = RMValConv2Int(value);
+  endif;
+  RMValDispose2(value);
+  return r;
+    
+end-proc;
+
+
 // ----- RM_I2_ <<<<<<<<<<
 dcl-proc rm_i2_ export;
 dcl-pi *n int(20);
@@ -2042,6 +2079,26 @@ end-pi;
     return RMValConv2Int(value:default);
   endif;
   return RMValConv2Int(value);
+    
+end-proc;
+
+
+// ----- RM_I2__ <<<<<<<<<<
+dcl-proc rm_i2__ export;
+dcl-pi *n int(20);
+  value pointer value;
+  default int(20) value options(*nopass);
+end-pi;
+
+  dcl-s r int(20);
+  
+  if %parms > 1;
+    r = RMValConv2Int(value:default);
+  else;
+    r = RMValConv2Int(value);
+  endif;
+  RMValDispose2(value);
+  return r;
     
 end-proc;
 
@@ -2181,6 +2238,26 @@ end-pi;
 end-proc;
 
 
+// ----- RM_P__ <<<<<<<<<<
+dcl-proc rm_p__ export;
+dcl-pi *n packed(14:4);
+  value pointer value;
+  default packed(14:4) value options(*nopass);
+end-pi;
+
+  dcl-s r packed(14:4);
+  
+  if %parms > 1;
+    r = RMValConv2PDec(value:default);
+  else;
+    r = RMValConv2PDec(value);
+  endif;
+  RMValDispose2(value);
+  return r;
+    
+end-proc;
+
+
 // ----- RM_P1_ <<<<<<<<<<
 dcl-proc rm_p1_ export;
 dcl-pi *n packed(14:4);
@@ -2192,6 +2269,26 @@ end-pi;
     return RMValConv2PDec(value:default);
   endif;
   return RMValConv2PDec(value);
+    
+end-proc;
+
+
+// ----- RM_P1__ <<<<<<<<<<
+dcl-proc rm_p1__ export;
+dcl-pi *n packed(14:4);
+  value pointer value;
+  default packed(14:4) value options(*nopass);
+end-pi;
+
+  dcl-s r packed(14:4);
+  
+  if %parms > 1;
+    r = RMValConv2PDec(value:default);
+  else;
+    r = RMValConv2PDec(value);
+  endif;
+  RMValDispose2(value);
+  return r;
     
 end-proc;
 
@@ -2211,6 +2308,26 @@ end-pi;
 end-proc;
 
 
+// ----- RM_P2__ <<<<<<<<<<
+dcl-proc rm_p2__ export;
+dcl-pi *n packed(28:8);
+  value pointer value;
+  default packed(28:8) value options(*nopass);
+end-pi;
+
+  dcl-s r packed(28:8);
+  
+  if %parms > 1;
+    r = RMValConv2PDec(value:default);
+  else;
+    r = RMValConv2PDec(value);
+  endif;
+  RMValDispose2(value);
+  return r;
+    
+end-proc;
+
+
 // ----- RM_P3_ <<<<<<<<<<
 dcl-proc rm_p3_ export;
 dcl-pi *n packed(46:16);
@@ -2222,6 +2339,26 @@ end-pi;
     return RMValConv2PDec(value:default);
   endif;
   return RMValConv2PDec(value);
+    
+end-proc;
+
+
+// ----- RM_P3__ <<<<<<<<<<
+dcl-proc rm_p3__ export;
+dcl-pi *n packed(46:16);
+  value pointer value;
+  default packed(46:16) value options(*nopass);
+end-pi;
+
+  dcl-s r packed(46:16);
+  
+  if %parms > 1;
+    r = RMValConv2PDec(value:default);
+  else;
+    r = RMValConv2PDec(value);
+  endif;
+  RMValDispose2(value);
+  return r;
     
 end-proc;
 
@@ -2331,6 +2468,26 @@ end-pi;
 end-proc;
 
 
+// ----- RM_D__ <<<<<<<<<<
+dcl-proc rm_d__ export;
+dcl-pi *n date;
+  value pointer value;
+  default date value options(*nopass);
+end-pi;
+
+  dcl-s r date;
+  
+  if %parms > 1;
+    r = RMValConv2Date(value:default);
+  else;
+    r = RMValConv2Date(value);
+  endif;
+  RMValDispose2(value);
+  return r;
+    
+end-proc;
+
+
 // ----- RM_T_ <<<<<<<<<<
 dcl-proc rm_t_ export;
 dcl-pi *n time;
@@ -2346,6 +2503,26 @@ end-pi;
 end-proc;
 
 
+// ----- RM_T__ <<<<<<<<<<
+dcl-proc rm_t__ export;
+dcl-pi *n time;
+  value pointer value;
+  default time value options(*nopass);
+end-pi;
+
+  dcl-s r time;
+  
+  if %parms > 1;
+    r = RMValConv2Time(value:default);
+  else;
+    r = RMValConv2Time(value);
+  endif;
+  RMValDispose2(value);
+  return r;
+    
+end-proc;
+
+
 // ----- RM_Z_ <<<<<<<<<<
 dcl-proc rm_z_ export;
 dcl-pi *n timestamp;
@@ -2357,6 +2534,26 @@ end-pi;
     return RMValConv2Ts(value:default);
   endif;
   return RMValConv2Ts(value);
+    
+end-proc;
+
+
+// ----- RM_Z__ <<<<<<<<<<
+dcl-proc rm_z__ export;
+dcl-pi *n timestamp;
+  value pointer value;
+  default timestamp value options(*nopass);
+end-pi;
+
+  dcl-s r timestamp;
+  
+  if %parms > 1;
+    r = RMValConv2Ts(value:default);
+  else;
+    r = RMValConv2Ts(value);
+  endif;
+  RMValDispose2(value);
+  return r;
     
 end-proc;
 
@@ -2406,6 +2603,26 @@ end-pi;
 end-proc;
 
 
+// ----- RM_N__ <<<<<<<<<<
+dcl-proc rm_n__ export;
+dcl-pi *n ind;
+  value pointer value;
+  default ind value options(*nopass);
+end-pi;
+
+  dcl-s r ind;
+  
+  if %parms > 1;
+    r = RMValConv2Ind(value:default);
+  else;
+    r = RMValConv2Ind(value);
+  endif;
+  RMValDispose2(value);
+  return r;
+    
+end-proc;
+
+
 // ----- RM_X <<<<<<<<<<
 dcl-proc rm_x export;
 dcl-pi *n pointer;
@@ -2451,6 +2668,26 @@ end-pi;
 end-proc;
 
 
+// ----- RM_X__ <<<<<<<<<<
+dcl-proc rm_x__ export;
+dcl-pi *n pointer;
+  value pointer value;
+  default pointer value options(*nopass);
+end-pi;
+
+  dcl-s r pointer;
+  
+  if %parms > 1;
+    r = RMValConv2Ptr(value:default);
+  else;
+    r = RMValConv2Ptr(value);
+  endif;
+  RMValDispose2(value);
+  return r;
+    
+end-proc;
+
+
 // ----- RM_XP <<<<<<<<<<
 dcl-proc rm_xp export;
 dcl-pi *n pointer;
@@ -2492,6 +2729,26 @@ end-pi;
     return RMValConv2PPtr(value:default);
   endif;
   return RMValConv2PPtr(value);
+    
+end-proc;
+
+
+// ----- RM_XP__ <<<<<<<<<<
+dcl-proc rm_xp__ export;
+dcl-pi *n pointer(*proc);
+  value pointer value;
+  default pointer(*proc) value options(*nopass);
+end-pi;
+
+  dcl-s r pointer(*proc);
+  
+  if %parms > 1;
+    r = RMValConv2PPtr(value:default);
+  else;
+    r = RMValConv2PPtr(value);
+  endif;
+  RMValDispose2(value);
+  return r;
     
 end-proc;
 
@@ -2623,6 +2880,26 @@ end-pi;
 end-proc;
 
 
+// ----- RM_A__ <<<<<<<<<<
+dcl-proc rm_a__ export;
+dcl-pi *n varchar(30000) rtnparm;
+  value pointer value;
+  default varchar(30000) const options(*nopass);
+end-pi;
+
+  dcl-s r varchar(30000);
+  
+  if %parms > 2;
+    r = RMValConv2Char(value:default);
+  else;
+    r = RMValConv2Char(value);
+  endif;
+  RMValDispose2(value);
+  return r;
+    
+end-proc;
+
+
 // ----- RM_A1_ <<<<<<<<<<
 dcl-proc rm_a1_ export;
 dcl-pi *n varchar(100) rtnparm;
@@ -2634,6 +2911,26 @@ end-pi;
     return RMValConv2Char1(value:default);
   endif;
   return RMValConv2Char1(value);
+    
+end-proc;
+
+
+// ----- RM_A1__ <<<<<<<<<<
+dcl-proc rm_a1__ export;
+dcl-pi *n varchar(100) rtnparm;
+  value pointer value;
+  default varchar(100) const options(*nopass);
+end-pi;
+
+  dcl-s r varchar(100);
+  
+  if %parms > 2;
+    r = RMValConv2Char1(value:default);
+  else;
+    r = RMValConv2Char1(value);
+  endif;
+  RMValDispose2(value);
+  return r;
     
 end-proc;
 
@@ -2653,6 +2950,26 @@ end-pi;
 end-proc;
 
 
+// ----- RM_A2__ <<<<<<<<<<
+dcl-proc rm_a2__ export;
+dcl-pi *n varchar(1000) rtnparm;
+  value pointer value;
+  default varchar(1000) const options(*nopass);
+end-pi;
+
+  dcl-s r varchar(1000);
+  
+  if %parms > 2;
+    r = RMValConv2Char2(value:default);
+  else;
+    r = RMValConv2Char2(value);
+  endif;
+  RMValDispose2(value);
+  return r;
+    
+end-proc;
+
+
 // ----- RM_A3_ <<<<<<<<<<
 dcl-proc rm_a3_ export;
 dcl-pi *n varchar(10000) rtnparm;
@@ -2664,6 +2981,26 @@ end-pi;
     return RMValConv2Char3(value:default);
   endif;
   return RMValConv2Char3(value);
+    
+end-proc;
+
+
+// ----- RM_A3__ <<<<<<<<<<
+dcl-proc rm_a3__ export;
+dcl-pi *n varchar(10000) rtnparm;
+  value pointer value;
+  default varchar(10000) const options(*nopass);
+end-pi;
+
+  dcl-s r varchar(10000);
+  
+  if %parms > 2;
+    r = RMValConv2Char3(value:default);
+  else;
+    r = RMValConv2Char3(value);
+  endif;
+  RMValDispose2(value);
+  return r;
     
 end-proc;
 
@@ -2793,6 +3130,26 @@ end-pi;
 end-proc;
 
 
+// ----- RM_S__ <<<<<<<<<<
+dcl-proc rm_s__ export;
+dcl-pi *n varchar(30000) ccsid(*utf8) rtnparm;
+  value pointer value;
+  default varchar(30000) ccsid(*utf8) const options(*nopass);
+end-pi;
+
+  dcl-s r varchar(30000) ccsid(*utf8);
+  
+  if %parms > 2;
+    r = RMValConv2Str(value:default);
+  else;
+    r = RMValConv2Str(value);
+  endif;
+  RMValDispose2(value);
+  return r;
+    
+end-proc;
+
+
 // ----- RM_S1_ <<<<<<<<<<
 dcl-proc rm_s1_ export;
 dcl-pi *n varchar(100) ccsid(*utf8) rtnparm;
@@ -2804,6 +3161,26 @@ end-pi;
     return RMValConv2Str1(value:default);
   endif;
   return RMValConv2Str1(value);
+    
+end-proc;
+
+
+// ----- RM_S1__ <<<<<<<<<<
+dcl-proc rm_s1__ export;
+dcl-pi *n varchar(100) ccsid(*utf8) rtnparm;
+  value pointer value;
+  default varchar(100) ccsid(*utf8) const options(*nopass);
+end-pi;
+
+  dcl-s r varchar(100) ccsid(*utf8);
+  
+  if %parms > 2;
+    r = RMValConv2Str1(value:default);
+  else;
+    r = RMValConv2Str1(value);
+  endif;
+  RMValDispose2(value);
+  return r;
     
 end-proc;
 
@@ -2823,6 +3200,26 @@ end-pi;
 end-proc;
 
 
+// ----- RM_S2__ <<<<<<<<<<
+dcl-proc rm_s2__ export;
+dcl-pi *n varchar(1000) ccsid(*utf8) rtnparm;
+  value pointer value;
+  default varchar(1000) ccsid(*utf8) const options(*nopass);
+end-pi;
+
+  dcl-s r varchar(1000) ccsid(*utf8);
+  
+  if %parms > 2;
+    r = RMValConv2Str2(value:default);
+  else;
+    r = RMValConv2Str2(value);
+  endif;
+  RMValDispose2(value);
+  return r;
+    
+end-proc;
+
+
 // ----- RM_S3_ <<<<<<<<<<
 dcl-proc rm_s3_ export;
 dcl-pi *n varchar(10000) ccsid(*utf8) rtnparm;
@@ -2834,6 +3231,26 @@ end-pi;
     return RMValConv2Str3(value:default);
   endif;
   return RMValConv2Str3(value);
+    
+end-proc;
+
+
+// ----- RM_S3__ <<<<<<<<<<
+dcl-proc rm_s3__ export;
+dcl-pi *n varchar(10000) ccsid(*utf8) rtnparm;
+  value pointer value;
+  default varchar(10000) ccsid(*utf8) const options(*nopass);
+end-pi;
+
+  dcl-s r varchar(10000) ccsid(*utf8);
+  
+  if %parms > 2;
+    r = RMValConv2Str3(value:default);
+  else;
+    r = RMValConv2Str3(value);
+  endif;
+  RMValDispose2(value);
+  return r;
     
 end-proc;
 

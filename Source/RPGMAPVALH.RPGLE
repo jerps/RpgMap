@@ -1,7 +1,7 @@
 **FREE
 
 // RPGMAPVALH.RPGLE - RPGMAPVAL header file 
-// Copyright (c) 2017 John Erps (john@erps.me)
+// Copyright (c) 2017-2018 John Erps (john@erps.me)
 
 
 /if defined(RPGMAPVAL_H)
@@ -95,6 +95,11 @@ end-pr;
 
 // Dispose map, cursor or value.
 dcl-pr RMValDispose;
+  obj pointer value;
+end-pr;
+
+// Dispose map, cursor or value, if allowed.
+dcl-pr RMValDispose2;
   obj pointer value;
 end-pr;
 

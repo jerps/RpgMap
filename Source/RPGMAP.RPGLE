@@ -1,7 +1,7 @@
 **FREE
 
 // RPGMAP.RPGLE - RpgMap header file 
-// Copyright (c) 2017 John Erps (john@erps.me)
+// Copyright (c) 2017-2018 John Erps (john@erps.me)
 
 
 // v1.1.0
@@ -1112,6 +1112,22 @@ dcl-pr rm_i2_ int(20) extproc(*dclcase);
 end-pr;
 
 
+////////// rm_i*__ - Same as rm_i*_, and disposes the number
+// Same as rm_i*_, in addition 'value' is immediately disposed.
+dcl-pr rm_i__ int(10) extproc(*dclcase);
+  value pointer value;
+  default int(10) value options(*nopass);
+end-pr;
+dcl-pr rm_i1__ int(10) extproc(*dclcase);
+  value pointer value;
+  default int(10) value options(*nopass);
+end-pr;
+dcl-pr rm_i2__ int(20) extproc(*dclcase);
+  value pointer value;
+  default int(20) value options(*nopass);
+end-pr;
+
+
 ////////// rm_p* - Create a new packed decimal value, 10.4/20.8/30.16 digits
 // Create a new packed decimal value, with 10.4, 20.8 or 30.16 digits.
 // Pass 'opt' to set special property or user data (see 'rm_').
@@ -1178,6 +1194,26 @@ dcl-pr rm_p3_ packed(46:16) extproc(*dclcase);
 end-pr;
 
 
+////////// rm_p*__ - Same as rm_p*_, and disposes the number
+// Same as rm_p*_, in addition 'value' is immediately disposed.
+dcl-pr rm_p__ packed(14:4) extproc(*dclcase);
+  value pointer value;
+  default packed(14:4) value options(*nopass);
+end-pr;
+dcl-pr rm_p1__ packed(14:4) extproc(*dclcase);
+  value pointer value;
+  default packed(14:4) value options(*nopass);
+end-pr;
+dcl-pr rm_p2__ packed(28:8) extproc(*dclcase);
+  value pointer value;
+  default packed(28:8) value options(*nopass);
+end-pr;
+dcl-pr rm_p3__ packed(46:16) extproc(*dclcase);
+  value pointer value;
+  default packed(46:16) value options(*nopass);
+end-pr;
+
+
 ////////// rm_d, rm_t, rm_z - Create a new date/time/timestamp value
 // Create a new date, time or timestamp value.
 // Pass 'opt' to set special property or user data (see 'rm_').
@@ -1231,6 +1267,22 @@ dcl-pr rm_z_ timestamp extproc(*dclcase);
 end-pr;
 
 
+////////// rm_d__, rm_t__, rm_z__ - Same as rm_d/t/z_, and disposes the date/time/ts
+// Same as rm_d/t/z_, in addition 'value' is immediately disposed.
+dcl-pr rm_d__ date extproc(*dclcase);
+  value pointer value;
+  default date value options(*nopass);
+end-pr;
+dcl-pr rm_t__ time extproc(*dclcase);
+  value pointer value;
+  default time value options(*nopass);
+end-pr;
+dcl-pr rm_z__ timestamp extproc(*dclcase);
+  value pointer value;
+  default timestamp value options(*nopass);
+end-pr;
+
+
 ////////// rm_n - Create a new indicator value
 // Create a new indicator value.
 // Pass 'opt' to set special property or user data (see 'rm_').
@@ -1248,11 +1300,19 @@ end-pr;
 
 
 ////////// rm_n_ - Convert an indicator to an RPG indicator value
-// Return an RPG indicator from 'value', which must be an indicator.
+// Return an RPG ind from 'value', which must be an indicator.
 // If 'value' is *null then return *off, or 'default' when passed.
 // If 'value' is not compatible escape message RM00011 (value not
 // compatible) is sent.
 dcl-pr rm_n_ ind extproc(*dclcase);
+  value pointer value;
+  default ind value options(*nopass);
+end-pr;
+
+
+////////// rm_n__ - Same as rm_n_, and disposes the indicator
+// Same as rm_n_, in addition 'value' is immediately disposed.
+dcl-pr rm_n__ ind extproc(*dclcase);
   value pointer value;
   default ind value options(*nopass);
 end-pr;
@@ -1285,6 +1345,14 @@ dcl-pr rm_x_ pointer extproc(*dclcase);
 end-pr;
 
 
+////////// rm_x__ - Same as rm_x_, and disposes the pointer
+// Same as rm_x_, in addition 'value' is immediately disposed.
+dcl-pr rm_x__ pointer extproc(*dclcase);
+  value pointer value;
+  default pointer value options(*nopass);
+end-pr;
+
+
 ////////// rm_xp - Create a new procedure pointer value
 // Create a new pointer value.
 // Pass 'opt' to set special property or user data (see 'rm_').
@@ -1307,6 +1375,14 @@ end-pr;
 // If 'value' is not compatible escape message RM00011 (value not
 // compatible) is sent.
 dcl-pr rm_xp_ pointer(*proc) extproc(*dclcase);
+  value pointer value;
+  default pointer(*proc) value options(*nopass);
+end-pr;
+
+
+////////// rm_xp__ - Same as rm_xp_, and disposes the procedure pointer
+// Same as rm_xp_, in addition 'value' is immediately disposed.
+dcl-pr rm_xp__ pointer(*proc) extproc(*dclcase);
   value pointer value;
   default pointer(*proc) value options(*nopass);
 end-pr;
@@ -1402,6 +1478,26 @@ dcl-pr rm_a3_ varchar(10000) rtnparm extproc(*dclcase);
 end-pr;
 
 
+////////// rm_a*__ - Same as rm_a*_, and disposes the character data
+// Same as rm_a*_, in addition 'value' is immediately disposed.
+dcl-pr rm_a__ varchar(30000) rtnparm extproc(*dclcase);
+  value pointer value;
+  default varchar(30000) const options(*nopass);
+end-pr;
+dcl-pr rm_a1__ varchar(100) rtnparm extproc(*dclcase);
+  value pointer value;
+  default varchar(100) const options(*nopass);
+end-pr;
+dcl-pr rm_a2__ varchar(1000) rtnparm extproc(*dclcase);
+  value pointer value;
+  default varchar(1000) const options(*nopass);
+end-pr;
+dcl-pr rm_a3__ varchar(10000) rtnparm extproc(*dclcase);
+  value pointer value;
+  default varchar(10000) const options(*nopass);
+end-pr;
+
+
 ////////// rm_s - Create a new string value
 // Create a new string value, up to 30.000 bytes long.
 // A string is character data (text) in utf-8 format.
@@ -1482,6 +1578,26 @@ dcl-pr rm_s2_ varchar(1000) ccsid(*utf8) rtnparm extproc(*dclcase);
   default varchar(1000) ccsid(*utf8) const options(*nopass);
 end-pr;
 dcl-pr rm_s3_ varchar(10000) ccsid(*utf8) rtnparm extproc(*dclcase);
+  value pointer value;
+  default varchar(10000) ccsid(*utf8) const options(*nopass);
+end-pr;
+
+
+////////// rm_s*__ - Same as rm_s*_, and disposes the string
+// Same as rm_s*_, in addition 'value' is immediately disposed.
+dcl-pr rm_s__ varchar(30000) ccsid(*utf8) rtnparm extproc(*dclcase);
+  value pointer value;
+  default varchar(30000) ccsid(*utf8) const options(*nopass);
+end-pr;
+dcl-pr rm_s1__ varchar(100) ccsid(*utf8) rtnparm extproc(*dclcase);
+  value pointer value;
+  default varchar(100) ccsid(*utf8) const options(*nopass);
+end-pr;
+dcl-pr rm_s2__ varchar(1000) ccsid(*utf8) rtnparm extproc(*dclcase);
+  value pointer value;
+  default varchar(1000) ccsid(*utf8) const options(*nopass);
+end-pr;
+dcl-pr rm_s3__ varchar(10000) ccsid(*utf8) rtnparm extproc(*dclcase);
   value pointer value;
   default varchar(10000) ccsid(*utf8) const options(*nopass);
 end-pr;
