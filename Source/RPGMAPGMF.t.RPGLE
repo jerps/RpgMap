@@ -5,7 +5,7 @@
 
 
 ctl-opt copyright('Copyright (c) 2017 John Erps (john@erps.me)');
-ctl-opt nomain ccsid(*exact);
+ctl-opt nomain datfmt(*iso-) timfmt(*iso.) ccsid(*exact);
 
 
 /include _TLIB_/INCLUDERPG,RPGMAP

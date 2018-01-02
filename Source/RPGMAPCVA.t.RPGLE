@@ -5,7 +5,7 @@
 
 
 ctl-opt copyright('Copyright (c) 2017 John Erps (john@erps.me)');
-ctl-opt nomain ccsid(*exact) altseq(*ext) srtseq(_SRTSEQ_);
+ctl-opt nomain datfmt(*iso-) timfmt(*iso.) ccsid(*exact) altseq(*ext) srtseq(_SRTSEQ_);
 
 
 /include RPGMAPGDEF.RPGLE

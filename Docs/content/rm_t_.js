@@ -2,9 +2,9 @@ document.write('\
 \
 <div id="rm_t_"><div class="prochdr1">rm_t_</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Convert a time/timestamp to an RPG time value</div></div>\
 <pre class="procsig">\
-&lt;&lt;time<br>\
-value   pointer value<br>\
-default time    value options(*nopass)<br>\
+&lt;&lt;time(*iso.)<br>\
+value   pointer     value<br>\
+default time(*iso.) value options(*nopass)<br>\
 </pre>\
 <p>\
 <span class="bullet1">&sstarf;</span>&nbsp;Return an RPG <code>time</code> from <code>value</code>, which must be a time or timestamp.<br>\

@@ -520,12 +520,12 @@ dcl-pr rm__p pointer extproc(*dclcase);
 end-pr;
 dcl-pr rm__d pointer extproc(*dclcase);
   map pointer value;
-// Parameters k01 .. k10: date
+// Parameters k01 .. k10: date(*iso-)
 /include _TLIB_/INCLUDERPG,RPGMAPI054
 end-pr;
 dcl-pr rm__t pointer extproc(*dclcase);
   map pointer value;
-// Parameters k01 .. k10: time
+// Parameters k01 .. k10: time(*iso.)
 /include _TLIB_/INCLUDERPG,RPGMAPI055
 end-pr;
 dcl-pr rm__z pointer extproc(*dclcase);
@@ -1219,11 +1219,11 @@ end-pr;
 // Create a new date, time or timestamp value.
 // Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_d pointer extproc(*dclcase);
-  value date value;
+  value date(*iso-) value;
   opt int(10) value options(*nopass);
 end-pr;
 dcl-pr rm_t pointer extproc(*dclcase);
-  value time value;
+  value time(*iso.) value;
   opt int(10) value options(*nopass);
 end-pr;
 dcl-pr rm_z pointer extproc(*dclcase);
@@ -1254,13 +1254,13 @@ end-pr;
 // Times can only be converted to times.
 // Dates are converted to timestamps using BIF %timestamp.
 // Timestamps are converted to dates and times using BIF's %date and %time.
-dcl-pr rm_d_ date extproc(*dclcase);
+dcl-pr rm_d_ date(*iso-) extproc(*dclcase);
   value pointer value;
-  default date value options(*nopass);
+  default date(*iso-) value options(*nopass);
 end-pr;
-dcl-pr rm_t_ time extproc(*dclcase);
+dcl-pr rm_t_ time(*iso.) extproc(*dclcase);
   value pointer value;
-  default time value options(*nopass);
+  default time(*iso.) value options(*nopass);
 end-pr;
 dcl-pr rm_z_ timestamp extproc(*dclcase);
   value pointer value;
@@ -1270,13 +1270,13 @@ end-pr;
 
 ////////// rm_d__, rm_t__, rm_z__ - Same as rm_d/t/z_, and dispose the date/time/ts
 // Same as rm_d/t/z_, in addition 'value' is immediately disposed.
-dcl-pr rm_d__ date extproc(*dclcase);
+dcl-pr rm_d__ date(*iso-) extproc(*dclcase);
   value pointer value;
-  default date value options(*nopass);
+  default date(*iso-) value options(*nopass);
 end-pr;
-dcl-pr rm_t__ time extproc(*dclcase);
+dcl-pr rm_t__ time(*iso.) extproc(*dclcase);
   value pointer value;
-  default time value options(*nopass);
+  default time(*iso.) value options(*nopass);
 end-pr;
 dcl-pr rm_z__ timestamp extproc(*dclcase);
   value pointer value;
