@@ -9,10 +9,10 @@ at least 7.2 TR5.\
 </p>\
 <h2>Building library RPGMAP from source</h2>\
 <p>\
-Download <a href="https://github.com/jerps/RpgMap/releases/download/v1.1.0/RpgMap-v1.1.0.zip">RpgMap-v1.1.0.zip</a> and put it somewhere on the IFS, e.g. /home/...<br>\
+Download <a href="https://github.com/jerps/RpgMap/releases/download/v1.2.0/RpgMap-v1.2.0.zip">RpgMap-v1.2.0.zip</a> and put it somewhere on the IFS, e.g. /home/...<br>\
 If you didn\'t already, start QSH (QSHELL, not PASE).<br>\
 Cd into the directory with the zip file.<br>\
-Unzip the file with <code>jar xvf RpgMap-v1.1.0.zip</code>.<br>\
+Unzip the file with <code>jar xvf RpgMap-v1.2.0.zip</code>.<br>\
 Cd into directory "RpgMap-master/Source".<br>\
 Start the build with <code>chmod +x BUILD.sh && ./BUILD.sh</code>.<br>\
 The last message should say "OK; serviceprogram RPGMAP/RPGMAP has been created.".\

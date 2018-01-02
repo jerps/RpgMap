@@ -4,7 +4,7 @@
 // Copyright (c) 2017-2018 John Erps (john@erps.me)
 
 
-// v1.1.0
+// v1.2.0
 
 
 // RpgMap is not thread safe.
