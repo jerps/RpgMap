@@ -13,9 +13,12 @@ a Python dict, for use with the RPG programming language.
 
 * next
   
-  * Added <code>rm_??__</code> procedures, to immediately dispose a value after unwrapping.
-  
-  * Added <code>rm_mmm (rm_make_map_manually_disposed)</code>, <code>rm_mmi (rm_make_map_immutable)</code>.
+  * New procedures:
+    * <code>rm_??__</code> to immediately dispose an RpgMap value after unwrapping.
+    
+    * <code>rm_mmm (rm_make_map_manually_disposed)</code> to make a map manually disposed.
+    
+    * <code>rm_mmi (rm_make_map_immutable)</code> to make a map immutable.
 
 <br>
 
