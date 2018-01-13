@@ -14,7 +14,8 @@ from an immutable map then escape message RM00005 is sent.<br>\
 <span class="bullet1">&sstarf;</span>&nbsp;All contained <strong>automatically<strong> disposed maps (thus including vectors) are made \
 immutable also, recursively.<br>\
 <span class="bullet1">&sstarf;</span>&nbsp;If <code>map</code> is already immutable then this operation has no effect.<br>\
-<span class="bullet1">&sstarf;</span>&nbsp;This operation can not be undone; an immutable map can not be made mutable again.\
+<span class="bullet1">&sstarf;</span>&nbsp;This operation can not be undone; an immutable map can not be made mutable again.<br>\
+<span class="bullet1">&sstarf;</span>&nbsp;When a map is copied (<a href="#rm_cpy"><code>rm_cpy</code></a>) then the new copy is mutable.\
 </p>\
 \
 ');

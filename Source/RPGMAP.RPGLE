@@ -142,6 +142,7 @@ end-pr;
 // immutable also, recursively.
 // If 'map' is already immutable then this operation has no effect.
 // This operation can not be undone; an immutable map can not be made mutable again.
+// When a map is copied ('rm_cpy') then the new copy is mutable.
 dcl-pr rm_mmi pointer extproc(*dclcase);
   map pointer value;
 end-pr;
@@ -726,19 +727,23 @@ end-pr;
 
 ////////// rm_cpy (rm_copy) - Copy map or value
 // Return a (shallow) copy of 'obj', which must be a map or a value.
-// The new map or value has the same properties and attributes as 'obj'
-// and contains the same key/item pairs as 'obj'. The keys/items in the
-// copy that are values or automatically disposed maps are copies of the
-// originals in 'obj'. Manually disposed maps are not copied; the copy
-// will contain the same instances.
+// The new map or value has the same properties and attributes as 'obj',
+// except that a new copy of a map is always mutable. The copy contains
+// the same key/item pairs as 'obj'. The keys/items in the copy that are
+// values or automatically disposed maps are copies of the originals in
+// 'obj'. Manually disposed maps are not copied; the copy will contain
+// the same instances.
 // Event handlers are NOT copied; the copy has no event handlers.
 // Return *null if 'obj' is *null.
 // Use 'rm_cpyd' to make a deep copy of a map, in which case manually
 // disposed maps are also (deep) copied.
+// The new copy is always mutable. Maps contained in 'obj' that are
+// immutable stay immutable and copies of these maps that are included
+// in the copy are also immutable.
 // Be aware that when manually disposed maps are not used then 'rm_cpy'
 // and 'rm_cpyd' have the same effect, i.e. contained maps are copied
-// recursively, producing a deep copy. Avoid excessive memory use.
-// When only manually disposed maps are used instead of automatically
+// recursively, effectively producing a deep copy. Avoid excessive memory
+// use. When only manually disposed maps are used instead of automatically
 // disposed maps then 'rm_cpy' will produce a real shallow copy.
 // If 'key1' and/or 'key2' are passed and not *null the copy will only
 // contain the key/item pairs from 'obj' with key equal to or greater than

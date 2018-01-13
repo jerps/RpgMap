@@ -1410,7 +1410,7 @@ end-pi;
     o = RMValObjCopy(obj:*off:key1:key2);
   endif;
          
-  RMValObjSetFlags(o:%bitand(RMValObjFlags(o):x'7F'));
+  RMValObjSetFlags(o:%bitand(RMValObjFlags(o):x'3F'));
   
   return o;
     
@@ -1448,7 +1448,7 @@ end-pi;
     o = RMValObjCopy(obj:*on:key1:key2);
   endif;
     
-  RMValObjSetFlags(o:%bitand(RMValObjFlags(o):x'7F'));
+  RMValObjSetFlags(o:%bitand(RMValObjFlags(o):x'3F'));
   
   return o;
   
