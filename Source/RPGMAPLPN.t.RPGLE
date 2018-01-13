@@ -19,6 +19,17 @@ ctl-opt nomain datfmt(*iso-) timfmt(*iso.) ccsid(*exact);
 // ----- Exported procedures
 
 
+// ----- RM_IN_MAP <<<<<<<<<<
+dcl-proc rm_in_map export;
+dcl-pi *n ind;
+  obj pointer value;
+end-pi;
+
+  return RMValInMap(obj);
+    
+end-proc;
+
+
 // ----- RM_MAKE_MAP_MANUALLY_DISPOSED <<<<<<<<<<
 dcl-proc rm_make_map_manually_disposed export;
 dcl-pi *n pointer;

@@ -215,6 +215,7 @@ addmsgd RM09001 "Object is not a map." ""
 addmsgd RM09002 "Object is not a value." ""
 addmsgd RM09003 "Object is not a cursor." ""
 addmsgd RM09004 "Object is not a map or a value." ""
+addmsgd RM09005 "Object is not an automatically disposed map or a value." ""
 addmsgd RM09011 "Unknown object." ""
 
 fi

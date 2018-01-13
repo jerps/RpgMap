@@ -194,6 +194,8 @@ EXPORT SYMBOL('rm_mmm')
 EXPORT SYMBOL('rm_make_map_manually_disposed')
 EXPORT SYMBOL('rm_mmi')
 EXPORT SYMBOL('rm_make_map_immutable')
+EXPORT SYMBOL('rm_inm')
+EXPORT SYMBOL('rm_in_map')
 ENDPGMEXP
 STRPGMEXP PGMLVL(*PRV) LVLCHK(*YES) SIGNATURE('v1.1.0          ')
 ENDPGMEXP

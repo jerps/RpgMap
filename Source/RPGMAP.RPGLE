@@ -122,6 +122,15 @@ dcl-pr rm_isv ind extproc(*dclcase);
 end-pr;
 
 
+////////// rm_inm (rm_in_map) - In map?
+// Return *on if 'obj' is (contained) in a map, else return *off.
+// Send escape message RM09005 if 'obj' is not a value or an
+// automatically disposed map.
+dcl-pr rm_inm ind extproc(*dclcase);
+  obj pointer value;
+end-pr;
+
+
 ////////// rm_mmm (rm_make_map_manually_disposed) - Make map manually disposed
 // Make 'map' a *manually* disposed map, and return 'map'.
 // Send escape message RM00051 if 'map' is not an automatically disposed map,

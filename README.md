@@ -14,11 +14,14 @@ a Python dict, for use with the RPG programming language.
 * next
   
   * New procedures:
+  
     * <code>rm_??__</code> to immediately dispose an RpgMap value after unwrapping.
+    
+    * <code>rm_inm (rm_in_map)</code> to test whether a map is (contained) in a map.
     
     * <code>rm_mmm (rm_make_map_manually_disposed)</code> to make a map manually disposed.
     
-    * <code>rm_mmi (rm_make_map_immutable)</code> to make a map immutable.
+    * <code>rm_mmi (rm_make_map_immutable)</code> to make a map immutable.    
 
 <br>
 
@@ -41,6 +44,7 @@ a Python dict, for use with the RPG programming language.
   * Parameter <code>pos</code> is now optional for procedures <code>rm_slln</code> and <code>rm_sgtp</code>.
 
   * New procedures:
+  
     * <code>rm_usrd (rm_user_data)</code> (return user data) returns the user data associated with a map or value.
     
     * <code>rm_ismm</code> (is manually disposed map?) to test whether an object is a manually disposed map.
@@ -58,6 +62,7 @@ a Python dict, for use with the RPG programming language.
   can also be called as <code>rm_insert_cond</code>.
     
   * New procedures:
+  
     * <code>rm_hit (rm_has_item)</code> (has item?) to test whether a map has an item
     equal to a given item.
     

@@ -43,6 +43,26 @@ dcl-pr RMValObjSSP;
   opt int(10) value;
 end-pr;
 
+// Return user data of map/value.
+dcl-pr RMValRtnUsrDta int(10);
+  obj pointer value;
+end-pr;
+
+// Dispose map, cursor or value.
+dcl-pr RMValDispose;
+  obj pointer value;
+end-pr;
+
+// Dispose map, cursor or value, if allowed.
+dcl-pr RMValDispose2;
+  obj pointer value;
+end-pr;
+
+// In map?
+dcl-pr RMValInMap ind;
+  obj pointer value;
+end-pr;
+
 // Create a new map.
 dcl-pr RMValMapCrt pointer;
   flags char(1) value;
@@ -96,21 +116,6 @@ end-pr;
 dcl-pr RMValMapGetAttr varchar(100) ccsid(*utf8);
   map pointer value;
   attr varchar(100) ccsid(*utf8) value;
-end-pr;
-
-// Return user data of map/value.
-dcl-pr RMValRtnUsrDta int(10);
-  obj pointer value;
-end-pr;
-
-// Dispose map, cursor or value.
-dcl-pr RMValDispose;
-  obj pointer value;
-end-pr;
-
-// Dispose map, cursor or value, if allowed.
-dcl-pr RMValDispose2;
-  obj pointer value;
 end-pr;
 
 // Create a new cursor.

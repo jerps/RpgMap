@@ -11,6 +11,10 @@
 /endif
 
 
+dcl-pr rm_in_map ind extproc(*dclcase);
+  obj pointer value;
+end-pr;
+
 dcl-pr rm_make_map_manually_disposed pointer extproc(*dclcase);
   map pointer value;
 end-pr;

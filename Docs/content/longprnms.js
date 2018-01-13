@@ -10,6 +10,7 @@ and the long(er) name can be used when a more descriptive name is desired.\
 Below is a list of all procedures that have both a short and long name.\
 </p>\
 <pre class="pcode">\
+rm_inm   : rm_in_map<br>\
 rm_mmm   : rm_make_map_manually_disposed<br>\
 rm_mmi   : rm_make_map_immutable<br>\
 rm_dis   : rm_dispose<br>\

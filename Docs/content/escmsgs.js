@@ -81,6 +81,9 @@ The following is a list of all escape messages that can be sent.\
 <div class="escmsg1">RM09004: Object is not a map or a value.</div>\
 </p>\
 <p>\
+<div class="escmsg1">RM09005: Object is not an automatically disposed map or a value.</div>\
+</p>\
+<p>\
 <div class="escmsg1">RM09011: Unknown object.</div>\
 </p>\
 \

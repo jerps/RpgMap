@@ -214,6 +214,17 @@ end-pi;
 end-proc;
 
 
+// ----- RM_INM <<<<<<<<<<
+dcl-proc rm_inm export;
+dcl-pi *n ind;
+  obj pointer value;
+end-pi;
+
+  return RMValInMap(obj);
+    
+end-proc;
+
+
 // ----- RM_MMM <<<<<<<<<<
 dcl-proc rm_mmm export;
 dcl-pi *n pointer;

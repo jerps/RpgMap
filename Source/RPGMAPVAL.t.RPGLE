@@ -381,6 +381,90 @@ end-pi;
 end-proc;
 
 
+// Return user data of a map/value.
+dcl-proc RMValRtnUsrDta export;
+dcl-pi *n int(10);
+  obj pointer value;
+end-pi;
+
+  RMValueObjP = obj;
+  if     RMValueObj.type.id <> RMTYPE_MAP
+     and (RMValueObj.type.id < 100 or RMValueObj.type.id > 199);
+    RMSysSndEscapeMsg('RM09004');
+  endif;
+  return RMValueObj.type.usrd;
+
+end-proc;
+
+
+// Dispose map, cursor or value.
+dcl-proc RMValDispose export;
+dcl-pi *n;
+  obj pointer value;
+end-pi;
+
+  dcl-s p pointer;
+  dcl-s a pointer;
+
+  RMValueObjP = obj;
+  if RMValueObj.type.id = RMTYPE_MAP;
+    RMValSetDsMap(obj);
+    p = RMValueMapP;
+    a = RMValueMap.attrs;
+    RMBTreeDispose(RMValueMap.map);
+    if a <> *null;
+      rm_dis(a);
+    endif;
+    dealloc p;
+  elseif RMValueObj.type.id = RMTYPE_CURSOR;
+    RMValSetDsCursor(obj);
+    // dispose cursor impl, 'RMValueCursor' will be disposed also.
+    RMBCursorDispose(RMValueCursor.cursor);
+  elseif RMValueObj.type.id >= 100 and RMValueObj.type.id <= 199;
+    RMValDispValue(obj);
+  else;
+    RMSysSndEscapeMsg('RM09011');
+  endif;
+  
+  return;
+      
+end-proc;
+
+
+// Dispose map, cursor or value, if allowed.
+dcl-proc RMValDispose2 export;
+dcl-pi *n;
+  obj pointer value;
+end-pi;
+
+  if obj = *null;
+    return;
+  endif;
+  if %bitand(RMValObjFlags(obj):x'80') = x'80';
+    RMSysSndEscapeMsg('RM00030');
+  endif;
+  RMValDispose(value);
+      
+end-proc;
+
+
+// In map?
+dcl-proc RMValInMap export;
+dcl-pi *n ind;
+  obj pointer value;
+end-pi;
+
+  RMValueObjP = obj;
+  if        RMValueObj.type.id <> RMTYPE_MAP
+        and (RMValueObj.type.id < 100 or RMValueObj.type.id > 199)
+     or %bitand(RMValueObj.type.flags:x'01') = x'01';
+    RMSysSndEscapeMsg('RM09005');
+  endif;
+  return %bitand(RMValueObj.type.flags:x'80') = x'80';
+      
+end-proc;
+
+
 // ----- Map
 
 
@@ -602,73 +686,6 @@ end-pi;
   a = RMValueMap.attrs;
   return rm_s_(rm_get(a:rm_s(attr)));
 
-end-proc;
-
-
-// Return user data of a map/value.
-dcl-proc RMValRtnUsrDta export;
-dcl-pi *n int(10);
-  obj pointer value;
-end-pi;
-
-  RMValueObjP = obj;
-  if     RMValueObj.type.id <> RMTYPE_MAP
-     and (RMValueObj.type.id < 100 or RMValueObj.type.id > 199);
-    RMSysSndEscapeMsg('RM09004');
-  endif;
-  return RMValueObj.type.usrd;
-
-end-proc;
-
-
-// Dispose map, cursor or value.
-dcl-proc RMValDispose export;
-dcl-pi *n;
-  obj pointer value;
-end-pi;
-
-  dcl-s p pointer;
-  dcl-s a pointer;
-
-  RMValueObjP = obj;
-  if RMValueObj.type.id = RMTYPE_MAP;
-    RMValSetDsMap(obj);
-    p = RMValueMapP;
-    a = RMValueMap.attrs;
-    RMBTreeDispose(RMValueMap.map);
-    if a <> *null;
-      rm_dis(a);
-    endif;
-    dealloc p;
-  elseif RMValueObj.type.id = RMTYPE_CURSOR;
-    RMValSetDsCursor(obj);
-    // dispose cursor impl, 'RMValueCursor' will be disposed also.
-    RMBCursorDispose(RMValueCursor.cursor);
-  elseif RMValueObj.type.id >= 100 and RMValueObj.type.id <= 199;
-    RMValDispValue(obj);
-  else;
-    RMSysSndEscapeMsg('RM09011');
-  endif;
-  
-  return;
-      
-end-proc;
-
-
-// Dispose map, cursor or value, if allowed.
-dcl-proc RMValDispose2 export;
-dcl-pi *n;
-  obj pointer value;
-end-pi;
-
-  if obj = *null;
-    return;
-  endif;
-  if %bitand(RMValObjFlags(obj):x'80') = x'80';
-    RMSysSndEscapeMsg('RM00030');
-  endif;
-  RMValDispose(value);
-      
 end-proc;
 
 
