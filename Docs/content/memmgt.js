@@ -52,5 +52,9 @@ Similar to copying a map, when keys/items are inserted from a map (e.g. <a href=
 only manually disposed maps are directly inserted, while a copy of the values and automatically disposed \
 maps is inserted.\
 </p>\
+<p>\
+An automatically disposed map (not a vector) can be made manually disposed with <a href="#rm_mmm"><code>rm_mmm</code></a>, \
+but not vice versa.\
+</p>\
 \
 ');
