@@ -656,10 +656,8 @@ end-pi;
   c = RMBCursorCrt(mapi:0:*null);
   if %parms = 2 and key1 = *null;
     RMBCursorSetLlGt(c:*null:1);
-  elseif    %parms < 2
-         or key1 = *null;
-    RMBCursorSetLlGt(c:*null:0);
-  else;
+  elseif     %parms > 1
+         and key1 <> *null;
     RMBCursorSetLlGt(c:key1:0);
   endif;
   dow RMBCursorReadNxtPrv(c:0) = 1;
@@ -1149,9 +1147,7 @@ end-pi;
   endif;
   n = 0;
   c = RMBCursorCrt(RMValMapImpl(map):0:*null);
-  if %parms < 2 or key1 = *null;
-    RMBCursorSetLlGt(c:*null:0);
-  else;
+  if %parms > 1 and key1 <> *null;
     RMBCursorSetLlGt(c:key1:0);
   endif;
   dow RMBCursorReadNxtPrv(c:0) = 1;
@@ -1198,10 +1194,8 @@ end-pi;
   c = RMBCursorCrt(RMValMapImpl(map):0:*null);
   if %parms = 3 and key1 = *null;
     RMBCursorSetLlGt(c:*null:1);
-  elseif    %parms < 3
-         or key1 = *null;
-    RMBCursorSetLlGt(c:*null:0);
-  else;
+  elseif     %parms > 2
+         and key1 <> *null;
     RMBCursorSetLlGt(c:key1:0);
   endif;
   dow RMBCursorReadNxtPrv(c:0) = 1;
@@ -1253,10 +1247,8 @@ end-pi;
   c = RMBCursorCrt(RMValMapImpl(map):0:*null);
   if %parms = 3 and key1 = *null;
     RMBCursorSetLlGt(c:*null:1);
-  elseif    %parms < 3
-         or key1 = *null;
-    RMBCursorSetLlGt(c:*null:0);
-  else;
+  elseif     %parms > 2
+         and key1 <> *null;
     RMBCursorSetLlGt(c:key1:0);
   endif;
   dow RMBCursorReadNxtPrv(c:0) = 1;
@@ -1318,9 +1310,7 @@ end-pi;
   k = *null;
   c = RMBCursorCrt(RMValMapImpl(map):0:*null);
   if %parms = 4 and key1 = *null;
-    if l;
-      RMBCursorSetLlGt(c:*null:0);
-    else;
+    if not l;
       RMBCursorSetLlGt(c:*null:1);
     endif;
   elseif l;
@@ -1332,10 +1322,8 @@ end-pi;
     else;
       RMBCursorSetLlGt(c:key2:1);
     endif;
-  elseif    %parms < 4
-         or key1 = *null;
-    RMBCursorSetLlGt(c:*null:0);
-  else;
+  elseif     %parms > 3
+         and key1 <> *null;
     RMBCursorSetLlGt(c:key1:0);
   endif;
   dow        l and RMBCursorReadNxtPrv(c:1) = 1

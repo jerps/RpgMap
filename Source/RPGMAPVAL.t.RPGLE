@@ -2307,10 +2307,8 @@ end-pi;
   c = RMBCursorCrt(mapi1:0:*null);
   if %parms = 3 and key1 = *null;
     RMBCursorSetLlGt(c:*null:1);
-  elseif    %parms < 3
-         or key1 = *null;
-    RMBCursorSetLlGt(c:*null:0);
-  else;
+  elseif     %parms > 2
+         and key1 <> *null;
     RMBCursorSetLlGt(c:key1:0);
   endif;
   dow RMBCursorReadNxtPrv(c:0) = 1;

@@ -107,10 +107,8 @@ end-pi;
   c = RMBCursorCrt(RMValMapImpl(map2):0:*null);
   if %parms = 4 and key1 = *null;
     RMBCursorSetLlGt(c:*null:1);
-  elseif    %parms < 4
-         or key1 = *null;
-    RMBCursorSetLlGt(c:*null:0);
-  else;
+  elseif     %parms > 3
+         and key1 <> *null;
     RMBCursorSetLlGt(c:key1:0);
   endif;
   dow RMBCursorReadNxtPrv(c:0) = 1;
@@ -201,9 +199,7 @@ end-pi;
   call_proc_p = proc;
   c = RMBCursorCrt(RMValMapImpl(map):0:*null);
   if %parms = 5 and key1 = *null;
-    if rev;
-      RMBCursorSetLlGt(c:*null:0);
-    else;
+    if not rev;
       RMBCursorSetLlGt(c:*null:1);
     endif;
   elseif rev;
@@ -215,10 +211,8 @@ end-pi;
     else;
       RMBCursorSetLlGt(c:key2:1);
     endif;
-  elseif    %parms < 5
-         or key1 = *null;
-    RMBCursorSetLlGt(c:*null:0);
-  else;
+  elseif     %parms > 4
+         and key1 <> *null;
     RMBCursorSetLlGt(c:key1:0);
   endif;
   dow        rev and RMBCursorReadNxtPrv(c:1) = 1
