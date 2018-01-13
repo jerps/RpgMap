@@ -46,6 +46,9 @@ The following is a list of all escape messages that can be sent.\
 &nbsp;<div class="escmsg2"><span class="bullet1">&sstarf;</span>&nbsp;Tried to change the compare function of a non-empty map.</div>\
 </p>\
 <p>\
+<div class="escmsg1">RM00051: Object is not an automatically disposed map or it is a vector; can not make manually disposed.</div>\
+</p>\
+<p>\
 <div class="escmsg1">RM00101: Unknown keyword: &amp;1</div>\
 </p>\
 <p>\

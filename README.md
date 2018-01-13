@@ -14,6 +14,8 @@ a Python dict, for use with the RPG programming language.
 * next
   
   * Added <code>rm_??__</code> procedures, to immediately dispose a value after unwrapping.
+  
+  * Added <code>rm_mmm (rm_make_map_manually_disposed)</code>.
 
 <br>
 

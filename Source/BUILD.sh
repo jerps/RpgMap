@@ -204,6 +204,7 @@ addmsgd RM00030 "Can not dispose automatically disposed map or value contained i
 addmsgd RM00032 "Object to copy is not a value or a map." ""
 addmsgd RM00033 "Special properties can only be set for values and maps." ""
 addmsgd RM00041 "Map is not empty." ""
+addmsgd RM00051 "Object is not an automatically disposed map or it is a vector; can not make manually disposed." ""
 addmsgd RM00101 "Unknown keyword: &1" "(*CHAR 10)"
 addmsgd RM00102 "A map's attribute name can not be blank or empty." ""
 addmsgd RM00111 "Option not supported: &1" "(*CHAR 30)"

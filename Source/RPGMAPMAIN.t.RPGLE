@@ -214,6 +214,19 @@ end-pi;
 end-proc;
 
 
+// ----- RM_MMM <<<<<<<<<<
+dcl-proc rm_mmm export;
+dcl-pi *n pointer;
+  map pointer value;
+end-pi;
+
+  RMValMakeMapManDisp(map);
+  
+  return map;
+      
+end-proc;
+
+
 // ----- RM_DIS <<<<<<<<<<
 dcl-proc rm_dis export;
 dcl-pi *n;

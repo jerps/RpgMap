@@ -64,6 +64,11 @@ dcl-pr RMValMapImpl pointer;
   map pointer value;
 end-pr;
 
+// Make map manually disposed.
+dcl-pr RMValMakeMapManDisp;
+  map pointer value;
+end-pr;
+
 // Set map comp. func.
 dcl-pr RMValMapSetCompf;
   map pointer value;

@@ -19,6 +19,19 @@ ctl-opt nomain datfmt(*iso-) timfmt(*iso.) ccsid(*exact);
 // ----- Exported procedures
 
 
+// ----- RM_MAKE_MAP_MANUALLY_DISPOSED <<<<<<<<<<
+dcl-proc rm_make_map_manually_disposed export;
+dcl-pi *n pointer;
+  map pointer value;
+end-pi;
+
+  RMValMakeMapManDisp(map);
+  
+  return map;
+      
+end-proc;
+
+
 // ----- RM_DISPOSE <<<<<<<<<<
 dcl-proc rm_dispose export;
 dcl-pi *n;

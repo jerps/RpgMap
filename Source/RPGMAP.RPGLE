@@ -122,6 +122,17 @@ dcl-pr rm_isv ind extproc(*dclcase);
 end-pr;
 
 
+////////// rm_mmm (rm_make_map_manually_disposed) - Make map manually disposed
+// Make 'map' a *manually* disposed map, and return 'map'.
+// Send escape message RM00051 if 'map' is not an automatically disposed map,
+// or if 'map' is a vector.
+// This operation can not be undone; a manually disposed map can not be made
+// automatically disposed.
+dcl-pr rm_mmm pointer extproc(*dclcase);
+  map pointer value;
+end-pr;
+
+
 ////////// rm_dis (rm_dispose) - Dispose maps, cursors and values
 // Dispose objects 'o001' thru 'o100'. Each object can be a map, a cursor
 // or a value.

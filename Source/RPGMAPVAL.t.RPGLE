@@ -461,6 +461,20 @@ end-pi;
 end-proc;
 
 
+// Make map manually disposed.
+dcl-proc RMValMakeMapManDisp export;
+dcl-pi *n;
+  map pointer value;
+end-pi;
+      
+  if not RMValIsMap(map:*off:*off);
+    RMSysSndEscapeMsg('RM00051');
+  endif;
+  RMValObjSetFlags(map:%bitor(RMValObjFlags(map):x'01'));
+    
+end-proc;
+
+
 // Set map comp. func.
 dcl-proc RMValMapSetCompf export;
 dcl-pi *n;
