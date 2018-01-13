@@ -130,12 +130,12 @@ end-pi;
     di = *off;
     if     k <> *null
        and (not RMValIsMap(k) or %bitand(RMValObjFlags(k):x'01') <> x'01');
-      k = RMValObjCopy(k:*off);
+      k = rm_cpy(k);
       dk = *on;
     endif;
     if     i <> *null
        and (not RMValIsMap(i) or %bitand(RMValObjFlags(i):x'01') <> x'01');
-      i = RMValObjCopy(i:*off);
+      i = rm_cpy(i);
       di = *on;
     endif;
     if     k <> *null
