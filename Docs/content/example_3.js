@@ -13,17 +13,17 @@ map = rm_m(<br>\
     rm_a(\'client name\') : rm_s(\'fransen\') :<br>\
     rm_a(\'amount\')      : rm_p(100.90)    :<br>\
     rm_a(\'payed\')       : *null           :<br>\
-    rm_a(\'creditstop\')  : rm_n(*on) )     :<br>\
-<br>\
+    rm_a(\'creditstop\')  : rm_n(*on) )<br>\
+  :<br>\
   rm_v( rm_d(d\'2017-05-01\') : rm_i(1) )   : rm_m(<br>\
     rm_a(\'client name\') : rm_s(\'piet\')    :<br>\
     rm_a(\'amount\')      : rm_p(50.00)     :<br>\
     rm_a(\'payed\')       : rm_p(20.00)     :<br>\
     rm_a(\'creditstop\')  : rm_n(*off)      :<br>\
     rm_a(\'payments\')    : rm_m(<br>\
-      rm_z(z\'2017-05-05-16.15.00\') : rm_p(15.00)    :<br>\
-      rm_z(z\'2017-05-12-12.00.00\') : rm_p(5.00) ) ) :<br>\
-<br>\
+      rm_z(z\'2017-05-05-16.15.00\') : rm_p(15.00) :<br>\
+      rm_z(z\'2017-05-12-12.00.00\') : rm_p(5.00) ) )<br>\
+  :<br>\
   rm_v( rm_d(d\'2017-05-01\') : rm_i(2) )   : rm_m(<br>\
     rm_a(\'client name\') : rm_s(\'jan\')     :<br>\
     rm_a(\'amount\')      : rm_p(200.00)    :<br>\
