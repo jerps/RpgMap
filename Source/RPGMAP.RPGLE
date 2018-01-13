@@ -1522,6 +1522,9 @@ end-pr;
 // A string is character data (text) in utf-8 format.
 // The raw bytes can be accessed with 'rm_a*_'.
 // Pass 'opt' to set special property or user data (see 'rm_').
+// The argument for parameter 'value' is converted to utf-8 when it's CCSID is
+// not 65535. Each utf-8 character consists of one to four bytes. This means care
+// should be taken that the converted value does not exceed 30.000 bytes.
 dcl-pr rm_s pointer extproc(*dclcase);
   value varchar(30000) ccsid(*utf8) const;
   opt int(10) value options(*nopass);
