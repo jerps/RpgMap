@@ -32,20 +32,25 @@ Items are retrieved by key with the following procedures: <a href="#rm_get"><cod
 value type has a corresponding <code>rm__??</code> procedure).\
 </p>\
 <p>\
-RPG values can not be directly inserted into a map. They must first be "wrapped" into a RpgMap value (a pointer to an opaque \
-data structure) that <i>can</i> be inserted into a map. Also, RpgMap procedures such as <a href="#rm_get"><code>rm_get</code></a> \
-often expect some of their arguments to be these RpgMap values. They are created with the <code>rm_??</code> procedures. For example: <a href="#rm_i"><code>rm_i</code></a> \
+RPG values can not be directly inserted into a map. They must first be "wrapped" into a RpgMap value that <i>can</i> \
+be inserted into a map. Also, RpgMap procedures such as <a href="#rm_get"><code>rm_get</code></a> often expect their \
+map/value arguments to be these RpgMap values. They are created with the <code>rm_??</code> procedures which return a \
+pointer to an opaque RpgMap data structure which represents this value. For example: <a href="#rm_i"><code>rm_i</code></a> \
 for <code>int(10)</code> values, <a href="#rm_p2"><code>rm_p2</code></a> for <code>packed(28:8)</code> values, <a href="#rm_ap"><code>rm_ap</code></a> \
 for character data values given with a pointer, etc. Look into the <a href="#api"><code>API</code></a> for a full list.\
 </p>\
 <p>\
-A <code>rm_??</code> procedure wraps a normal RPG value into a special value that can be handled by RpgMap. \
-Every <code>rm_??</code> procedure has a <code>rm_??_</code> procedure (with trailing underscore) which does the \
-opposite and unwraps the RPG value again. For example, <a href="#rm_t"><code>rm_t</code></a> wraps a RPG time value \
+As explained previously a <code>rm_??</code> procedure wraps a normal RPG value into a special value (data structure) that \
+can be handled by RpgMap. Every <code>rm_??</code> procedure has a <code>rm_??_</code> procedure (with trailing underscore) \
+which does the opposite and unwraps the RPG value again. For example, <a href="#rm_t"><code>rm_t</code></a> wraps a RPG time value \
 and <a href="#rm_t_"><code>rm_t_</code></a> unwraps, or converts, it back to a normal RPG time value. When unwrapping/converting \
 certain data type conversions may happen. For example <a href="#rm_i_"><code>rm_i_</code></a> can convert packed decimal \
 values to integers, and <a href="#rm_t_"><code>rm_t_</code></a> can convert timestamps to time values. If the types are \
 incompatible escape message RM00011 (value is not compatible) is sent.\
+</p>\
+<p>\
+Every <code>rm_??_</code> procedure is accompanied by a <code>rm_??__</code> procedure (with two trailing underscores) that \
+disposes the RpgMap value with <a href="#rm_dis"><code>rm_dis</code></a> when it has been unwrapped.\
 </p>\
 <p>\
 For most <code>rm_??</code> procedures there is also a <code>rm_is??</code> procedure to test whether an object is \
