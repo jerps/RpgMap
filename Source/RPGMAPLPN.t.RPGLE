@@ -32,6 +32,20 @@ end-pi;
 end-proc;
 
 
+// ----- RM_MAKE_MAP_IMMUTABLE <<<<<<<<<<
+dcl-proc rm_make_map_immutable export;
+dcl-pi *n pointer;
+  map pointer value;
+end-pi;
+
+  RMValTestIfMap(map);
+  RMValMakeMapImmut(map);
+  
+  return map;
+      
+end-proc;
+
+
 // ----- RM_DISPOSE <<<<<<<<<<
 dcl-proc rm_dispose export;
 dcl-pi *n;

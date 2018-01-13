@@ -14,6 +14,9 @@ The following is a list of all escape messages that can be sent.\
 &nbsp;<div class="escmsg2"><span class="bullet1">&sstarf;</span>&nbsp;A non-integer key is inserted into a vector.</div>\
 </p>\
 <p>\
+<div class="escmsg1">RM00005: Map is immutable; can not insert/remove key/item pairs.</div>\
+</p>\
+<p>\
 <div class="escmsg1">RM00010: Automatically disposed map is already contained in a map.</div><br>\
 &nbsp;<div class="escmsg2"><span class="bullet1">&sstarf;</span>&nbsp;An automatically disposed map which is already inserted into a map is inserted into a map again.</div>\
 </p>\

@@ -227,6 +227,20 @@ end-pi;
 end-proc;
 
 
+// ----- RM_MMI <<<<<<<<<<
+dcl-proc rm_mmi export;
+dcl-pi *n pointer;
+  map pointer value;
+end-pi;
+
+  RMValTestIfMap(map);
+  RMValMakeMapImmut(map);
+  
+  return map;
+      
+end-proc;
+
+
 // ----- RM_DIS <<<<<<<<<<
 dcl-proc rm_dis export;
 dcl-pi *n;
@@ -613,6 +627,10 @@ end-pi;
   if key = *null;
     return map;
   endif;
+  
+  if %bitand(RMValObjFlags(map):x'40') = x'40';
+    RMSysSndEscapeMsg('RM00005');
+  endif;
 
   if %parms < %parmnum(opt);
     fl = 0;
@@ -651,6 +669,10 @@ end-pi;
 
   dcl-s mapi pointer;
   dcl-s c pointer;
+  
+  if %bitand(RMValObjFlags(map):x'40') = x'40';
+    RMSysSndEscapeMsg('RM00005');
+  endif;
       
   mapi = RMValMapImpl(map);
   c = RMBCursorCrt(mapi:0:*null);

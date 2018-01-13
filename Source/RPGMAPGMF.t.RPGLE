@@ -1,7 +1,7 @@
 **FREE
 
 // RPGMAPGMF.RPGLE - RpgMap Gen Main Func
-// Copyright (c) 2017 John Erps (john@erps.me)
+// Copyright (c) 2017-2018 John Erps (john@erps.me)
 
 
 ctl-opt copyright('Copyright (c) 2017 John Erps (john@erps.me)');
@@ -37,6 +37,9 @@ end-pi;
   if %bitand(RMValObjFlags(map):x'02') = x'02' and not rm_isi(k);
     RMSysSndEscapeMsg('RM00002');
   endif;
+  if %bitand(RMValObjFlags(map):x'40') = x'40';
+    RMSysSndEscapeMsg('RM00005');
+  endif;
   obj = k;
   exsr checkobj;
   if i <> *null;
@@ -56,7 +59,7 @@ end-pi;
   if     mode = 2 //cond
      and RMBTreeHasKey(mapi:k) = 1;
     return *off;
-  endif;  
+  endif;
   RMBTreeInsert(mapi:k:i);
   flags = RMValObjFlags(k);
   if %bitand(flags:x'01') <> x'01';

@@ -133,6 +133,20 @@ dcl-pr rm_mmm pointer extproc(*dclcase);
 end-pr;
 
 
+////////// rm_mmi (rm_make_map_immutable) - Make map immutable
+// Make 'map' immutable, and return 'map'.
+// An immutable map can not be mutated, i.e. no key/item pairs can be inserted
+// into or removed from the map. If a key/item pair is inserted into or removed
+// from an immutable map then escape message RM00005 is sent.
+// All contained *automatically* disposed maps (thus including vectors) are made
+// immutable also, recursively.
+// If 'map' is already immutable then this operation has no effect.
+// This operation can not be undone; an immutable map can not be made mutable again.
+dcl-pr rm_mmi pointer extproc(*dclcase);
+  map pointer value;
+end-pr;
+
+
 ////////// rm_dis (rm_dispose) - Dispose maps, cursors and values
 // Dispose objects 'o001' thru 'o100'. Each object can be a map, a cursor
 // or a value.

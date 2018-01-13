@@ -69,6 +69,11 @@ dcl-pr RMValMakeMapManDisp;
   map pointer value;
 end-pr;
 
+// Make map immutable.
+dcl-pr RMValMakeMapImmut;
+  map pointer value;
+end-pr;
+
 // Set map comp. func.
 dcl-pr RMValMapSetCompf;
   map pointer value;

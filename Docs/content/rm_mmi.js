@@ -1,0 +1,20 @@
+document.write('\
+\
+<div id="rm_mmi"><div class="prochdr1">rm_mmi</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Make map immutable</div></div>\
+<pre class="proclongnm">rm_make_map_immutable</pre>\
+<pre class="procsig">\
+&lt;&lt;pointer<br>\
+map pointer value<br>\
+</pre>\
+<p>\
+<span class="bullet1">&sstarf;</span>&nbsp;Make <code>map</code> immutable, and return <code>map</code>.<br>\
+<span class="bullet1">&sstarf;</span>&nbsp;An immutable map can not be mutated, i.e. no key/item pairs can be inserted \
+into or removed from the map. If a key/item pair is inserted into or removed \
+from an immutable map then escape message RM00005 is sent.<br>\
+<span class="bullet1">&sstarf;</span>&nbsp;All contained <strong>automatically<strong> disposed maps (thus including vectors) are made \
+immutable also, recursively.<br>\
+<span class="bullet1">&sstarf;</span>&nbsp;If <code>map</code> is already immutable then this operation has no effect.<br>\
+<span class="bullet1">&sstarf;</span>&nbsp;This operation can not be undone; an immutable map can not be made mutable again.\
+</p>\
+\
+');

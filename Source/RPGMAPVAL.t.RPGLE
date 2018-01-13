@@ -42,6 +42,7 @@ dcl-ds RMValueTypeInfo_t qualified inz template;
   // xxxxxxx1 = map is manually disposed
   // xxxxxx1x = map is a vector
   // 1xxxxxxx = automatically disposed map or value is contained in a map
+  // x1xxxxxx = map is immutable
   // xx1xxxxx = use alternate sort sequence
   // xxx1xxxx = special property "reversed order"
   // xxxx1xxx = special property "case insensitive order"
@@ -471,6 +472,40 @@ end-pi;
     RMSysSndEscapeMsg('RM00051');
   endif;
   RMValObjSetFlags(map:%bitor(RMValObjFlags(map):x'01'));
+    
+end-proc;
+
+
+// Make map immutable.
+dcl-proc RMValMakeMapImmut export;
+dcl-pi *n;
+  map pointer value;
+end-pi;
+
+  dcl-s c pointer;
+
+  if %bitand(RMValObjFlags(map):x'40') = x'40';
+    return;
+  endif;
+  
+  c = RMBCursorCrt(RMValMapImpl(map):0:*null);
+  dow RMBCursorReadNxtPrv(c:0) = 1;
+    RMValueObjP = RMBCursorKey(c);
+    if     RMValueObjP <> *null
+       and RMValueObj.type.id = RMTYPE_MAP
+       and %bitand(RMValueObj.type.flags:x'01') <> x'01';
+      RMValMakeMapImmut(RMValueObjP);
+    endif;
+    RMValueObjP = RMBCursorItem(c);
+    if     RMValueObjP <> *null
+       and RMValueObj.type.id = RMTYPE_MAP
+       and %bitand(RMValueObj.type.flags:x'01') <> x'01';
+      RMValMakeMapImmut(RMValueObjP);
+    endif;
+  enddo;
+  RMBCursorDispose(c);
+  
+  RMValObjSetFlags(map:%bitor(RMValObjFlags(map):x'40'));
     
 end-proc;
 

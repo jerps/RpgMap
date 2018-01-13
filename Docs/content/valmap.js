@@ -61,6 +61,11 @@ This wrapping/unwrapping of RPG values using <code>rm_??</code> and <code>rm_??_
 polymorphic, i.e. to let it handle different types uniformly.\
 </p>\
 <p>\
+A map can be made immutable with <a href="#rm_mmi"><code>rm_mmi</code></a>. There is no way to make it mutable again. This \
+guarantees that no key/item pairs will be inserted into or removed from the map. If a map is made immutable then all contained \
+<strong>automatically</strong> disposed maps (thus including vectors) are made immutable also, recursively.\
+</p>\
+<p>\
 Event handlers can be <a href="#rm_add_event_handler">added</a> to (or <a href="#rm_remove_event_handler">removed</a> from) \
 a map to call procedures whenever key/item pairs are inserted or removed.\
 </p>\
