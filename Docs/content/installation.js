@@ -14,7 +14,7 @@ Cd into the directory with the zip file.<br>\
 Unzip the file with <code>jar xvf RpgMap-v1.2.0.zip</code>.<br>\
 Cd into directory "RpgMap-master/Source".<br>\
 Start the build with <code>chmod +x BUILD.sh && ./BUILD.sh</code>.<br>\
-This will create the library (default RPGMAP) and the necessary objects in it, using mainly \
+This will create the library (default RPGMAP) and the necessary objects in it, using mostly \
 the default system settings such as object owner and authorities.<br>\
 The last message should say "OK; serviceprogram {lib}/RPGMAP has been created.".\
 </p>\
