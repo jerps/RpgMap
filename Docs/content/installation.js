@@ -4,8 +4,7 @@ document.write('\
 <br>\
 <p>\
 RpgMap is on <a href="http://github.com/jerps/RpgMap">Github</a>. It\'s installed by putting library RPGMAP on your i. At the moment RpgMap can \
-only be installed by building it from source. A current ILE RPG compiler is required: \
-at least 7.2 TR5.\
+only be installed by building it from source. The IBM i version used must be at least 7.2.\
 </p>\
 <h2>Building library RPGMAP from source</h2>\
 <p>\
@@ -15,7 +14,9 @@ Cd into the directory with the zip file.<br>\
 Unzip the file with <code>jar xvf RpgMap-v1.2.0.zip</code>.<br>\
 Cd into directory "RpgMap-master/Source".<br>\
 Start the build with <code>chmod +x BUILD.sh && ./BUILD.sh</code>.<br>\
-The last message should say "OK; serviceprogram RPGMAP/RPGMAP has been created.".\
+This will create the library (default RPGMAP) and the necessary objects in it, using mainly \
+the default system settings such as object owner and authorities.<br>\
+The last message should say "OK; serviceprogram {lib}/RPGMAP has been created.".\
 </p>\
 <h3>Changing the alternate sort sequence</h3>\
 <p>\
