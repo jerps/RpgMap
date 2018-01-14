@@ -6,7 +6,8 @@ document.write('\
 Character and string values can not exceed 30.000 bytes.\
 </p>\
 <p>\
-The following RPG constants contain the minimum and maximum numeric values.\
+The following RPG constants define the minimum and maximum value for each numeric \
+value type.\
 </p>\
 <pre class="pcode">\
 RPGMAP_I1_MIN                       -2147483648<br>\

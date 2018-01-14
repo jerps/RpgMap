@@ -510,22 +510,20 @@
         cel.animate({scrollTop: y});
       } else {
         z = 0;
-        if (el.attr("id").length > 2 && el.attr("id").substring(0,3) == apipfx) {
-          el2 = el.next();
-          while (el2.length > 0) {
-            if (el2.prop("tagName") == "P")
-              z = el2.position().top - el.position().top + el2.height();
-            if (el2.prop("tagName") == "DIV" && el2.attr("id").length > 0)
-              break;
-            el2 = el2.next();
-          } 
-          if (z > 0 && z < cel.height())
-            z = (cel.height() - z) / 2;
-          else
-            z = 0;
-        } else
-          z += 20;
-        cel.animate({scrollTop: cel.scrollTop() + Math.floor(el.position().top-z)});
+        el2 = el.next();
+        while (z < cel.height() && el2.length > 0) {
+          if (el2.attr("id") && el2.attr("id").length > 0) {
+            z = el2.position().top - el.position().top + el2.height();
+            break;
+          }
+          el2 = el2.next();
+        } 
+        if (z > cel.height())
+          z = el.position().top;
+        else
+          z = el.position().top-(cel.height()-z)/2;
+        z -= cel.height()*0.02;
+        cel.animate({scrollTop: cel.scrollTop() + z});
       }
     }
     if (both) {
@@ -536,7 +534,7 @@
         if (x >= 0 && y >= 0)
           cel.animate({scrollTop: x});
         else
-          cel.animate({scrollTop: cel.scrollTop() + Math.floor(el.position().top-cel.height()/2)});
+          cel.animate({scrollTop: cel.scrollTop() + el.position().top-(cel.height()-el.height())/2});
       }
     }
     if (sel) {

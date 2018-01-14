@@ -147,8 +147,8 @@ end-pr;
 // An immutable map can not be mutated, i.e. no key/item pairs can be inserted
 // into or removed from the map. If a key/item pair is inserted into or removed
 // from an immutable map then escape message RM00005 is sent.
-// All contained *automatically* disposed maps (thus including vectors) are made
-// immutable also, recursively.
+// All contained *automatically* disposed maps (thus including vectors) are also
+// made immutable, recursively.
 // If 'map' is already immutable then this operation has no effect.
 // This operation can not be undone; an immutable map can not be made mutable again.
 // When a map is copied ('rm_cpy') then the new copy is mutable.
