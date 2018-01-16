@@ -28,6 +28,7 @@ dcl-c KEYWRD_LAST1             '*l';
 dcl-c KEYWRD_LAST2             '*last';
 dcl-c KEYWRD_GE                '*ge';
 dcl-c KEYWRD_LE                '*le';
+dcl-c KEYWRD_MM                '*mm';
 
 
 // ----- Exported procedures
@@ -649,8 +650,8 @@ end-pi;
     fl = 0;
   elseif %scan(KEYWRD_LAST1:opt) > 0 or %scan(KEYWRD_LAST:opt) > 0;
     fl = 1;
-  else;
-    RMSysSndEscapeMsg('RM00101':%trimr(opt));
+  elseif opt <> '';
+    RMSysSndEscapeMsg('RM00101':%trim(opt));
   endif;
   
   mapi = RMValMapImpl(map);
@@ -832,8 +833,8 @@ end-pi;
     fl = 0;
   elseif %scan(KEYWRD_LAST1:opt) > 0 or %scan(KEYWRD_LAST2:opt) > 0;
     fl = 1;
-  else;
-    RMSysSndEscapeMsg('RM00101':%trimr(opt));
+  elseif opt <> '';
+    RMSysSndEscapeMsg('RM00101':%trim(opt));
   endif;
   
   item = *null;
@@ -1141,8 +1142,8 @@ end-pi;
     llgt = 0;
   elseif %scan(KEYWRD_LE:opt) > 0;
     llgt = 1;
-  else;
-    RMSysSndEscapeMsg('RM00101':%trimr(opt));
+  elseif opt <> '';
+    RMSysSndEscapeMsg('RM00101':%trim(opt));
   endif;
   
   if key = *null;
@@ -1336,8 +1337,8 @@ end-pi;
     l = *off;
   elseif %scan(KEYWRD_LAST1:opt) > 0 or %scan(KEYWRD_LAST2:opt) > 0;
     l = *on;
-  else;
-    RMSysSndEscapeMsg('RM00101':%trimr(opt));
+  elseif opt <> '';
+    RMSysSndEscapeMsg('RM00101':%trim(opt));
   endif;
   
   k = *null;
@@ -1490,8 +1491,8 @@ end-pi;
     pos = 0;
   elseif opt = %scan(KEYWRD_END1:opt) > 0 or %scan(KEYWRD_END2:opt) > 0;
     pos = 1;
-  else;
-    RMSysSndEscapeMsg('RM00101':%trimr(opt));
+  elseif opt <> '';
+    RMSysSndEscapeMsg('RM00101':%trim(opt));
   endif;
 
   return RMValCursorCrt(map:pos);
