@@ -1,6 +1,6 @@
 document.write('\
 \
-<h2 id="memmgt">Automatic Memory Management</h2>\
+<h2 id="amemmgt">Automatic Memory Management</h2>\
 <br>\
 <p>\
 Maps and values must be disposed at some time to free the used memory and not cause memory leaks. \
