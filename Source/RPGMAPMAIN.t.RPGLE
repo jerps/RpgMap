@@ -28,6 +28,7 @@ dcl-c KEYWRD_LAST1             '*l';
 dcl-c KEYWRD_LAST2             '*last';
 dcl-c KEYWRD_GE                '*ge';
 dcl-c KEYWRD_LE                '*le';
+dcl-c KEYWRD_MM                '*mm';
 
 
 // ----- Exported procedures
@@ -242,10 +243,21 @@ end-proc;
 dcl-proc rm_mmi export;
 dcl-pi *n pointer;
   map pointer value;
+  opt char(10) value options(*nopass);
 end-pi;
 
+  dcl-s mm int(10);
+
+  if %parms < %parmnum(opt);
+    mm = 0;
+  elseif %scan(KEYWRD_MM:opt) > 0;
+    mm = 1;
+  elseif opt <> '';
+    RMSysSndEscapeMsg('RM00101':%trim(opt));
+  endif;
+
   RMValTestIfMap(map);
-  RMValMakeMapImmut(map);
+  RMValMakeMapImmut(map:mm);
   
   return map;
       

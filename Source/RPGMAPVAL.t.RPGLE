@@ -564,6 +564,7 @@ end-proc;
 dcl-proc RMValMakeMapImmut export;
 dcl-pi *n;
   map pointer value;
+  opt int(10) value;
 end-pi;
 
   dcl-s c pointer;
@@ -577,14 +578,16 @@ end-pi;
     RMValueObjP = RMBCursorKey(c);
     if     RMValueObjP <> *null
        and RMValueObj.type.id = RMTYPE_MAP
-       and %bitand(RMValueObj.type.flags:x'01') <> x'01';
-      RMValMakeMapImmut(RMValueObjP);
+       and (   opt = 1
+            or %bitand(RMValueObj.type.flags:x'01') <> x'01');
+      RMValMakeMapImmut(RMValueObjP:opt);
     endif;
     RMValueObjP = RMBCursorItem(c);
     if     RMValueObjP <> *null
        and RMValueObj.type.id = RMTYPE_MAP
-       and %bitand(RMValueObj.type.flags:x'01') <> x'01';
-      RMValMakeMapImmut(RMValueObjP);
+       and (   opt = 1
+            or %bitand(RMValueObj.type.flags:x'01') <> x'01');
+      RMValMakeMapImmut(RMValueObjP:opt);
     endif;
   enddo;
   RMBCursorDispose(c);

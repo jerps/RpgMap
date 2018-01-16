@@ -92,6 +92,7 @@ end-pr;
 // Make map immutable.
 dcl-pr RMValMakeMapImmut;
   map pointer value;
+  opt int(10) value;
 end-pr;
 
 // Set map comp. func.

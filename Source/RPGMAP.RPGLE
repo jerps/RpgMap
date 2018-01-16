@@ -149,11 +149,14 @@ end-pr;
 // from an immutable map then escape message RM00005 is sent.
 // All contained *automatically* disposed maps (thus including vectors) are also
 // made immutable, recursively.
+// If 'opt' is passed with "*mm" then all contained *manually* disposed maps are
+// also made immutable, recursively, like contained automatically disposed maps.
 // If 'map' is already immutable then this operation has no effect.
 // This operation can not be undone; an immutable map can not be made mutable again.
 // When a map is copied ('rm_cpy') then the new copy is mutable.
 dcl-pr rm_mmi pointer extproc(*dclcase);
   map pointer value;
+  opt char(10) value options(*nopass);
 end-pr;
 
 
