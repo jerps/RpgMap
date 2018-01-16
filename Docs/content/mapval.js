@@ -9,11 +9,11 @@ keys being indexed using an efficient red-black tree algorithm.\
 </p>\
 <p>\
 There are two distinct types of maps: manually and automatically disposed maps. They differ mainly in the way they\'re \
-handled with respect to <a href="#memmgt">Automatic Memory Management</a>.\
+handled with respect to <a href="#amemmgt">Automatic Memory Management</a>.\
 </p>\
 <p>\
 Key/item pairs are inserted into and removed from maps. When a key or item is removed it\'s immediately disposed \
-(i.e. memory is freed), except when it\'s a <a href="#memmgt">manually disposed map</a>.\
+(i.e. memory is freed), except when it\'s a <a href="#amemmgt">manually disposed map</a>.\
 </p>\
 <p>\
 Throughout this documentation maps and values are said to be "contained" by maps. No distinction is being made between \
