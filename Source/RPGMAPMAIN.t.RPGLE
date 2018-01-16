@@ -28,7 +28,6 @@ dcl-c KEYWRD_LAST1             '*l';
 dcl-c KEYWRD_LAST2             '*last';
 dcl-c KEYWRD_GE                '*ge';
 dcl-c KEYWRD_LE                '*le';
-dcl-c KEYWRD_MM                '*mm';
 
 
 // ----- Exported procedures
