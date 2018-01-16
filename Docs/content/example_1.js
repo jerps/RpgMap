@@ -52,7 +52,7 @@ x = rm__d( map:      d\'2017-05-01\'  ); //     "       "      "   without wrapp
 <p>\
 The date argument for <a href="#rm_get"><code>rm_get</code></a> and <a href="#rm__"><code>rm__</code></a> \
 is an RpgMap date value that will be automatically disposed (i.e. released, deallocated). See \
-<a href="#memmgt">Memory Management</a>) for details.\
+<a href="#memmgt">Automatic Memory Management</a>) for details.\
 </p>\
 <p>\
 Variable <code>x</code> is a pointer which now points to the RpgMap packed decimal value, \

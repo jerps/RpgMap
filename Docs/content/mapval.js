@@ -1,15 +1,27 @@
 document.write('\
 \
-<h2 id="valmap">Values and Maps</h2>\
+<h2 id="mapval">Maps and Values</h2>\
 <br>\
 <p>\
-Maps contain values and other maps, as key/item pairs, always sorted by key. For example the keys could be customer numbers \
-and the items customer records. Items can be accessed very fast using the associated key due to the keys \
-being indexed using an efficient red-black tree algorithm.\
+Maps contain values and other maps, as key/item pairs, that are always sorted by key. For example the keys could be \
+customer numbers and the items customer records. Items can be accessed very fast using the associated key due to the \
+keys being indexed using an efficient red-black tree algorithm.\
+</p>\
+<p>\
+There are two distinct types of maps: manually and automatically disposed maps. They differ mainly in the way they\'re \
+handled with respect to <a href="#memmgt">Automatic Memory Management</a>.\
 </p>\
 <p>\
 Key/item pairs are inserted into and removed from maps. When a key or item is removed it\'s immediately disposed \
 (i.e. memory is freed), except when it\'s a <a href="#memmgt">manually disposed map</a>.\
+</p>\
+<p>\
+Throughout this documentation maps and values are said to be "contained" by maps. No distinction is being made between \
+automatically or manually disposed maps. Strictly speaking this is not correct. Contained means "being part of" and that \
+does not apply to <strong>manually</strong> disposed maps. That\'s why unlike automatically disposed maps, manually disposed maps can be \
+"contained" in more than one map. More accurately, a reference (i.e. a pointer) to the "contained" manually disposed \
+map is contained in each map that "contains", but actually only <strong>references</strong>, the map. However, for the \
+sake of brevity, "contained" will be used for both map types.\
 </p>\
 <p>\
 Maps are created with <a href="#rm_m"><code>rm_m</code></a>, <a href="#rm_mm"><code>rm_mm</code></a> or <a href="#rm_v"><code>rm_v</code></a>.\
