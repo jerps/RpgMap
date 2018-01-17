@@ -17,7 +17,7 @@ a Python dict, for use with the RPG programming language.
   
     * <code>rm_??__</code> to immediately dispose an RpgMap value after unwrapping.
     
-    * <code>rm_inm (rm_in_map)</code> to test whether a map is (contained) in a map.
+    * <code>rm_inm (rm_in_map)</code> to test whether a map or value is (contained) in a map.
     
     * <code>rm_mmm (rm_make_map_manually_disposed)</code> to make a map manually disposed.
     
