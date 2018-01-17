@@ -10,6 +10,9 @@ To help with that RpgMap implements some simple rules that govern automatic disp
 Procedure <a href="#rm_dis"><code>rm_dis</code></a> is used to explicitly dispose values, maps and cursors.\
 </p>\
 <p>\
+Every data type has a <code>rm_??__</code> procedure to dispose a value immediately after <a href="#mapval">unwrapping</a>.\
+</p>\
+<p>\
 <strong>When a value is inserted in a map as key or item and the map is disposed or the key/item pair is removed \
 from the map then the value is disposed.</strong> Also, <strong>when a value is used as an argument, e.g. as a key when \
 calling <a href="#rm_get"><code>rm_get</code></a>, and the value has not been inserted into a map then the value \
@@ -39,8 +42,8 @@ A manually disposed map must always be explicitly disposed with <a href="#rm_dis
 But unlike an automatically disposed map a manually disposed map can be inserted into more than one map.\
 </p>\
 <p>\
-A value or an automatically disposed map that has been inserted into a map can not be disposed \
-with <a href="#rm_dis"><code>rm_dis</code></a>.\
+A value or an automatically disposed map that has been inserted into a map can not be explicitly disposed \
+with <a href="#rm_dis"><code>rm_dis</code></a>, or with one of the <code>rm_??__</code> procedures.\
 </p>\
 <p>\
 When a map is copied (<a href="#rm_cpy"><code>rm_cpy</code></a>) the copy contains a copy of the \
