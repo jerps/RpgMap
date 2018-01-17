@@ -7,7 +7,7 @@ value   pointer   value<br>\
 default timestamp value options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&sstarf;</span>&nbsp;Same as <a href="#rm_z_"><code>rm_z_</code></a>, in addition <code>value</code> is immediately disposed.\
+<span class="bullet1">&#9679;</span>&nbsp;Same as <a href="#rm_z_"><code>rm_z_</code></a>. Additionally, <code>value</code> is immediately disposed.\
 </p>\
 \
 ');

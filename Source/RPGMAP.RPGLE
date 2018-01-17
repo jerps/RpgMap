@@ -1174,7 +1174,7 @@ end-pr;
 
 
 ////////// rm_i*__ - Same as rm_i*_, and dispose the number
-// Same as rm_i*_, in addition 'value' is immediately disposed.
+// Same as rm_i*_. Additionally, 'value' is immediately disposed.
 dcl-pr rm_i__ int(10) extproc(*dclcase);
   value pointer value;
   default int(10) value options(*nopass);
@@ -1256,7 +1256,7 @@ end-pr;
 
 
 ////////// rm_p*__ - Same as rm_p*_, and dispose the number
-// Same as rm_p*_, in addition 'value' is immediately disposed.
+// Same as rm_p*_. Additionally, 'value' is immediately disposed.
 dcl-pr rm_p__ packed(14:4) extproc(*dclcase);
   value pointer value;
   default packed(14:4) value options(*nopass);
@@ -1329,7 +1329,7 @@ end-pr;
 
 
 ////////// rm_d__, rm_t__, rm_z__ - Same as rm_d/t/z_, and dispose the date/time/ts
-// Same as rm_d/t/z_, in addition 'value' is immediately disposed.
+// Same as rm_d/t/z_. Additionally, 'value' is immediately disposed.
 dcl-pr rm_d__ date(*iso-) extproc(*dclcase);
   value pointer value;
   default date(*iso-) value options(*nopass);
@@ -1372,7 +1372,7 @@ end-pr;
 
 
 ////////// rm_n__ - Same as rm_n_, and dispose the indicator
-// Same as rm_n_, in addition 'value' is immediately disposed.
+// Same as rm_n_. Additionally, 'value' is immediately disposed.
 dcl-pr rm_n__ ind extproc(*dclcase);
   value pointer value;
   default ind value options(*nopass);
@@ -1407,7 +1407,7 @@ end-pr;
 
 
 ////////// rm_x__ - Same as rm_x_, and dispose the pointer
-// Same as rm_x_, in addition 'value' is immediately disposed.
+// Same as rm_x_. Additionally, 'value' is immediately disposed.
 dcl-pr rm_x__ pointer extproc(*dclcase);
   value pointer value;
   default pointer value options(*nopass);
@@ -1442,7 +1442,7 @@ end-pr;
 
 
 ////////// rm_xp__ - Same as rm_xp_, and dispose the procedure pointer
-// Same as rm_xp_, in addition 'value' is immediately disposed.
+// Same as rm_xp_. Additionally, 'value' is immediately disposed.
 dcl-pr rm_xp__ pointer(*proc) extproc(*dclcase);
   value pointer value;
   default pointer(*proc) value options(*nopass);
@@ -1540,7 +1540,7 @@ end-pr;
 
 
 ////////// rm_a*__ - Same as rm_a*_, and dispose the character data
-// Same as rm_a*_, in addition 'value' is immediately disposed.
+// Same as rm_a*_. Additionally, 'value' is immediately disposed.
 dcl-pr rm_a__ varchar(30000) rtnparm extproc(*dclcase);
   value pointer value;
   default varchar(30000) const options(*nopass);
@@ -1648,7 +1648,7 @@ end-pr;
 
 
 ////////// rm_s*__ - Same as rm_s*_, and dispose the string
-// Same as rm_s*_, in addition 'value' is immediately disposed.
+// Same as rm_s*_. Additionally, 'value' is immediately disposed.
 dcl-pr rm_s__ varchar(30000) ccsid(*utf8) rtnparm extproc(*dclcase);
   value pointer value;
   default varchar(30000) ccsid(*utf8) const options(*nopass);

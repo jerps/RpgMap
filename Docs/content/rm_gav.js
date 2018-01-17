@@ -8,7 +8,7 @@ map  pointer                   value<br>\
 attr varchar(100) ccsid(*utf8) value<br>\
 </pre>\
 <p>\
-<span class="bullet1">&sstarf;</span>&nbsp;Return the value of attribute <code>attr</code> of <code>map</code>, or <code>\'\'</code> if the \
+<span class="bullet1">&#9679;</span>&nbsp;Return the value of attribute <code>attr</code> of <code>map</code>, or <code>\'\'</code> if the \
 attribute is not set.\
 </p>\
 \

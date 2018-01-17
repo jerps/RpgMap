@@ -7,10 +7,10 @@ document.write('\
 map pointer value<br>\
 </pre>\
 <p>\
-<span class="bullet1">&sstarf;</span>&nbsp;Make <code>map</code> a <strong>manually</strong> disposed map, and return <code>map</code>.<br>\
-<span class="bullet1">&sstarf;</span>&nbsp;Send escape message RM00051 if <code>map</code> is not an automatically disposed map, \
+<span class="bullet1">&#9679;</span>&nbsp;Make <code>map</code> a <strong>manually</strong> disposed map, and return <code>map</code>.<br>\
+<span class="bullet1">&#9679;</span>&nbsp;Send escape message RM00051 if <code>map</code> is not an automatically disposed map, \
 or if <code>map</code> is a vector.<br>\
-<span class="bullet1">&sstarf;</span>&nbsp;This operation can not be undone; a manually disposed map can not be made \
+<span class="bullet1">&#9679;</span>&nbsp;This operation can not be undone; a manually disposed map can not be made \
 automatically disposed.\
 </p>\
 \

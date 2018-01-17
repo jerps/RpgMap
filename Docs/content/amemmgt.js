@@ -14,12 +14,11 @@ Every data type has a <code>rm_??__</code> procedure (two trailing underscores) 
 after <a href="#mapval">unwrapping</a>.\
 </p>\
 <p>\
-<strong>When a value is inserted in a map as key or item and the map is disposed or the key/item pair is removed \
-from the map then the value is disposed.</strong> Also, <strong>when a value is used as an argument, e.g. as a key when \
-calling <a href="#rm_get"><code>rm_get</code></a>, and the value has not been inserted into a map then the value \
-is immediately disposed after being used</strong>. Usually there is no need to dispose values with <a href="#rm_dis"><code>rm_dis</code></a>; \
-most of the time values are disposed automatically.\
-</p>\
+<span class="bullet1">&#9679;</span><span class="bullet1">&#9679;</span><span class="bullet1">&#9679;</span>&nbsp;<strong>When a value is inserted in a map as key or item and the map is disposed or the key/item pair is removed \
+from the map then the value is disposed</strong>.<br>\
+<br>\
+<span class="bullet1">&#9679;</span><span class="bullet1">&#9679;</span><span class="bullet1">&#9679;</span><strong>&nbsp;When a value is used as an argument, e.g. as a key when calling <a href="#rm_get"><code>rm_get</code></a>, \
+and the value has not been inserted into a map then the value is immediately disposed after being used</strong>.<br>\
 <p>\
 Because a value is automatically disposed it can not be inserted into more than one map.\
 </p>\
@@ -27,7 +26,9 @@ Because a value is automatically disposed it can not be inserted into more than 
 Maps come in mainly two flavors: automatically (<a href="#rm_m"><code>rm_m</code></a>) or manually (<a href="#rm_mm"><code>rm_mm</code></a>) disposed.\
 </p>\
 <p>\
-<strong>Automatically disposed maps are governed by the same memory management rules as values.</strong> \
+<span class="bullet1">&#9679;</span><span class="bullet1">&#9679;</span><span class="bullet1">&#9679;</span>&nbsp;<strong>Automatically disposed maps are governed by the same memory management rules as values</strong>.<br>\
+</p>\
+<p>\
 I.e. they\'re disposed when the containing map is disposed or when an automatically disposed map is removed \
 from the map, or when it has been used as an argument and is not contained in a map.\
 </p>\

@@ -8,7 +8,7 @@ obj1 pointer value<br>\
 obj2 pointer value<br>\
 </pre>\
 <p>\
-<span class="bullet1">&sstarf;</span>&nbsp;Return <code>*on</code> if <code>obj1</code> is equal to <code>obj2</code>, else return <code>*off</code>.\
+<span class="bullet1">&#9679;</span>&nbsp;Return <code>*on</code> if <code>obj1</code> is equal to <code>obj2</code>, else return <code>*off</code>.\
 </p>\
 \
 ');

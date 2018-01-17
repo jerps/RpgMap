@@ -9,9 +9,9 @@ key1 pointer value options(*nopass)<br>\
 key2 pointer value options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&sstarf;</span>&nbsp;Like <a href="#rm_cpy"><code>rm_cpy</code></a>, but returns a deep copy.<br>\
-<span class="bullet1">&sstarf;</span>&nbsp;For values, <a href="#rm_cpyd"><code>rm_cpyd</code></a> has the same effect as <a href="#rm_cpy"><code>rm_cpy</code></a>.<br>\
-<span class="bullet1">&sstarf;</span>&nbsp;For maps, contained manually disposed maps are copied also, recursively, \
+<span class="bullet1">&#9679;</span>&nbsp;Like <a href="#rm_cpy"><code>rm_cpy</code></a>, but returns a deep copy.<br>\
+<span class="bullet1">&#9679;</span>&nbsp;For values, <a href="#rm_cpyd"><code>rm_cpyd</code></a> has the same effect as <a href="#rm_cpy"><code>rm_cpy</code></a>.<br>\
+<span class="bullet1">&#9679;</span>&nbsp;For maps, contained manually disposed maps are copied also, recursively, \
 like automatically disposed maps.\
 </p>\
 \

@@ -7,9 +7,9 @@ document.write('\
 cur pointer value<br>\
 </pre>\
 <p>\
-<span class="bullet1">&sstarf;</span>&nbsp;Return the current item for cursor <code>cur</code>, after calling <a href="#rm_rdn"><code>rm_rdn</code></a> or <a href="#rm_rdp"><code>rm_rdp</code></a>.</br>\
-<span class="bullet1">&sstarf;</span>&nbsp;The current item may be <code>*null</code>.<br>\
-<span class="bullet1">&sstarf;</span>&nbsp;Call <a href="#rm_key"><code>rm_key</code></a> to check whether there is a current key/item pair.\
+<span class="bullet1">&#9679;</span>&nbsp;Return the current item for cursor <code>cur</code>, after calling <a href="#rm_rdn"><code>rm_rdn</code></a> or <a href="#rm_rdp"><code>rm_rdp</code></a>.</br>\
+<span class="bullet1">&#9679;</span>&nbsp;The current item may be <code>*null</code>.<br>\
+<span class="bullet1">&#9679;</span>&nbsp;Call <a href="#rm_key"><code>rm_key</code></a> to check whether there is a current key/item pair.\
 </p>\
 \
 ');

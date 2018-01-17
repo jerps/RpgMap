@@ -7,7 +7,7 @@ value   pointer      value<br>\
 default varchar(100) const options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&sstarf;</span>&nbsp;Same as <a href="#rm_a1_"><code>rm_a1_</code></a>, in addition <code>value</code> is immediately disposed.\
+<span class="bullet1">&#9679;</span>&nbsp;Same as <a href="#rm_a1_"><code>rm_a1_</code></a>. Additionally, <code>value</code> is immediately disposed.\
 </p>\
 \
 ');

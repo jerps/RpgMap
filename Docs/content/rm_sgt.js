@@ -8,7 +8,7 @@ cur pointer value<br>\
 key pointer value options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&sstarf;</span>&nbsp;See <a href="#rm_sll"><code>rm_sll</code></a>.\
+<span class="bullet1">&#9679;</span>&nbsp;See <a href="#rm_sll"><code>rm_sll</code></a>.\
 </p>\
 \
 ');

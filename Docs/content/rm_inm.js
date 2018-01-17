@@ -7,8 +7,8 @@ document.write('\
 obj pointer value<br>\
 </pre>\
 <p>\
-<span class="bullet1">&sstarf;</span>&nbsp;Return <code>*on</code> if <code>obj</code> is (contained) in a map, else return <code>*off</code>.<br>\
-<span class="bullet1">&sstarf;</span>&nbsp;Send escape message RM09005 if <code>obj</code> is not a value or an \
+<span class="bullet1">&#9679;</span>&nbsp;Return <code>*on</code> if <code>obj</code> is (contained) in a map, else return <code>*off</code>.<br>\
+<span class="bullet1">&#9679;</span>&nbsp;Send escape message RM09005 if <code>obj</code> is not a value or an \
 automatically disposed map.\
 </p>\
 \

@@ -11,7 +11,7 @@ key1 pointer        value options(*nopass)<br>\
 key2 pointer        value options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&sstarf;</span>&nbsp;See <a href="#rm_fed"><code>rm_fed</code></a>.\
+<span class="bullet1">&#9679;</span>&nbsp;See <a href="#rm_fed"><code>rm_fed</code></a>.\
 </p>\
 \
 ');

@@ -9,7 +9,7 @@ k01 time    value options(*nopass)<br>\
 k10 time    value options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&sstarf;</span>&nbsp;See <a href="#rm__"><code>rm__</code></a>.\
+<span class="bullet1">&#9679;</span>&nbsp;See <a href="#rm__"><code>rm__</code></a>.\
 </p>\
 \
 ');

@@ -7,8 +7,8 @@ value pointer(*proc) value<br>\
 opt   int(10)        value options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&sstarf;</span>&nbsp;Create a new procedure pointer value.<br>\
-<span class="bullet1">&sstarf;</span>&nbsp;Pass <code>opt</code> to set special property or user data (see <a href="#rm_"><code>rm_</code></a>).\
+<span class="bullet1">&#9679;</span>&nbsp;Create a new procedure pointer value.<br>\
+<span class="bullet1">&#9679;</span>&nbsp;Pass <code>opt</code> to set special property or user data (see <a href="#rm_"><code>rm_</code></a>).\
 </p>\
 \
 ');

@@ -20,8 +20,8 @@ Throughout this documentation maps and values are said to be "contained" by maps
 automatically or manually disposed maps. Strictly speaking this is not correct. Contained means "being part of" and that \
 does not apply to <strong>manually</strong> disposed maps. That\'s why unlike automatically disposed maps, manually disposed maps can be \
 "contained" in more than one map. More accurately, a reference (i.e. a pointer) to the "contained" manually disposed \
-map is contained in each map that "contains", but actually only <strong>references</strong>, the map. However, for the \
-sake of brevity, "contained" will be used for both map types.\
+map is contained in each map that is said to "contain" - but more accurately <strong>references</strong> - the map. However, \
+the documentation uses the term "contained" for both map types.\
 </p>\
 <p>\
 Maps are created with <a href="#rm_m"><code>rm_m</code></a>, <a href="#rm_mm"><code>rm_mm</code></a> or <a href="#rm_v"><code>rm_v</code></a>.\
