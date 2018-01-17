@@ -10,7 +10,8 @@ To help with that RpgMap implements some simple rules that govern automatic disp
 Procedure <a href="#rm_dis"><code>rm_dis</code></a> is used to explicitly dispose values, maps and cursors.\
 </p>\
 <p>\
-Every data type has a <code>rm_??__</code> procedure to dispose a value immediately after <a href="#mapval">unwrapping</a>.\
+Every data type has a <code>rm_??__</code> procedure (two trailing underscores) to dispose a value immediately \
+after <a href="#mapval">unwrapping</a>.\
 </p>\
 <p>\
 <strong>When a value is inserted in a map as key or item and the map is disposed or the key/item pair is removed \
