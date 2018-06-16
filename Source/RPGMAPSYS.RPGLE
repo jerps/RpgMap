@@ -1,10 +1,10 @@
 **FREE
 
 // RPGMAPSYS.RPGLE - RpgMap System 
-// Copyright (c) 2017 John Erps (john@erps.me)
+// Copyright (c) 2017 John Erps (john.erps@gmail.com)
 
 
-ctl-opt copyright('Copyright (c) 2017 John Erps (john@erps.me)');
+ctl-opt copyright('Copyright (c) 2017 John Erps (john.erps@gmail.com)');
 ctl-opt nomain datfmt(*iso-) timfmt(*iso.) ccsid(*exact);
 
 
@@ -88,8 +88,9 @@ dcl-ds OS4Iconvh likeds(OS4Iconv_t) inz(*likeds);
 
 // Return errno
 dcl-proc RMSysErrno export;
-dcl-pi *n int(10);
-end-pi;
+
+  dcl-pi *n int(10);
+  end-pi;
 
   dcl-pr OS4Errno_ pointer extproc('__errno');
   end-pr;
@@ -103,10 +104,11 @@ end-proc;
 
 // Send Escape Message
 dcl-proc RMSysSndEscapeMsg export;
-dcl-pi *n;
-  msgid char(7) value;
-  msgdata varchar(500) value options(*nopass); 
-end-pi;
+
+  dcl-pi *n;
+    msgid char(7) value;
+    msgdata varchar(500) value options(*nopass); 
+  end-pi;
 
   dcl-s msgd char(500);
   dcl-s msgdl int(10);
@@ -126,15 +128,16 @@ end-proc;
 // Convert data to different CCSID.
 // This procedure is a wrapper for Iconv().
 dcl-proc RMSysCvtCCSID export;
-dcl-pi *n ind;
-  fromccsid int(10) value;
-  toccsid int(10) value;
-  frombuf pointer;
-  frombufl uns(10);
-  tobuf pointer;
-  tobufl uns(10);
-  noinitshst ind value options(*nopass);
-end-pi;
+
+  dcl-pi *n ind;
+    fromccsid int(10) value;
+    toccsid int(10) value;
+    frombuf pointer;
+    frombufl uns(10);
+    tobuf pointer;
+    tobufl uns(10);
+    noinitshst ind value options(*nopass);
+  end-pi;
   
   dcl-s shiftalt int(10);
   

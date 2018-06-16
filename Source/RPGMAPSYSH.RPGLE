@@ -1,7 +1,7 @@
 **FREE
 
 // RPGMAPSYSH.RPGLE - RPGMAPSYS header file 
-// Copyright (c) 2017 John Erps (john@erps.me)
+// Copyright (c) 2017 John Erps (john.erps@gmail.com)
 
 
 /if defined(RPGMAPSYS_H)

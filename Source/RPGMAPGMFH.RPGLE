@@ -1,7 +1,7 @@
 **FREE
 
 // RPGMAPGMFH.RPGLE - RPGMAPGMF header file 
-// Copyright (c) 2017 John Erps (john@erps.me)
+// Copyright (c) 2017 John Erps (john.erps@gmail.com)
 
 
 /if defined(RPGMAPGMF_H)

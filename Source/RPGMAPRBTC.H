@@ -1,5 +1,5 @@
 /* RPGMAPRBTC.H - RedBlackTree and Cursors header file  */
-/* Copyright (c) 2017 John Erps (john@erps.me)          */
+/* Copyright (c) 2017 John Erps (john.erps@gmail.com)          */
 
 
 #ifndef RPGMAPRBTC_H

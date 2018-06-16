@@ -13,6 +13,15 @@ p {
   margin: 1rem 0.5rem 0.5rem 2rem;
   line-height: 1.5;
 }
+  
+#cpyr {
+  font-size: 0.7rem;
+  position: fixed;
+  bottom: 6px;
+  right: 18px;
+  text-align: right;
+  width: 100%;
+}
 
 #pname {
   font-family: 'Ubuntu Mono', monospace;

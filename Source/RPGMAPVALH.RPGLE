@@ -1,7 +1,7 @@
 **FREE
 
 // RPGMAPVALH.RPGLE - RPGMAPVAL header file 
-// Copyright (c) 2017-2018 John Erps (john@erps.me)
+// Copyright (c) 2017-2018 John Erps (john.erps@gmail.com)
 
 
 /if defined(RPGMAPVAL_H)
@@ -77,6 +77,11 @@ dcl-pr RMValIsMap ind;
   obj pointer value;
   vector ind value options(*nopass);
   mandisp ind value options(*nopass);
+end-pr;
+
+// Test if map
+dcl-pr RMValTestIfMap;
+  obj pointer value;
 end-pr;
 
 // Map impl.

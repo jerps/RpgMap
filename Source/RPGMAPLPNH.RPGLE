@@ -1,7 +1,7 @@
 **FREE
 
 // RPGMAPLPNH.RPGLE - RPGMAPLPN header file 
-// Copyright (c) 2017-2018 John Erps (john@erps.me)
+// Copyright (c) 2017-2018 John Erps (john.erps@gmail.com)
 
 
 /if defined(RPGMAPLPN_H)
@@ -21,6 +21,7 @@ end-pr;
 
 dcl-pr rm_make_map_immutable pointer extproc(*dclcase);
   map pointer value;
+  opt char(10) value options(*nopass);
 end-pr;
 
 dcl-pr rm_dispose extproc(*dclcase);

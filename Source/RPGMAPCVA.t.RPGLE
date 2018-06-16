@@ -1,10 +1,10 @@
 **FREE
 
 // RPGMAPCVA.RPGLE - RpgMap Compare Values Alt seq
-// Copyright (c) 2017 John Erps (john@erps.me)
+// Copyright (c) 2017 John Erps (john.erps@gmail.com)
 
 
-ctl-opt copyright('Copyright (c) 2017 John Erps (john@erps.me)');
+ctl-opt copyright('Copyright (c) 2017 John Erps (john.erps@gmail.com)');
 ctl-opt nomain datfmt(*iso-) timfmt(*iso.) ccsid(*exact) altseq(*ext) srtseq(_SRTSEQ_);
 
 
@@ -14,10 +14,11 @@ ctl-opt nomain datfmt(*iso-) timfmt(*iso.) ccsid(*exact) altseq(*ext) srtseq(_SR
 
 
 dcl-proc RMCvaCompareStr export;
-dcl-pi *n int(10);
-  s1 pointer value;
-  s2 pointer value;
-end-pi;
+
+  dcl-pi *n int(10);
+    s1 pointer value;
+    s2 pointer value;
+  end-pi;
 
   dcl-s u varchar(30000) based(up);
   dcl-s v1 varchar(120000) static;
@@ -56,10 +57,11 @@ end-proc;
 
 
 dcl-proc RMCvaCompareChar export;
-dcl-pi *n int(10);
-  c1 pointer value;
-  c2 pointer value;
-end-pi;
+
+  dcl-pi *n int(10);
+    c1 pointer value;
+    c2 pointer value;
+  end-pi;
 
   dcl-s v1 varchar(30000) based(v1p);
   dcl-s v2 varchar(30000) based(v2p);

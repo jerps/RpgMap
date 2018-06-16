@@ -3,7 +3,8 @@ document.write('\
 <h2 id="restrict">Restrictions</h2>\
 <br>\
 <p>\
-Character and string values can not exceed 30.000 bytes.\
+RPG constant RPGMAP_MAXBYTES defines the maximum number of bytes for character and \
+string values, which is 30.000 bytes.\
 </p>\
 <p>\
 The following RPG constants define the minimum and maximum value for each numeric \

@@ -1,10 +1,10 @@
 **FREE
 
 // RPGMAPGMF.RPGLE - RpgMap Gen Main Func
-// Copyright (c) 2017-2018 John Erps (john@erps.me)
+// Copyright (c) 2017-2018 John Erps (john.erps@gmail.com)
 
 
-ctl-opt copyright('Copyright (c) 2017 John Erps (john@erps.me)');
+ctl-opt copyright('Copyright (c) 2017 John Erps (john.erps@gmail.com)');
 ctl-opt nomain datfmt(*iso-) timfmt(*iso.) ccsid(*exact);
 
 
@@ -21,12 +21,13 @@ ctl-opt nomain datfmt(*iso-) timfmt(*iso.) ccsid(*exact);
 
 // Return *on if the k/i pair has been inserted.
 dcl-proc RMMInsert export;
-dcl-pi *n ind;
-  map pointer value;
-  mode int(10) value;
-  k pointer value;
-  i pointer value;
-end-pi;
+
+  dcl-pi *n ind;
+    map pointer value;
+    mode int(10) value;
+    k pointer value;
+    i pointer value;
+  end-pi;
 
   dcl-s obj pointer;
   dcl-s mapi pointer;
@@ -93,13 +94,14 @@ end-proc;
 
 
 dcl-proc RMMInsertFromMap export;
-dcl-pi *n;
-  map pointer value;
-  mode int(10) value;
-  map2 pointer value;
-  key1 pointer value options(*nopass);
-  key2 pointer value options(*nopass);
-end-pi;
+
+  dcl-pi *n;
+    map pointer value;
+    mode int(10) value;
+    map2 pointer value;
+    key1 pointer value options(*nopass);
+    key2 pointer value options(*nopass);
+  end-pi;
 
   dcl-s c pointer;
   dcl-s k pointer;
@@ -171,14 +173,15 @@ end-proc;
 
 
 dcl-proc RMMForEachDo export;
-dcl-pi *n pointer;
-  map pointer value;
-  proc pointer(*proc) value;
-  rev ind value;
-  usrd pointer value options(*nopass);
-  key1 pointer value options(*nopass);
-  key2 pointer value options(*nopass);
-end-pi;
+
+  dcl-pi *n pointer;
+    map pointer value;
+    proc pointer(*proc) value;
+    rev ind value;
+    usrd pointer value options(*nopass);
+    key1 pointer value options(*nopass);
+    key2 pointer value options(*nopass);
+  end-pi;
 
   dcl-pr call_proc pointer extproc(call_proc_p);
     key pointer value;
@@ -251,9 +254,10 @@ end-proc;
 // Do not dispose if obj is *null, a cursor, a manually disposed map,
 // or a value/map contained in a map.
 dcl-proc RMMDisposeArg export;
-dcl-pi *n;
-  obj pointer value;
-end-pi;
+
+  dcl-pi *n;
+    obj pointer value;
+  end-pi;
 
   if    obj = *null
      or RMValIsCursor(obj)

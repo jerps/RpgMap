@@ -11,9 +11,13 @@ a Python dict, for use with the RPG programming language.
 
 <br>
 
-* next
+* v1.2.0 (june 2018)
   
   * New procedures:
+  
+    * Fixed bug "obj already contained" in <code>rm_ins?m</code>.
+    
+    * RPGMAP signature is now "V1" and only changes when the major version number is changed.
   
     * <code>rm_??__</code> to immediately dispose an RpgMap value after unwrapping.
     
