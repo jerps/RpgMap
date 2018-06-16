@@ -8,11 +8,11 @@ only be installed by building it from source. The IBM i version used must be at 
 </p>\
 <h2>Building library RPGMAP from source</h2>\
 <p>\
-Download <a href="https://github.com/jerps/RpgMap/releases/download/v1.2.0/RpgMap-v1.2.0.zip">RpgMap-v1.2.0.zip</a> and put it somewhere on the IFS, e.g. /home/...<br>\
+Download <a href="https://github.com/jerps/RpgMap/releases/download/v1.2.0/RpgMap-1.2.0.zip">RpgMap-1.2.0.zip</a> and put it somewhere on the IFS, e.g. /home/...<br>\
 If you didn\'t already, start QSH (QSHELL, not PASE).<br>\
 Cd into the directory with the zip file.<br>\
-Unzip the file with <code>jar xvf RpgMap-v1.2.0.zip</code>.<br>\
-Cd into directory "RpgMap-master/Source".<br>\
+Unzip the file with <code>jar xvf RpgMap-1.2.0.zip</code>.<br>\
+Cd into directory "RpgMap-1.2.0/Source".<br>\
 Start the build with <code>chmod +x BUILD.sh && ./BUILD.sh</code>.<br>\
 This will create the library (default RPGMAP) and the necessary objects in it, using mostly \
 the default system settings such as object owner and authorities.<br>\

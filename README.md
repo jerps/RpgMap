@@ -3,7 +3,7 @@
 RpgMap implements a versatile in-memory ordered key/value store, like a Java TreeMap or
 a Python dict, for use with the RPG programming language.
 
->## [Docs](http://erps.me/RpgMap/Docs/index.html)
+>## [Docs](http://johnerps.net/RpgMap/Docs/index.html)
 
 <br>
 
