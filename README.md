@@ -3,7 +3,7 @@
 RpgMap implements a versatile in-memory ordered key/value store, like a Java TreeMap or
 a Python dict, for use with the RPG programming language.
 
->## [Docs](http://johnerps.net/RpgMap/Docs/index.html)
+>## [Docs](http://johnerps.com/RpgMap/Docs/index.html)
 
 <br>
 
@@ -11,7 +11,7 @@ a Python dict, for use with the RPG programming language.
 
 <br>
 
-* v1.2.0 (june 2018)
+* v1.2.0 (july 2018)
   
   * New procedures:
   
