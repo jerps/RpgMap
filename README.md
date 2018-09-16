@@ -1,4 +1,4 @@
-# RpgMap
+# RpgMap v1.2.0
 
 RpgMap implements a versatile in-memory ordered key/value store, like a Java TreeMap or
 a Python dict, for use with the RPG programming language.

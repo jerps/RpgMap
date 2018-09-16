@@ -1,7 +1,7 @@
 **FREE
 
 // RPGMAP.RPGLE - RpgMap header file 
-// Copyright (c) 2017-2018 John Erps (john.erps@gmail.com)
+// (c) 2017-2018 John Erps (john.erps@gmail.com)
 
 
 // v1.2.0

@@ -1,6 +1,11 @@
------ RpgMap is distributed under the following license -----
+---
+-----
 
-Copyright (c) 2017-2018 John Erps (john.erps@gmail.com)
+RpgMap
+
+(c) 2017-2018 John Erps (john.erps@gmail.com)
+
+-----
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -21,9 +26,13 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 -----
 
------ File RPGMAPRBTC.C bears the following license -----
+-----
 
-Copyright (c) 2001 Emin Martinian
+File RPGMAPRBTC.C bears the following license
+
+(c) 2001 Emin Martinian
+
+-----
   
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that neither the name of Emin

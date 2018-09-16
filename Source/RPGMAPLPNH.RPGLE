@@ -1,7 +1,7 @@
 **FREE
 
 // RPGMAPLPNH.RPGLE - RPGMAPLPN header file 
-// Copyright (c) 2017-2018 John Erps (john.erps@gmail.com)
+// (c) 2017-2018 John Erps (john.erps@gmail.com)
 
 
 /if defined(RPGMAPLPN_H)

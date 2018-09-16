@@ -1,12 +1,12 @@
-#pragma comment (copyright, "Copyright (c) 2017 John Erps (john.erps@gmail.com)")
+#pragma comment (copyright, "(c) 2017 John Erps (john.erps@gmail.com)")
 
 
 /* RPGMAPRBTC.C - RedBlackTree and Cursors                                */
-/* Copyright (c) 2017 John Erps (john.erps@gmail.com)                     */
+/* (c) 2017 John Erps (john.erps@gmail.com)                     */
 
 /* Based on RBT implementation:                                           */
 /* http://web.mit.edu/~emin/www.old/source_code/red_black_tree/index.html */
-/* Copyright (c) 2001 Emin Martinian                                      */
+/* (c) 2001 Emin Martinian                                      */
 
 
 #include <stdlib.h>
