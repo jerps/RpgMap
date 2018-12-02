@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 
 # $1=Build target, $2=Target lib (default is RPGMAP, will be created first)
