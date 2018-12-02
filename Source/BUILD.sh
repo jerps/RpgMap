@@ -13,13 +13,13 @@
 # The alternate sort sequence that may be used for char data and strings.
 # This variable is used when building srvpgm RPGMAP, build target D or S,
 # to fill in control spec keyword srtseq in module RPGMAPCVA.
-SRTSEQ="*LANGIDSHR"  
+SRTSEQ="*LANGIDSHR"
 
 # Target OS release
-TGTRLS="*CURRENT"  
+TGTRLS="*CURRENT"
 
 # Storage model
-STGMDL="*INHERIT"  
+STGMDL="*INHERIT"
 
 
 
@@ -82,7 +82,7 @@ function xcmdks {
 }
 # $1=srcfile1, $2=srcfile2, ...
 function substtlib {
-  for x in $* 
+  for x in $*
   do
     sed "s/_TLIB_/$TLIB/g" $SRC/$x.t.RPGLE > $SRC/$x.RPGLE
   done
@@ -156,7 +156,7 @@ xcmd "ADDBNDDIRE BNDDIR($TLIB/RPGMAP) OBJ(($TLIB/RPGMAP *SRVPGM))"
 
 echo ">>>>> (Re)create source file INCLUDERPG with RPG include source members"
 xcmd "DLTF FILE($TLIB/INCLUDERPG)"
-xcmd "CRTSRCPF FILE($TLIB/INCLUDERPG) RCDLEN(120) TEXT('Include RPG sources')"                      
+xcmd "CRTSRCPF FILE($TLIB/INCLUDERPG) RCDLEN(120) TEXT('Include RPG sources')"
 xcmd "CRTPF FILE($TLIB/TEMP) RCDLEN(108) MBR(X)"
 sed "s/_TLIB_/$TLIB/g" $SRC/RPGMAP.RPGLE > \
                        /QSYS.LIB/$TLIB.LIB/TEMP.FILE/X.MBR
@@ -224,7 +224,7 @@ if [[ $TARGET == DEFAULT || $TARGET == SRVPGM ]]; then
 
 echo ">>>>> Substitute _SRTSEQ_ with $SRTSEQ in RPGMAPCVA.RPGLE"
 sed "s/_SRTSEQ_/$SRTSEQ/g" $SRC/RPGMAPCVA.t.RPGLE > $SRC/RPGMAPCVA.RPGLE
-                      
+
 echo ">>>>> Substitute _TLIB_ with $TLIB in RPGMAPGDEF/RPGMAPMAIN/RPGMAPVAL/RPGMAPGMF/RPGMAPLPN.RPGLE"
 substtlib RPGMAPGDEF RPGMAPMAIN RPGMAPVAL RPGMAPGMF RPGMAPLPN
 
