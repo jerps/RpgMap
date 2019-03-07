@@ -4,7 +4,7 @@
 
 ***
 
-### [Docs](http://johnerps.com/RpgMap/Docs/index.html)
+### [Docs](http://johnerps.com/RpgMap/docs/index.html)
 
 ***
 
