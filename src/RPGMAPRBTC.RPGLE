@@ -1,7 +1,7 @@
 **FREE
 
 // RPGMAPRBTC.RPGLE - RedBlackTree and Cursors header file, RPG version  */
-// (c) 2017 John Erps (john.erps@gmail.com)
+// (c) 2017 John Erps
 
 
 /if defined(RPGMAPRBTC_H)

@@ -1,10 +1,10 @@
 **FREE
 
 // RPGMAP.RPGLE - RpgMap header file 
-// (c) 2017-2018 John Erps (john.erps@gmail.com)
+// (c) 2017-2019 John Erps
 
 
-// v1.2.0
+// v1.2.1
 
 
 // RpgMap is not thread safe.

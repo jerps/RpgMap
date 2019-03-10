@@ -3,9 +3,9 @@
 <!--
 -----
 
-RpgMap / Docs v1.2.0
+RpgMap / Docs v1.2.1
 
-(c) 2017-2018 John Erps
+(c) 2017-2019 John Erps
 
 -----
 
@@ -52,9 +52,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   <div id="docs">
     /&nbsp;Docs
   </div>
-  <div id="version">
-    <br>
-    v1.2.0
+  <div id="emversion">
+  <span id="email"></span><span>&nbsp;&nbsp;<b>v1.2.1</b></span>
   </div>
   <div id="container">
     <div id="navigation">
@@ -420,13 +419,17 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     </div>
   </div>
   <div id="cpyr">
-    <a style="color: #999; user-select: none; outline: none;" href="johnerps.com" target="_blank" tabindex="-1">&#x00A9 2017-2018 John Erps</a>
+    <a style="color: #999; user-select: none; outline: none;" href="https://johnerps.com" target="_blank" tabindex="-1">&#x00A9 2017-2018 John Erps</a>
   </div>
 <script>
   var scrolled = false;
   var animatedScroll = false;
   var lastAnimatedScroll = false;  
   $(document).ready(function() {
+    var e = document.getElementById("email");
+    e.textContent = "erps.com";
+    e.textContent = "@john" + e.textContent;
+    e.textContent = "rpgmap" + e.textContent;
     $(window).bind("popstate", function(e) {
       if (window.location.hash.length > 1)
         gototag(window.location.hash.substring(1), true, true);
