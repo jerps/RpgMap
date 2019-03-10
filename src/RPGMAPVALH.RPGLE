@@ -1,7 +1,7 @@
 **FREE
 
 // RPGMAPVALH.RPGLE - RPGMAPVAL header file 
-// (c) 2017-2018 John Erps (john.erps@gmail.com)
+// (c) 2017-2018 John Erps
 
 
 /if defined(RPGMAPVAL_H)
