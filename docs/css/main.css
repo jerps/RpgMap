@@ -10,7 +10,7 @@ body {
 }
 
 p {
-  margin: 1rem 0.5rem 0.5rem 2rem;
+  margin: 1rem 0.5rem 0.5rem 1rem;
   line-height: 1.5;
 }
   
@@ -118,7 +118,7 @@ p {
 
 .navlink2 {
   display: block;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   margin-top: 0.3rem;
   margin-bottom: 0.3rem;
   margin-left: 1rem;

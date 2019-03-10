@@ -4,11 +4,15 @@
 
 ***
 
-### [Docs](http://johnerps.com/RpgMap/docs/index.html)
+### [Docs](johnerps.com/RpgMap/docs/index.html)
 
 ***
 
 ### Changes
+
+* v1.2.1 (march 2019)
+
+  * Dir Source renamed to src. Misc. changes.
 
 * v1.2.0 (july 2018)
 
