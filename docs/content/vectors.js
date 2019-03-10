@@ -12,7 +12,7 @@ The keys of a vector must always be integers.\
 </p>\
 <p>\
 The expression <code>rm_v(rm_a(\'a\'):rm_a(\'b\'))</code> creates a vector, i.e. a map, with keys <code>1</code> \
-and <code>2</code> and items <code>\'a\'</code> and  <code>\'b\'</code>. Only the items are specified. \
+and <code>2</code> and items <code>\'a\'</code> and <code>\'b\'</code>. Only the items are specified. \
 The keys are automatically generated; the first item gets key <code>rm_i(1)</code>, the second item gets key <code>rm_i(2)</code>, etc.\
 </p>\
 <p>\
