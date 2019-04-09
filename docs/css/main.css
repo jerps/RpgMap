@@ -1,19 +1,16 @@
 
-html {
-}
-
 body {
   margin: 0.4rem 0 0 0;
   padding: 0;
   background-color: #F9F9F9;
-  letter-spacing: 0.01rem; 
+  letter-spacing: 0.01rem;
 }
 
 p {
   margin: 1rem 0.5rem 0.5rem 1rem;
   line-height: 1.5;
 }
-  
+
 #cpyr {
   font-size: 0.7rem;
   position: fixed;
@@ -52,7 +49,7 @@ p {
   }
 }
 @media all and (max-width: 500px) {
-  #docs {	
+  #docs {
     visibility: hidden;
   }
 }
@@ -62,12 +59,9 @@ p {
   }
 }
 
-#emversion {
-  font-family: 'Ubuntu Mono';
-  font-size: 0.95rem;
+#emver {
   float: right;
-  opacity: 0.6;
-  padding: 0.2% 2% 0 0;
+  padding: 0.2%  0.5% 0 0;
 }
 
 #container {
@@ -82,7 +76,7 @@ p {
   overflow-y: scroll;
   margin: 1% 0% 0% 1.8%;
   top: 5.5%;
-  border-top: 4px solid rgba(200, 150, 200, 0.3);  
+  border-top: 4px solid rgba(200, 150, 200, 0.3);
 }
 
 #content {
@@ -102,7 +96,7 @@ p {
   position: absolute;
   bottom: 0px;
   text-align: right;
-  width: 100%;"
+  width: 100%;
 }
 
 .navlink1 {
@@ -113,7 +107,7 @@ p {
   margin-left: 0;
   margin-right: 0;
   line-height: 150%;
-  white-space: nowrap; 
+  white-space: nowrap;
 }
 
 .navlink2 {
@@ -123,7 +117,7 @@ p {
   margin-bottom: 0.3rem;
   margin-left: 1rem;
   margin-right: 0;
-  white-space: nowrap; 
+  white-space: nowrap;
 }
 
 .navlink3 {
@@ -133,7 +127,7 @@ p {
   margin-bottom: 0;
   margin-left: 1rem;
   margin-right: 0;
-  white-space: nowrap; 
+  white-space: nowrap;
 }
 
 .navlink4 {
@@ -143,7 +137,7 @@ p {
   margin-bottom: 0;
   margin-left: 1rem;
   margin-right: 0;
-  white-space: nowrap; 
+  white-space: nowrap;
 }
 
 .navprocnm {
@@ -242,7 +236,7 @@ a code {
 }
 
 ::selection {
-  background-color: red;
+  background-color: #AABBFF;
   text-shadow: none;
 }
 

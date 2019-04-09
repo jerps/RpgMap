@@ -52,9 +52,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   <div id="docs">
     /&nbsp;Docs
   </div>
-  <div id="emversion">
-  <span id="email"></span><span>&nbsp;&nbsp;<b>v1.2.1</b></span>
-  </div>
+  <canvas id="emver"></canvas>
   <div id="container">
     <div id="navigation">
       <div class="navlink1"><a id="_introduction" href="#introduction">Introduction</a></div>
@@ -422,14 +420,12 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     <a style="color: #999; user-select: none; outline: none;" href="https://johnerps.com" target="_blank" tabindex="-1">&#x00A9 2017-2018 John Erps</a>
   </div>
 <script>
+  var DOCSTAG = "api";
   var scrolled = false;
   var animatedScroll = false;
-  var lastAnimatedScroll = false;  
+  var lastAnimatedScroll = false;
   $(document).ready(function() {
-    var e = document.getElementById("email");
-    e.textContent = "erps.com";
-    e.textContent = "@john" + e.textContent;
-    e.textContent = "rpgmap" + e.textContent;
+    drawemver("v1.2.1", [112,114,109,103,112,97,106,64,104,111,101,110,112,114,46,115,111,99,109]);
     $(window).bind("popstate", function(e) {
       if (window.location.hash.length > 1)
         gototag(window.location.hash.substring(1), true, true);
@@ -466,15 +462,15 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       }
     });
     $("#docs").on("click", function(e) {
-      var el = $("#api");
+      var el = $("#"+DOCSTAG);
       if (scrolled)
         history.pushState(null, null, "index.html"+stqp()+window.location.hash);
       if (el.length > 0 && isElementInViewport(el)) {
         history.pushState(null, null, "index.html#0");
         gototag(null, true, false);
       } else {
-        history.pushState(null, null, "index.html#api");
-        gototag('api', true, false);
+        history.pushState(null, null, "index.html#"+DOCSTAG);
+        gototag(DOCSTAG, true, false);
       }
     });
     $("#navigation, #content").on("scroll", function(){
@@ -486,7 +482,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   function stqp() {
     var qp = "", cel = $("#navigation");
     if (cel.length > 0) {
-      qp = "?scrollTopLeft=" + cel.scrollTop(); 
+      qp = "?scrollTopLeft=" + cel.scrollTop();
     }
     cel = $("#content");
     if (cel.length > 0) {
@@ -548,7 +544,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             break;
           }
           el2 = el2.next();
-        } 
+        }
         if (z > cel.height())
           z = el.position().top;
         else
@@ -582,7 +578,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     scrolled = false;
   }
   function isElementInViewport (el) {
-    //special bonus for those using jQuery
     if (typeof jQuery === "function" && el instanceof jQuery) {
         el = el[0];
     }
@@ -593,6 +588,91 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
         rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
     );
+  }
+  function unscramble(x) {
+    var s = "", i;
+    for (i = 0; i < x.length; i+=2) {
+      if (i < x.length - 1) {
+        s += String.fromCharCode(x[i+1]);
+      }
+      s += String.fromCharCode(x[i]);
+    }
+    return s;
+  }
+  function drawemver(v, e) {
+    var fs = 14, a = 0.55, d1 = 600, d2 = 2000, d3 = 12000;
+    var c = document.getElementById("emver"), cc = c.getContext("2d");
+    var oc = document.createElement("canvas"), occ = oc.getContext("2d");
+    var r = dprbspr(occ), iv, ie1, ie2, f, n = 0, t, x, y, w, h;
+    e = unscramble(e);
+    iv = mktxtimg(v, oc, occ, fs, "bold");
+    iv.onload = function(){n++};
+    ie1 = mktxtimg("send email to: ", oc, occ, fs, "");
+    ie1.onload = function(){n++};
+    ie2 = mktxtimg(e, oc, occ, fs, "");
+    ie2.onload = function(){n++};
+    f = function() {
+      if (n >= 0 && n < 3) {
+        requestAnimationFrame(f);
+      } else {
+        if (n !== -1) {
+          n = -1;
+          scalec(c, cc, w = ie1.naturalWidth / r + ie2.naturalWidth / r + 10, h = fs * 3);
+          cc.clearRect(0, 0, w, h);
+          t = performance.now();
+        }
+        x = performance.now() - t;
+        if (x < d1 + d2 + d3) {
+          if (x > d1) {
+            cc.clearRect(0, 0, w, h);
+            cc.globalAlpha = a * (1 - ((y = (x - d1 - d2) / d3) < 0 ? 0 : y > 1 ? 1 : y));
+            x = (x = (x - d1) / d2) > 1 ? 1 : x;
+            cc.drawImage(ie1, 0, 0, ie1.naturalWidth, ie1.naturalHeight, y = w - 5 - (ie1.naturalWidth / r + ie2.naturalWidth / r) * x, 0, ie1.naturalWidth / r, ie1.naturalHeight / r);
+            cc.globalAlpha = a;
+            cc.drawImage(ie2, 0, 0, ie2.naturalWidth, ie2.naturalHeight, y + ie1.naturalWidth / r, 0, ie2.naturalWidth / r, ie2.naturalHeight / r);
+            cc.drawImage(iv, 0, 0, iv.naturalWidth, iv.naturalHeight, 0 - 5 - iv.naturalWidth / r + w * x, h / 2, iv.naturalWidth / r, iv.naturalHeight / r);
+          }
+          requestAnimationFrame(f);
+        }
+      }
+    };
+    requestAnimationFrame(f);
+  }
+  function mktxtimg(t, c, cc, fs, fp) {
+    var f = fp + " " + fs + "px Arial";
+    cc.font = f;
+    var w = cc.measureText(t).width + 5, h = fs * 1.5, i;
+    scalec(c, cc, w, h);
+    cc.clearRect(0, 0, w, h);
+    cc.font = f;
+    cc.fillStyle = "rgba(0, 0, 0, 1)";
+    cc.textBaseline = "top";
+    cc.fillText(t, 2, 2);
+    i = new Image();
+    i.src = c.toDataURL("image/png");
+    return i;
+  }
+  function dprbspr(cc) {
+    var dpr = window.devicePixelRatio || 1;
+    var bspr = cc.webkitBackingStorePixelRatio||cc.mozBackingStorePixelRatio||cc.msBackingStorePixelRatio||cc.oBackingStorePixelRatio||cc.backingStorePixelRatio||1;
+    return dpr / bspr;
+  }
+  function scalec(c, cc, w, h) {
+    var dpr = window.devicePixelRatio || 1;
+    var bspr = cc.webkitBackingStorePixelRatio||cc.mozBackingStorePixelRatio||cc.msBackingStorePixelRatio||cc.oBackingStorePixelRatio||cc.backingStorePixelRatio||1;
+    var dprbspr = dpr / bspr;
+    if (dpr === bspr) {
+      c.width = w;
+      c.height = h;
+      c.style.width = '';
+      c.style.height = '';
+    } else {
+      c.width = Math.round(w * dprbspr);
+      c.height = Math.round(h * dprbspr);
+      c.style.width = w + 'px';
+      c.style.height = h + 'px';
+    }
+    cc.scale(dprbspr, dprbspr);
   }
 </script>
 </body>

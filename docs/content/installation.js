@@ -8,7 +8,7 @@ only be installed by building it from source. The IBM i version used must be at 
 </p>\
 <h2>Building library RPGMAP from source</h2>\
 <p>\
-Download <a href="https://github.com/jerps/RpgMap/releases/download/v1.2.1/RpgMap-1.2.1.zip">RpgMap-1.2.1.zip</a> and put it somewhere on the IFS, e.g. /home/...<br>\
+Download <a href="https://github.com/jerps/RpgMap/archive/v1.2.1.zip">RpgMap-1.2.1.zip</a> and put it somewhere on the IFS, e.g. /home/...<br>\
 If you didn\'t already, start QSH (QSHELL, not PASE).<br>\
 Cd into the directory with the zip file.<br>\
 Unzip the file with <code>jar xvf RpgMap-1.2.1.zip</code>.<br>\
