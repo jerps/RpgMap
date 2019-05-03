@@ -28,14 +28,14 @@ p {
   color: red;
   display: inline;
   margin: 0% 0% 0% 5%;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 #docs {
   font-family: 'Roboto Mono', monospace;
   font-size: 1.2rem;
   display: inline;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 @media all and (max-height: 450px) {
