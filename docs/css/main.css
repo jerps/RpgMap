@@ -1,3 +1,6 @@
+::selection {
+  background-color: rgba(200, 200, 70, 0.7);
+}
 
 body {
   margin: 0.4rem 0 0 0;
@@ -25,9 +28,9 @@ p {
   font-weight: bold;
   font-size: 1.8rem;
   font-style: italic;
-  color: red;
+  color: rgb(120, 20, 20);
   display: inline;
-  margin: 0% 0% 0% 5%;
+  margin: 0 0 0 5%;
   cursor: pointer;
 }
 
@@ -76,14 +79,14 @@ p {
   overflow-y: scroll;
   margin: 1% 0% 0% 1.8%;
   top: 5.5%;
-  border-top: 4px solid rgba(200, 150, 200, 0.3);
+  border-top: 2px solid rgba(120, 20, 20, 0.3);
 }
 
 #content {
   position: fixed;
   height: 100vh;
   overflow-y: scroll;
-  border-left: 4px solid rgba(200, 150, 200, 0.3);
+  border-left: 2px solid rgba(120, 20, 20, 0.3);
   width: 60%;
   top: 0%;
   padding: 5% 3% 1.5% 3%;
@@ -233,11 +236,6 @@ a code {
 
 .bullet1 {
   color: rgba(255, 0, 0, 0.4);
-}
-
-::selection {
-  background-color: #AABBFF;
-  text-shadow: none;
 }
 
 a {
