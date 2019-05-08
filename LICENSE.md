@@ -1,11 +1,6 @@
----
------
+The MIT License (MIT)
 
-RpgMap v1.2.1
-
-(c) 2017-2019 John Erps
-
------
+Copyright (c) 2017-2019 John Erps
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -26,20 +21,18 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 -----
 
------
+File RPGMAPRBTC.C bears the following license:
 
-File RPGMAPRBTC.C bears the following license
+The MIT License (MIT)
 
-(c) 2001 Emin Martinian
+Copyright (c) 2001 Emin Martinian
 
------
-  
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that neither the name of Emin
 Martinian nor the names of any contributors are be used to endorse or
 promote products derived from this software without specific prior
 written permission.
-  
+
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -51,5 +44,3 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
 THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
------
