@@ -8,6 +8,12 @@
 
 ***
 
+### License
+
+RpgMap is [MIT Licensed](LICENSE.md). You may use, distribute and copy it under the license terms.
+
+File RPGMAPRBTC.C (RedBlackTree implementation) was originally developed by Emin Martinian.
+
 ### Changes
 
 * v1.2.1 (march 2019)
