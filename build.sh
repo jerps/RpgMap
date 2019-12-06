@@ -51,7 +51,7 @@ fi
 
 
 # Source directory
-SRC=.
+SRC=src
 
 
 # Settings for dev
