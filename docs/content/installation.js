@@ -12,8 +12,8 @@ Download <a href="https://github.com/jerps/RpgMap/archive/v1.2.1.zip">RpgMap-1.2
 If you didn\'t already, start QSH (QSHELL, not PASE).<br>\
 Cd into the directory with the zip file.<br>\
 Unzip the file with <code>jar xvf RpgMap-1.2.1.zip</code>.<br>\
-Cd into directory "RpgMap-1.2.1/src".<br>\
-Start the build with <code>chmod +x BUILD.sh && ./BUILD.sh</code>.<br>\
+Cd into directory "RpgMap-1.2.1".<br>\
+Start the build with <code>chmod +x build.sh && ./build.sh</code>.<br>\
 This will create the library (default RPGMAP) and the necessary objects in it, using mostly \
 the default system settings such as object owner and authorities.<br>\
 The last message should say "OK; serviceprogram {lib}/RPGMAP has been created.".\
@@ -21,7 +21,7 @@ The last message should say "OK; serviceprogram {lib}/RPGMAP has been created.".
 <h3>Changing the alternate sort sequence</h3>\
 <p>\
 The alternate sort sequence used for values such as <a href="#rm_aa"><code>rm_aa</code></a> \
-is determined at build time. Variable <code>SRTSEQ</code> in build script BUILD.sh can be set to the \
+is determined at build time. Variable <code>SRTSEQ</code> in build script build.sh can be set to the \
 desired sort sequence. By default the RPG module is compiled with <code>altseq(*EXT)</code> and \
 <code>srtseq(*LANGIDSHR)</code>.\
 </p>\
