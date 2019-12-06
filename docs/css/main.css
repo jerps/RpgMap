@@ -2,6 +2,16 @@
   background-color: rgba(200, 200, 70, 0.7);
 }
 
+* {
+  color: black;
+  line-height: 1.4;
+}
+
+html {
+  height: 100%;
+  font-size: 1.2vw;
+}
+
 body {
   margin: 0.4rem 0 0 0;
   padding: 0;
@@ -11,7 +21,11 @@ body {
 
 p {
   margin: 1rem 0.5rem 0.5rem 1rem;
-  line-height: 1.5;
+}
+
+hr {
+  height: 3px;
+  background-color: rgba(150, 25, 25, 0.3);
 }
 
 #cpyr {
@@ -24,18 +38,18 @@ p {
 }
 
 #pname {
-  font-family: 'Ubuntu Mono', monospace;
+  font-family: Ubuntu Mono;
   font-weight: bold;
   font-size: 1.8rem;
   font-style: italic;
-  color: rgb(120, 20, 20);
+  color: rgb(150, 25, 25);
   display: inline;
   margin: 0 0 0 5%;
   cursor: pointer;
 }
 
 #docs {
-  font-family: 'Roboto Mono', monospace;
+  font-family: Roboto Mono;
   font-size: 1.2rem;
   display: inline;
   cursor: pointer;
@@ -64,37 +78,38 @@ p {
 
 #emver {
   float: right;
-  padding: 0.2%  0.5% 0 0;
+  padding: 0.2% 0.5% 0 0;
 }
 
 #container {
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto;
   font-size: 1rem;
 }
 
 #navigation {
   position: fixed;
   height: 88vh;
-  width: 30vw;
+  width: 22rem;
   overflow-y: scroll;
   margin: 1% 0% 0% 1.8%;
   top: 5.5%;
-  border-top: 2px solid rgba(120, 20, 20, 0.3);
+  border-top: 3px solid rgba(150, 25, 25, 0.3);
 }
 
 #content {
   position: fixed;
   height: 100vh;
   overflow-y: scroll;
-  border-left: 2px solid rgba(120, 20, 20, 0.3);
-  width: 60%;
+  border-left: 3px solid rgba(150, 25, 25, 0.3);
+  left: 25rem;
   top: 0%;
   padding: 5% 3% 1.5% 3%;
   right: 0px;
+  max-width: 60em;
 }
 
 #footer {
-  font-family: 'Roboto Mono', monospace;
+  font-family: Roboto Mono;
   font-size: 0.6rem;
   position: absolute;
   bottom: 0px;
@@ -145,7 +160,7 @@ p {
 
 .navprocnm {
   display: inline;
-  font-family: 'Roboto Mono', monospace;
+  font-family: Roboto Mono;
   font-weight: bold;
 }
 
@@ -154,12 +169,12 @@ p {
 
 .navprocnm2 {
   display: inline;
-  font-family: 'Ubuntu Mono', monospace;
+  font-family: Ubuntu Mono;
   font-size: 1rem;
 }
 
 .prochdr1 {
-  font-family: 'Ubuntu Mono', monospace;
+  font-family: Ubuntu Mono;
   font-size: 1.3rem;
   display: inline;
   margin: 1rem 0rem 0rem 0.8rem;
@@ -183,13 +198,13 @@ p {
 }
 
 .proclongnm {
-  font-family: 'Ubuntu Mono', monospace;
+  font-family: Ubuntu Mono;
   font-size: 1rem;
   margin: 0.4rem 0rem 0rem 2.5rem;
 }
 
 .procsig {
-  font-family: 'Roboto Mono', monospace;
+  font-family: Roboto Mono;
   font-size: 0.8rem;
   margin: 1rem 0rem 0rem 3.5rem;
   overflow: hidden;
@@ -197,24 +212,24 @@ p {
 }
 
 code {
-  font-family: 'Ubuntu Mono', monospace;
+  font-family: Ubuntu Mono;
   color: #0000B0;
 }
 
 a code {
-  font-family: 'Ubuntu Mono', monospace;
+  font-family: Ubuntu Mono;
   color: #D03070;
 }
 
 .pcode {
-  font-family: 'Roboto Mono', monospace;
+  font-family: Roboto Mono;
   font-size: 0.8rem;
   margin: 0rem 0rem 0rem 4rem;
-  color: #0066BB;
+  color: #003399;
 }
 
 .console {
-  font-family: 'Roboto Mono', monospace;
+  font-family: Roboto Mono;
   font-size: 0.8rem;
   color: green;
   margin: 0% 0% 0% 10%;
@@ -222,7 +237,7 @@ a code {
 }
 
 .escmsg1 {
-  font-family: 'Roboto Mono', monospace;
+  font-family: Roboto Mono;
   font-size: 0.8rem;
   margin: 0rem 0rem 0rem 2rem;
 }
@@ -240,20 +255,11 @@ a code {
 
 a {
   text-decoration: none;
-  color: black;
 }
 #content a {
   color: green;
 }
-a:hover {
-  color: black;
-}
-a:active {
-  color: black;
-}
-a:visited {
-  color: black;
-}
+
 h1 {
   display: block;
   font-size: 1.5rem;
