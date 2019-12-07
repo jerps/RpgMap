@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_sab"><div class="prochdr1">rm_sab</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Create a new string value, alt. sort seq., from binary</div></div>\
+<div id="rm_sab"><div class="prochdr1">rm_sab</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Create new string value, alt. sort seq., from binary</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 value varchar(30000) const<br>\

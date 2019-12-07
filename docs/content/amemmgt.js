@@ -14,8 +14,8 @@ Every data type has a <code>rm_??__</code> procedure (two trailing underscores) 
 after <a href="#mapval">unwrapping</a>.\
 </p>\
 <p>\
-<span class="bullet1">&#9679;</span><span class="bullet1">&#9679;</span><span class="bullet1">&#9679;</span>&nbsp;<strong>When a value is inserted in a map as key or item and the map is disposed or the key/item pair is removed \
-from the map then the value is disposed</strong>.<br>\
+<span class="bullet1">&#9679;</span><span class="bullet1">&#9679;</span><span class="bullet1">&#9679;</span>&nbsp;<strong>When a value is inserted in a map as key or item and the map is disposed, or <u>the value is removed \
+from a map</u>, then the value is disposed</strong>.<br>\
 <br>\
 <span class="bullet1">&#9679;</span><span class="bullet1">&#9679;</span><span class="bullet1">&#9679;</span><strong>&nbsp;When a value is used as an argument, e.g. as a key when calling <a href="#rm_get"><code>rm_get</code></a>, \
 and the value has not been inserted into a map then the value is immediately disposed after being used</strong>.<br>\
@@ -29,8 +29,8 @@ Maps come in mainly two flavors: automatically (<a href="#rm_m"><code>rm_m</code
 <span class="bullet1">&#9679;</span><span class="bullet1">&#9679;</span><span class="bullet1">&#9679;</span>&nbsp;<strong>Automatically disposed maps are governed by the same memory management rules as values</strong>.<br>\
 </p>\
 <p>\
-I.e. they\'re disposed when the containing map is disposed or when an automatically disposed map is removed \
-from the map, or when it has been used as an argument and is not contained in a map.\
+Like values, automatically disposed maps are disposed when their containing map is disposed or when they\'re removed \
+from a map, or when they\'ve been used as an argument and are not contained in a map.\
 </p>\
 <p>\
 An automatically disposed map can not be inserted into more than one map.\

@@ -1,7 +1,7 @@
 **FREE
 
-// RPGMAP.RPGLE - RpgMap header file 
-// (c) 2017-2019 John Erps
+// RPGMAP.RPGLE - RpgMap header file
+// (c) 2017-2020 John Erps
 
 
 // v1.2.1
@@ -22,7 +22,7 @@
 // Maximum length in bytes for character/string values
 dcl-c RPGMAP_MAXBYTES 30000;
 
-// Minimum/maximum numeric values 
+// Minimum/maximum numeric values
 dcl-c RPGMAP_I1_MIN                       -2147483648;
 dcl-c RPGMAP_I1_MAX                        2147483647;
 dcl-c RPGMAP_I2_MIN              -9223372036854775808;
@@ -85,7 +85,7 @@ end-pr;
 ////////// rm_v - Create a new vector, automatically disposed
 // Create a vector, i.e. same as 'rm_m' except that the keys can be only
 // integer values and two vectors are compared in a special way (see 'rm_cmp').
-// E.g. rm_v(rm_d(d'2017-01-01'):rm_i(10)) and rm_v(rm_d(d'2017-01-01')) are 
+// E.g. rm_v(rm_d(d'2017-01-01'):rm_i(10)) and rm_v(rm_d(d'2017-01-01')) are
 // considered equal.
 // The parameters of this procedure to immediately populate the vector only
 // accept items. The keys are automatically generated. The first item is inserted
@@ -101,23 +101,23 @@ dcl-pr rm_v pointer extproc(*dclcase);
 end-pr;
 
 
-////////// rm_ism - Is map?
+////////// rm_is_m - Is map?
 // Return *on if 'obj' is a map/vector, else return *off.
-dcl-pr rm_ism ind extproc(*dclcase);
+dcl-pr rm_is_m ind extproc(*dclcase);
   obj pointer value;
 end-pr;
 
 
-////////// rm_ismm - Is manually disposed map?
+////////// rm_is_mm - Is manually disposed map?
 // Return *on if 'obj' is a manually disposed map, else return *off.
-dcl-pr rm_ismm ind extproc(*dclcase);
+dcl-pr rm_is_mm ind extproc(*dclcase);
   obj pointer value;
 end-pr;
 
 
-////////// rm_isv - Is vector?
+////////// rm_is_v - Is vector?
 // Return *on if 'obj' is a vector, else return *off.
-dcl-pr rm_isv ind extproc(*dclcase);
+dcl-pr rm_is_v ind extproc(*dclcase);
   obj pointer value;
 end-pr;
 

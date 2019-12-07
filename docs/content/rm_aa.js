@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_aa"><div class="prochdr1">rm_aa</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Create a new character data value, alt. sort sequence</div></div>\
+<div id="rm_aa"><div class="prochdr1">rm_aa</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Create new character data value, alt. sort sequence</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 value varchar(30000) const<br>\

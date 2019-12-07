@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_p3_"><div class="prochdr1">rm_p3_</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Convert a number to an RPG packed decimal value, 30.16 digits</div></div>\
+<div id="rm_p3_"><div class="prochdr1">rm_p3_</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Convert number to RPG packed decimal value, 30.16 digits</div></div>\
 <pre class="procsig">\
 &lt;&lt;packed(46:16)<br>\
 value   pointer       value<br>\

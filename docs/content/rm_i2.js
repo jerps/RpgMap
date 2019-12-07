@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_i2"><div class="prochdr1">rm_i2</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Create a new integer value, 20 digits</div></div>\
+<div id="rm_i2"><div class="prochdr1">rm_i2</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Create new integer value, 20 digits</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 value int(20) value<br>\

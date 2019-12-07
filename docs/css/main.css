@@ -118,7 +118,6 @@ hr {
 }
 
 .navlink1 {
-  display: block;
   font-size: 1rem;
   margin-top: 0.8rem;
   margin-bottom: 0;
@@ -129,42 +128,40 @@ hr {
 }
 
 .navlink2 {
-  display: block;
   font-size: 0.9rem;
   margin-top: 0.3rem;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0rem;
   margin-left: 1rem;
   margin-right: 0;
   white-space: nowrap;
 }
 
-.navlink3 {
-  display: block;
-  font-size: 1rem;
-  margin-top: 0.8rem;
-  margin-bottom: 0;
-  margin-left: 1rem;
-  margin-right: 0;
-  white-space: nowrap;
-}
-
-.navlink4 {
-  display: block;
-  font-size: 0.8rem;
-  margin-top: 0.6rem;
-  margin-bottom: 0;
-  margin-left: 1rem;
-  margin-right: 0;
-  white-space: nowrap;
-}
-
-.navprocnm {
-  display: inline;
+.navproc1 {
+  font-size: 0.9rem;
+  margin: 0 0 0 1rem;
   font-family: Roboto Mono;
   font-weight: bold;
 }
 
-.navprocd {
+.navproc2 {
+  font-size: 0.8rem;
+  font-family: Roboto;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.navproc3 {
+  font-size: 0.9rem;
+  margin: 0 0 0 1rem;
+  font-family: Roboto Mono;
+  font-weight: bold;
+}
+
+.navproc4 {
+  font-size: 0.8rem;
+  font-family: Roboto;
+  margin: 0 0 0 2em;
+  white-space: nowrap;
 }
 
 .navprocnm2 {

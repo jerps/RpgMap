@@ -1,6 +1,6 @@
 document.write('\
 \
-<div id="rm_mm"><div class="prochdr1">rm_mm</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Create a new map, manually disposed</div></div>\
+<div id="rm_mm"><div class="prochdr1">rm_mm</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Create new map, manually disposed</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 k001 pointer value options(*nopass)<br>\
