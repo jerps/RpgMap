@@ -11,7 +11,7 @@ dcl-proc Main;
   dcl-s m pointer;
   dcl-s c pointer;
   dcl-s sum packed(30:4);
-  
+
   m = rm_m(
     rm_v( rm_i(1) : rm_d(d'2017-02-01'  ) ) : rm_p(100.50) :
     rm_v( rm_i(1) : rm_d(d'2017-01-05'  ) ) : rm_p(10)     :
@@ -23,13 +23,13 @@ dcl-proc Main;
     rm_v( rm_i(7) : rm_d(d'2017-06-02'  ) ) : rm_p(1)      :
     rm_v( rm_i(7) : rm_d(d'2017-06-01'  ) ) : rm_p(5)      );
   sum = 0;
-  c = rm_sll(rm_cur(m):rm_v(rm_i(5)));
-  dow rm_rdn(c:rm_v(rm_i(5)));
-    sum += rm_p_(rm_itm(c));
+  c = rm_setll(rm_cur(m):rm_v(rm_i(5)));
+  dow rm_read_next(c:rm_v(rm_i(5)));
+    sum += rm_p_(rm_item(c));
     display(%char(rm_d_(rm__i(rm_key(c):2))));
   enddo;
   display(%char(sum));
-  rm_dis(m);
+  rm_dispose(m);
 end-proc;
 
 

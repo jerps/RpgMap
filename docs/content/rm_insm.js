@@ -10,7 +10,7 @@ key1 pointer value options(*nopass)<br>\
 key2 pointer value options(*nopass)<br>\
 </pre>\
 <p>\
-<span class="bullet1">&#9679;</span>&nbsp;Like <a href="#rm_ins"><code>rm_ins</code></a>, but the key/item pairs to insert are contained in <code>map2</code>.<br>\
+<span class="bullet1">&#9679;</span>&nbsp;Like <a href="#rm_insert"><code>rm_insert</code></a>, but the key/item pairs to insert are contained in <code>map2</code>.<br>\
 <span class="bullet1">&#9679;</span>&nbsp;The values and automatically disposed maps in <code>map2</code> that are to be \
 inserted are not inserted directly, but instead a copy is made (<a href="#rm_cpy"><code>rm_cpy</code></a>) \
 that is actually inserted. Manually disposed maps are not copied; they\'re \

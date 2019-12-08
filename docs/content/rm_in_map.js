@@ -1,7 +1,6 @@
 document.write('\
 \
-<div id="rm_inm"><div class="prochdr1">rm_inm</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;In map?</div></div>\
-<pre class="proclongnm">rm_in_map</pre>\
+<div id="rm_in_map"><div class="prochdr1">rm_in_map</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;In map?</div></div>\
 <pre class="procsig">\
 &lt;&lt;ind<br>\
 obj pointer value<br>\

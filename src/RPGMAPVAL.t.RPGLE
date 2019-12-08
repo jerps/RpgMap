@@ -106,31 +106,31 @@ dcl-ds RMValueTs qualified based(RMValueTsP);
   type likeds(RMValueTypeInfo_t);
   value timestamp;
 end-ds;
- 
+
 // Indicator
 dcl-ds RMValueInd qualified based(RMValueIndP);
   type likeds(RMValueTypeInfo_t);
   value ind;
 end-ds;
- 
+
 // Pointer
 dcl-ds RMValuePtr qualified based(RMValuePtrP);
   type likeds(RMValueTypeInfo_t);
   value pointer;
 end-ds;
- 
+
 // Procedure Pointer
 dcl-ds RMValuePPtr qualified based(RMValuePPtrP);
   type likeds(RMValueTypeInfo_t);
   value pointer(*proc);
 end-ds;
- 
+
 // Character data
 dcl-ds RMValueChar qualified based(RMValueCharP);
   type likeds(RMValueTypeInfo_t);
   value pointer;
 end-ds;
- 
+
 // String
 dcl-ds RMValueStr qualified based(RMValueStrP);
   type likeds(RMValueTypeInfo_t);
@@ -153,7 +153,7 @@ dcl-proc RMValObjFlags export;
 
   RMValueObjP = obj;
   return RMValueObj.type.flags;
-      
+
 end-proc;
 
 
@@ -167,7 +167,7 @@ dcl-proc RMValObjSetFlags export;
 
   RMValueObjP = obj;
   RMValueObj.type.flags = flags;
-      
+
 end-proc;
 
 
@@ -193,7 +193,7 @@ dcl-proc RMValObjCompare export;
   dcl-s c int(10);
 
   rof = 1;
-  
+
   f = *off;
   if obj1 <> *null;
     RMValueObjP = obj1;
@@ -208,7 +208,7 @@ dcl-proc RMValObjCompare export;
   if f;
     rof = -1;
   endif;
-  
+
   c = 99;
   call_comp_p = *null;
   if map <> *null;
@@ -221,7 +221,7 @@ dcl-proc RMValObjCompare export;
   if c = -1 or c = 0 or c = 1;
     return c * rof;
   endif;
-  
+
   if obj1 = *null and obj2 = *null;
     return 0;
   elseif obj1 = *null and obj2 <> *null;
@@ -275,14 +275,14 @@ dcl-proc RMValObjCompare export;
        and t2 = RMTYPE_STR;
     return RMValStrCompare(obj1:obj2) * rof;
   endsl;
-  
+
   if t1 < t2;
     return -1 * rof;
   elseif t1 > t2;
     return 1 * rof;
   endif;
   return 0;
-      
+
 end-proc;
 
 
@@ -309,7 +309,7 @@ dcl-proc RMValObjCopy export;
       return RMValMapCopy(obj:deep:key1);
     else;
       return RMValMapCopy(obj:deep:key1:key2);
-    endif;    
+    endif;
   when RMValueObj.type.id = RMTYPE_INT10;
     return RMValIntCopy(obj:10);
   when RMValueObj.type.id = RMTYPE_INT20;
@@ -339,9 +339,9 @@ dcl-proc RMValObjCopy export;
   other;
     RMSysSndEscapeMsg('RM09011');
   endsl;
-  
+
   return *null;
-      
+
 end-proc;
 
 
@@ -382,7 +382,7 @@ dcl-proc RMValObjSSP export;
   if opt = 91;
     RMValueObj.type.usrd = 0;
   endif;
-  
+
 end-proc;
 
 
@@ -420,7 +420,7 @@ dcl-proc RMValDispose export;
     a = RMValueMap.attrs;
     RMBTreeDispose(RMValueMap.map);
     if a <> *null;
-      rm_dis(a);
+      rm_dispose(a);
     endif;
     dealloc p;
   elseif RMValueObj.type.id = RMTYPE_CURSOR;
@@ -432,9 +432,9 @@ dcl-proc RMValDispose export;
   else;
     RMSysSndEscapeMsg('RM09011');
   endif;
-  
+
   return;
-      
+
 end-proc;
 
 
@@ -452,7 +452,7 @@ dcl-proc RMValDispose2 export;
     RMSysSndEscapeMsg('RM00030');
   endif;
   RMValDispose(obj);
-      
+
 end-proc;
 
 
@@ -470,7 +470,7 @@ dcl-proc RMValInMap export;
     RMSysSndEscapeMsg('RM09005');
   endif;
   return %bitand(RMValueObj.type.flags:x'80') = x'80';
-      
+
 end-proc;
 
 
@@ -514,7 +514,7 @@ dcl-proc RMValMapCrt export;
     RMValueMap.type.usrd = 0;
   endif;
   return RMValueMapP;
-  
+
 end-proc;
 
 
@@ -554,11 +554,11 @@ dcl-proc RMValMapImpl export;
 
   RMValSetDsMap(map);
   return RMValueMap.map;
-      
+
 end-proc;
 
 
-// Test if 'obj' is a map. 
+// Test if 'obj' is a map.
 dcl-proc RMValTestIfMap export;
 
   dcl-pi *n;
@@ -568,10 +568,10 @@ dcl-proc RMValTestIfMap export;
   RMValueObjP = obj;
   if RMValueObj.type.id <> RMTYPE_MAP;
     RMSysSndEscapeMsg('RM09001');
-  endif;  
-  
+  endif;
+
   return;
-      
+
 end-proc;
 
 
@@ -581,12 +581,12 @@ dcl-proc RMValMakeMapManDisp export;
   dcl-pi *n;
     map pointer value;
   end-pi;
-      
+
   if not RMValIsMap(map:*off:*off);
     RMSysSndEscapeMsg('RM00051');
   endif;
   RMValObjSetFlags(map:%bitor(RMValObjFlags(map):x'01'));
-    
+
 end-proc;
 
 
@@ -603,7 +603,7 @@ dcl-proc RMValMakeMapImmut export;
   if %bitand(RMValObjFlags(map):x'40') = x'40';
     return;
   endif;
-  
+
   c = RMBCursorCrt(RMValMapImpl(map):0:*null);
   dow RMBCursorReadNxtPrv(c:0) = 1;
     RMValueObjP = RMBCursorKey(c);
@@ -622,9 +622,9 @@ dcl-proc RMValMakeMapImmut export;
     endif;
   enddo;
   RMBCursorDispose(c);
-  
+
   RMValObjSetFlags(map:%bitor(RMValObjFlags(map):x'40'));
-    
+
 end-proc;
 
 
@@ -638,7 +638,7 @@ dcl-proc RMValMapSetCompf export;
 
   RMValSetDsMap(map);
   RMValueMap.compf = comp;
-      
+
 end-proc;
 
 
@@ -651,7 +651,7 @@ dcl-proc RMValMapGetCompf export;
 
   RMValSetDsMap(map);
   return RMValueMap.compf;
-      
+
 end-proc;
 
 
@@ -664,13 +664,13 @@ dcl-proc RMValMapSetAttr export;
     value varchar(100) ccsid(*utf8) value options(*nopass);
   end-pi;
 
-  dcl-s a pointer; 
-  
+  dcl-s a pointer;
+
   RMValSetDsMap(map);
   a = RMValueMap.attrs;
   if %parms < 2;
     if a <> *null;
-      rm_dis(a);
+      rm_dispose(a);
       RMValSetDsMap(map);
       RMValueMap.attrs = *null;
     endif;
@@ -685,22 +685,22 @@ dcl-proc RMValMapSetAttr export;
     if a <> *null;
       rm_rmv(a:rm_s(attr));
       if rm_num(a) = 0;
-        rm_dis(a);
+        rm_dispose(a);
         RMValSetDsMap(map);
         RMValueMap.attrs = *null;
       endif;
     endif;
     return;
   endif;
-  
+
   if a = *null;
     a = rm_m();
     RMValSetDsMap(map);
     RMValueMap.attrs = a;
   endif;
-  
+
   rm_insx1(a:rm_s(attr):rm_s(value));
-  
+
   return;
 
 end-proc;
@@ -715,12 +715,12 @@ dcl-proc RMValMapGetAttr export;
   end-pi;
 
   dcl-s a pointer;
-  
+
   RMValSetDsMap(map);
   if RMValueMap.attrs = *null;
     return '';
   endif;
-  
+
   a = RMValueMap.attrs;
   return rm_s_(rm_get(a:rm_s(attr)));
 
@@ -748,7 +748,7 @@ dcl-proc RMValCursorCrt export;
   // is also destroyed.
   RMValuecursor.cursor = RMBCursorCrt(RMValMapImpl(map):pos:RMValueCursorP);
   return RMValueCursorP;
-  
+
 end-proc;
 
 
@@ -761,7 +761,7 @@ dcl-proc RMValCursorImpl export;
 
   RMValSetDsCursor(cursor);
   return RMValueCursor.cursor;
-      
+
 end-proc;
 
 
@@ -774,7 +774,7 @@ dcl-proc RMValIsCursor export;
 
   RMValueObjP = obj;
   return RMValueObj.type.id = RMTYPE_CURSOR;
-  
+
 end-proc;
 
 
@@ -790,7 +790,7 @@ dcl-proc RMValIntCrt export;
     flags char(1) value options(*nopass);
     usrd uns(5) value options(*nopass);
   end-pi;
-  
+
   select;
   when digits = 10;
     RMValueInt10P = %alloc(%size(RMValueInt10));
@@ -823,9 +823,9 @@ dcl-proc RMValIntCrt export;
     RMValueInt20.value = value;
     return RMValueInt20P;
   endsl;
-  
+
   return *null;
-  
+
 end-proc;
 
 
@@ -845,7 +845,7 @@ dcl-proc RMValIsInt export;
     or     %parms >= %parmnum(digits)
        and (   digits = 10 and RMValueObj.type.id = RMTYPE_INT10
             or digits = 20 and RMValueObj.type.id = RMTYPE_INT20);
-  
+
 end-proc;
 
 
@@ -881,11 +881,11 @@ dcl-proc RMValConv2Int export;
     RMValuePDec30P = value;
     return RMValuePDec30.value;
   endsl;
-  
+
   RMSysSndEscapeMsg('RM00011');
 
   return 0;
-  
+
 end-proc;
 
 
@@ -901,7 +901,7 @@ dcl-proc RMValPDecCrt export;
     flags char(1) value options(*nopass);
     usrd uns(5) value options(*nopass);
   end-pi;
-  
+
   select;
   when digits = 10;
     RMValuePDec10P = %alloc(%size(RMValuePDec10));
@@ -949,9 +949,9 @@ dcl-proc RMValPDecCrt export;
     RMValuePDec30.value = value;
     return RMValuePDec30P;
   endsl;
-  
+
   return *null;
-  
+
 end-proc;
 
 
@@ -973,7 +973,7 @@ dcl-proc RMValIsPDec export;
        and (   digits = 10 and RMValueObj.type.id = RMTYPE_PDEC10
             or digits = 20 and RMValueObj.type.id = RMTYPE_PDEC20
             or digits = 30 and RMValueObj.type.id = RMTYPE_PDEC30);
-  
+
 end-proc;
 
 
@@ -1010,11 +1010,11 @@ dcl-proc RMValConv2PDec export;
     RMValuePDec30P = value;
     return RMValuePDec30.value;
   endsl;
-  
+
   RMSysSndEscapeMsg('RM00011');
 
   return 0;
-  
+
 end-proc;
 
 
@@ -1044,7 +1044,7 @@ dcl-proc RMValDateCrt export;
   endif;
   RMValueDate.value = value;
   return RMValueDateP;
-  
+
 end-proc;
 
 
@@ -1071,7 +1071,7 @@ dcl-proc RMValTimeCrt export;
   endif;
   RMValueTime.value = value;
   return RMValueTimeP;
-  
+
 end-proc;
 
 
@@ -1098,7 +1098,7 @@ dcl-proc RMValTsCrt export;
   endif;
   RMValueTs.value = value;
   return RMValueTsP;
-  
+
 end-proc;
 
 
@@ -1111,7 +1111,7 @@ dcl-proc RMValIsDate export;
 
   RMValueObjP = obj;
   return RMValueObj.type.id = RMTYPE_DATE;
-  
+
 end-proc;
 
 
@@ -1124,7 +1124,7 @@ dcl-proc RMValIsTime export;
 
   RMValueObjP = obj;
   return RMValueObj.type.id = RMTYPE_TIME;
-  
+
 end-proc;
 
 
@@ -1137,7 +1137,7 @@ dcl-proc RMValIsTs export;
 
   RMValueObjP = obj;
   return RMValueObj.type.id = RMTYPE_TS;
-  
+
 end-proc;
 
 
@@ -1165,11 +1165,11 @@ dcl-proc RMValConv2Date export;
     RMValueTsP = value;
     return %date(RMValueTs.value);
   endsl;
-  
+
   RMSysSndEscapeMsg('RM00011');
 
   return *loval;
-  
+
 end-proc;
 
 
@@ -1197,11 +1197,11 @@ dcl-proc RMValConv2Time export;
     RMValueTsP = value;
     return %time(RMValueTs.value);
   endsl;
-  
+
   RMSysSndEscapeMsg('RM00011');
 
   return *loval;
-  
+
 end-proc;
 
 
@@ -1229,11 +1229,11 @@ dcl-proc RMValConv2Ts export;
     RMValueDateP = value;
     return %timestamp(RMValueDate.value);
   endsl;
-  
+
   RMSysSndEscapeMsg('RM00011');
 
   return *loval;
-  
+
 end-proc;
 
 
@@ -1263,7 +1263,7 @@ dcl-proc RMValIndCrt export;
   endif;
   RMValueInd.value = value;
   return RMValueIndP;
-  
+
 end-proc;
 
 
@@ -1276,7 +1276,7 @@ dcl-proc RMValIsInd export;
 
   RMValueObjP = obj;
   return RMValueObj.type.id = RMTYPE_IND;
-  
+
 end-proc;
 
 
@@ -1301,11 +1301,11 @@ dcl-proc RMValConv2Ind export;
     RMValueIndP = value;
     return RMValueInd.value;
   endsl;
-  
+
   RMSysSndEscapeMsg('RM00011');
 
   return *off;
-  
+
 end-proc;
 
 
@@ -1335,7 +1335,7 @@ dcl-proc RMValPtrCrt export;
   endif;
   RMValuePtr.value = value;
   return RMValuePtrP;
-  
+
 end-proc;
 
 
@@ -1348,7 +1348,7 @@ dcl-proc RMValIsPtr export;
 
   RMValueObjP = obj;
   return RMValueObj.type.id = RMTYPE_PTR;
-  
+
 end-proc;
 
 
@@ -1373,11 +1373,11 @@ dcl-proc RMValConv2Ptr export;
     RMValuePtrP = value;
     return RMValuePtr.value;
   endsl;
-  
+
   RMSysSndEscapeMsg('RM00011');
 
   return *null;
-  
+
 end-proc;
 
 
@@ -1407,7 +1407,7 @@ dcl-proc RMValPPtrCrt export;
   endif;
   RMValuePPtr.value = value;
   return RMValuePPtrP;
-  
+
 end-proc;
 
 
@@ -1420,7 +1420,7 @@ dcl-proc RMValIsPPtr export;
 
   RMValueObjP = obj;
   return RMValueObj.type.id = RMTYPE_PPTR;
-  
+
 end-proc;
 
 
@@ -1445,11 +1445,11 @@ dcl-proc RMValConv2PPtr export;
     RMValuePPtrP = value;
     return RMValuePPtr.value;
   endsl;
-  
+
   RMSysSndEscapeMsg('RM00011');
 
   return *null;
-  
+
 end-proc;
 
 
@@ -1468,7 +1468,7 @@ dcl-proc RMValCharCrt export;
   dcl-s v varchar(30000) based(vp);
 
   vp = %alloc(%len(value)+2);
-  v = value;  
+  v = value;
   RMValueCharP = %alloc(%size(RMValueChar));
   RMValueChar.type.id = RMTYPE_CHAR;
   if %parms >= %parmnum(flags);
@@ -1483,7 +1483,7 @@ dcl-proc RMValCharCrt export;
   endif;
   RMValueChar.value = vp;
   return RMValueCharP;
-  
+
 end-proc;
 
 
@@ -1523,7 +1523,7 @@ dcl-proc RMValCharCrtPtr export;
   endif;
   RMValueChar.value = vp;
   return RMValueCharP;
-  
+
 end-proc;
 
 
@@ -1543,7 +1543,7 @@ dcl-proc RMValIsChar export;
                         and %bitand(RMValueObj.type.flags:x'20') <> x'20'
                      or     ass
                         and %bitand(RMValueObj.type.flags:x'20') = x'20'));
-  
+
 end-proc;
 
 
@@ -1575,11 +1575,11 @@ dcl-proc RMValConv2Char export;
     vp = RMValueStr.value;
     return v;
   endsl;
-  
+
   RMSysSndEscapeMsg('RM00011');
 
   return '';
-  
+
 end-proc;
 
 
@@ -1611,11 +1611,11 @@ dcl-proc RMValConv2Char1 export;
     vp = RMValueStr.value;
     return v;
   endsl;
-  
+
   RMSysSndEscapeMsg('RM00011');
 
   return '';
-  
+
 end-proc;
 
 
@@ -1647,11 +1647,11 @@ dcl-proc RMValConv2Char2 export;
     vp = RMValueStr.value;
     return v;
   endsl;
-  
+
   RMSysSndEscapeMsg('RM00011');
 
   return '';
-  
+
 end-proc;
 
 
@@ -1683,11 +1683,11 @@ dcl-proc RMValConv2Char3 export;
     vp = RMValueStr.value;
     return v;
   endsl;
-  
+
   RMSysSndEscapeMsg('RM00011');
 
   return '';
-  
+
 end-proc;
 
 
@@ -1706,7 +1706,7 @@ dcl-proc RMValStrCrt export;
   dcl-s v varchar(30000) ccsid(*utf8) based(vp);
 
   vp = %alloc(%len(value)+2);
-  v = value;  
+  v = value;
   RMValueStrP = %alloc(%size(RMValueStr));
   RMValueStr.type.id = RMTYPE_STR;
   if %parms >= %parmnum(flags);
@@ -1721,7 +1721,7 @@ dcl-proc RMValStrCrt export;
   endif;
   RMValueStr.value = vp;
   return RMValueStrP;
-  
+
 end-proc;
 
 
@@ -1737,7 +1737,7 @@ dcl-proc RMValStrCrtBytes export;
   dcl-s v varchar(30000) based(vp);
 
   vp = %alloc(%len(value)+2);
-  v = value;  
+  v = value;
   RMValueStrP = %alloc(%size(RMValueStr));
   RMValueStr.type.id = RMTYPE_STR;
   if %parms >= %parmnum(flags);
@@ -1752,7 +1752,7 @@ dcl-proc RMValStrCrtBytes export;
   endif;
   RMValueStr.value = vp;
   return RMValueStrP;
-  
+
 end-proc;
 
 
@@ -1772,7 +1772,7 @@ dcl-proc RMValIsStr export;
                          and %bitand(RMValueObj.type.flags:x'20') <> x'20'
                       or     ass
                          and %bitand(RMValueObj.type.flags:x'20') = x'20'));
-  
+
 end-proc;
 
 
@@ -1800,11 +1800,11 @@ dcl-proc RMValConv2Str export;
     vp = RMValueStr.value;
     return v;
   endsl;
-  
+
   RMSysSndEscapeMsg('RM00011');
 
   return '';
-  
+
 end-proc;
 
 
@@ -1832,11 +1832,11 @@ dcl-proc RMValConv2Str1 export;
     vp = RMValueStr.value;
     return v;
   endsl;
-  
+
   RMSysSndEscapeMsg('RM00011');
 
   return '';
-  
+
 end-proc;
 
 
@@ -1864,11 +1864,11 @@ dcl-proc RMValConv2Str2 export;
     vp = RMValueStr.value;
     return v;
   endsl;
-  
+
   RMSysSndEscapeMsg('RM00011');
 
   return '';
-  
+
 end-proc;
 
 
@@ -1896,11 +1896,11 @@ dcl-proc RMValConv2Str3 export;
     vp = RMValueStr.value;
     return v;
   endsl;
-  
+
   RMSysSndEscapeMsg('RM00011');
 
   return '';
-  
+
 end-proc;
 
 
@@ -1917,17 +1917,17 @@ dcl-proc RMValNumCompare;
 
   dcl-s v1 packed(46:16);
   dcl-s v2 packed(46:16);
-  
+
   v1 = RMValConv2PDec(obj1);
   v2 = RMValConv2PDec(obj2);
-  
+
   if v1 < v2;
     return -1;
   elseif v1 > v2;
     return 1;
   endif;
   return 0;
-  
+
 end-proc;
 
 
@@ -1951,12 +1951,12 @@ dcl-proc RMValMapCompare;
   dcl-s f2 int(10);
   dcl-s ck ind;
   dcl-s c int(10);
-    
+
   c = 0;
-  
+
   cv =     %bitand(RMValObjFlags(obj1):x'02') = x'02'
        and %bitand(RMValObjFlags(obj2):x'02') = x'02';
-  
+
   m1 = RMValMapImpl(obj1);
   m2 = RMValMapImpl(obj2);
   if not cv;
@@ -1969,11 +1969,11 @@ dcl-proc RMValMapCompare;
     RMBCursorDispose(c1);
     RMBCursorDispose(c2);
   endif;
-  
+
   if c <> 0;
     return c;
   endif;
-  
+
   c1 = RMBCursorCrt(m1:0:*null);
   c2 = RMBCursorCrt(m2:0:*null);
   ck = *off;
@@ -1985,9 +1985,9 @@ dcl-proc RMValMapCompare;
   endif;
   RMBCursorDispose(c1);
   RMBCursorDispose(c2);
-  
+
   return c;
-    
+
   begsr compnxtobjs;
     f1 = RMBCursorReadNxtPrv(c1:0);
     if f1 = 1;
@@ -2015,7 +2015,7 @@ dcl-proc RMValMapCompare;
       c = -1;
     endif;
   endsr;
-  
+
 end-proc;
 
 
@@ -2028,18 +2028,18 @@ dcl-proc RMValDateCompare;
   end-pi;
 
   dcl-s v date;
-  
+
   RMValueDateP = obj1;
   v = RMValueDate.value;
   RMValueDateP = obj2;
-  
+
   if v < RMValueDate.value;
     return -1;
   elseif v > RMValueDate.value;
     return 1;
   endif;
   return 0;
-  
+
 end-proc;
 
 
@@ -2052,18 +2052,18 @@ dcl-proc RMValTimeCompare;
   end-pi;
 
   dcl-s v time;
-  
+
   RMValueTimeP = obj1;
   v = RMValueTime.value;
   RMValueTimeP = obj2;
-  
+
   if v < RMValueTime.value;
     return -1;
   elseif v > RMValueTime.value;
     return 1;
   endif;
   return 0;
-  
+
 end-proc;
 
 
@@ -2076,18 +2076,18 @@ dcl-proc RMValTsCompare;
   end-pi;
 
   dcl-s v timestamp;
-  
+
   RMValueTsP = obj1;
   v = RMValueTs.value;
   RMValueTsP = obj2;
-  
+
   if v < RMValueTs.value;
     return -1;
   elseif v > RMValueTs.value;
     return 1;
   endif;
   return 0;
-  
+
 end-proc;
 
 
@@ -2101,17 +2101,17 @@ dcl-proc RMValDtsCompare;
 
   dcl-s v1 timestamp;
   dcl-s v2 timestamp;
-  
+
   v1 = RMValConv2Ts(obj1);
   v2 = RMValConv2Ts(obj2);
-  
+
   if v1 < v2;
     return -1;
   elseif v1 > v2;
     return 1;
   endif;
   return 0;
-  
+
 end-proc;
 
 
@@ -2124,18 +2124,18 @@ dcl-proc RMValIndCompare;
   end-pi;
 
   dcl-s v ind;
-  
+
   RMValueIndP = obj1;
   v = RMValueInd.value;
   RMValueIndP = obj2;
-  
+
   if not v and RMValueInd.value;
     return -1;
   elseif v and not RMValueInd.value;
     return 1;
   endif;
   return 0;
-  
+
 end-proc;
 
 
@@ -2148,18 +2148,18 @@ dcl-proc RMValPtrCompare;
   end-pi;
 
   dcl-s v pointer;
-  
+
   RMValuePtrP = obj1;
   v = RMValuePtr.value;
   RMValuePtrP = obj2;
-  
+
   if v < RMValuePtr.value;
     return -1;
   elseif v > RMValuePtr.value;
     return 1;
   endif;
   return 0;
-  
+
 end-proc;
 
 
@@ -2177,19 +2177,19 @@ dcl-proc RMValPPtrCompare;
   dcl-ds d2;
     v2 pointer(*proc);
   end-ds;
-  
+
   RMValuePPtrP = obj1;
   v1 = RMValuePPtr.value;
   RMValuePPtrP = obj2;
   v2 = RMValuePPtr.value;
-  
+
   if d1 < d2;
     return -1;
-  elseif d1 > d2;	
+  elseif d1 > d2;
     return 1;
   endif;
   return 0;
-  
+
 end-proc;
 
 
@@ -2206,7 +2206,7 @@ dcl-proc RMValCharCompare;
   dcl-s ass1 ind;
   dcl-s ass2 ind;
   dcl-s ci ind;
-  
+
   RMValueCharP = obj1;
   v1p = RMValueChar.value;
   ass1 = %bitand(RMValueChar.type.flags:x'20') = x'20';
@@ -2215,7 +2215,7 @@ dcl-proc RMValCharCompare;
   v2p = RMValueChar.value;
   ass2 = %bitand(RMValueObj.type.flags:x'20') = x'20';
   ci = ci or %bitand(RMValueChar.type.flags:x'08') = x'08';
-  
+
   if ass1 and ass2;
     return RMCvaCompareChar(v1p:v2p);
   elseif not ass1 and not ass2;
@@ -2230,12 +2230,12 @@ dcl-proc RMValCharCompare;
       return 0;
     endif;
   endif;
-  
+
   if ass1;
     return 1;
   endif;
   return -1;
-  
+
 end-proc;
 
 
@@ -2258,7 +2258,7 @@ dcl-proc RMValStrCompare;
   dcl-s inbufl uns(10);
   dcl-s outbuf pointer;
   dcl-s outbufl uns(10);
-  
+
   RMValueStrP = obj1;
   v1p = RMValueStr.value;
   ass1 = %bitand(RMValueStr.type.flags:x'20') = x'20';
@@ -2267,7 +2267,7 @@ dcl-proc RMValStrCompare;
   v2p = RMValueStr.value;
   ass2 = %bitand(RMValueStr.type.flags:x'20') = x'20';
   ci = ci or %bitand(RMValueStr.type.flags:x'08') = x'08';
-  
+
   if ass1 and ass2;
     return RMCvaCompareStr(v1p:v2p);
   elseif not ass1 and not ass2;
@@ -2296,12 +2296,12 @@ dcl-proc RMValStrCompare;
       return 0;
     endif;
   endif;
-  
+
   if ass1;
     return 1;
   endif;
   return -1;
-  
+
 end-proc;
 
 
@@ -2319,7 +2319,7 @@ dcl-proc RMValCaseInsCharComp;
     v2 pointer value;
     len uns(10) value;
   end-pr;
-  
+
   dcl-s l1 int(10);
   dcl-s l2 int(10);
   dcl-s l uns(10);
@@ -2359,7 +2359,7 @@ dcl-proc RMValCaseInsCharComp;
     endif;
   endif;
   return c;
-  
+
 end-proc;
 
 
@@ -2376,7 +2376,7 @@ dcl-proc RMValCaseInsCharComp2;
     v2 pointer value;
     len uns(10) value;
   end-pr;
-  
+
   dcl-s l1 int(10);
   dcl-s l2 int(10);
   dcl-s l uns(10);
@@ -2416,7 +2416,7 @@ dcl-proc RMValCaseInsCharComp2;
     endif;
   endif;
   return c;
-  
+
 end-proc;
 
 
@@ -2437,7 +2437,7 @@ dcl-proc RMValMapCopy;
   dcl-s c pointer;
   dcl-s k pointer;
   dcl-s i pointer;
-  
+
   mapi2 = RMBTreeCreate(%paddr(RMValObjCompare):%paddr(RMValMapImplDestroy):*null);
   RMValueMapP = map;
   mapi1 = RMValueMap.map;
@@ -2483,9 +2483,9 @@ dcl-proc RMValMapCopy;
     endif;
   enddo;
   RMBCursorDispose(c);
-  
+
   return newmap;
-  
+
 end-proc;
 
 
@@ -2509,7 +2509,7 @@ dcl-proc RMValIntCopy;
   endsl;
 
   return *null;
-  
+
 end-proc;
 
 
@@ -2537,7 +2537,7 @@ dcl-proc RMValPDecCopy;
   endsl;
 
   return *null;
-  
+
 end-proc;
 
 
@@ -2550,7 +2550,7 @@ dcl-proc RMValDateCopy;
 
   RMValueDateP = value;
   return RMValDateCrt(RMValueDate.value:RMValueDate.type.flags:RMValueDate.type.usrd);
-  
+
 end-proc;
 
 
@@ -2563,7 +2563,7 @@ dcl-proc RMValTimeCopy;
 
   RMValueTimeP = value;
   return RMValTimeCrt(RMValueTime.value:RMValueTime.type.flags:RMValueTime.type.usrd);
-  
+
 end-proc;
 
 
@@ -2576,7 +2576,7 @@ dcl-proc RMValTsCopy;
 
   RMValueTsP = value;
   return RMValTsCrt(RMValueTs.value:RMValueTs.type.flags:RMValueTs.type.usrd);
-  
+
 end-proc;
 
 
@@ -2589,7 +2589,7 @@ dcl-proc RMValIndCopy;
 
   RMValueIndP = value;
   return RMValIndCrt(RMValueInd.value:RMValueInd.type.flags:RMValueInd.type.usrd);
-  
+
 end-proc;
 
 
@@ -2601,7 +2601,7 @@ end-pi;
 
   RMValuePtrP = value;
   return RMValPtrCrt(RMValuePtr.value:RMValuePtr.type.flags:RMValuePtr.type.usrd);
-  
+
 end-proc;
 
 
@@ -2614,7 +2614,7 @@ dcl-proc RMValPPtrCopy;
 
   RMValuePPtrP = value;
   return RMValPPtrCrt(RMValuePPtr.value:RMValuePPtr.type.flags:RMValuePPtr.type.usrd);
-  
+
 end-proc;
 
 
@@ -2626,11 +2626,11 @@ dcl-proc RMValCharCopy;
   end-pi;
 
   dcl-s v varchar(30000) based(vp);
-  
+
   RMValueCharP = value;
   vp = RMValueChar.value;
   return RMValCharCrt(v:RMValueChar.type.flags:RMValueChar.type.usrd);
-  
+
 end-proc;
 
 
@@ -2642,11 +2642,11 @@ dcl-proc RMValStrCopy;
   end-pi;
 
   dcl-s v varchar(30000) ccsid(*utf8) based(vp);
-  
+
   RMValueStrP = value;
   vp = RMValueStr.value;
   return RMValStrCrt(v:RMValueStr.type.flags:RMValueStr.type.usrd);
-  
+
 end-proc;
 
 
@@ -2668,7 +2668,7 @@ dcl-proc RMValDispValue;
   endsl;
 
   dealloc value;
-    
+
 end-proc;
 
 
@@ -2688,7 +2688,7 @@ dcl-proc RMValMapImplDestroy;
   if RMValueMap.type.id = RMTYPE_MAP and %bitand(x'01':RMValueMap.type.flags) = x'01';
     return;
   endif;
-  
+
   RMValueObjP = obj;
   if RMValueObj.type.id = RMTYPE_MAP;
     RMValDispose(obj);
@@ -2698,9 +2698,9 @@ dcl-proc RMValMapImplDestroy;
     // A cursor impl is destroyed; destroy 'obj' which points to a RMValueCursor struct.
     dealloc obj;
   endif;
-  
+
   return;
-  
+
 end-proc;
 
 
@@ -2715,7 +2715,7 @@ dcl-proc RMValSetDsMap;
     RMSysSndEscapeMsg('RM09001');
   endif;
   return;
-      
+
 end-proc;
 
 
@@ -2730,6 +2730,6 @@ dcl-proc RMValSetDsCursor;
     RMSysSndEscapeMsg('RM09003');
   endif;
   return;
-      
+
 end-proc;
 

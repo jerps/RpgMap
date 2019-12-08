@@ -28,9 +28,9 @@ the keys are implicitly created.\
 <p>\
 Iteration is done through cursors, which must first be created with <a href="#rm_cur"><code>rm_cursor</code></a>. \
 A cursor maintains a current position within the key/item pairs of a map. The position can be \
-set using <a href="#rm_sll"><code>rm_setll</code></a> (set-lower-limit) or <a href="#rm_sgt"><code>rm_setgt</code></a> \
-(set-greater-than). The next key/item pair can be read with <a href="#rm_rdn"><code>rm_read_next</code></a>. \
-Procedures <a href="#rm_key"><code>rm_key</code></a> and <a href="#rm_itm"><code>rm_item</code></a> are \
+set using <a href="#rm_setll"><code>rm_setll</code></a> (set lower limit) or <a href="#rm_setgt"><code>rm_setgt</code></a> \
+(set greater than). The next key/item pair can be read with <a href="#rm_read_next"><code>rm_read_next</code></a>. \
+Procedures <a href="#rm_key"><code>rm_key</code></a> and <a href="#rm_item"><code>rm_item</code></a> are \
 used to retrieve the current key/item.\
 </p>\
 <p>\
@@ -83,7 +83,7 @@ DSPLY  2017-01-01<br>\
 DSPLY  103.4000<br>\
 </pre>\
 <p>\
-The keys that were passed as argument to <a href="#rm_sll"><code>rm_setll</code></a> and <a href="#rm_rdn"><code>rm_read_next</code></a>, \
+The keys that were passed as argument to <a href="#rm_setll"><code>rm_setll</code></a> and <a href="#rm_read_next"><code>rm_read_next</code></a>, \
 <code>rm_v(rm_i(5))</code>, are automatically disposed.\
 </p>\
 <p>\

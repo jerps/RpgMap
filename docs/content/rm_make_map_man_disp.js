@@ -1,7 +1,6 @@
 document.write('\
 \
-<div id="rm_mmm"><div class="prochdr1">rm_mmm</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Make map manually disposed</div></div>\
-<pre class="proclongnm">rm_make_map_manually_disposed</pre>\
+<div id="rm_make_map_man_disp"><div class="prochdr1">rm_make_map_man_disp</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Make map manually disposed</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 map pointer value<br>\

@@ -44,38 +44,38 @@ dcl-proc Main;
   dcl-s buf char(1000);
   dcl-s word varchar(100);
   dcl-s ch char(1);
-  
+
   display('15:');
   m = rm_m();
   m2 = rm_m();
   for x = 1 to 5;
     for y = 1 to 5;
       for z = 1 to 5;
-        rm_ins1(m :rm_m( rm_d(d'2017-01-01'+%days(x)) :rm_v( rm_i(y) :rm_i(z) ) ) :
-                   rm_sa('*'+%char(x)+'*'+%char(y)+'*'+%char(z)+'*') );
-        rm_ins1(m2:rm_sa('*'+%char(x)+'*'+%char(y)+'*'+%char(z)+'*') :
-                   rm_m( rm_d(d'2017-01-01'+%days(x)) :rm_v( rm_i(y) :rm_i(z) ) ) );
+        rm_insert_1(m :rm_m( rm_d(d'2017-01-01'+%days(x)) :rm_v( rm_i(y) :rm_i(z) ) ) :
+                       rm_sa('*'+%char(x)+'*'+%char(y)+'*'+%char(z)+'*') );
+        rm_insert_1(m2:rm_sa('*'+%char(x)+'*'+%char(y)+'*'+%char(z)+'*') :
+                       rm_m( rm_d(d'2017-01-01'+%days(x)) :rm_v( rm_i(y) :rm_i(z) ) ) );
       endfor;
     endfor;
   endfor;
   pos = *on;
   c = rm_cur(m);
-  dow rm_slln(c:pos);
+  dow rm_setll_read_next(c:pos);
     c2 = rm_cur(rm_key(c));
     t = '?';
-    if rm_rdn(c2) and rm_isd(rm_key(c2));
+    if rm_read_next(c2) and rm_isd(rm_key(c2));
       t = %char(rm_d_(rm_key(c2)));
     endif;
-    display(t + ': ' + rm_s_(rm_itm(c)));
+    display(t + ': ' + rm_s_(rm_item(c)));
   enddo;
-  rm_dis(c);
+  rm_dispose(c);
   pos = *on;
   c = rm_cur(m2);
-  dow rm_slln(c:pos:rm_sa('*3*'):*null);
+  dow rm_setll_read_next(c:pos:rm_sa('*3*'):*null);
     display(rm_s_(rm_key(c)));
   enddo;
-  rm_dis(m:m2);
-  
+  rm_dispose(m:m2);
+
   display('16:');
   m = rm_m();
   path = '/QSYS.LIB/_TLIB_.LIB/INCLUDERPG.FILE/RPGMAP.MBR' + x'00';
@@ -117,16 +117,16 @@ dcl-proc Main;
   endif;
   ifs_close(fd);
   m2 = rm_m();
-  c = rm_sll(rm_cur(m));
-  dow rm_rdn(c);
-    rm_ins1(m2 :rm_v( rm_(rm_cpy(rm_itm(c))) :rm_cpy(rm_key(c)) ) );
+  c = rm_setll(rm_cur(m));
+  dow rm_read_next(c);
+    rm_insert_1(m2 :rm_v( rm_(rm_cpy(rm_item(c))) :rm_cpy(rm_key(c)) ) );
   enddo;
-  rm_dis(c);
-  c = rm_sll(rm_cur(m2));
-  dow rm_rdn(c);
+  rm_dispose(c);
+  c = rm_setll(rm_cur(m2));
+  dow rm_read_next(c);
     display(%char(rm_i_(rm__i(rm_key(c):1))) + ': ' + rm_a_(rm__i(rm_key(c):2)) );
   enddo;
-  rm_dis(m:m2);
+  rm_dispose(m:m2);
 
   display('17a:');
   m = rm_m(
@@ -135,12 +135,12 @@ dcl-proc Main;
     rm_a('Bdfee':2) : rm_i(3) :
     rm_a('hhhhhh':2) : rm_i(4) :
     rm_a('bdfe':2) : rm_i(5) );
-  c = rm_sll(rm_cur(m));
-  dow rm_rdn(c);
+  c = rm_setll(rm_cur(m));
+  dow rm_read_next(c);
     display(rm_a_(rm_key(c)));
   enddo;
-  rm_dis(m);
-  
+  rm_dispose(m);
+
   display('17b:');
   m = rm_m(
     rm_s('zza':2) : rm_i(1) :
@@ -148,11 +148,11 @@ dcl-proc Main;
     rm_s('Bdfee':2) : rm_i(3) :
     rm_s('hhhhhh':2) : rm_i(4) :
     rm_s('bdfe':2) : rm_i(5) );
-  c = rm_sll(rm_cur(m));
-  dow rm_rdn(c);
+  c = rm_setll(rm_cur(m));
+  dow rm_read_next(c);
     display(rm_s_(rm_key(c)));
   enddo;
-  rm_dis(m);
+  rm_dispose(m);
 
 end-proc;
 
@@ -169,9 +169,8 @@ end-pi;
 
   vp = errno();
   return v;
-  
-end-proc;
 
+end-proc;
 
 
 

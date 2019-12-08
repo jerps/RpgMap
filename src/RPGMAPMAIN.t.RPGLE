@@ -221,8 +221,8 @@ dcl-proc rm_is_v export;
 end-proc;
 
 
-// ----- RM_INM <<<<<<<<<<
-dcl-proc rm_inm export;
+// ----- RM_IN_MAP <<<<<<<<<<
+dcl-proc rm_in_map export;
 
   dcl-pi *n ind;
     obj pointer value;
@@ -233,8 +233,8 @@ dcl-proc rm_inm export;
 end-proc;
 
 
-// ----- RM_MMM <<<<<<<<<<
-dcl-proc rm_mmm export;
+// ----- RM_MAKE_MAP_MAN_DISP <<<<<<<<<<
+dcl-proc rm_make_map_man_disp export;
 
   dcl-pi *n pointer;
     map pointer value;
@@ -247,8 +247,8 @@ dcl-proc rm_mmm export;
 end-proc;
 
 
-// ----- RM_MMI <<<<<<<<<<
-dcl-proc rm_mmi export;
+// ----- RM_MAKE_MAP_IMMUTABLE <<<<<<<<<<
+dcl-proc rm_make_map_immutable export;
 
   dcl-pi *n pointer;
     map pointer value;
@@ -273,8 +273,8 @@ dcl-proc rm_mmi export;
 end-proc;
 
 
-// ----- RM_DIS <<<<<<<<<<
-dcl-proc rm_dis export;
+// ----- RM_DISPOSE <<<<<<<<<<
+dcl-proc rm_dispose export;
 
   dcl-pi *n;
 /include _TLIB_/INCLUDERPG,RPGMAPI003
@@ -303,8 +303,8 @@ dcl-proc rm_dis export;
 end-proc;
 
 
-// ----- RM_INS <<<<<<<<<<
-dcl-proc rm_ins export;
+// ----- RM_INSERT <<<<<<<<<<
+dcl-proc rm_insert export;
 
   dcl-pi *n pointer;
     map pointer value;
@@ -349,8 +349,8 @@ dcl-proc rm_ins export;
 end-proc;
 
 
-// ----- RM_INS1 <<<<<<<<<<
-dcl-proc rm_ins1 export;
+// ----- RM_INSERT_1 <<<<<<<<<<
+dcl-proc rm_insert_1 export;
 
   dcl-pi *n pointer;
     map pointer value;
@@ -1562,8 +1562,8 @@ dcl-proc rm_cur export;
 end-proc;
 
 
-// ----- RM_SLL <<<<<<<<<<
-dcl-proc rm_sll export;
+// ----- RM_SETLL <<<<<<<<<<
+dcl-proc rm_setll export;
 
   dcl-pi *n pointer;
     cur pointer value;
@@ -1587,8 +1587,8 @@ dcl-proc rm_sll export;
 end-proc;
 
 
-// ----- RM_SGT <<<<<<<<<<
-dcl-proc rm_sgt export;
+// ----- RM_SETGT <<<<<<<<<<
+dcl-proc rm_setgt export;
 
   dcl-pi *n pointer;
     cur pointer value;
@@ -1612,8 +1612,8 @@ dcl-proc rm_sgt export;
 end-proc;
 
 
-// ----- RM_RDN <<<<<<<<<<
-dcl-proc rm_rdn export;
+// ----- RM_READ_NEXT <<<<<<<<<<
+dcl-proc rm_read_next export;
 
   dcl-pi *n ind;
     cur pointer value;
@@ -1644,8 +1644,8 @@ dcl-proc rm_rdn export;
 end-proc;
 
 
-// ----- RM_RDP <<<<<<<<<<
-dcl-proc rm_rdp export;
+// ----- RM_READ_PREV <<<<<<<<<<
+dcl-proc rm_read_prev export;
 
   dcl-pi *n ind;
     cur pointer value;
@@ -1688,8 +1688,8 @@ dcl-proc rm_key export;
 end-proc;
 
 
-// ----- RM_ITM <<<<<<<<<<
-dcl-proc rm_itm export;
+// ----- RM_ITEM <<<<<<<<<<
+dcl-proc rm_item export;
 
   dcl-pi *n pointer;
     cur pointer value;
@@ -1700,8 +1700,8 @@ dcl-proc rm_itm export;
 end-proc;
 
 
-// ----- RM_SLLN <<<<<<<<<<
-dcl-proc rm_slln export;
+// ----- RM_SETLL_READ_NEXT <<<<<<<<<<
+dcl-proc rm_setll_read_next export;
 
   dcl-pi *n ind;
     cur pointer value;
@@ -1750,8 +1750,8 @@ end-proc;
 
 
 
-// ----- RM_SGTP <<<<<<<<<<
-dcl-proc rm_sgtp export;
+// ----- RM_SETGT_READ_PREV <<<<<<<<<<
+dcl-proc rm_setgt_read_prev export;
 
   dcl-pi *n ind;
     cur pointer value;
@@ -1799,8 +1799,8 @@ dcl-proc rm_sgtp export;
 end-proc;
 
 
-// ----- RM_HSN <<<<<<<<<<
-dcl-proc rm_hsn export;
+// ----- RM_HAS_NEXT <<<<<<<<<<
+dcl-proc rm_has_next export;
 
   dcl-pi *n ind;
     cur pointer value;
@@ -1831,8 +1831,8 @@ dcl-proc rm_hsn export;
 end-proc;
 
 
-// ----- RM_HSP <<<<<<<<<<
-dcl-proc rm_hsp export;
+// ----- RM_HAS_PREV <<<<<<<<<<
+dcl-proc rm_has_prev export;
 
   dcl-pi *n ind;
     cur pointer value;
@@ -1863,8 +1863,8 @@ dcl-proc rm_hsp export;
 end-proc;
 
 
-// ----- RM_FED <<<<<<<<<<
-dcl-proc rm_fed export;
+// ----- RM_FOR_EACH_DO <<<<<<<<<<
+dcl-proc rm_for_each_do export;
 
   dcl-pi *n pointer;
     map pointer value;
@@ -1895,8 +1895,8 @@ dcl-proc rm_fed export;
 end-proc;
 
 
-// ----- RM_FEDR <<<<<<<<<<
-dcl-proc rm_fedr export;
+// ----- RM_FOR_EACH_DO_REV <<<<<<<<<<
+dcl-proc rm_for_each_do_rev export;
 
   dcl-pi *n pointer;
     map pointer value;
@@ -1927,8 +1927,8 @@ dcl-proc rm_fedr export;
 end-proc;
 
 
-// ----- RM_SCF <<<<<<<<<<
-dcl-proc rm_scf export;
+// ----- RM_SET_COMP_FUN <<<<<<<<<<
+dcl-proc rm_set_comp_fun export;
 
   dcl-pi *n pointer;
     map pointer value;
@@ -1946,8 +1946,8 @@ dcl-proc rm_scf export;
 end-proc;
 
 
-// ----- RM_GCF <<<<<<<<<<
-dcl-proc rm_gcf export;
+// ----- RM_GET_COMP_FUN <<<<<<<<<<
+dcl-proc rm_get_comp_fun export;
 
   dcl-pi *n pointer(*proc);
     map pointer value;
@@ -1958,8 +1958,8 @@ dcl-proc rm_gcf export;
 end-proc;
 
 
-// ----- RM_SAV <<<<<<<<<<
-dcl-proc rm_sav export;
+// ----- RM_SET_ATTR_VAL <<<<<<<<<<
+dcl-proc rm_set_attr_val export;
 
   dcl-pi *n pointer;
     map pointer value;
@@ -1997,8 +1997,8 @@ dcl-proc rm_sav export;
 end-proc;
 
 
-// ----- RM_GAV <<<<<<<<<<
-dcl-proc rm_gav export;
+// ----- RM_GET_ATTR_VAL <<<<<<<<<<
+dcl-proc rm_get_attr_val export;
 
   dcl-pi *n varchar(100) ccsid(*utf8);
     map pointer value;
@@ -2010,8 +2010,8 @@ dcl-proc rm_gav export;
 end-proc;
 
 
-// ----- RM_USRD <<<<<<<<<<
-dcl-proc rm_usrd export;
+// ----- RM_USER_DATA <<<<<<<<<<
+dcl-proc rm_user_data export;
 
   dcl-pi *n int(10);
     obj pointer value;

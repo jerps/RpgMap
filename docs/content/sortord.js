@@ -5,7 +5,7 @@ document.write('\
 <p>\
 The order of a key in a map is determined by the compare function of the map. By default this \
 is <a href="#rm_cmp"><code>rm_cmp</code></a>. This compare function can be replaced by another \
-(but only when the map is empty). See <a href="#rm_scf"><code>rm_scf</code></a>.\
+(but only when the map is empty). See <a href="#rm_set_comp_fun"><code>rm_set_comp_fun</code></a>.\
 </p>\
 <p>\
 The sort order, when values and maps are compared with each other, is influenced by whether the compared \

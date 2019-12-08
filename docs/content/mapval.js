@@ -27,7 +27,7 @@ the documentation uses the term "contained" for both map types.\
 Maps are created with <a href="#rm_m"><code>rm_m</code></a>, <a href="#rm_mm"><code>rm_mm</code></a> or <a href="#rm_v"><code>rm_v</code></a>.\
 </p>\
 <p>\
-Key/item pairs are inserted into a map with one of the <code>rm_ins*</code> procedures such as <a href="#rm_ins"><code>rm_ins</code></a> \
+Key/item pairs are inserted into a map with one of the <code>rm_insert*</code> procedures such as <a href="#rm_insert"><code>rm_insert</code></a> \
 or <a href="#rm_insc"><code>rm_insc</code></a>. When creating a map, the keys and items to insert can be \
 immediately specified (see <a href="#example_1">example 1</a>).\
 </p>\
@@ -62,7 +62,7 @@ incompatible escape message RM00011 (value is not compatible) is sent.\
 </p>\
 <p>\
 Every <code>rm_??_</code> procedure is accompanied by a <code>rm_??__</code> procedure (with two trailing underscores) that \
-disposes the RpgMap value with <a href="#rm_dis"><code>rm_dis</code></a> when it has been unwrapped.\
+disposes the RpgMap value with <a href="#rm_dispose"><code>rm_dispose</code></a> when it has been unwrapped.\
 </p>\
 <p>\
 For most <code>rm_??</code> procedures there is also a <code>rm_is??</code> procedure to test whether an object is \
@@ -73,7 +73,7 @@ This wrapping/unwrapping of RPG values using <code>rm_??</code> and <code>rm_??_
 polymorphic, i.e. to let it handle different types uniformly.\
 </p>\
 <p>\
-A map can be made immutable with <a href="#rm_mmi"><code>rm_mmi</code></a>. There is no way to make it mutable again. This \
+A map can be made immutable with <a href="#rm_make_map_immutable"><code>rm_make_map_immutable</code></a>. There is no way to make it mutable again. This \
 guarantees that no key/item pairs will be inserted into or removed from the map. If a map is made immutable then all contained \
 <strong>automatically</strong> disposed maps (thus including vectors) are made immutable also, recursively.\
 </p>\

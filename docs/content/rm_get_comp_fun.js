@@ -1,7 +1,6 @@
 document.write('\
 \
-<div id="rm_gcf"><div class="prochdr1">rm_gcf</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Get compare function</div></div>\
-<pre class="proclongnm">rm_get_comp_fun</pre>\
+<div id="rm_get_comp_fun"><div class="prochdr1">rm_get_comp_fun</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Get compare function</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 map pointer value<br>\

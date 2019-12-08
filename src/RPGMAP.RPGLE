@@ -37,17 +37,17 @@ dcl-c RPGMAP_P3_MAX    999999999999999999999999999999.9999999999999999;
 
 ////////// rm_m - Create a new map, automatically disposed
 // Create a new map and return a pointer to it.
-// The map should be disposed - with 'rm_dis' - when it's not needed
+// The map should be disposed - with 'rm_dispose' - when it's not needed
 // anymore. If the map is inserted into a map as a key or item it will
 // be automatically disposed when the containing map is disposed or when
-// the key/item is removed, and 'rm_dis' can not be used anymore to dispose
+// the key/item is removed, and 'rm_dispose' can not be used anymore to dispose
 // the map.
 // Like a value, an automatically disposed map can be inserted into
 // (contained in) one map only, i.e. it can be inserted only once (even
 // when inserting into the same map). Escape message RM00010 will be sent
 // if an automatically disposed map is inserted into a map for a second time.
 // The new map can be immediately populated with key/item pairs by passing
-// the keys and items as arguments. This is the same as calling 'rm_ins1'
+// the keys and items as arguments. This is the same as calling 'rm_insert_1'
 // repeatedly, with arguments 1 and 2 as the first key and item, resp.,
 // arguments 3 and 4 as the second key and item, etc. Up to 100 key/item
 // pairs can be passed. An item is optional (or *null). Key/items
@@ -68,7 +68,7 @@ end-pr;
 
 ////////// rm_mm - Create a new map, manually disposed
 // Same as 'rm_m' except that the new map is not automatically disposed
-// and must always be manually disposed with 'rm_dis'. However, unlike
+// and must always be manually disposed with 'rm_dispose'. However, unlike
 // automatically disposed maps, a manually disposed map can be inserted
 // into multiple maps.
 dcl-pr rm_mm pointer extproc(*dclcase);
@@ -122,27 +122,27 @@ dcl-pr rm_is_v ind extproc(*dclcase);
 end-pr;
 
 
-////////// rm_inm (rm_in_map) - In map?
+////////// rm_in_map - In map?
 // Return *on if 'obj' is (contained) in a map, else return *off.
 // Send escape message RM09005 if 'obj' is not a value or an
 // automatically disposed map.
-dcl-pr rm_inm ind extproc(*dclcase);
+dcl-pr rm_in_map ind extproc(*dclcase);
   obj pointer value;
 end-pr;
 
 
-////////// rm_mmm (rm_make_map_manually_disposed) - Make map manually disposed
+////////// rm__make_map_man_disp - Make map manually disposed
 // Make 'map' a *manually* disposed map, and return 'map'.
 // Send escape message RM00051 if 'map' is not an automatically disposed map,
 // or if 'map' is a vector.
 // This operation can not be undone; a manually disposed map can not be made
 // automatically disposed.
-dcl-pr rm_mmm pointer extproc(*dclcase);
+dcl-pr rm_make_map_man_disp pointer extproc(*dclcase);
   map pointer value;
 end-pr;
 
 
-////////// rm_mmi (rm_make_map_immutable) - Make map immutable
+////////// rm_make_map_immutable - Make map immutable
 // Make 'map' immutable, and return 'map'.
 // An immutable map can not be mutated, i.e. no key/item pairs can be inserted
 // into or removed from the map. If a key/item pair is inserted into or removed
@@ -154,13 +154,13 @@ end-pr;
 // If 'map' is already immutable then this operation has no effect.
 // This operation can not be undone; an immutable map can not be made mutable again.
 // When a map is copied ('rm_cpy') then the new copy is mutable.
-dcl-pr rm_mmi pointer extproc(*dclcase);
+dcl-pr rm_make_map_immutable pointer extproc(*dclcase);
   map pointer value;
   opt char(10) value options(*nopass);
 end-pr;
 
 
-////////// rm_dis (rm_dispose) - Dispose maps, cursors and values
+////////// rm_dispose - Dispose maps, cursors and values
 // Dispose objects 'o001' thru 'o100'. Each object can be a map, a cursor
 // or a value.
 // When an object is disposed its memory is released/freed.
@@ -168,13 +168,13 @@ end-pr;
 // If a map is disposed then all associated cursors are also disposed.
 // If a map is disposed then all its keys and items are also disposed, i.e.
 // all contained maps and values are disposed except manually disposed maps,
-// which must always be disposed directly using 'rm_dis'.
+// which must always be disposed directly using 'rm_dispose'.
 // Values and automatically disposed maps that are contained in (have been
-// inserted into) a map can not be directly disposed with 'rm_dis'.
+// inserted into) a map can not be directly disposed with 'rm_dispose'.
 // Send escape message RM00030 if the object to dispose is a value that is
 // contained in a map, or is an automatically disposed map that is contained
 // in a map.
-dcl-pr rm_dis extproc(*dclcase);
+dcl-pr rm_dispose extproc(*dclcase);
 // Parameters o001 .. o100
 // o001 pointer value options(*nopass);
 // o002 pointer value options(*nopass);
@@ -183,7 +183,7 @@ dcl-pr rm_dis extproc(*dclcase);
 end-pr;
 
 
-////////// rm_ins (rm_insert) - Insert key/item pairs
+////////// rm_insert - Insert key/item pairs
 // Insert up to 100 new key/item pairs into 'map' and return 'map'.
 // The keys and items must be maps or values. Values are automatically
 // disposed when their containing map is disposed, or when the key/item
@@ -210,7 +210,7 @@ end-pr;
 // Items which were not inserted (because no key was specified) will be
 // disposed, unless the item is a manually disposed map, or a value/map
 // contained in a map.
-dcl-pr rm_ins pointer extproc(*dclcase);
+dcl-pr rm_insert pointer extproc(*dclcase);
   map pointer value;
 // Parameters k001/i001 .. k100/i100
 // k001 pointer value options(*nopass);
@@ -222,11 +222,11 @@ dcl-pr rm_ins pointer extproc(*dclcase);
 end-pr;
 
 
-////////// rm_ins1 (rm_insert_1) - Insert 1 key/item pair
-// Like 'rm_ins', but with only one key/item pair.
+////////// rm_insert_1 - Insert 1 key/item pair
+// Like 'rm_insert', but with only one key/item pair.
 // This is the faster version when only one key/item pair needs
 // to be inserted.
-dcl-pr rm_ins1 pointer extproc(*dclcase);
+dcl-pr rm_insert_1 pointer extproc(*dclcase);
   map pointer value;
   key pointer value options(*nopass);
   item pointer value options(*nopass);
@@ -234,7 +234,7 @@ end-pr;
 
 
 ////////// rm_insm (rm_insert_map) - Insert key/item pairs, from map
-// Like 'rm_ins', but the key/item pairs to insert are contained in 'map2'.
+// Like 'rm_insert', but the key/item pairs to insert are contained in 'map2'.
 // The values and automatically disposed maps in 'map2' that are to be
 // inserted are not inserted directly, but instead a copy is made ('rm_cpy')
 // that is actually inserted. Manually disposed maps are not copied; they're
@@ -260,8 +260,8 @@ end-pr;
 
 
 ////////// rm_insc (rm_insert_cond) - Insert key/item pairs, conditionally
-// Like 'rm_ins', but a key/item pair is only inserted if there is
-// no key in 'map' that is equal to the key to be inserted. 
+// Like 'rm_insert', but a key/item pair is only inserted if there is
+// no key in 'map' that is equal to the key to be inserted.
 // Keys and items that are not inserted are disposed automatically,
 // unless they are manually disposed maps, or values/maps contained
 // in a map.
@@ -300,7 +300,7 @@ end-pr;
 
 
 ////////// rm_insx (rm_insert_excl) - Insert key/item pairs, exclusive
-// Like 'rm_ins', but before a key/item pair is inserted all key/item
+// Like 'rm_insert', but before a key/item pair is inserted all key/item
 // pairs with a key equal to the key to be inserted are removed first
 // (i.e. they're replaced).
 dcl-pr rm_insx pointer extproc(*dclcase);
@@ -338,7 +338,7 @@ end-pr;
 
 
 ////////// rm_rmv (rm_remove) - Remove key/item pair
-// Remove the key/item pair with key equal to 'key' from 'map', if 
+// Remove the key/item pair with key equal to 'key' from 'map', if
 // found, and return 'map'. If not found do nothing, and return 'map'.
 // If the key and/or item is a value or an automatically disposed map
 // then they're disposed.
@@ -358,7 +358,7 @@ end-pr;
 // Like 'rm_rmv', but all key/item pairs with key equal to or greater
 // than 'key1', and equal to or less than 'key2' are removed from 'map'.
 // Both keys are optional. If 'key1' is not passed or *null it's assumed
-// to be the lowest key. If 'key2' is not passed it's assumed to be the 
+// to be the lowest key. If 'key2' is not passed it's assumed to be the
 // same as 'key1' (if 'key1' is passed). If 'key2' is *null it's assumed
 // to be the highest key. Remove nothing if 'key1' is greater than 'key2',
 // or if only 'key1' is passed with value *null.
@@ -379,7 +379,7 @@ end-pr;
 // Two *nulls are considered equal.
 // This is the default compare function for maps. The compare function
 // of a map determines the ordering of the keys in the map. This can
-// be overridden for a specific map with 'rm_scf'.
+// be overridden for a specific map with 'rm_set_comp_fun'.
 // Two objects have a natural ordering when they are of the same kind:
 //   - character data having the same sort sequence;
 //   - strings having the same sort sequence;
@@ -392,11 +392,11 @@ end-pr;
 //   - maps.
 // If the objects don't have a natural order then they are ordered
 // based on their type as follows:
-//     *null `< n < i < p < t < d < z < x < xp < a < aa < s < sa < m/v 
+//     *null `< n < i < p < t < d < z < x < xp < a < aa < s < sa < m/v
 // Two maps are equal if they both have the exact same keys and items,
 // in the same order.
-// The attributes of maps ('rm_sav') are ignored when doing comparisons
-// between maps.
+// The attributes of maps ('rm_set_attr_val') are ignored when doing
+// comparisons between maps.
 // When two maps or a map and a vector are compared, then first the keys
 // of the two maps are compared, in order. The lowest key of the first map
 // is compared with the lowest key of the second map. If they are equal then
@@ -485,7 +485,7 @@ end-pr;
 // Some properties are not supported for some types.
 // Send escape message RM00111 if 'opt' is not supported.
 // When creating values (e.g. with 'rm_i' or 'rm_a') use the creating
-// procedure's 'opt' parameter to set a special property, instead of 
+// procedure's 'opt' parameter to set a special property, instead of
 // using 'rm_', if possible. For example 'rm_i(1:0)' creates an integer
 // value, 1, with reversed order, and 'rm_a('abc':-100)' creates a character
 // value with user data 100. When creating maps there is no 'opt' parameter
@@ -511,12 +511,12 @@ end-pr;
 // ** User Data **
 // A map or value can be associated with user data, which is a positive integer
 // value between 1 and 65.000 that is application specific. Like attributes
-// ('rm_sav'), user data is used to store meta data.
+// ('rm_set_attr_val'), user data is used to store meta data.
 // Associating user data does not increase memory usage.
-// Procedure 'rm_usrd' returns the user data for a map or value.
+// Procedure 'rm_user_data' returns the user data for a map or value.
 // The user data is specified as a negative integer; specifying -1 means that
-// 'rm_usrd' returns 1.
-// If 'opt' is 91 then the user data is cleared, i.e. 'rm_usrd' returns 0.
+// 'rm_user_data' returns 1.
+// If 'opt' is 91 then the user data is cleared, i.e. 'rm_user_data' returns 0.
 dcl-pr rm_ pointer extproc(*dclcase);
   obj pointer value;
   opt int(10) value options(*nopass);
@@ -657,10 +657,10 @@ end-pr;
 // as 'key1' (if 'key1' is passed). If 'key2' is *null it's assumed to
 // be the highest key. Return 0 if 'key1' is greater than 'key2', or
 // only 'key1' is passed with value *null.
-// This procedure is not efficient. Unless both keys are *null or not 
+// This procedure is not efficient. Unless both keys are *null or not
 // passed (i.e. all key/item pairs) it counts the number of keys each
 // time it's called (no caching).
-// This procedure disposes 'key1' and 'key2' automatically, unless 
+// This procedure disposes 'key1' and 'key2' automatically, unless
 // 'key1'/'key2' is a manually disposed map, or a value/map contained
 // in a map.
 dcl-pr rm_num uns(20) extproc(*dclcase);
@@ -767,7 +767,7 @@ end-pr;
 // is passed with value *null.
 // Ignore 'key1'/'key2' if 'obj' is a value.
 // An alternative way to copy for example an integer value: rm_i(rm_i_(val)).
-// This procedure disposes 'key1' and 'key2' automatically, unless 
+// This procedure disposes 'key1' and 'key2' automatically, unless
 // 'key1'/'key2' is a manually disposed map, or a value/map contained
 // in a map.
 dcl-pr rm_cpy pointer extproc(*dclcase);
@@ -793,7 +793,7 @@ end-pr;
 // Return a new cursor for 'map'. The cursor is positioned at the beginning
 // or the end, depending on whether 'opt' is "*b"/"*begin" or "*e"/"*end",
 // resp. Optional parameter 'opt' defaults to "*b".
-// The cursor should be disposed with 'rm_dis' when it's not used anymore. It
+// The cursor should be disposed with 'rm_dispose' when it's not used anymore. It
 // is automatically disposed when 'map' is disposed.
 dcl-pr rm_cur pointer extproc(*dclcase);
   map pointer value;
@@ -801,52 +801,52 @@ dcl-pr rm_cur pointer extproc(*dclcase);
 end-pr;
 
 
-////////// rm_sll, rm_sgt (rm_setll, rm_setgt) - Set lower limit, Set greater than
-// Position cursor 'cur' on 'key' and return 'cur'. 
-// Call 'rm_sll' to position the cursor just before the lowest key that is equal
-// to or greater than 'key'. Call 'rm_sgt' to position the cursor just after the
+////////// rm_setll, rm_setgt - Set lower limit, Set greater than
+// Position cursor 'cur' on 'key' and return 'cur'.
+// Call 'rm_setll' to position the cursor just before the lowest key that is equal
+// to or greater than 'key'. Call 'rm_setgt' to position the cursor just after the
 // highest key that is equal to or less than 'key'. If 'key' is *null or not passed
 // then the cursor is positioned at the beginning or the end, resp.
 // After calling one of these procedures cursor 'cur' has no current key/item pair.
-// Call 'rm_rdn' or 'rm_rdp' to read the next or previous key/item pair, resp.,
-// which then becomes the current key/value pair.
-// If 'rm_sll' is called and the next key/item pair is removed from the map the
-// cursor is positioned just after the previous pair. If 'rm_sgt' is called and
+// Call 'rm_read_next' or 'rm_read_prev' to read the next or previous key/item pair,
+// resp., which then becomes the current key/value pair.
+// If 'rm_setll' is called and the next key/item pair is removed from the map the
+// cursor is positioned just after the previous pair. If 'rm_setgt' is called and
 // the previous key/item pair is removed from the map the cursor is positioned
 // just before the next pair.
-// If 'rm_sll' is called and there is no key equal to or greater, or if 'rm_sgt'
+// If 'rm_setll' is called and there is no key equal to or greater, or if 'rm_setgt'
 // is called and there is no key equal to or less, the cursor is positioned at the
 // end or beginning resp.
 // These procedures dispose 'key' automatically, unless 'key' is a manually
 // disposed map, or a value/map contained in a map.
-dcl-pr rm_sll pointer extproc(*dclcase);
+dcl-pr rm_setll pointer extproc(*dclcase);
   cur pointer value;
   key pointer value options(*nopass);
 end-pr;
-dcl-pr rm_sgt pointer extproc(*dclcase);
+dcl-pr rm_setgt pointer extproc(*dclcase);
   cur pointer value;
   key pointer value options(*nopass);
 end-pr;
 
 
-////////// rm_rdn, rm_rdp (rm_read_next, rm_read_prev) - Read next or previous key/item pair
-// Call 'rm_rdn' to read the next key/item pair for cursor 'cur', or
-// call 'rm_rdp' to read the previous key/item pair. The next/previous
+////////// rm_read_next, rm_read_prev - Read next or previous key/item pair
+// Call 'rm_read_next' to read the next key/item pair for cursor 'cur', or
+// call 'rm_read_prev' to read the previous key/item pair. The next/previous
 // pair becomes the current key/item pair. Procedures 'rm_key' and
-// 'rm_itm' are used to read the current key or item, resp.
+// 'rm_item' are used to read the current key or item, resp.
 // Return *on if there was a next or previous key/item. Return *off if
 // the cursor is at the end or the beginning, in which case there is no
 // current key/item anymore.
 // Key/item pairs can be removed while a cursor iterates over them.
 // If the current key/item pair is removed from the map then there is no
-// current key/item pair anymore, and 'rm_key' and 'rm_itm' will return
-// *null. If 'rm_rdn' was used to read the current key/item the cursor is
-// positioned just before the key/item pair that comes after the removed
-// key/item. If 'rm_rdp' was used the cursor is positioned just after the
-// key/item pair that comes before the removed key/item. Procedures 'rm_rdn'
-// and 'rm_rdp' must be used to get a current key/item pair again. The cursor
-// is positioned at the end or beginning, resp., when there is no next or
-// previous pair anymore. 
+// current key/item pair anymore, and 'rm_key' and 'rm_item' will return
+// *null. If 'rm_read_next' was used to read the current key/item the cursor
+// is  positioned just before the key/item pair that comes after the removed
+// key/item. If 'rm_read_prev' was used the cursor is positioned just after
+// the key/item pair that comes before the removed key/item. Procedures
+// 'rm_read_next' and 'rm_read_prev' must be used to get a current key/item
+// pair again. The cursor is positioned at the end or beginning, resp., when
+// there is no next or previous pair anymore.
 // If 'key1' and/or 'key2' are passed then the next or previous key must be
 // equal to or greater than 'key1', and equal to or less than 'key2', else
 // return *off (the cursor is at the end/beginning and there is no current
@@ -858,12 +858,12 @@ end-pr;
 // These procedures dispose 'key1' and 'key2' automatically, unless
 // 'key1'/'key2' is a manually disposed map, or a value/map contained
 // in a map.
-dcl-pr rm_rdn ind extproc(*dclcase);
+dcl-pr rm_read_next ind extproc(*dclcase);
   cur pointer value;
   key1 pointer value options(*nopass);
   key2 pointer value options(*nopass);
 end-pr;
-dcl-pr rm_rdp ind extproc(*dclcase);
+dcl-pr rm_read_prev ind extproc(*dclcase);
   cur pointer value;
   key1 pointer value options(*nopass);
   key2 pointer value options(*nopass);
@@ -871,44 +871,47 @@ end-pr;
 
 
 ////////// rm_key - Return current key
-// Return the current key for cursor 'cur', after calling 'rm_rdn' or 'rm_rdp'.
+// Return the current key for cursor 'cur', after calling 'rm_read_next'
+// or 'rm_read_prev'.
 // Return *null if there is no current key/item pair.
 dcl-pr rm_key pointer extproc(*dclcase);
   cur pointer value;
 end-pr;
 
 
-////////// rm_itm (rm_item) - Return current item
-// Return the current item for cursor 'cur', after calling 'rm_rdn' or 'rm_rdp'.
+////////// rm_item - Return current item
+// Return the current item for cursor 'cur', after calling 'rm_read_next'
+// or 'rm_read_prev'.
 // The current item may be *null.
 // Call 'rm_key' to check whether there is a current key/item pair.
-dcl-pr rm_itm pointer extproc(*dclcase);
+dcl-pr rm_item pointer extproc(*dclcase);
   cur pointer value;
 end-pr;
 
 
-////////// rm_slln (rm_setll_read_next) - Set lower limit, read next
-// This procedure combines 'rm_sll' and 'rm_rdn' into one, so that
+////////// rm_setll_read_next - Set lower limit, read next
+// This procedure combines 'rm_setll' and 'rm_read_next' into one, so that
 // one expression enables both positioning the cursor and repeatedly
 // reading the next key/item pair. Positioning is only done when
 // input/output parameter 'pos' is *on, which is set to *off automatically
-// when 'rm_slln' is called. This parameter should be *on the first time
-// 'rm_slln' is called to trigger the positioning.
-// Each time 'rm_slln' is called: 1. if 'pos' is *on the cursor is
-// positioned with 'rm_sll' on 'key1', 2. 'pos' is set to *off, 3.
-// 'rm_rdn' is called with 'key1' and 'key2' to read the next key/item
-// pair, 4. the result of calling 'rm_rdn' is returned.
-// When doing a read-equal (i.e. when specifying only 'key1' for 'rm_rdn'
-// or 'rm_rdp'), 'key1' must be specified twice ('rm_sll' and 'rm_rdn').
+// when 'rm_setll_read_next' is called. This parameter should be *on the
+//  first time 'rm_setll_read_next' is called to trigger the positioning.
+// Each time 'rm_setll_read_next' is called: 1. if 'pos' is *on the cursor
+// is positioned with 'rm_setll' on 'key1', 2. 'pos' is set to *off, 3.
+// 'rm_read_next' is called with 'key1' and 'key2' to read the next
+// key/item pair, 4. the result of calling 'rm_read_next' is returned.
+// When doing a read-equal (i.e. when specifying only 'key1' for
+// 'rm_read_next' or 'rm_read_prev'), 'key1' must be specified twice
+// ('rm_setll' and 'rm_read_next').
 // Using this method, 'key1' needs to be specified only once, but at the
 // cost of the extra indicator which makes the code a little more complex.
-// Parameter 'key1' is passed as argument 'key' to 'rm_sll' and 'key1'
-// and 'key2' are passed to 'rm_rdn'. See the docs for 'rm_sll' and
-// 'rm_rdn' on how optional parameters 'key1' and 'key2' are specified.
+// Parameter 'key1' is passed as argument 'key' to 'rm_setll' and 'key1'
+// and 'key2' are passed to 'rm_read_next'. See the docs for 'rm_setll' and
+// 'rm_read_next' on how optional parameters 'key1' and 'key2' are specified.
 // The following code loops through all keys equal to d'2017-01-01'.
 //     pos = *on;
-//     dow rm_slln(cur:pos:rm_d(d'2017-01-01')); // 'pos' is set to *off
-//       ... // set 'pos' to *on to trigger 'rm_sll' again while looping
+//     dow rm_setll_read_next(cur:pos:rm_d(d'2017-01-01')); // 'pos' is set to *off
+//       ... // set 'pos' to *on to trigger 'rm_setll' again while looping
 //     enddo;
 // If 'pos' is not passed or is *OMITted then the procedure behaves as if
 // 'pos' would have been passed with value *on. This can be used to position
@@ -917,7 +920,7 @@ end-pr;
 // This procedure disposes 'key1' and 'key2' automatically, unless
 // 'key1'/'key2' is a manually disposed map, or a value/map contained
 // in a map.
-dcl-pr rm_slln ind extproc(*dclcase);
+dcl-pr rm_setll_read_next ind extproc(*dclcase);
   cur pointer value;
   pos ind options(*nopass:*omit);
   key1 pointer value options(*nopass);
@@ -925,21 +928,22 @@ dcl-pr rm_slln ind extproc(*dclcase);
 end-pr;
 
 
-////////// rm_sgtp (rm_setgt_read_prev) - Set greater than, read previous
-// Analogous to 'rm_slln', this procedure combines 'rm_sgt' and 
-// 'rm_rdp' into one.
-// Each time 'rm_sgtp' is called: 1. if 'pos' is *on the cursor is
-// positioned with 'rm_sgt' on 'key1', 2. 'pos' is set to *off, 3.
-// 'rm_rdp' is called with 'key1' and 'key2' to read the previous
-// key/item pair, 4. the result of calling 'rm_rdp' is returned.
-// Parameter 'key1' is passed as argument 'key' to 'rm_sgt' and 'key1'
-// and 'key2' are passed to 'rm_rdp'. See the docs for 'rm_sgt' and
-// 'rm_rdp' on how optional parameters 'key1' and 'key2' are specified.
+////////// rm_setgt_read_prev - Set greater than, read previous
+// Analogous to 'rm_setll_read_next', this procedure combines 'rm_setgt'
+// and 'rm_read_prev' into one.
+// Each time 'rm_setgt_read_prev' is called: 1. if 'pos' is *on the cursor
+// is positioned with 'rm_setgt' on 'key1', 2. 'pos' is set to *off, 3.
+// 'rm_read_prev' is called with 'key1' and 'key2' to read the previous
+// key/item pair, 4. the result of calling 'rm_read_prev' is returned.
+// Parameter 'key1' is passed as argument 'key' to 'rm_setgt' and 'key1'
+// and 'key2' are passed to 'rm_read_prev'. See the docs for 'rm_setgt'
+// and 'rm_read_prev' on how optional parameters 'key1' and 'key2' are
+// specified.
 // The following code loops through all keys equal to d'2017-01-01',
 // but backwards.
 //     pos = *on;
-//     dow rm_sgtp(cur:pos:rm_d(d'2017-01-01')); // 'pos' is set to *off
-//       ... // set 'pos' to *on to trigger 'rm_sgt' again while looping
+//     dow rm_setgt_read_prev(cur:pos:rm_d(d'2017-01-01')); // 'pos' is set to *off
+//       ... // set 'pos' to *on to trigger 'rm_setgt' again while looping
 //     enddo;
 // If 'pos' is not passed or is *OMITted then the procedure behaves as if
 // 'pos' would have been passed with value *on. This can be used to position
@@ -948,7 +952,7 @@ end-pr;
 // This procedure disposes 'key1' and 'key2' automatically, unless
 // 'key1'/'key2' is a manually disposed map, or a value/map contained
 // in a map.
-dcl-pr rm_sgtp ind extproc(*dclcase);
+dcl-pr rm_setgt_read_prev ind extproc(*dclcase);
   cur pointer value;
   pos ind options(*nopass:*omit);
   key1 pointer value options(*nopass);
@@ -956,9 +960,10 @@ dcl-pr rm_sgtp ind extproc(*dclcase);
 end-pr;
 
 
-////////// rm_hsn, rm_hsp (rm_has_next, rm_has_prev) - Has next/previous?
-// Return *on if cursor 'cur' has a next or previous ('rm_hsn'/'rm_hsp')
-// key/item pair, i.e. whether 'rm_rdn'/'rm_rdp' will return *on or not.
+////////// rm_has_next, rm_has_prev - Has next/previous?
+// Return *on if cursor 'cur' has a next or previous ('rm_has_next' or
+// 'rm_has_prev') key/item pair, i.e. whether 'rm_read_next'/'rm_read_prev'
+// will return *on or not.
 // If 'key1' and/or 'key2' are passed then the next or previous key must be
 // equal to or greater than 'key1', and equal to or less than 'key2', else
 // return *off. Both keys are optional. If 'key1' is not passed or *null
@@ -969,19 +974,19 @@ end-pr;
 // These procedures dispose 'key1' and 'key2' automatically, unless
 // 'key1'/'key2' is a manually disposed map, or a value/map contained
 // in a map.
-dcl-pr rm_hsn ind extproc(*dclcase);
+dcl-pr rm_has_next ind extproc(*dclcase);
   cur pointer value;
   key1 pointer value options(*nopass);
   key2 pointer value options(*nopass);
 end-pr;
-dcl-pr rm_hsp ind extproc(*dclcase);
+dcl-pr rm_has_prev ind extproc(*dclcase);
   cur pointer value;
   key1 pointer value options(*nopass);
   key2 pointer value options(*nopass);
 end-pr;
 
 
-////////// rm_fed, rm_fedr (rm_for_each_do, rm_for_each_do_rev) - For each do (reversed)
+////////// rm_for_each_do, rm_for_each_do_rev - For each do (reversed)
 // Call procedure 'proc' for each key/item pair in 'map', injecting a
 // pointer, then return the pointer that was returned with the last call
 // to 'proc'.
@@ -990,19 +995,19 @@ end-pr;
 //   par. 1  : key  pointer value
 //        2  : item pointer value
 //        3  : usrd pointer value
-//        4  : stop ind  
+//        4  : stop ind
 // Procedure 'proc' is executed for each key/item pair in 'map', starting
 // with the lowest key, up to the highest key, or until 'proc' sets output
 // parameter 'stop' to *on.
-// Use 'rm_fedr' to start with the highest key down to the lowest key.
+// Use 'rm_for_each_do_rev' to start with the highest key down to the lowest key.
 // Each time 'proc' is executed the key and item are passed as arguments 'key'
 // and 'item'. Parameter 'usrd' is a pointer to data that is user defined and
 // can be anything (e.g. a map or a value), or the pointer is *null. Procedure
 // 'proc' returns this, or another, pointer which is then passed as argument
 // 'usrd' the next time 'proc' is called again. So the return value of 'proc'
-// is used as input for 'proc' the next time it's called. The initial user data
-// pointer that is passed the first time 'proc' is called is passed to 'rm_fed'
-// or 'rm_fedr' with parameter 'usrd'.
+// is used as input for 'proc' the next time it's called. The initial user
+// data pointer that is passed the first time 'proc' is called is passed to
+// 'rm_for_each_do' or 'rm_for_each_do_rev' with parameter 'usrd'.
 // Parameter 'usrd' is optional; if not passed the user data pointer is *null.
 // If no key/item pair is read (and 'proc' doesn't get called) the return
 // value will be 'usrd', or *null if 'usrd' is not passed.
@@ -1016,14 +1021,14 @@ end-pr;
 // These procedures dispose 'key1' and 'key2' automatically, unless
 // 'key1'/'key2' is a manually disposed map, or a value/map contained
 // in a map.
-dcl-pr rm_fed pointer extproc(*dclcase);
+dcl-pr rm_for_each_do pointer extproc(*dclcase);
   map pointer value;
   proc pointer(*proc) value;
   usrd pointer value options(*nopass);
   key1 pointer value options(*nopass);
   key2 pointer value options(*nopass);
 end-pr;
-dcl-pr rm_fedr pointer extproc(*dclcase);
+dcl-pr rm_for_each_do_rev pointer extproc(*dclcase);
   map pointer value;
   proc pointer(*proc) value;
   usrd pointer value options(*nopass);
@@ -1032,7 +1037,7 @@ dcl-pr rm_fedr pointer extproc(*dclcase);
 end-pr;
 
 
-////////// rm_scf (rm_set_comp_fun) - Set compare function
+////////// rm_set_comp_fun - Set compare function
 // Set the compare function of 'map', which must be empty, to 'comp',
 // and return 'map'. Send escape messsage RM00041 if 'map' is not empty.
 // The compare function of 'map' determines how the keys in 'map' are
@@ -1056,28 +1061,28 @@ end-pr;
 // function again.
 // The following is a simple example of a 'comp' procedure body, which
 // has the effect that the sort order is reversed: return rm_cmp(obj1:obj2)*-1;.
-dcl-pr rm_scf pointer extproc(*dclcase);
+dcl-pr rm_set_comp_fun pointer extproc(*dclcase);
   map pointer value;
   comp pointer(*proc) value;
 end-pr;
 
 
-////////// rm_gcf (rm_get_comp_fun) - Get compare function
+////////// rm_get_comp_fun - Get compare function
 // Return the current compare function for 'map'. Return *null if the default
 // function, 'rm_cmp', is in effect.
-dcl-pr rm_gcf pointer(*proc) extproc(*dclcase);
+dcl-pr rm_get_comp_fun pointer(*proc) extproc(*dclcase);
   map pointer value;
 end-pr;
 
 
-////////// rm_sav (rm_set_attr_val) - Set attribute values
+////////// rm_set_attr_val - Set attribute values
 // Set up to 100 attributes of 'map' to a value and return 'map'.
 // Each map can have one or more attributes set to a value, where
 // each attribute has an utf-8 name, and an utf-8 value, both max.
 // 100 bytes. There is no restriction on attribute names and values.
 // The first attribute name and value is passed with parameters 2 and 3,
 // 'a001' and 'v001', the second with 'a002' and 'v002', etc.
-// Send escape message RM00102 if an attribute name is blank or empty. 
+// Send escape message RM00102 if an attribute name is blank or empty.
 // If a value is not passed or it is blank or empty then the attribute
 // is "unset".
 // If no attribute names or values are passed at all (i.e. only 'map'
@@ -1089,7 +1094,7 @@ end-pr;
 // should specify the attributes that are used and their meaning.
 // Attribute names starting with "_" (underscore) should not be used
 // as these are reserved for RpgMap.
-dcl-pr rm_sav pointer extproc(*dclcase);
+dcl-pr rm_set_attr_val pointer extproc(*dclcase);
   map pointer value;
 // Parameters a001/v001 .. a100/v100
 // a001 varchar(100) ccsid(*utf8) value options(*nopass);
@@ -1101,20 +1106,20 @@ dcl-pr rm_sav pointer extproc(*dclcase);
 end-pr;
 
 
-////////// rm_gav (rm_get_attr_val) - Get attribute value
+////////// rm_get_attr_val - Get attribute value
 // Return the value of attribute 'attr' of 'map', or '' if the
 // attribute is not set.
-dcl-pr rm_gav varchar(100) ccsid(*utf8) extproc(*dclcase);
+dcl-pr rm_get_attr_val varchar(100) ccsid(*utf8) extproc(*dclcase);
   map pointer value;
   attr varchar(100) ccsid(*utf8) value;
 end-pr;
 
 
-////////// rm_usrd (rm_user_data) - Return user data
+////////// rm_user_data - Return user data
 // Return the user data of 'obj', which must be a map or a value.
 // Return 0 if there is no user data.
 // See 'rm_'.
-dcl-pr rm_usrd int(10) extproc(*dclcase);
+dcl-pr rm_user_data int(10) extproc(*dclcase);
   obj pointer value;
 end-pr;
 
@@ -1462,7 +1467,7 @@ end-pr;
 // Like 'rm_a', but the data is taken from a pointer and a number of bytes (i.e. size).
 // The size must be between 1 and 30.000.
 // The passed number of bytes ('size') are copied from the address to which
-// the pointer ('addr') points. 
+// the pointer ('addr') points.
 // Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_ap pointer extproc(*dclcase);
   addr pointer value;
@@ -1475,7 +1480,7 @@ end-pr;
 // Like 'rm_a', but the character data is compared using an alternate sort
 // sequence. When two character data values are compared which are both
 // created with 'rm_aa' or 'rm_aap' the comparison is done using the alternate
-// sort sequence, instead of the default. Which sort sequence that is depends on 
+// sort sequence, instead of the default. Which sort sequence that is depends on
 // the build options that were used, but usually it is *langidshr.
 // Comparing data using an alternate sort sequence may take more resources than
 // when the default sort sequence is used.
@@ -1490,7 +1495,7 @@ end-pr;
 // Like 'rm_aa', but the data is taken from a pointer and a number of bytes (i.e. size).
 // The size must be between 0 and 30.000.
 // The passed number of bytes ('size') are copied from the address to which
-// the pointer ('addr') points. 
+// the pointer ('addr') points.
 // Pass 'opt' to set special property or user data (see 'rm_').
 dcl-pr rm_aap pointer extproc(*dclcase);
   addr pointer value;
@@ -1587,7 +1592,7 @@ end-pr;
 // When two strings are compared which are both created with 'rm_sa'
 // or 'rm_sab' the comparison is done using the alternate sort sequence,
 // instead of the default. Which sort sequence depends on the build options
-// that were used, but usually it is *langidshr. 
+// that were used, but usually it is *langidshr.
 // Comparing strings using the alternate sort sequence takes considerably
 // more resources than normal comparisons. Strings must be converted
 // to the job CCSID first before they can be compared using the alternate
@@ -1693,7 +1698,7 @@ end-pr;
 // user data that was optionally passed with parameter 'usrd' when adding
 // the event handler with 'rm_add_event_handler' (or *null if not passed).
 // The handler's return value is ignored.
-// If the same handler is added multiple times it will be called as many 
+// If the same handler is added multiple times it will be called as many
 // times as it was added.
 // Event handlers are removed with procedure 'rm_remove_event_handler'.
 // If a map is disposed then no event handlers will be called. Use 'rm_rmva'
@@ -1709,7 +1714,7 @@ end-pr;
 // Remove event handler 'hproc' from the list of event handlers registered
 // for 'map', and return 'map'.
 // If the handler was added mutiple times then only the last one added
-// is removed. 
+// is removed.
 // Do nothing if the handler isn't found.
 dcl-pr rm_remove_event_handler pointer extproc(*dclcase);
   map pointer value;

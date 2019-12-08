@@ -14,7 +14,7 @@ greater than <code>obj2</code>, return <code>0</code> if <code>obj1</code> and <
 <span class="bullet1">&#9679;</span>&nbsp;Two <code>*null</code>s are considered equal.<br>\
 <span class="bullet1">&#9679;</span>&nbsp;This is the default compare function for maps. The compare function \
 of a map determines the ordering of the keys in the map. This can \
-be overridden for a specific map with <a href="#rm_scf"><code>rm_scf</code></a>.<br>\
+be overridden for a specific map with <a href="#rm_set_comp_fun"><code>rm_set_comp_fun</code></a>.<br>\
 <span class="bullet1">&#9679;</span>&nbsp;Two objects have a natural ordering when they are of the same kind:<br>\
 &nbsp;&nbsp;- character data having the same sort sequence;<br>\
 &nbsp;&nbsp;- strings having the same sort sequence;<br>\
@@ -32,7 +32,7 @@ based on their type as follows:<br>\
 <p>\
 <span class="bullet1">&#9679;</span>&nbsp;Two maps are equal if they both have the exact same keys and items, \
 in the same order.<br>\
-<span class="bullet1">&#9679;</span>&nbsp;The attributes of maps (<a href="#rm_sav"><code>rm_sav</code></a>) are ignored when doing comparisons \
+<span class="bullet1">&#9679;</span>&nbsp;The attributes of maps (<a href="#rm_set_attr_val"><code>rm_set_attr_val</code></a>) are ignored when doing comparisons \
 between maps.<br>\
 <span class="bullet1">&#9679;</span>&nbsp;When two maps or a map and a vector are compared, then first the keys \
 of the two maps are compared, in order. The lowest key of the first map \

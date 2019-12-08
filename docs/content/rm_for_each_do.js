@@ -1,7 +1,6 @@
 document.write('\
 \
-<div id="rm_fed"><div class="prochdr1">rm_fed</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;For each do</div></div>\
-<pre class="proclongnm">rm_for_each_do</pre>\
+<div id="rm_for_each_do"><div class="prochdr1">rm_for_each_do</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;For each do</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 map  pointer        value<br>\
@@ -27,15 +26,15 @@ to <code>proc</code>.<br>\
 <span class="bullet1">&#9679;</span>&nbsp;Procedure <code>proc</code> is executed for each key/item pair in <code>map</code>, starting \
 with the lowest key, up to the highest key, or until <code>proc</code> sets output \
 parameter <code>stop</code> to *on.<br>\
-<span class="bullet1">&#9679;</span>&nbsp;Use <a href="#rm_fedr"><code>rm_fedr</code></a> to start with the highest key down to the lowest key.<br>\
+<span class="bullet1">&#9679;</span>&nbsp;Use <a href="#rm_for_each_do_rev"><code>rm_for_each_do_rev</code></a> to start with the highest key down to the lowest key.<br>\
 <span class="bullet1">&#9679;</span>&nbsp;Each time <code>proc</code> is executed the key and item are passed as arguments <code>key</code> \
 and <code>item</code>. Parameter <code>usrd</code> is a pointer to data that is user defined and \
 can be anything (e.g. a map or a value), or the pointer is <code>*null</code>. Procedure \
 <code>proc</code> returns this, or another, pointer which is then passed as argument \
 <code>usrd</code> the next time </code>proc</code> is called again. So the return value of <code>proc</code> \
 is used as input for <code>proc</code> the next time it\'s called. The initial user data \
-pointer that is passed the first time <code>proc</code> is called is passed to <a href="#rm_fed"><code>rm_fed</code></a> \
-or <a href="#rm_fedr"><code>rm_fedr</code></a> with parameter <code>usrd</code>.<br>\
+pointer that is passed the first time <code>proc</code> is called is passed to <a href="#rm_for_each_do"><code>rm_for_each_do</code></a> \
+or <a href="#rm_for_each_do_rev"><code>rm_for_each_do_rev</code></a> with parameter <code>usrd</code>.<br>\
 <span class="bullet1">&#9679;</span>&nbsp;Parameter <code>usrd</code> is optional; if not passed the user data pointer is <code>*null</code>.<br>\
 <span class="bullet1">&#9679;</span>&nbsp;If no key/item pair is read (and <code>proc</code> doesn\'t get called) the return \
 value will be <code>usrd</code>, or <code>*null</code> if <code>usrd</code> is not passed.<br>\

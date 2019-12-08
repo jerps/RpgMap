@@ -45,33 +45,33 @@ The following code displays each loan\'s client name, all payments, and total ca
 from 2017-05-01.\
 </p>\
 <pre class="pcode">\
-cur1 = rm_sll(rm_cur(map):rm_v(rm_d(d\'2017-05-01\')));<br>\
-dow rm_rdn(cur1);<br>\
+cur1 = rm_setll(rm_cur(map):rm_v(rm_d(d\'2017-05-01\')));<br>\
+dow rm_read_next(cur1);<br>\
   k = rm_key(cur1);<br>\
-  i = rm_itm(cur1);<br>\
+  i = rm_item(cur1);<br>\
   display(rm_s_(rm__a(i:\'client name\')) + \':\');<br>\
   m = rm__a(i:\'payments\');<br>\
   if m <> *null;<br>\
     display(\'  payments:\');<br>\
     cur2 = rm_cur(m);<br>\
-    dow rm_rdn(cur2);<br>\
+    dow rm_read_next(cur2);<br>\
       display(\'    \' + %char(rm_z_(rm_key(cur2))) +</br>\
-              \': \'   + %char(rm_p_(rm_itm(cur2))));<br>\
+              \': \'   + %char(rm_p_(rm_item(cur2))));<br>\
     enddo;<br>\
-    rm_dis(cur2);<br>\
+    rm_dispose(cur2);<br>\
   endif;<br>\
   m = rm__a(i:\'call log\');<br>\
   if m <> *null;<br>\
     x = 0;<br>\
     cur2 = rm_cur(m);<br>\
-    dow rm_rdn(cur2);<br>\
-      x += %diff(rm_t_(rm__i(rm_itm(cur2):1)):t\'00.00.00\':*minutes);<br>\
+    dow rm_read_next(cur2);<br>\
+      x += %diff(rm_t_(rm__i(rm_item(cur2):1)):t\'00.00.00\':*minutes);<br>\
     enddo;<br>\
-    rm_dis(cur2);<br>\
+    rm_dispose(cur2);<br>\
     display(\'  call time: \' + %char(x));<br>\
   endif;<br>\
 enddo;<br>\
-rm_dis(map);<br>\
+rm_dispose(map);<br>\
 </pre>\
 <br>\
 <pre class="console">\

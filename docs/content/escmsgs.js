@@ -39,7 +39,7 @@ The following is a list of all escape messages that can be sent.\
 </p>\
 <p>\
 <div class="escmsg1"><strong>RM00030</strong>: Can not dispose automatically disposed map or value contained in a map.</div>\
-&nbsp;<div class="escmsg2"><span class="bullet1">&#9679;</span>&nbsp;A map or value that has been inserted into a map is being disposed with <a href="#rm_dis"><code>rm_dis</code></a>.</div>\
+&nbsp;<div class="escmsg2"><span class="bullet1">&#9679;</span>&nbsp;A map or value that has been inserted into a map is being disposed with <a href="#rm_dispose"><code>rm_dispose</code></a>.</div>\
 </p>\
 <p>\
 <div class="escmsg1"><strong>RM00032</strong>: Object to copy is not a value or a map.</div>\

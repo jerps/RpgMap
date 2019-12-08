@@ -1,7 +1,6 @@
 document.write('\
 \
-<div id="rm_mmi"><div class="prochdr1">rm_mmi</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Make map immutable</div></div>\
-<pre class="proclongnm">rm_make_map_immutable</pre>\
+<div id="rm_make_map_immutable"><div class="prochdr1">rm_make_map_immutable</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Make map immutable</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 map pointer  value<br>\

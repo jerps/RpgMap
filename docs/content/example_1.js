@@ -23,7 +23,7 @@ map = rm_insert(rm_m() :<br>\
 </pre>\
 <p>\
 Procedure <a href="#rm_m"><code>rm_m</code></a> creates a new map, which is immediately \
-populated. Procedure <a href="#rm_ins"><code>rm_insert</code></a> inserts the \
+populated. Procedure <a href="#rm_insert"><code>rm_insert</code></a> inserts the \
 key/item pairs into the new map, and returns the new map that was passed as the first \
 argument. Procedures that return their first argument, the map/value, can be used for \
 "chaining" procedure calls.\
@@ -72,7 +72,7 @@ display(%char( rm_p_(rm__d(map:d\'2017-05-01\')) + rm_p_(rm__d(map:d\'2017-07-02
 DSPLY  251.1000<br>\
 </pre>\
 <p>\
-When <code>map</code> is not needed anymore we need to dispose it with <a href="#rm_dis"><code>rm_dispose</code></a> \
+When <code>map</code> is not needed anymore we need to dispose it with <a href="#rm_dispose"><code>rm_dispose</code></a> \
 to release/deallocate/free the memory it is using. This will also dispose all contained values, automatically \
 disposed maps and associated cursors.\
 </p>\

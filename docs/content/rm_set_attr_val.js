@@ -1,7 +1,6 @@
 document.write('\
 \
-<div id="rm_sav"><div class="prochdr1">rm_sav</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Set attribute values</div></div>\
-<pre class="proclongnm">rm_set_attr_val</pre>\
+<div id="rm_set_attr_val"><div class="prochdr1">rm_set_attr_val</div><div class="prochdr2">&nbsp;&nbsp;<pre class="prochsep">&#10072;</pre>&nbsp;&nbsp;Set attribute values</div></div>\
 <pre class="procsig">\
 &lt;&lt;pointer<br>\
 map  pointer                   value<br>\
@@ -14,8 +13,7 @@ v100 varchar(100) ccsid(*utf8) value options(*nopass)<br>\
 <p>\
 <span class="bullet1">&#9679;</span>&nbsp;Set up to 100 attributes of <code>map</code> to a value and return <code>map</code>.<br>\
 <span class="bullet1">&#9679;</span>&nbsp;Each map can have one or more attributes set to a value, where \
-each attribute has an utf-8 name, and an utf-8 value, both max. \
-100 bytes. There is no restriction on attribute names and values.<br>\
+each attribute has an utf-8 name, and an utf-8 value, both max. 100 bytes. There is no restriction on attribute names and values.<br>\
 <span class="bullet1">&#9679;</span>&nbsp;The first attribute name and value is passed with parameters 2 and 3, \
 <code>a001</code> and <code>v001</code>, the second with <code>a002</code> and <code>v002</code>, etc.<br>\
 <span class="bullet1">&#9679;</span>&nbsp;Send escape message RM00102 if an attribute name is blank or empty.<br>\

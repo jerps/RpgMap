@@ -49,12 +49,12 @@ be converted to the job CCSID first, before being compared case insensitive.<br>
 <b>**&nbsp;<span style="color: blue;">User Data</span>&nbsp;**</b><br>\
 <span class="bullet1">&#9679;</span>&nbsp;A map or value can be associated with user data, which is a positive integer \
 value between <code>1</code> and <code>65.000</code> that is application specific. Like attributes \
-(<a href="#rm_sav"><code>rm_sav</code></a>), user data is used to store meta data.<br>\
+(<a href="#rm_set_attr_val"><code>rm_set_attr_val</code></a>), user data is used to store meta data.<br>\
 <span class="bullet1">&#9679;</span>&nbsp;Associating user data does not increase memory usage.<br>\
-<span class="bullet1">&#9679;</span>&nbsp;Procedure <a href="#rm_usrd"><code>rm_usrd</code></a> returns the user data for a map or value.<br>\
+<span class="bullet1">&#9679;</span>&nbsp;Procedure <a href="#rm_user_data"><code>rm_user_data</code></a> returns the user data for a map or value.<br>\
 <span class="bullet1">&#9679;</span>&nbsp;The user data is specified as a negative integer; specifying <code>-1</code> means that \
-<a href="#rm_usrd"><code>rm_usrd</code></a> returns <code>1</code>.<br>\
-<span class="bullet1">&#9679;</span>&nbsp;If <code>opt</code> is <code>91</code> then the user data is cleared, i.e. <a href="#rm_usrd"><code>rm_usrd</code></a> returns <code>0</code>.\
+<a href="#rm_user_data"><code>rm_user_data</code></a> returns <code>1</code>.<br>\
+<span class="bullet1">&#9679;</span>&nbsp;If <code>opt</code> is <code>91</code> then the user data is cleared, i.e. <a href="#rm_user_data"><code>rm_user_data</code></a> returns <code>0</code>.\
 </p>\
 \
 ');

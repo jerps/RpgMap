@@ -7,7 +7,7 @@ Maps and values must be disposed at some time to free the used memory and not ca
 To help with that RpgMap implements some simple rules that govern automatic disposal of maps and values.\
 </p>\
 <p>\
-Procedure <a href="#rm_dis"><code>rm_dis</code></a> is used to explicitly dispose values, maps and cursors.\
+Procedure <a href="#rm_dispose"><code>rm_dispose</code></a> is used to explicitly dispose values, maps and cursors.\
 </p>\
 <p>\
 Every data type has a <code>rm_??__</code> procedure (two trailing underscores) to dispose a value immediately \
@@ -40,12 +40,12 @@ The documentation of procedures accepting automatically disposed maps are values
 any arguments will be disposed.\
 </p>\
 <p>\
-A manually disposed map must always be explicitly disposed with <a href="#rm_dis"><code>rm_dis</code></a>. \
+A manually disposed map must always be explicitly disposed with <a href="#rm_dispose"><code>rm_dispose</code></a>. \
 But unlike an automatically disposed map a manually disposed map can be inserted into more than one map.\
 </p>\
 <p>\
 A value or an automatically disposed map that has been inserted into a map can not be explicitly disposed \
-with <a href="#rm_dis"><code>rm_dis</code></a>, or with one of the <code>rm_??__</code> procedures.\
+with <a href="#rm_dispose"><code>rm_dispose</code></a>, or with one of the <code>rm_??__</code> procedures.\
 </p>\
 <p>\
 When a map is copied (<a href="#rm_cpy"><code>rm_cpy</code></a>) the copy contains a copy of the \
@@ -58,7 +58,7 @@ only manually disposed maps are directly inserted, while a copy of the values an
 maps is inserted.\
 </p>\
 <p>\
-An automatically disposed map (not a vector) can be made manually disposed with <a href="#rm_mmm"><code>rm_mmm</code></a>, \
+An automatically disposed map (not a vector) can be made manually disposed with <a href="#rm_make_map_man_disp"><code>rm_make_map_man_disp</code></a>, \
 but not vice versa.\
 </p>\
 \

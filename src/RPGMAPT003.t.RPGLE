@@ -13,21 +13,21 @@ dcl-proc Main;
   dcl-s m2 pointer;
   dcl-s c pointer;
   dcl-s x int(10);
-  
+
   display('18:');
   m = rm_m();
   m2 = rm_m();
   rm_add_event_handler(m:%paddr(event_handler_1));
   rm_add_event_handler(m:%paddr(event_handler_2):m2);
   for x = 1 by 2 to 19;
-    rm_ins(m:rm_i(x):rm_i(x+1));
+    rm_insert(m:rm_i(x):rm_i(x+1));
   endfor;
   rm_rmva(m);
-  c = rm_sll(rm_cur(m2));
-  dow rm_rdn(c);
-    display('R: '+%editc(%dec(rm_i_(rm_key(c)):3:0):'X')+' '+%editc(%dec(rm_i_(rm_itm(c)):3:0):'X'));
+  c = rm_setll(rm_cur(m2));
+  dow rm_read_next(c);
+    display('R: '+%editc(%dec(rm_i_(rm_key(c)):3:0):'X')+' '+%editc(%dec(rm_i_(rm_item(c)):3:0):'X'));
   enddo;
-  rm_dis(m:m2);
+  rm_dispose(m:m2);
 
 end-proc;
 
@@ -60,12 +60,11 @@ dcl-pi *n int(10);
 end-pi;
 
   if event = 2;
-    rm_ins(usrd:rm_(rm_cpy(key)):rm_cpy(item));
+    rm_insert(usrd:rm_(rm_cpy(key)):rm_cpy(item));
   endif;
   return 0;
 
 end-proc;
-
 
 
 
