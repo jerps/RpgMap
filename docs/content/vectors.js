@@ -21,7 +21,7 @@ are compared. The keys are not compared, only the items (in key order). But unli
 have a different number of key/item pairs then only the first n key/item pairs from both vectors are relevant. \
 The extra key/item pairs from one of the two vectors are ignored. For example, vectors <code>rm_v(rm_i(1):rm_i(2))</code> \
 and <code>rm_v(rm_i(1))</code> are considered equal because only the first item of each vector are relevant. See \
-<a href="#rm_cmp"><code>rm_cmp</code></a> for details.\
+<a href="#rm_compare"><code>rm_compare</code></a> for details.\
 </p>\
 <p>\
 Up to 100 key/item pairs can be immediately inserted with procedure <a href="#rm_v"><code>rm_v</code></a>. \

@@ -467,9 +467,9 @@ dcl-proc rm_compare_ge export;
     obj1 pointer value;
     obj2 pointer value;
   end-pi;
-  
+
   return RMValObjCompare(*null:obj1:obj2) <> -1;
-    
+
 end-proc;
 
 

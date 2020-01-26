@@ -32,8 +32,8 @@ dcl-proc Main;
     rm_v(rm_i(1):rm_i(3)):rm_p(10.3):
     rm_v(rm_i(2)):rm_p(20));
   display(%char(rm_num(map)));
-  cur = rm_setll(rm_cur(map):rm_v(rm_i(2)));
-  rm_rmv(rm_rmv(map:rm_v(rm_i(2))):rm_v(rm_i(2):rm_i(1)));
+  cur = rm_setll(rm_cursor(map):rm_v(rm_i(2)));
+  rm_remove(rm_remove(map:rm_v(rm_i(2))):rm_v(rm_i(2):rm_i(1)));
   dow rm_read_next(cur);
     display(%char(rm_i_(rm__i(rm_key(cur):2))) + ', ' + %char(rm_p_(rm_item(cur))));
   enddo;
@@ -49,7 +49,7 @@ dcl-proc Main;
     rm_d(d'2002-04-01') : rm_v( rm_t(t'19.10.00') : rm_p(50.3) ) :
     rm_d(d'2002-05-01') : rm_v( rm_t(t'05.00.00') : rm_p(20.25) ) :
     rm_d(d'2002-05-05') : rm_v( rm_t(t'20.30.00') : rm_p(90) ) );
-  cur = rm_setgt(rm_cur(map):rm_z(z'2002-04-30-00.00.00'));
+  cur = rm_setgt(rm_cursor(map):rm_z(z'2002-04-30-00.00.00'));
   dow rm_read_prev(cur);
     display(%char(rm_d_(rm_key(cur))) + ', ' + (%char(rm_p_(rm__i(rm_item(cur):2)))));
   enddo;
@@ -63,7 +63,7 @@ dcl-proc Main;
     rm_aa('hik')  : rm_i(4) :
     rm_aa('tram') : rm_i(5) :
     rm_aa('Tram') : rm_i(6) );
-  cur = rm_cur(map);
+  cur = rm_cursor(map);
   dow rm_read_next(cur);
     display(rm_a_(rm_key(cur)) + ':' + %char(rm_i_(rm_item(cur))));
   enddo;
@@ -77,7 +77,7 @@ dcl-proc Main;
     rm_s('hik')  : rm_i(4) :
     rm_s('tram') : rm_i(5) :
     rm_s('Tram') : rm_i(6) );
-  cur = rm_cur(map);
+  cur = rm_cursor(map);
   dow rm_read_next(cur);
     display(rm_s_(rm_key(cur)) + ':' + %char(rm_i_(rm_item(cur))));
   enddo;
@@ -91,7 +91,7 @@ dcl-proc Main;
     rm_sa('hik')  : rm_i(4) :
     rm_sa('tram') : rm_i(5) :
     rm_sa('Tram') : rm_i(6) );
-  cur = rm_cur(map);
+  cur = rm_cursor(map);
   dow rm_read_next(cur);
     display(rm_s_(rm_key(cur)) + ':' + %char(rm_i_(rm_item(cur))));
   enddo;
@@ -130,12 +130,12 @@ dcl-proc Main;
           rm_t(t'00.02.00') : rm_s('+1-202-555-0195') : rm_s('+
           pays tomorrow') ) ) )
   );
-  map = rm_cpyd(maploans);
+  map = rm_copy_deep(maploans);
   rm_dispose(maploans);
-  maploans = rm_cpyd(map);
+  maploans = rm_copy_deep(map);
   rm_dispose(map);
   // display each loan's client name, all payments, and total call time, from 2017-05-01
-  cur1 = rm_setll(rm_cur(maploans):rm_v(rm_d(d'2017-05-01')));
+  cur1 = rm_setll(rm_cursor(maploans):rm_v(rm_d(d'2017-05-01')));
   dow rm_read_next(cur1);
     k = rm_key(cur1);
     i = rm_item(cur1);
@@ -143,7 +143,7 @@ dcl-proc Main;
     m = rm__a(i:'payments');
     if m <> *null;
       display('  payments:');
-      cur2 = rm_cur(m);
+      cur2 = rm_cursor(m);
       dow rm_read_next(cur2);
         display('    ' + %char(rm_z_(rm_key(cur2))) + ': ' + %char(rm_p_(rm_item(cur2))));
       enddo;
@@ -152,7 +152,7 @@ dcl-proc Main;
     m = rm__a(i:'call log');
     if m <> *null;
       x = 0;
-      cur2 = rm_cur(m);
+      cur2 = rm_cursor(m);
       dow rm_read_next(cur2);
         x += %diff(rm_t_(rm__i(rm_item(cur2):1)):t'00.00.00':*minutes);
       enddo;
@@ -167,22 +167,22 @@ dcl-proc Main;
     rm_i(2) : rm_i(2) :
     rm_i(2) : rm_i(2) :
     rm_i(3) : rm_i(3) );
-  rm_insx(map:rm_i(2):rm_i(100));
-  cur = rm_cur(map);
+  rm_insert_x(map:rm_i(2):rm_i(100));
+  cur = rm_cursor(map);
   dow rm_read_next(cur);
     display(%char(rm_i_(rm_key(cur))) + ': ' + %char(rm_i_(rm_item(cur))));
   enddo;
   rm_dispose(map);
 
   display('7:');
-  map = rm_insert(rm_cpy(maploans:rm_v(rm_d(d'2017-01-01'):rm_i(1))):
+  map = rm_insert(rm_copy(maploans:rm_v(rm_d(d'2017-01-01'):rm_i(1))):
     rm_v( rm_d(d'2017-01-01') : rm_i(2) ) : rm_m(
       rm_a('client name') : rm_s('jansen') :
       rm_a('amount')      : rm_p(250.00) :
       rm_a('payed')       : rm_p(250.00) :
       rm_a('creditstop')  : rm_n(*off) ) );
   // display client name and payed.
-  cur1 = rm_setll(rm_cur(map));
+  cur1 = rm_setll(rm_cursor(map));
   dow rm_read_next(cur1);
     m = rm_item(cur1);
     display(rm_s_(rm__a(m:'client name')) + ': ' + %char(rm_p_(rm__a(m:'payed'))));
@@ -190,9 +190,9 @@ dcl-proc Main;
   rm_dispose(map);
 
   display('8:');
-  map = rm_cpy(maploans:rm_v(rm_d(d'2017-05-01')));
+  map = rm_copy(maploans:rm_v(rm_d(d'2017-05-01')));
   // display client name and payed.
-  cur1 = rm_setll(rm_cur(map));
+  cur1 = rm_setll(rm_cursor(map));
   dow rm_read_next(cur1);
     m = rm_item(cur1);
     display(rm_s_(rm__a(m:'client name')) + ': ' + %char(rm_p_(rm__a(m:'payed'))));
@@ -201,7 +201,7 @@ dcl-proc Main;
 
   display('9:');
   // display client name and payed, 2017-05-01
-  cur1 = rm_setgt(rm_cur(maploans):rm_v(rm_d(d'2017-05-01')));
+  cur1 = rm_setgt(rm_cursor(maploans):rm_v(rm_d(d'2017-05-01')));
   dow rm_read_prev(cur1:rm_v(rm_d(d'2017-05-01')));
     m = rm_item(cur1);
     display(rm_s_(rm__a(m:'client name')) + ': ' + %char(rm_p_(rm__a(m:'payed'))));
@@ -216,7 +216,7 @@ dcl-proc Main;
   v2 = rm_sab(x'c2a9c2ae');
   display(rm_s_(v));
   display(rm_a_(v));
-  display(%char(rm_cmp(v:v2)));
+  display(%char(rm_compare(v:v2)));
   rm_dispose(v:v2);
   v = rm_sb(x'c2a9c2ae');
   display(rm_s_(v));
@@ -238,7 +238,7 @@ dcl-proc Main;
   for x = 1 to 1000;
     rm_insert_1(map:rm_i(x):rm_i(x));
   endfor;
-  c = rm_setll(rm_cur(map):rm_i(990));
+  c = rm_setll(rm_cursor(map):rm_i(990));
   dow rm_read_next(c:*null:rm_i(985));
     display(%char(rm_i_(rm_key(c))));
   enddo;
@@ -249,7 +249,7 @@ dcl-proc Main;
   for x = 1 to 1000;
     rm_insert_1(map:rm_i(x:0):rm_i(x));
   endfor;
-  c = rm_setll(rm_cur(map):rm_i(990));
+  c = rm_setll(rm_cursor(map):rm_i(990));
   dow rm_read_next(c:*null:rm_i(985));
     display(%char(rm_i_(rm_key(c))));
   enddo;
@@ -267,13 +267,13 @@ dcl-proc Main;
     y += 1;
     rm_insert_1(map :rm_v( rm_d(d) :rm_i(y:0) ) );
   endfor;
-  c = rm_cur(map);
+  c = rm_cursor(map);
   dow rm_read_next(c);
     display(%char(rm_d_(rm__i(rm_key(c):1)))+': '+%char(rm_i_(rm__i(rm_key(c):2))));
   enddo;
   rm_dispose(c);
-  m = rm_cpy(map :rm_v( rm_d(d'2017-01-05') ) );
-  c = rm_cur(m);
+  m = rm_copy(map :rm_v( rm_d(d'2017-01-05') ) );
+  c = rm_cursor(m);
   dow rm_read_next(c);
     display(%char(rm_d_(rm__i(rm_key(c):1)))+': '+%char(rm_i_(rm__i(rm_key(c):2))));
   enddo;
@@ -291,13 +291,13 @@ dcl-proc Main;
     y += 1;
     rm_insert_1(map :rm_v( rm_d(d) :rm_i(y:0) ) );
   endfor;
-  c = rm_cur(map);
+  c = rm_cursor(map);
   dow rm_read_next(c);
     display(%char(rm_d_(rm__i(rm_key(c):1)))+': '+%char(rm_i_(rm__i(rm_key(c):2))));
   enddo;
   rm_dispose(c);
-  m = rm_cpy(map :rm_v( rm_d(d'2017-01-05') ) );
-  c = rm_cur(m);
+  m = rm_copy(map :rm_v( rm_d(d'2017-01-05') ) );
+  c = rm_cursor(m);
   dow rm_read_next(c);
     display(%char(rm_d_(rm__i(rm_key(c):1)))+': '+%char(rm_i_(rm__i(rm_key(c):2))));
   enddo;
@@ -331,7 +331,7 @@ dcl-pi *n int(10);
   obj2 pointer value;
 end-pi;
 
-  return rm_cmp(obj1:obj2) * -1;
+  return rm_compare(obj1:obj2) * -1;
 
 end-proc;
 

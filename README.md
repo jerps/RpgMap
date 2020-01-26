@@ -18,6 +18,12 @@ File RPGMAPRBTC.C (RedBlackTree implementation) was originally developed by Emin
 
 ### Changes
 
+* v2.0.0
+
+  * Removed distinction between long and short procedurenames. Procedures all have long names now.
+
+  * Renamed procedures `rm_is*` to `rm_is_`.
+
 * v1.2.1 (march 2019)
 
   * Dir Source renamed to src. Misc. changes.

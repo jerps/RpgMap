@@ -45,7 +45,7 @@ The following code displays each loan\'s client name, all payments, and total ca
 from 2017-05-01.\
 </p>\
 <pre class="pcode">\
-cur1 = rm_setll(rm_cur(map):rm_v(rm_d(d\'2017-05-01\')));<br>\
+cur1 = rm_setll(rm_cursor(map):rm_v(rm_d(d\'2017-05-01\')));<br>\
 dow rm_read_next(cur1);<br>\
   k = rm_key(cur1);<br>\
   i = rm_item(cur1);<br>\
@@ -53,7 +53,7 @@ dow rm_read_next(cur1);<br>\
   m = rm__a(i:\'payments\');<br>\
   if m <> *null;<br>\
     display(\'  payments:\');<br>\
-    cur2 = rm_cur(m);<br>\
+    cur2 = rm_cursor(m);<br>\
     dow rm_read_next(cur2);<br>\
       display(\'    \' + %char(rm_z_(rm_key(cur2))) +</br>\
               \': \'   + %char(rm_p_(rm_item(cur2))));<br>\
@@ -63,7 +63,7 @@ dow rm_read_next(cur1);<br>\
   m = rm__a(i:\'call log\');<br>\
   if m <> *null;<br>\
     x = 0;<br>\
-    cur2 = rm_cur(m);<br>\
+    cur2 = rm_cursor(m);<br>\
     dow rm_read_next(cur2);<br>\
       x += %diff(rm_t_(rm__i(rm_item(cur2):1)):t\'00.00.00\':*minutes);<br>\
     enddo;<br>\

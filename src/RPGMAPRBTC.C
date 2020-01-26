@@ -15,7 +15,7 @@
 /* #define DEBUG_ASSERT 1 */
 
 
-_Packed struct rmb_red_blk_node {
+struct rmb_red_blk_node {
     void* key;
     void* item;
     struct rmb_red_blk_node* left;
@@ -24,7 +24,7 @@ _Packed struct rmb_red_blk_node {
     int red; /* if red=0 then the node is black */
 };
 
-_Packed struct rmb_cursor {
+struct rmb_cursor {
     /* node is the current node if pos=0 or 1. The current node is the one that */
     /* was last read. The cursor position is just after or just before node, */
     /* depending on whether the last read was a readn (next, pos=1) or a readp */
@@ -45,7 +45,7 @@ _Packed struct rmb_cursor {
     int pos;
 };
 
-_Packed struct rmb_eventh {
+struct rmb_eventh {
     rmb_event_handler proc;
     void* usrd;
     struct rmb_eventh* prev;
@@ -55,7 +55,7 @@ _Packed struct rmb_eventh {
 /* DestroyObj(a) takes a pointer to key or item and frees it. The pointer can also */
 /* point to a data structure in "value space" representing a cursor. When a cursor */
 /* is freed then this structure, associated with the cursor, must also be freed. */
-_Packed struct rmb_red_blk_tree {
+struct rmb_red_blk_tree {
     int (*Compare)(const void* s, const void* a, const void* b);
     void (*DestroyObj)(void* a);
     /* A sentinel is used for root and for nil. These sentinels are */
@@ -103,8 +103,8 @@ rmb_red_blk_tree* RMBTreeCreate( int (*CompFunc) (const void*, const void*,const
   newTree->eventh=NULL;
   newTree->valstruct=valstruct;
   newTree->num=0;
-  
-  /*  see the comment in the rmb_red_blk_tree structure in red_black_tree.h */
+
+  /*  see the comment in the rmb_red_blk_tree structure in RPGMAPRBTC.h */
   /*  for information on nil and root */
   temp=newTree->nil= (rmb_red_blk_node*) malloc(sizeof(rmb_red_blk_node));
   temp->parent=temp->left=temp->right=temp;
@@ -335,7 +335,7 @@ rmb_red_blk_node * RMBTreeInsert(rmb_red_blk_tree* tree, void* key, void* item) 
   rmb_red_blk_node * y;
   rmb_red_blk_node * x;
   rmb_red_blk_node * newNode;
-  
+
   x=(rmb_red_blk_node*) malloc(sizeof(rmb_red_blk_node));
   x->key=key;
   x->item=item;
@@ -359,7 +359,7 @@ rmb_red_blk_node * RMBTreeInsert(rmb_red_blk_tree* tree, void* key, void* item) 
 	x->parent->red=0;
 	x->parent->parent->red=1;
 	RMBRightRotate(tree,x->parent->parent);
-      } 
+      }
     } else { /* case for x->parent == x->parent->parent->right */
       y=x->parent->parent->left;
       if (y->red) {
@@ -375,7 +375,7 @@ rmb_red_blk_node * RMBTreeInsert(rmb_red_blk_tree* tree, void* key, void* item) 
 	x->parent->red=0;
 	x->parent->parent->red=1;
 	RMBLeftRotate(tree,x->parent->parent);
-      } 
+      }
     }
   }
   tree->root->left->red=0;
@@ -546,7 +546,7 @@ static void RMBTreeRmvFixUp(rmb_red_blk_tree* tree, rmb_red_blk_node* x) {
 	RMBLeftRotate(tree,x->parent);
 	w=x->parent->right;
       }
-      if ( (!w->right->red) && (!w->left->red) ) { 
+      if ( (!w->right->red) && (!w->left->red) ) {
 	w->red=1;
 	x=x->parent;
       } else {
@@ -570,7 +570,7 @@ static void RMBTreeRmvFixUp(rmb_red_blk_tree* tree, rmb_red_blk_node* x) {
 	RMBRightRotate(tree,x->parent);
 	w=x->parent->left;
       }
-      if ( (!w->right->red) && (!w->left->red) ) { 
+      if ( (!w->right->red) && (!w->left->red) ) {
 	w->red=1;
 	x=x->parent;
       } else {
@@ -871,7 +871,7 @@ void RMBCursorDispose(rmb_cursor* cursor) {
   rmb_red_blk_tree* t = cursor->tree;
   rmb_cursor* n = cursor->next;
   rmb_cursor* c = t->cursors;
-  rmb_cursor* p = NULL;  
+  rmb_cursor* p = NULL;
   while (NULL != c && cursor != c) {
     p = c;
     c=c->next;
@@ -951,7 +951,7 @@ void RMBCursorSetLlGt(rmb_cursor* cursor, void* key, int llgt) {
     cursor->node = NULL;
     return;
   }
-  rmb_red_blk_tree* t = cursor->tree;  
+  rmb_red_blk_tree* t = cursor->tree;
   rmb_red_blk_node* nil=t->nil;
   rmb_red_blk_node* x=t->root->left;
   rmb_red_blk_node* lastBest=nil;
@@ -1005,7 +1005,7 @@ int RMBCursorHasNxtPrv(rmb_cursor* cursor, int nxtprv)  {
 }
 int RMBCursorHasNxtPrv2(rmb_cursor* cursor, int nxtprv, void* key1, void* key2, int opt) {
   rmb_red_blk_node* n;
-  if (NULL == cursor->node 
+  if (NULL == cursor->node
       && (0 == nxtprv && 11 == cursor->pos
           || 0 != nxtprv && 10 == cursor->pos))
     return 0;
@@ -1013,7 +1013,7 @@ int RMBCursorHasNxtPrv2(rmb_cursor* cursor, int nxtprv, void* key1, void* key2, 
     return 0; // shouldn't happen
   if (1 == opt)
     return 0;
-  rmb_red_blk_tree* t = cursor->tree;  
+  rmb_red_blk_tree* t = cursor->tree;
   rmb_red_blk_node* nil=t->nil;
   if (NULL == cursor->node) {
     n = t->root->left;
@@ -1061,7 +1061,7 @@ int RMBCursorReadNxtPrv(rmb_cursor* cursor, int nxtprv) {
   return RMBCursorReadNxtPrv2(cursor, nxtprv, NULL, NULL, 0);
 }
 int RMBCursorReadNxtPrv2(rmb_cursor* cursor, int nxtprv, void* key1, void* key2, int opt) {
-  if (NULL == cursor->node 
+  if (NULL == cursor->node
       && (0 == nxtprv && 11 == cursor->pos
           || 0 != nxtprv && 10 == cursor->pos))
     return 0;
@@ -1072,7 +1072,7 @@ int RMBCursorReadNxtPrv2(rmb_cursor* cursor, int nxtprv, void* key1, void* key2,
     cursor->pos = 0 == nxtprv ? 11 : 10;
     return 0;
   }
-  rmb_red_blk_tree* t = cursor->tree;  
+  rmb_red_blk_tree* t = cursor->tree;
   rmb_red_blk_node* nil=t->nil;
   rmb_red_blk_node* n;
   if (NULL == cursor->node) {

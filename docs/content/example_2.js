@@ -26,7 +26,7 @@ and <code>rm_v(rm_i(1))</code> are considered to be equal. Only the items are sp
 the keys are implicitly created.\
 </p>\
 <p>\
-Iteration is done through cursors, which must first be created with <a href="#rm_cur"><code>rm_cursor</code></a>. \
+Iteration is done through cursors, which must first be created with <a href="#rm_cursor"><code>rm_cursor</code></a>. \
 A cursor maintains a current position within the key/item pairs of a map. The position can be \
 set using <a href="#rm_setll"><code>rm_setll</code></a> (set lower limit) or <a href="#rm_setgt"><code>rm_setgt</code></a> \
 (set greater than). The next key/item pair can be read with <a href="#rm_read_next"><code>rm_read_next</code></a>. \

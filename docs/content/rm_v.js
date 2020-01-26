@@ -9,7 +9,7 @@ i100 pointer value options(*nopass)<br>\
 </pre>\
 <p>\
 <span class="bullet1">&#9679;</span>&nbsp;Create a vector, i.e. same as <a href="#rm_m"><code>rm_m</code></a> except that the keys can be only \
-integer values and two vectors are compared in a special way (see <a href="#rm_cmp"><code>rm_cmp</code></a>). \
+integer values and two vectors are compared in a special way (see <a href="#rm_compare"><code>rm_compare</code></a>). \
 E.g. <code>rm_v(rm_d(d\'2017-01-01\'):rm_i(10))</code> and <code>rm_v(rm_d(d\'2017-01-01\'))</code> are \
 considered equal.<br>\
 <span class="bullet1">&#9679;</span>&nbsp;The parameters of this procedure to immediately populate the vector only \

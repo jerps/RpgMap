@@ -683,7 +683,7 @@ dcl-proc RMValMapSetAttr export;
 
   if %parms < 3;
     if a <> *null;
-      rm_rmv(a:rm_s(attr));
+      rm_remove(a:rm_s(attr));
       if rm_num(a) = 0;
         rm_dispose(a);
         RMValSetDsMap(map);
@@ -699,7 +699,7 @@ dcl-proc RMValMapSetAttr export;
     RMValueMap.attrs = a;
   endif;
 
-  rm_insx1(a:rm_s(attr):rm_s(value));
+  rm_insert_x_1(a:rm_s(attr):rm_s(value));
 
   return;
 
@@ -2443,7 +2443,7 @@ dcl-proc RMValMapCopy;
   mapi1 = RMValueMap.map;
   attrs = *null;
   if RMValueMap.attrs <> *null;
-    attrs = rm_cpy(RMValueMap.attrs);
+    attrs = rm_copy(RMValueMap.attrs);
   endif;
   RMValueMapP = map;
   newmap = RMValMapCrt(RMValueMap.type.flags:mapi2:RMValueMap.compf:attrs

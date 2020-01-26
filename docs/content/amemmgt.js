@@ -48,12 +48,12 @@ A value or an automatically disposed map that has been inserted into a map can n
 with <a href="#rm_dispose"><code>rm_dispose</code></a>, or with one of the <code>rm_??__</code> procedures.\
 </p>\
 <p>\
-When a map is copied (<a href="#rm_cpy"><code>rm_cpy</code></a>) the copy contains a copy of the \
+When a map is copied (<a href="#rm_copy"><code>rm_copy</code></a>) the copy contains a copy of the \
 values and automatically disposed maps in the original. Manually disposed maps are only copied \
-when a deep copy is made (<a href="#rm_cpyd"><code>rm_cpyd</code></a>).\
+when a deep copy is made (<a href="#rm_copy_deep"><code>rm_copy_deep</code></a>).\
 </p>\
 <p>\
-Similar to copying a map, when keys/items are inserted from a map (e.g. <a href="#rm_insm"><code>rm_insm</code></a>) then \
+Similar to copying a map, when keys/items are inserted from a map (e.g. <a href="#rm_insert_map"><code>rm_insert_map</code></a>) then \
 only manually disposed maps are directly inserted, while a copy of the values and automatically disposed \
 maps is inserted.\
 </p>\

@@ -1,6 +1,6 @@
 **FREE
 
-// RPGMAPLPNH.RPGLE - RPGMAPLPN header file 
+// RPGMAPLPNH.RPGLE - RPGMAPLPN header file
 // (c) 2017-2018 John Erps
 
 

@@ -40,7 +40,7 @@ the event handler with <a href="#rm_add_event_handler"><code>rm_add_event_handle
 <span class="bullet1">&#9679;</span>&nbsp;If the same handler is added multiple times it will be called as many \
 times as it was added.<br>\
 <span class="bullet1">&#9679;</span>&nbsp;Event handlers are removed with procedure <a href="#rm_remove_event_handler"><code>rm_remove_event_handler</code></a>.<br>\
-<span class="bullet1">&#9679;</span>&nbsp;If a map is disposed then no event handlers will be called. Use <a href="#rm_rmva"><code>rm_rmva</code></a> \
+<span class="bullet1">&#9679;</span>&nbsp;If a map is disposed then no event handlers will be called. Use <a href="#rm_remove_all"><code>rm_remove_all</code></a> \
 first to remove all key/value pairs and fire events, then dispose the map.\
 </p>\
 \

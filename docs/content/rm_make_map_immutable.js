@@ -17,7 +17,7 @@ made immutable, recursively.<br>\
 disposed maps are also made immutable, recursively, like contained automatically disposed maps.<br>\
 <span class="bullet1">&#9679;</span>&nbsp;If <code>map</code> is already immutable then this operation has no effect.<br>\
 <span class="bullet1">&#9679;</span>&nbsp;This operation can not be undone; an immutable map can not be made mutable again.<br>\
-<span class="bullet1">&#9679;</span>&nbsp;When a map is copied (<a href="#rm_cpy"><code>rm_cpy</code></a>) then the new copy is mutable.\
+<span class="bullet1">&#9679;</span>&nbsp;When a map is copied (<a href="#rm_copy"><code>rm_copy</code></a>) then the new copy is mutable.\
 </p>\
 \
 ');

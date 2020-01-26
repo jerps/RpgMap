@@ -5,9 +5,9 @@
 
 # Objects in target lib are first deleted, then re-created.
 
-# Sources RPGMAP.RPGLE, RPGMAPLPNH.RPGLE and the ones with names ending with .t.RPGLE
-# are templates. They're copied with substitutions to a new source with the same name
-# without ".t". The new source is either copied to sourcefile INCLUDERPG or compiled.
+# Sources RPGMAP.RPGLE and the ones with names ending with .t.RPGLE are templates.
+# They're copied with substitutions to a new source with the same name without ".t".
+# The new source is either copied to sourcefile INCLUDERPG or compiled.
 
 
 # The alternate sort sequence that may be used for char data and strings.

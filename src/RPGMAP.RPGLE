@@ -84,7 +84,7 @@ end-pr;
 
 ////////// rm_v - Create a new vector, automatically disposed
 // Create a vector, i.e. same as 'rm_m' except that the keys can be only
-// integer values and two vectors are compared in a special way (see 'rm_cmp').
+// integer values and two vectors are compared in a special way (see 'rm_compare').
 // E.g. rm_v(rm_d(d'2017-01-01'):rm_i(10)) and rm_v(rm_d(d'2017-01-01')) are
 // considered equal.
 // The parameters of this procedure to immediately populate the vector only
@@ -153,7 +153,7 @@ end-pr;
 // also made immutable, recursively, like contained automatically disposed maps.
 // If 'map' is already immutable then this operation has no effect.
 // This operation can not be undone; an immutable map can not be made mutable again.
-// When a map is copied ('rm_cpy') then the new copy is mutable.
+// When a map is copied ('rm_copy') then the new copy is mutable.
 dcl-pr rm_make_map_immutable pointer extproc(*dclcase);
   map pointer value;
   opt char(10) value options(*nopass);
@@ -233,10 +233,10 @@ dcl-pr rm_insert_1 pointer extproc(*dclcase);
 end-pr;
 
 
-////////// rm_insm (rm_insert_map) - Insert key/item pairs, from map
+////////// rm_insert_map - Insert key/item pairs, from map
 // Like 'rm_insert', but the key/item pairs to insert are contained in 'map2'.
 // The values and automatically disposed maps in 'map2' that are to be
-// inserted are not inserted directly, but instead a copy is made ('rm_cpy')
+// inserted are not inserted directly, but instead a copy is made ('rm_copy')
 // that is actually inserted. Manually disposed maps are not copied; they're
 // inserted directly.
 // If 'key1' and/or 'key2' are passed and not *null then only the key/item
@@ -251,7 +251,7 @@ end-pr;
 // 'key1'/'key2' is a manually disposed map, or a value/map contained
 // in a map.
 // This procedure does not dispose 'map2' or it's keys/items.
-dcl-pr rm_insm pointer extproc(*dclcase);
+dcl-pr rm_insert_map pointer extproc(*dclcase);
   map pointer value;
   map2 pointer value;
   key1 pointer value options(*nopass);
@@ -259,13 +259,13 @@ dcl-pr rm_insm pointer extproc(*dclcase);
 end-pr;
 
 
-////////// rm_insc (rm_insert_cond) - Insert key/item pairs, conditionally
+////////// rm_insert_c - Insert key/item pairs, conditionally
 // Like 'rm_insert', but a key/item pair is only inserted if there is
 // no key in 'map' that is equal to the key to be inserted.
 // Keys and items that are not inserted are disposed automatically,
 // unless they are manually disposed maps, or values/maps contained
 // in a map.
-dcl-pr rm_insc pointer extproc(*dclcase);
+dcl-pr rm_insert_c pointer extproc(*dclcase);
   map pointer value;
 // Parameters k001/i001 .. k100/i100
 // k001 pointer value options(*nopass);
@@ -277,21 +277,21 @@ dcl-pr rm_insc pointer extproc(*dclcase);
 end-pr;
 
 
-////////// rm_insc1 (rm_insert_cond_1) - Insert 1 key/item pair, conditionally
-// Like 'rm_insc', but with only one key/item pair.
+////////// rm_insert_c_1 - Insert 1 key/item pair, conditionally
+// Like 'rm_insert_c', but with only one key/item pair.
 // This is the faster version when only one key/item pair needs
 // to be inserted.
-dcl-pr rm_insc1 pointer extproc(*dclcase);
+dcl-pr rm_insert_c_1 pointer extproc(*dclcase);
   map pointer value;
   key pointer value options(*nopass);
   item pointer value options(*nopass);
 end-pr;
 
 
-////////// rm_inscm (rm_insert_cond_map) - Insert key/item pairs, conditionally, from map
-// Like 'rm_insm', but a key/item pair is only inserted if there is
+////////// rm_insert_c_map - Insert key/item pairs, conditionally, from map
+// Like 'rm_insert_map', but a key/item pair is only inserted if there is
 // no key in 'map' that is equal to the key to be inserted.
-dcl-pr rm_inscm pointer extproc(*dclcase);
+dcl-pr rm_insert_c_map pointer extproc(*dclcase);
   map pointer value;
   map2 pointer value;
   key1 pointer value options(*nopass);
@@ -299,11 +299,11 @@ dcl-pr rm_inscm pointer extproc(*dclcase);
 end-pr;
 
 
-////////// rm_insx (rm_insert_excl) - Insert key/item pairs, exclusive
+////////// rm_insert_x - Insert key/item pairs, exclusive
 // Like 'rm_insert', but before a key/item pair is inserted all key/item
 // pairs with a key equal to the key to be inserted are removed first
 // (i.e. they're replaced).
-dcl-pr rm_insx pointer extproc(*dclcase);
+dcl-pr rm_insert_x pointer extproc(*dclcase);
   map pointer value;
 // Parameters k001/i001 .. k100/i100
 // k001 pointer value options(*nopass);
@@ -315,21 +315,21 @@ dcl-pr rm_insx pointer extproc(*dclcase);
 end-pr;
 
 
-////////// rm_insx1 (rm_insert_excl_1) - Insert 1 key/item pair, exclusive
-// Like 'rm_insx', but with only one key/item pair.
+////////// rm_insert_x_1 - Insert 1 key/item pair, exclusive
+// Like 'rm_insert_x', but with only one key/item pair.
 // This is the faster version when only one key/item pair needs
 // to be inserted.
-dcl-pr rm_insx1 pointer extproc(*dclcase);
+dcl-pr rm_insert_x_1 pointer extproc(*dclcase);
   map pointer value;
   key pointer value options(*nopass);
   item pointer value options(*nopass);
 end-pr;
 
 
-////////// rm_insxm (rm_insert_excl_map) - Insert key/item pairs, exclusive, from map
-// Like 'rm_insm', but before a key/item pair is inserted all key/item
+////////// rm_insert_x_map - Insert key/item pairs, exclusive, from map
+// Like 'rm_insert_map', but before a key/item pair is inserted all key/item
 // pairs with a key equal to the key to be inserted are removed first.
-dcl-pr rm_insxm pointer extproc(*dclcase);
+dcl-pr rm_insert_x_map pointer extproc(*dclcase);
   map pointer value;
   map2 pointer value;
   key1 pointer value options(*nopass);
@@ -337,7 +337,7 @@ dcl-pr rm_insxm pointer extproc(*dclcase);
 end-pr;
 
 
-////////// rm_rmv (rm_remove) - Remove key/item pair
+////////// rm_remove - Remove key/item pair
 // Remove the key/item pair with key equal to 'key' from 'map', if
 // found, and return 'map'. If not found do nothing, and return 'map'.
 // If the key and/or item is a value or an automatically disposed map
@@ -347,15 +347,15 @@ end-pr;
 // or "*l" or "*last" for the last one.
 // This procedure disposes 'key' automatically, unless 'key' is a manually
 // disposed map, or a value/map contained in a map.
-dcl-pr rm_rmv pointer extproc(*dclcase);
+dcl-pr rm_remove pointer extproc(*dclcase);
   map pointer value;
   key pointer value;
   opt char(10) value options(*nopass);
 end-pr;
 
 
-////////// rm_rmva (rm_remove_all) - Remove all key/item pairs
-// Like 'rm_rmv', but all key/item pairs with key equal to or greater
+////////// rm_remove_all - Remove all key/item pairs
+// Like 'rm_remove', but all key/item pairs with key equal to or greater
 // than 'key1', and equal to or less than 'key2' are removed from 'map'.
 // Both keys are optional. If 'key1' is not passed or *null it's assumed
 // to be the lowest key. If 'key2' is not passed it's assumed to be the
@@ -365,14 +365,14 @@ end-pr;
 // This procedure disposes 'key1' and 'key2' automatically, unless
 // 'key1'/'key2' is a manually disposed map, or a value/map contained in
 // a map.
-dcl-pr rm_rmva pointer extproc(*dclcase);
+dcl-pr rm_remove_all pointer extproc(*dclcase);
   map pointer value;
   key1 pointer value options(*nopass);
   key2 pointer value options(*nopass);
 end-pr;
 
 
-////////// rm_cmp (rm_compare) - Compare two objects
+////////// rm_compare - Compare two objects
 // Compare 'obj1' with 'obj2'. They can be *null, a value or a map.
 // Return -1 if 'obj1' is less than 'obj2', return 1 if 'obj1' is
 // greater than 'obj2', return 0 if 'obj1' and 'obj2' are equal.
@@ -435,43 +435,43 @@ end-pr;
 // Strings must be converted first to the job CCSID before they can be
 // compared using the alternate sort sequence. This takes considerably
 // more resources than when the default sort sequence is used.
-dcl-pr rm_cmp int(10) extproc(*dclcase);
+dcl-pr rm_compare int(10) extproc(*dclcase);
   obj1 pointer value;
   obj2 pointer value;
 end-pr;
-////////// rm_ceq (rm_compare_eq) - 'obj1' = 'obj2' ?
+////////// rm_compare_eq - 'obj1' = 'obj2' ?
 // Return *on if 'obj1' is equal to 'obj2', else return *off.
-dcl-pr rm_ceq ind extproc(*dclcase);
+dcl-pr rm_compare_eq ind extproc(*dclcase);
   obj1 pointer value;
   obj2 pointer value;
 end-pr;
-////////// rm_clt (rm_compare_lt) - 'obj1' < 'obj2' ?
+////////// rm_compare_lt - 'obj1' < 'obj2' ?
 // Return *on if 'obj1' is less than 'obj2', else return *off.
-dcl-pr rm_clt ind extproc(*dclcase);
+dcl-pr rm_compare_lt ind extproc(*dclcase);
   obj1 pointer value;
   obj2 pointer value;
 end-pr;
-////////// rm_cle (rm_compare_le) - 'obj1' <= 'obj2' ?
+////////// rm_compare_le (rm_compare_le) - 'obj1' <= 'obj2' ?
 // Return *on if 'obj1' is equal to or less than 'obj2', else return *off.
-dcl-pr rm_cle ind extproc(*dclcase);
+dcl-pr rm_compare_le ind extproc(*dclcase);
   obj1 pointer value;
   obj2 pointer value;
 end-pr;
-////////// rm_cgt (rm_compare_gt) - 'obj1' > 'obj2' ?
+////////// rm_compare_gt - 'obj1' > 'obj2' ?
 // Return *on if 'obj1' is greater than 'obj2', else return *off.
-dcl-pr rm_cgt ind extproc(*dclcase);
+dcl-pr rm_compare_gt ind extproc(*dclcase);
   obj1 pointer value;
   obj2 pointer value;
 end-pr;
-////////// rm_cge (rm_compare_ge) - 'obj1' >= 'obj2' ?
+////////// rm_compare_ge (rm_compare_ge) - 'obj1' >= 'obj2' ?
 // Return *on if 'obj1' is equal to or greater than 'obj2', else return *off.
-dcl-pr rm_cge ind extproc(*dclcase);
+dcl-pr rm_compare_ge ind extproc(*dclcase);
   obj1 pointer value;
   obj2 pointer value;
 end-pr;
 
 
-////////// rm_ (rm_set_prop) - Set special property
+////////// rm_ - Set special property
 // Set the special property specified with 'opt' for 'obj', which is a map or
 // a value, and return 'obj'.
 // opt:
@@ -626,30 +626,30 @@ dcl-pr rm__sa pointer extproc(*dclcase);
 end-pr;
 
 
-////////// rm_hky (rm_has_key) - Has key?
+////////// rm_has_key - Has key?
 // Return *on if 'map' has a key that is equal to 'key', else return *off.
 // This procedure disposes 'key' automatically, unless 'key' is a manually
 // disposed map, or a value/map contained in a map.
-dcl-pr rm_hky ind extproc(*dclcase);
+dcl-pr rm_has_key ind extproc(*dclcase);
   map pointer value;
   key pointer value;
 end-pr;
 
 
-////////// rm_hks (rm_has_keys) - Has keys?
+////////// rm_has_keys - Has keys?
 // If 'opt' is "*ge" or not passed, then return *on if 'map' has keys that
 // are equal to or greater than 'key', else return *off. If 'opt' is "*le"
 // then return *on if 'map' has keys that are equal to or less than 'key'.
 // This procedure disposes 'key' automatically, unless 'key' is a manually
 // disposed map, or a value/map contained in a map.
-dcl-pr rm_hks ind extproc(*dclcase);
+dcl-pr rm_has_keys ind extproc(*dclcase);
   map pointer value;
   key pointer value;
   opt char(10) value options(*nopass);
 end-pr;
 
 
-////////// rm_num (rm_num_keys) - Number of key/item pairs
+////////// rm_num - Number of key/item pairs
 // Return the number of key/item pairs in 'map' with key equal to or
 // greater than 'key1', and equal to or less than 'key2'. Both keys
 // are optional. If 'key1' is not passed or *null it's assumed to be
@@ -670,10 +670,10 @@ dcl-pr rm_num uns(20) extproc(*dclcase);
 end-pr;
 
 
-////////// rm_hit (rm_has_item) - Has item?
+////////// rm_has_item - Has item?
 // Return *on if 'map' has an item that is equal to 'item', else return *off.
 // A slow linear search is performed.
-// Items are always compared using the default compare function 'rm_cmp'.
+// Items are always compared using the default compare function 'rm_compare'.
 // If 'key1' and/or 'key2' are passed and not *null then only the items with
 // keys equal to or greater than 'key1', and equal to or less than 'key2',
 // will be considered. Both keys are optional. If 'key1' is not passed or *null
@@ -683,7 +683,7 @@ end-pr;
 // 'key1' is passed with value *null.
 // This procedure disposes 'item', 'key1' and 'key2' automatically, unless they're
 // a manually disposed map, or a value/map contained in a map.
-dcl-pr rm_hit ind extproc(*dclcase);
+dcl-pr rm_has_item ind extproc(*dclcase);
   map pointer value;
   item pointer value;
   key1 pointer value options(*nopass);
@@ -691,9 +691,9 @@ dcl-pr rm_hit ind extproc(*dclcase);
 end-pr;
 
 
-////////// rm_nit (rm_num_items) - Number of items
+////////// rm_num_items - Number of items
 // Return the number of items in 'map' that are equal to 'item'.
-// Items are always compared using the default compare function 'rm_cmp'.
+// Items are always compared using the default compare function 'rm_compare'.
 // If 'key1' and/or 'key2' are passed and not *null then only the items with
 // keys equal to or greater than 'key1', and equal to or less than 'key2',
 // will be considered. Both keys are optional. If 'key1' is not passed or *null
@@ -703,7 +703,7 @@ end-pr;
 // 'key1' is passed with value *null.
 // This procedure disposes 'item', 'key1' and 'key2' automatically, unless they're
 // a manually disposed map, or a value/map contained in a map.
-dcl-pr rm_nit uns(20) extproc(*dclcase);
+dcl-pr rm_num_items uns(20) extproc(*dclcase);
   map pointer value;
   item pointer value;
   key1 pointer value options(*nopass);
@@ -711,10 +711,10 @@ dcl-pr rm_nit uns(20) extproc(*dclcase);
 end-pr;
 
 
-////////// rm_gik (rm_get_item_key) - Get item key
+////////// rm_get_item_key - Get item key
 // Return the key of the item in 'map' that is equal to 'item'.
 // A slow linear search is performed.
-// Items are always compared using the default compare function 'rm_cmp'.
+// Items are always compared using the default compare function 'rm_compare'.
 // In case there are multiple items equal to 'item' then 'opt' indicates
 // which item: "*f" or "*first" for the first one (which is the default),
 // or "*l" or "*last" for the last one (key order). Using "*f"/"*first" or
@@ -728,7 +728,7 @@ end-pr;
 // 'key1' is passed with value *null.
 // This procedure disposes 'item', 'key1' and 'key2' automatically, unless they're
 // a manually disposed map, or a value/map contained in a map.
-dcl-pr rm_gik pointer extproc(*dclcase);
+dcl-pr rm_get_item_key pointer extproc(*dclcase);
   map pointer value;
   item pointer value;
   opt char(10) value options(*nopass);
@@ -737,7 +737,7 @@ dcl-pr rm_gik pointer extproc(*dclcase);
 end-pr;
 
 
-////////// rm_cpy (rm_copy) - Copy map or value
+////////// rm_copy - Copy map or value
 // Return a (shallow) copy of 'obj', which must be a map or a value.
 // The new map or value has the same properties and attributes as 'obj',
 // except that a new copy of a map is always mutable. The copy contains
@@ -747,16 +747,16 @@ end-pr;
 // the same instances.
 // Event handlers are NOT copied; the copy has no event handlers.
 // Return *null if 'obj' is *null.
-// Use 'rm_cpyd' to make a deep copy of a map, in which case manually
+// Use 'rm_copy_deep' to make a deep copy of a map, in which case manually
 // disposed maps are also (deep) copied.
 // The new copy is always mutable. Maps contained in 'obj' that are
 // immutable stay immutable and copies of these maps that are included
 // in the copy are also immutable.
-// Be aware that when manually disposed maps are not used then 'rm_cpy'
-// and 'rm_cpyd' have the same effect, i.e. contained maps are copied
+// Be aware that when manually disposed maps are not used then 'rm_copy'
+// and 'rm_copy_deep' have the same effect, i.e. contained maps are copied
 // recursively, effectively producing a deep copy. Avoid excessive memory
 // use. When only manually disposed maps are used instead of automatically
-// disposed maps then 'rm_cpy' will produce a real shallow copy.
+// disposed maps then 'rm_copy' will produce a real shallow copy.
 // If 'key1' and/or 'key2' are passed and not *null the copy will only
 // contain the key/item pairs from 'obj' with key equal to or greater than
 // 'key1', and equal to or less than 'key2'. Both keys are optional. If
@@ -770,32 +770,32 @@ end-pr;
 // This procedure disposes 'key1' and 'key2' automatically, unless
 // 'key1'/'key2' is a manually disposed map, or a value/map contained
 // in a map.
-dcl-pr rm_cpy pointer extproc(*dclcase);
+dcl-pr rm_copy pointer extproc(*dclcase);
   obj pointer value;
   key1 pointer value options(*nopass);
   key2 pointer value options(*nopass);
 end-pr;
 
 
-////////// rm_cpyd (rm_copy_deep) - Deep copy map or value
-// Like 'rm_cpy', but returns a deep copy.
-// For values, 'rm_cpyd' has the same effect as 'rm_cpy'.
+////////// rm_copy_deep - Deep copy map or value
+// Like 'rm_copy', but returns a deep copy.
+// For values, 'rm_copy_deep' has the same effect as 'rm_copy'.
 // For maps, contained manually disposed maps are copied also, recursively,
 // like automatically disposed maps.
-dcl-pr rm_cpyd pointer extproc(*dclcase);
+dcl-pr rm_copy_deep pointer extproc(*dclcase);
   obj pointer value;
   key1 pointer value options(*nopass);
   key2 pointer value options(*nopass);
 end-pr;
 
 
-////////// rm_cur (rm_cursor) - Create a new cursor
+////////// rm_cursor - Create a new cursor
 // Return a new cursor for 'map'. The cursor is positioned at the beginning
 // or the end, depending on whether 'opt' is "*b"/"*begin" or "*e"/"*end",
 // resp. Optional parameter 'opt' defaults to "*b".
 // The cursor should be disposed with 'rm_dispose' when it's not used anymore. It
 // is automatically disposed when 'map' is disposed.
-dcl-pr rm_cur pointer extproc(*dclcase);
+dcl-pr rm_cursor pointer extproc(*dclcase);
   map pointer value;
   opt char(10) value options(*nopass);
 end-pr;
@@ -1041,7 +1041,7 @@ end-pr;
 // Set the compare function of 'map', which must be empty, to 'comp',
 // and return 'map'. Send escape messsage RM00041 if 'map' is not empty.
 // The compare function of 'map' determines how the keys in 'map' are
-// compared/ordered. Normally 'rm_cmp' is used as the compare function,
+// compared/ordered. Normally 'rm_compare' is used as the compare function,
 // but this can be overridden with another compare function, 'comp', for
 // a specific map. When two keys that are both maps are compared, the
 // order in which the keys and items are compared is determined by the
@@ -1056,11 +1056,11 @@ end-pr;
 // a value or a map, and returns 0 of they're equal, -1 if 'obj1' is
 // less than 'obj2', or 1 if 'obj1' is greater than 'obj2'.
 // If 'comp' returns something else than 0, 1 or -1 then the comparison
-// falls back to 'rm_cmp'.
-// If 'comp' is *null then 'rm_cmp' is reset to be used as the compare
+// falls back to 'rm_compare'.
+// If 'comp' is *null then 'rm_compare' is reset to be used as the compare
 // function again.
 // The following is a simple example of a 'comp' procedure body, which
-// has the effect that the sort order is reversed: return rm_cmp(obj1:obj2)*-1;.
+// has the effect that the sort order is reversed: return rm_compare(obj1:obj2)*-1;.
 dcl-pr rm_set_comp_fun pointer extproc(*dclcase);
   map pointer value;
   comp pointer(*proc) value;
@@ -1069,7 +1069,7 @@ end-pr;
 
 ////////// rm_get_comp_fun - Get compare function
 // Return the current compare function for 'map'. Return *null if the default
-// function, 'rm_cmp', is in effect.
+// function, 'rm_compare', is in effect.
 dcl-pr rm_get_comp_fun pointer(*proc) extproc(*dclcase);
   map pointer value;
 end-pr;
@@ -1141,19 +1141,19 @@ dcl-pr rm_i2 pointer extproc(*dclcase);
 end-pr;
 
 
-////////// rm_isi - Is any integer?
+////////// rm_is_i - Is any integer?
 // Return *on if 'obj' is any integer type, else return *off.
-dcl-pr rm_isi ind extproc(*dclcase);
+dcl-pr rm_is_i ind extproc(*dclcase);
   obj pointer value;
 end-pr;
 
 
-////////// rm_isi1, rm_isi2 - Is integer with 10/20 digits?
+////////// rm_is_i1, rm_is_i2 - Is integer with 10/20 digits?
 // Return *on if 'obj' is an integer with 10 or 20 digits, else return *off.
-dcl-pr rm_isi1 ind extproc(*dclcase);
+dcl-pr rm_is_i1 ind extproc(*dclcase);
   obj pointer value;
 end-pr;
-dcl-pr rm_isi2 ind extproc(*dclcase);
+dcl-pr rm_is_i2 ind extproc(*dclcase);
   obj pointer value;
 end-pr;
 
@@ -1215,23 +1215,23 @@ dcl-pr rm_p3 pointer extproc(*dclcase);
 end-pr;
 
 
-////////// rm_isp - Is any packed decimal?
+////////// rm_is_p - Is any packed decimal?
 // Return *on if 'obj' is any packed decimal type, else return *off.
-dcl-pr rm_isp ind extproc(*dclcase);
+dcl-pr rm_is_p ind extproc(*dclcase);
   obj pointer value;
 end-pr;
 
 
-////////// rm_isp1, rm_isp2, rm_isp3 - Is packed decimal with 10.4/20.8/30.16 digits?
+////////// rm_is_p1, rm_is_p2, rm_is_p3 - Is packed decimal with 10.4/20.8/30.16 digits?
 // Return *on if 'obj' is a packed decimal with 10.4, 20.8 or 30.16 digits,
 // else return *off.
-dcl-pr rm_isp1 ind extproc(*dclcase);
+dcl-pr rm_is_p1 ind extproc(*dclcase);
   obj pointer value;
 end-pr;
-dcl-pr rm_isp2 ind extproc(*dclcase);
+dcl-pr rm_is_p2 ind extproc(*dclcase);
   obj pointer value;
 end-pr;
-dcl-pr rm_isp3 ind extproc(*dclcase);
+dcl-pr rm_is_p3 ind extproc(*dclcase);
   obj pointer value;
 end-pr;
 
@@ -1297,15 +1297,15 @@ dcl-pr rm_z pointer extproc(*dclcase);
 end-pr;
 
 
-////////// rm_isd, rm_ist, rm_isz - Is date/time/timestamp?
+////////// rm_is_d, rm_is_t, rm_is_z - Is date/time/timestamp?
 // Return *on if 'obj' is a date, time or timestamp, else return *off.
-dcl-pr rm_isd ind extproc(*dclcase);
+dcl-pr rm_is_d ind extproc(*dclcase);
   obj pointer value;
 end-pr;
-dcl-pr rm_ist ind extproc(*dclcase);
+dcl-pr rm_is_t ind extproc(*dclcase);
   obj pointer value;
 end-pr;
-dcl-pr rm_isz ind extproc(*dclcase);
+dcl-pr rm_is_z ind extproc(*dclcase);
   obj pointer value;
 end-pr;
 
@@ -1358,9 +1358,9 @@ dcl-pr rm_n pointer extproc(*dclcase);
 end-pr;
 
 
-////////// rm_isn - Is indicator?
+////////// rm_is_n - Is indicator?
 // Return *on if 'obj' is an indicator, else return *off.
-dcl-pr rm_isn ind extproc(*dclcase);
+dcl-pr rm_is_n ind extproc(*dclcase);
   obj pointer value;
 end-pr;
 
@@ -1393,9 +1393,9 @@ dcl-pr rm_x pointer extproc(*dclcase);
 end-pr;
 
 
-////////// rm_isx - Is pointer?
+////////// rm_is_x - Is pointer?
 // Return *on if 'obj' is a pointer, else return *off.
-dcl-pr rm_isx ind extproc(*dclcase);
+dcl-pr rm_is_x ind extproc(*dclcase);
   obj pointer value;
 end-pr;
 
@@ -1428,9 +1428,9 @@ dcl-pr rm_xp pointer extproc(*dclcase);
 end-pr;
 
 
-////////// rm_isx - Is procedure pointer?
+////////// rm_is_x - Is procedure pointer?
 // Return *on if 'obj' is a pointer, else return *off.
-dcl-pr rm_isxp ind extproc(*dclcase);
+dcl-pr rm_is_xp ind extproc(*dclcase);
   obj pointer value;
 end-pr;
 
@@ -1504,16 +1504,16 @@ dcl-pr rm_aap pointer extproc(*dclcase);
 end-pr;
 
 
-////////// rm_isa - Is character data?
+////////// rm_is_a - Is character data?
 // Return *on if 'obj' is character data, else return *off.
-dcl-pr rm_isa ind extproc(*dclcase);
+dcl-pr rm_is_a ind extproc(*dclcase);
   obj pointer value;
 end-pr;
 
 
-////////// rm_isaa - Is character data with alt. sort seq.?
+////////// rm_is_aa - Is character data with alt. sort seq.?
 // Return *on if 'obj' is character data with alt. sort seq., else return *off.
-dcl-pr rm_isaa ind extproc(*dclcase);
+dcl-pr rm_is_aa ind extproc(*dclcase);
   obj pointer value;
 end-pr;
 
@@ -1613,16 +1613,16 @@ dcl-pr rm_sab pointer extproc(*dclcase);
 end-pr;
 
 
-////////// rm_iss - Is string?
+////////// rm_is_s - Is string?
 // Return *on if 'obj' is a string, else return *off.
-dcl-pr rm_iss ind extproc(*dclcase);
+dcl-pr rm_is_s ind extproc(*dclcase);
   obj pointer value;
 end-pr;
 
 
-////////// rm_issa - Is string with alt. sort seq.?
+////////// rm_is_sa - Is string with alt. sort seq.?
 // Return *on if 'obj' is a string with alt. sort seq., else return *off.
-dcl-pr rm_issa ind extproc(*dclcase);
+dcl-pr rm_is_sa ind extproc(*dclcase);
   obj pointer value;
 end-pr;
 
@@ -1701,7 +1701,7 @@ end-pr;
 // If the same handler is added multiple times it will be called as many
 // times as it was added.
 // Event handlers are removed with procedure 'rm_remove_event_handler'.
-// If a map is disposed then no event handlers will be called. Use 'rm_rmva'
+// If a map is disposed then no event handlers will be called. Use 'rm_remove_all'
 // first to remove all key/value pairs and fire events, then dispose the map.
 dcl-pr rm_add_event_handler pointer extproc(*dclcase);
   map pointer value;
@@ -1720,6 +1720,3 @@ dcl-pr rm_remove_event_handler pointer extproc(*dclcase);
   map pointer value;
   hproc pointer(*proc) value;
 end-pr;
-
-
-/include _TLIB_/INCLUDERPG,RPGMAPLPNH

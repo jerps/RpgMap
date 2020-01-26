@@ -28,7 +28,7 @@ Maps are created with <a href="#rm_m"><code>rm_m</code></a>, <a href="#rm_mm"><c
 </p>\
 <p>\
 Key/item pairs are inserted into a map with one of the <code>rm_insert*</code> procedures such as <a href="#rm_insert"><code>rm_insert</code></a> \
-or <a href="#rm_insc"><code>rm_insc</code></a>. When creating a map, the keys and items to insert can be \
+or <a href="#rm_insert_c"><code>rm_insert_c</code></a>. When creating a map, the keys and items to insert can be \
 immediately specified (see <a href="#example_1">example 1</a>).\
 </p>\
 <p>\
@@ -36,7 +36,7 @@ Duplicate keys are allowed. An RpgMap is not a MultiMap; a key is associated wit
 are simply stored multiple times with the same key, retaining insertion order.\
 </p>\
 <p>\
-Key/item pairs are removed from a map with <a href="#rm_rmv"><code>rm_rmv</code></a> and <a href="#rm_rmva"><code>rm_rmva</code></a>.\
+Key/item pairs are removed from a map with <a href="#rm_remove"><code>rm_remove</code></a> and <a href="#rm_remove_all"><code>rm_remove_all</code></a>.\
 </p>\
 <p>\
 Items are retrieved by key with the following procedures: <a href="#rm_get"><code>rm_get</code></a>, \

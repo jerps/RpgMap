@@ -34,8 +34,8 @@ dcl-proc RMMInsert export;
   dcl-s c pointer;
   dcl-s isv ind;
   dcl-s flags char(1);
-  
-  if %bitand(RMValObjFlags(map):x'02') = x'02' and not rm_isi(k);
+
+  if %bitand(RMValObjFlags(map):x'02') = x'02' and not rm_is_i(k);
     RMSysSndEscapeMsg('RM00002');
   endif;
   if %bitand(RMValObjFlags(map):x'40') = x'40';
@@ -46,7 +46,7 @@ dcl-proc RMMInsert export;
   if i <> *null;
     obj = i;
     exsr checkobj;
-  endif;  
+  endif;
   mapi = RMValMapImpl(map);
   if mode = 1; //excl
     c = RMBCursorCrt(mapi:0:*null);
@@ -72,12 +72,12 @@ dcl-proc RMMInsert export;
       RMValObjSetFlags(i:%bitor(flags:x'80'));
     endif;
   endif;
-  
+
   RMBFireEvent(mapi:1:k:i);
 
   return *on;
-  
-  begsr checkobj;  
+
+  begsr checkobj;
     if RMValIsCursor(obj);
       RMSysSndEscapeMsg('RM00201');
     endif;
@@ -89,7 +89,7 @@ dcl-proc RMMInsert export;
       endif;
     endif;
   endsr;
-    
+
 end-proc;
 
 
@@ -108,7 +108,7 @@ dcl-proc RMMInsertFromMap export;
   dcl-s i pointer;
   dcl-s dk ind inz(*off);
   dcl-s di ind inz(*off);
-      
+
   c = RMBCursorCrt(RMValMapImpl(map2):0:*null);
   if %parms = 4 and key1 = *null;
     RMBCursorSetLlGt(c:*null:1);
@@ -132,12 +132,12 @@ dcl-proc RMMInsertFromMap export;
     di = *off;
     if     k <> *null
        and (not RMValIsMap(k) or %bitand(RMValObjFlags(k):x'01') <> x'01');
-      k = rm_cpy(k);
+      k = rm_copy(k);
       dk = *on;
     endif;
     if     i <> *null
        and (not RMValIsMap(i) or %bitand(RMValObjFlags(i):x'01') <> x'01');
-      i = rm_cpy(i);
+      i = rm_copy(i);
       di = *on;
     endif;
     if     k <> *null
@@ -155,11 +155,11 @@ dcl-proc RMMInsertFromMap export;
     endif;
   enddo;
   RMBCursorDispose(c);
-  
+
   return;
-  
+
   on-exit;
-  
+
   if dk;
     dk = *off;
     RMValDispose(k);
@@ -194,13 +194,13 @@ dcl-proc RMMForEachDo export;
   dcl-s usrd2 pointer;
   dcl-s stop ind;
   dcl-s c pointer;
-      
+
   if %parms >= %parmnum(usrd);
     usrd2 = usrd;
   else;
     usrd2 = *null;
   endif;
-  
+
   stop = *off;
   call_proc_p = proc;
   c = RMBCursorCrt(RMValMapImpl(map):0:*null);
@@ -244,7 +244,7 @@ dcl-proc RMMForEachDo export;
     endif;
   enddo;
   RMBCursorDispose(c);
-  
+
   return usrd2;
 
 end-proc;
@@ -266,7 +266,7 @@ dcl-proc RMMDisposeArg export;
     return;
   endif;
   RMValDispose(obj);
-      
+
 end-proc;
 
 

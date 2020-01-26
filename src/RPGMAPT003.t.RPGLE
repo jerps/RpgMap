@@ -22,8 +22,8 @@ dcl-proc Main;
   for x = 1 by 2 to 19;
     rm_insert(m:rm_i(x):rm_i(x+1));
   endfor;
-  rm_rmva(m);
-  c = rm_setll(rm_cur(m2));
+  rm_remove_all(m);
+  c = rm_setll(rm_cursor(m2));
   dow rm_read_next(c);
     display('R: '+%editc(%dec(rm_i_(rm_key(c)):3:0):'X')+' '+%editc(%dec(rm_i_(rm_item(c)):3:0):'X'));
   enddo;
@@ -60,7 +60,7 @@ dcl-pi *n int(10);
 end-pi;
 
   if event = 2;
-    rm_insert(usrd:rm_(rm_cpy(key)):rm_cpy(item));
+    rm_insert(usrd:rm_(rm_copy(key)):rm_copy(item));
   endif;
   return 0;
 
